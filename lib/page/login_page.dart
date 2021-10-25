@@ -19,23 +19,14 @@ class _LoginPageState extends State<LoginPage> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
   GlobalKey<FormState> globalFormKey = new GlobalKey<FormState>();
 
-  get color => null;
-
-  get title => null;
-
+ 
   @override
   void initState() {
     super.initState();
     requestModel = new LoginRequestModel(email: '', password: '');
   }
 
-  @override
-  // ignore: override_on_non_overriding_member
-  Widget builds(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-    );
-  }
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -49,9 +40,7 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget _uiSteup(BuildContext context) {
     // ignore: unused_local_variable
-    var loginRequestModel;
     
-   
     return Scaffold(
       resizeToAvoidBottomInset: true,
       key: scaffoldKey,

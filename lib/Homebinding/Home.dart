@@ -1,5 +1,4 @@
-import 'dart:html';
-
+import 'package:appcsmju/footbar/Foot.dart';
 import 'package:appcsmju/model/carousel_loading.dart';
 import 'package:appcsmju/controller/home_controller.dart';
 import 'package:appcsmju/model/carousel_slider_data_found.dart';
@@ -14,46 +13,24 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
+@override
+// ignore: override_on_non_overriding_member
+Widget builds(BuildContext context) {
+  return Scaffold(
+    appBar: AppBar(),
+  );
+}
+
 class HomePage extends StatefulWidget {
   HomePage({
     Key? key,
   }) : super(key: key);
   @override
+  GlobalKey key = new GlobalKey();
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  /* var url = (Uri.parse("https://wwwdev.csmju.com/api/news"));
-
-  static var _dataFromAPI = [];
- 
-   Future<String> _getnews() async {
-    //var url = Uri.parse("https://wwwdev.csmju.com/api/news");
-    List<Widget>? _dataFromAPI;
-    try {
-      final response = await http.get(url);
-      final jsonData = jsonDecode(response.body);
-      print(response.body);
-
-      setState(() {
-        _dataFromAPI = jsonData;
-      });
-    } catch (err) {}
-    //return apinewFromJson(response.body)[0].newsDetail;
-
-    //_dataFromAPI = apinewFromJson(news.body) as Apinew;
-    //print(jsonData);
-
-    return "ok";
-  }
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    _getnews();
-  }  */
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,39 +52,29 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
         body: SafeArea(
-            child: SizedBox(
-          width: 133,
-          child: Text(
-            "ข่าวประชาสัมพันธ์",
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 18,
-            ),
+          child: GetBuilder<HomeController>(
+            builder: (_c) {
+              if (_c.isLoading) if (_c.carouselData.length > 0)
+                return CarouselSliderDataFound(_c.carouselData);
+              else
+                return CarouselLoading();
+              else if (_c.carouselData.length > 0)
+                return CarouselSliderDataFound(_c.carouselData);
+              else
+                return Foot();
+                
+            },
           ),
-        )));
+        )
+        
+        );
 
     //child: Text(_dataFromAPI?.newsDetail ?? "loadind..."),
   }
 
-  @override
-  // TODO: implement widget
-  Widget _calasaul(BuildContext context) {
-    return SafeArea(
-      child: GetBuilder<HomeController>(
-        builder: (_c) {
-          if (_c.isLoading) if (_c.carouselData.length > 0)
-            return CarouselSliderDataFound(_c.carouselData);
-          else
-            return CarouselLoading();
-          else if (_c.carouselData.length > 0)
-            return CarouselSliderDataFound(_c.carouselData);
-          else
-            return Container();
-        },
-      ),
-    );
+ 
   }
-}
+
+
 /* child: Text("ไอดีข่าว:${post["newsId"]} \n รายละเอียด:${post["News_Detail"]}"),
                         width: 206, */
