@@ -156,8 +156,8 @@ class _LoginPageState extends State<LoginPage> {
                                   final snackBar = routh()(
                                       Navigator.pushReplacement(context,
                                           MaterialPageRoute(builder: (context) {
-                                    var key;
-                                    return HomePage(key: key,);
+                                    
+                                    return HomePage();
                                   })));
                                   scaffoldKey.currentState!
                                       // ignore: deprecated_member_use

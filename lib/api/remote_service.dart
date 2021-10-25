@@ -5,17 +5,17 @@ import 'package:http/http.dart' as http;
 
 class RemoteService {
   static var client = http.Client();
-
+  
   static Future<dynamic> fetchCarouselData() async {
-    try {
-      var response =
-          await client.get(Uri.parse("https://wwwdev.csmju.com/api/news"));
-
-      if (response.statusCode == 200) {
+    try{
+      var response = await client.get(
+        Uri.parse('https://wwwdev.csmju.com/api/activity'),
+      );
+      if(response.statusCode == 200){
         return apinewFromJson(response.body);
       }
       return null;
-    } catch (e) {
+    } catch(e){
       return null;
     }
   }

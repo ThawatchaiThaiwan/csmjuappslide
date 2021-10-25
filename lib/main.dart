@@ -1,19 +1,21 @@
 import 'package:appcsmju/page/login_page.dart';
+import 'package:appcsmju/routes/app_pages.dart';
+import 'package:appcsmju/routes/app_routes.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  get images => null;
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      
-      home: LoginPage(),
+    return GetMaterialApp(
+      initialRoute: AppRoutes.HOME,
+      getPages: AppPages.list,
+      debugShowCheckedModeBanner: false,
+      themeMode: ThemeMode.system,
     );
   }
 }

@@ -1,4 +1,5 @@
-import 'dart:convert';
+import 'dart:html';
+
 import 'package:appcsmju/model/carousel_loading.dart';
 import 'package:appcsmju/controller/home_controller.dart';
 import 'package:appcsmju/model/carousel_slider_data_found.dart';
@@ -56,26 +57,45 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[75],
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        centerTitle: true,
-        leading: IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.people),
-          color: Colors.black,
-        ),
-        actions: <Widget>[
-          IconButton(
+        backgroundColor: Colors.grey[75],
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          centerTitle: true,
+          leading: IconButton(
             onPressed: () {},
-            icon: Icon(Icons.add_alert_sharp),
+            icon: Icon(Icons.people),
             color: Colors.black,
           ),
-        ],
-      ),
-      body: Center(child: GetBuilder<HomeController>(
+          actions: <Widget>[
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.add_alert_sharp),
+              color: Colors.black,
+            ),
+          ],
+        ),
+        body: SafeArea(
+            child: SizedBox(
+          width: 133,
+          child: Text(
+            "ข่าวประชาสัมพันธ์",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 18,
+            ),
+          ),
+        )));
+
+    //child: Text(_dataFromAPI?.newsDetail ?? "loadind..."),
+  }
+
+  @override
+  // TODO: implement widget
+  Widget _calasaul(BuildContext context) {
+    return SafeArea(
+      child: GetBuilder<HomeController>(
         builder: (_c) {
-          print(CarouselSliderDataFound);
           if (_c.isLoading) if (_c.carouselData.length > 0)
             return CarouselSliderDataFound(_c.carouselData);
           else
@@ -85,10 +105,8 @@ class _HomePageState extends State<HomePage> {
           else
             return Container();
         },
-      )),
+      ),
     );
-
-    //child: Text(_dataFromAPI?.newsDetail ?? "loadind..."),
   }
 }
 /* child: Text("ไอดีข่าว:${post["newsId"]} \n รายละเอียด:${post["News_Detail"]}"),

@@ -9,54 +9,55 @@ class CarouselSliderDataFound extends StatefulWidget {
   const CarouselSliderDataFound(this.carouselList);
 
   @override
-  _CarouselSliderDataFoundState createState() => _CarouselSliderDataFoundState();
+  _CarouselSliderDataFoundState createState() =>
+      _CarouselSliderDataFoundState();
 }
 
 class _CarouselSliderDataFoundState extends State<CarouselSliderDataFound> {
   int _current = 0;
-  late List<Widget> imageSlider;
+  List<Widget>? imageSlider;
 
   @override
   void initState() {
-    imageSlider = widget.carouselList.map((e) => Container(
-      margin: EdgeInsets.all(10),
-      child: ClipRRect(
-        borderRadius: BorderRadius.all(Radius.circular(10)),
-        child: Stack(
-          children: [
-            CachedNetworkImage(
-              imageUrl: e.newsDetail,
-              errorWidget: (context, url, error) =>
-              Icon(Icons.error),
-              progressIndicatorBuilder: (context, url, downloadProgress) =>
-              Center(
-                child: CircularProgressIndicator(
-                  value: downloadProgress.progress,
+    imageSlider = widget.carouselList
+        .map((e) => Container(
+              margin: EdgeInsets.all(10),
+              child: ClipRRect(
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+                child: Stack(
+                  children: [
+                    CachedNetworkImage(
+                      imageUrl: e.activityDetail,
+                      errorWidget: (context, url, error) => Icon(Icons.error),
+                      progressIndicatorBuilder:
+                          (context, url, downloadProgress) => Center(
+                        child: CircularProgressIndicator(
+                          value: downloadProgress.progress,
+                        ),
+                      ),
+                      fit: BoxFit.cover,
+                      width: 1000,
+                    ),
+                    Positioned(
+                      bottom: 0,
+                      left: 0,
+                      right: 0,
+                      child: Container(
+                        padding: EdgeInsets.all(10),
+                        child: Text(
+                          'Some Text',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    )
+                  ],
                 ),
               ),
-              fit: BoxFit.cover,
-              width: 1000,
-            ),
-            Positioned(
-              bottom: 0,
-              left: 0,
-              right: 0,
-              child: Container(
-                padding: EdgeInsets.all(10),
-                child: Text(
-                  'Some Text',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold
-                  ),
-                ),
-              ),
-            )
-          ],
-        ),
-      ),
-    )).toList();
+            ))
+        .toList();
     super.initState();
   }
 
@@ -68,16 +69,15 @@ class _CarouselSliderDataFoundState extends State<CarouselSliderDataFound> {
           CarouselSlider(
               items: imageSlider,
               options: CarouselOptions(
-                autoPlay: true,
-                enlargeCenterPage: true,
-                aspectRatio: 16/9,
-                viewportFraction: 1,
-                onPageChanged: (index, reason) {
-                  setState(() {
-                    _current = index;
-                  });
-                }
-              )),
+                  autoPlay: true,
+                  enlargeCenterPage: true,
+                  aspectRatio: 16 / 9,
+                  viewportFraction: 1,
+                  onPageChanged: (index, reason) {
+                    setState(() {
+                      _current = index;
+                    });
+                  })),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: widget.carouselList.map((e) {
@@ -85,11 +85,11 @@ class _CarouselSliderDataFoundState extends State<CarouselSliderDataFound> {
               return Container(
                 width: 8,
                 height: 8,
-                margin: EdgeInsets.symmetric(vertical: 10,horizontal: 2),
+                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 2),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: _current == index
-                    ? Color.fromRGBO(0, 0, 0, 0.9)
+                      ? Color.fromRGBO(0, 0, 0, 0.9)
                       : Color.fromRGBO(0, 0, 0, 0.4),
                 ),
               );

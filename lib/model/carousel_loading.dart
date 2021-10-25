@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
 class CarouselLoading extends StatelessWidget {
-  const CarouselLoading({Key? key}) : super(key: key);
+  const CarouselLoading({ Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
       highlightColor: Colors.white,
-      baseColor: Colors.grey,
+      baseColor: Colors.blueGrey,
       child: Column(
         children: [
           Container(
