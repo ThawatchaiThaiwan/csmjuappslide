@@ -1,3 +1,6 @@
+import 'dart:html';
+
+import 'package:appcsmju/Homebinding/HomeCarousel.dart';
 import 'package:appcsmju/footbar/Foot.dart';
 import 'package:appcsmju/model/carousel_loading.dart';
 import 'package:appcsmju/controller/home_controller.dart';
@@ -13,13 +16,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-@override
-// ignore: override_on_non_overriding_member
-Widget builds(BuildContext context) {
-  return Scaffold(
-    appBar: AppBar(),
-  );
-}
 
 class HomePage extends StatefulWidget {
   HomePage({
@@ -28,11 +24,17 @@ class HomePage extends StatefulWidget {
   @override
   GlobalKey key = new GlobalKey();
   _HomePageState createState() => _HomePageState();
+  int currentTab = 0;
+  final List<Widget> screens = [
+    HomeCarousel(),
+    
+  ];
 }
 
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    HomeCarousel screens;
     return Scaffold(
         backgroundColor: Colors.grey[75],
         appBar: AppBar(
@@ -40,40 +42,23 @@ class _HomePageState extends State<HomePage> {
           centerTitle: true,
           leading: IconButton(
             onPressed: () {},
-            icon: Icon(Icons.people),
-            color: Colors.black,
+            icon: Icon(Icons.person),
+            color: Colors.black,     //ยังไม่ได้เชื่อปุ่ม icons
           ),
           actions: <Widget>[
             IconButton(
               onPressed: () {},
-              icon: Icon(Icons.add_alert_sharp),
+              icon: Icon(Icons.notifications_active),
               color: Colors.black,
             ),
           ],
         ),
-        body: SafeArea(
-          child: GetBuilder<HomeController>(
-            builder: (_c) {
-              if (_c.isLoading) if (_c.carouselData.length > 0)
-                return CarouselSliderDataFound(_c.carouselData);
-              else
-                return CarouselLoading();
-              else if (_c.carouselData.length > 0)
-                return CarouselSliderDataFound(_c.carouselData);
-              else
-                return Foot();
-                
-            },
-          ),
-        )
-        
+        body: SafeArea(child : screens = HomeCarousel(),)
         );
 
     //child: Text(_dataFromAPI?.newsDetail ?? "loadind..."),
   }
-
- 
-  }
+}
 
 
 /* child: Text("ไอดีข่าว:${post["newsId"]} \n รายละเอียด:${post["News_Detail"]}"),

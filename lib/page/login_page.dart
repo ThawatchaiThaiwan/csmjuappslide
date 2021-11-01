@@ -1,8 +1,9 @@
 import 'package:appcsmju/ProgressHUD.dart';
 import 'package:appcsmju/api/api_service.dart';
+import 'package:appcsmju/footbar/Foot.dart';
 import 'package:appcsmju/model/login_model.dart';
 import 'package:flutter/material.dart';
-import '../Homebinding/Home.dart';
+import '../footbar/Home.dart';
 
 
 class LoginPage extends StatefulWidget {
@@ -146,7 +147,7 @@ class _LoginPageState extends State<LoginPage> {
                                       Navigator.pushReplacement(context,
                                           MaterialPageRoute(builder: (context) {
                                     
-                                    return HomePage();
+                                    return Foot();
                                   })));
                                   scaffoldKey.currentState!
                                       // ignore: deprecated_member_use

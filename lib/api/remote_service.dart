@@ -9,7 +9,7 @@ class RemoteService {
   static Future<dynamic> fetchCarouselData() async {
     try{
       var response = await client.get(
-        Uri.parse('https://wwwdev.csmju.com/api/activity'),
+        Uri.parse('https://wwwdev.csmju.com/api/newsapp'),
       );
       if(response.statusCode == 200){
         return apinewFromJson(response.body);

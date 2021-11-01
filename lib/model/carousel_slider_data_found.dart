@@ -27,7 +27,7 @@ class _CarouselSliderDataFoundState extends State<CarouselSliderDataFound> {
                 child: Stack(
                   children: [
                     CachedNetworkImage(
-                      imageUrl: e.activityDetail,
+                      imageUrl: e.newsPicture,
                       errorWidget: (context, url, error) => Icon(Icons.error),
                       progressIndicatorBuilder:
                           (context, url, downloadProgress) => Center(
@@ -44,13 +44,13 @@ class _CarouselSliderDataFoundState extends State<CarouselSliderDataFound> {
                       right: 0,
                       child: Container(
                         padding: EdgeInsets.all(10),
-                        child: Text(
+                        /* child: Text(
                           'Some Text',
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 20,
                               fontWeight: FontWeight.bold),
-                        ),
+                        ), */
                       ),
                     )
                   ],

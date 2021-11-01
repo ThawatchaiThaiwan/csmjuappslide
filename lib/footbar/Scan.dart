@@ -1,4 +1,4 @@
-import 'package:appcsmju/Homebinding/Home.dart';
+import 'package:appcsmju/footbar/Home.dart';
 import 'package:flutter/material.dart';
 
 class Scan extends StatefulWidget {
@@ -12,6 +12,7 @@ class _ScanState extends State<Scan> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      child: Text("ddddddddddddd"),
       
       
     );

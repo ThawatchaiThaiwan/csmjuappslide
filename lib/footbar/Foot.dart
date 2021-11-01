@@ -1,8 +1,9 @@
-import 'package:appcsmju/Homebinding/Home.dart';
+import 'package:appcsmju/footbar/Home.dart';
 import 'package:appcsmju/footbar/Another.dart';
-import 'package:appcsmju/footbar/Bookroom.dart';
-import 'package:appcsmju/footbar/Residaual.dart';
+import 'package:appcsmju/footbar/News.dart';
+import 'package:appcsmju/footbar/Calendar.dart';
 import 'package:appcsmju/footbar/Scan.dart';
+import 'package:appcsmju/page/login_page.dart';
 import 'package:flutter/material.dart';
 
 class Foot extends StatefulWidget {
@@ -12,7 +13,6 @@ class Foot extends StatefulWidget {
   _FootState createState() => _FootState();
 }
 
-
 Widget currentScreen = HomePage();
 final PageStorageBucket bucket = PageStorageBucket();
 
@@ -20,9 +20,9 @@ class _FootState extends State<Foot> {
   int currentTab = 0;
   final List<Widget> screens = [
     HomePage(),
-    Bookroomdata(),
+    News(),
     Scan(),
-    Residaual(),
+    Calendar(),
     Another(),
   ];
   @override
@@ -32,6 +32,7 @@ class _FootState extends State<Foot> {
         child: currentScreen,
         bucket: bucket,
       ),
+
       // Fab Button
       floatingActionButton: FloatingActionButton(
         child: Icon(
@@ -84,7 +85,7 @@ class _FootState extends State<Foot> {
                     minWidth: 40,
                     onPressed: () {
                       setState(() {
-                        currentScreen = Bookroomdata();
+                        currentScreen = News();
                         currentTab = 1;
                       });
                     },
@@ -92,11 +93,11 @@ class _FootState extends State<Foot> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Icon(
-                          Icons.bookmark_add,
+                          Icons.chrome_reader_mode,
                           color: currentTab == 1 ? Colors.blue : Colors.grey,
                         ),
                         Text(
-                          'จองห้องเรียน',
+                          '        ข่าว        ',
                           style: TextStyle(
                             color: currentTab == 1 ? Colors.blue : Colors.grey,
                           ),
@@ -113,7 +114,7 @@ class _FootState extends State<Foot> {
                     minWidth: 40,
                     onPressed: () {
                       setState(() {
-                        currentScreen = Residaual();
+                        currentScreen = Calendar();
                         currentTab = 2;
                       });
                     },
@@ -121,11 +122,11 @@ class _FootState extends State<Foot> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Icon(
-                          Icons.add_to_photos_rounded,
+                          Icons.calendar_today,
                           color: currentTab == 2 ? Colors.blue : Colors.grey,
                         ),
                         Text(
-                          'แจ้งตกค้าง',
+                          '   ปฏิทิน   ',
                           style: TextStyle(
                             color: currentTab == 2 ? Colors.blue : Colors.grey,
                           ),

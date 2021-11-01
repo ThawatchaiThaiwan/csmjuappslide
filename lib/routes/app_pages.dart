@@ -1,4 +1,4 @@
-import 'package:appcsmju/Homebinding/Home.dart';
+import 'package:appcsmju/footbar/Home.dart';
 import 'package:appcsmju/Homebinding/home_binding.dart';
 import 'package:appcsmju/footbar/Foot.dart';
 import 'package:appcsmju/page/login_page.dart';
