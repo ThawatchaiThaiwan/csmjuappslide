@@ -1,6 +1,6 @@
 // ignore_for_file: non_constant_identifier_names
 
-import 'dart:convert';
+
 import 'package:appcsmju/post_api/AppealPost.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
 
@@ -35,8 +35,8 @@ Future<PostAppeal?> createUser(String Complain_Detail, String Complain_Date,
 }
 
 class _AppealState extends State<Appeal> {
-   // ignore: unused_field
-    PostAppeal? _user;
+  // ignore: unused_field
+  PostAppeal? _user;
   TextEditingController TitelController1 = TextEditingController();
   TextEditingController DateController2 = TextEditingController();
   TextEditingController DetailController3 = TextEditingController();
@@ -60,7 +60,6 @@ class _AppealState extends State<Appeal> {
                   icon: Icon(
                     Icons.keyboard_backspace,
                     color: Colors.black,
-                    
                   ),
                   onPressed: () => Navigator.of(context).pop(),
                 )
@@ -149,10 +148,17 @@ class _AppealState extends State<Appeal> {
                           onPressed: () async {
                             final String Complain_Title = TitelController1.text;
                             final String Complain_Date = DateController2.text;
-                            final String Complain_Detail = DetailController3.text;
-                            final String Complain_Picture = PictureController4.text;
+                            final String Complain_Detail =
+                                DetailController3.text;
+                            final String Complain_Picture =
+                                PictureController4.text;
 
-                            final  PostAppeal? user = await createUser(Complain_Detail, Complain_Date, Complain_Picture, Complain_Title); 
+                            final PostAppeal? user = await createUser(
+                                Complain_Detail,
+                                Complain_Date,
+                                Complain_Picture,
+                                Complain_Title);
+                            _formkey.currentState?.reset();
                           },
                         ),
                       ),

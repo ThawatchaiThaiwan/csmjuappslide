@@ -16,7 +16,7 @@
 14-->C:\appcsmju-main\android\app\src\debug\AndroidManifest.xml:6:22-64
 15
 16    <application
-16-->C:\appcsmju-main\android\app\src\main\AndroidManifest.xml:3:4-40:19
+16-->C:\appcsmju-main\android\app\src\main\AndroidManifest.xml:3:4-44:19
 17        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 17-->[androidx.core:core:1.1.0] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\2e94107f30f39be366a17347c2bf100b\core-1.1.0\AndroidManifest.xml:24:18-86
 18        android:debuggable="true"
@@ -25,7 +25,7 @@
 20        android:label="appcsmju" >
 20-->C:\appcsmju-main\android\app\src\main\AndroidManifest.xml:4:9-33
 21        <activity
-21-->C:\appcsmju-main\android\app\src\main\AndroidManifest.xml:6:9-34:20
+21-->C:\appcsmju-main\android\app\src\main\AndroidManifest.xml:6:9-35:20
 22            android:name="com.example.appcsmju.MainActivity"
 22-->C:\appcsmju-main\android\app\src\main\AndroidManifest.xml:7:13-41
 23            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
@@ -46,11 +46,11 @@
 33                 to determine the Window background behind the Flutter UI.
 34            -->
 35            <meta-data
-35-->C:\appcsmju-main\android\app\src\main\AndroidManifest.xml:17:13-20:17
+35-->C:\appcsmju-main\android\app\src\main\AndroidManifest.xml:18:13-21:17
 36                android:name="io.flutter.embedding.android.NormalTheme"
-36-->C:\appcsmju-main\android\app\src\main\AndroidManifest.xml:18:15-70
+36-->C:\appcsmju-main\android\app\src\main\AndroidManifest.xml:19:15-70
 37                android:resource="@style/NormalTheme" />
-37-->C:\appcsmju-main\android\app\src\main\AndroidManifest.xml:19:15-52
+37-->C:\appcsmju-main\android\app\src\main\AndroidManifest.xml:20:15-52
 38            <!--
 39                 Displays an Android View that continues showing the launch screen
 40                 Drawable until Flutter paints its first frame, then this splash
@@ -59,21 +59,21 @@
 43                 Flutter's first frame.
 44            -->
 45            <meta-data
-45-->C:\appcsmju-main\android\app\src\main\AndroidManifest.xml:26:13-29:17
+45-->C:\appcsmju-main\android\app\src\main\AndroidManifest.xml:27:13-30:17
 46                android:name="io.flutter.embedding.android.SplashScreenDrawable"
-46-->C:\appcsmju-main\android\app\src\main\AndroidManifest.xml:27:15-79
+46-->C:\appcsmju-main\android\app\src\main\AndroidManifest.xml:28:15-79
 47                android:resource="@drawable/launch_background" />
-47-->C:\appcsmju-main\android\app\src\main\AndroidManifest.xml:28:15-61
+47-->C:\appcsmju-main\android\app\src\main\AndroidManifest.xml:29:15-61
 48
 49            <intent-filter>
-49-->C:\appcsmju-main\android\app\src\main\AndroidManifest.xml:30:13-33:29
+49-->C:\appcsmju-main\android\app\src\main\AndroidManifest.xml:31:13-34:29
 50                <action android:name="android.intent.action.MAIN" />
-50-->C:\appcsmju-main\android\app\src\main\AndroidManifest.xml:31:17-68
-50-->C:\appcsmju-main\android\app\src\main\AndroidManifest.xml:31:25-66
+50-->C:\appcsmju-main\android\app\src\main\AndroidManifest.xml:32:17-68
+50-->C:\appcsmju-main\android\app\src\main\AndroidManifest.xml:32:25-66
 51
 52                <category android:name="android.intent.category.LAUNCHER" />
-52-->C:\appcsmju-main\android\app\src\main\AndroidManifest.xml:32:17-76
-52-->C:\appcsmju-main\android\app\src\main\AndroidManifest.xml:32:27-74
+52-->C:\appcsmju-main\android\app\src\main\AndroidManifest.xml:33:17-76
+52-->C:\appcsmju-main\android\app\src\main\AndroidManifest.xml:33:27-74
 53            </intent-filter>
 54        </activity>
 55        <!--
@@ -81,11 +81,54 @@
 57             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
 58        -->
 59        <meta-data
-59-->C:\appcsmju-main\android\app\src\main\AndroidManifest.xml:37:9-39:33
+59-->C:\appcsmju-main\android\app\src\main\AndroidManifest.xml:38:9-40:33
 60            android:name="flutterEmbedding"
-60-->C:\appcsmju-main\android\app\src\main\AndroidManifest.xml:38:13-44
+60-->C:\appcsmju-main\android\app\src\main\AndroidManifest.xml:39:13-44
 61            android:value="2" />
-61-->C:\appcsmju-main\android\app\src\main\AndroidManifest.xml:39:13-30
-62    </application>
-63
-64</manifest>
+61-->C:\appcsmju-main\android\app\src\main\AndroidManifest.xml:40:13-30
+62        <!--
+63            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+64            <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+65            <uses-permission android:name="android.permission.CAMERA" />
+66        -->
+67        <provider
+67-->[com.sangcomz:FishBun:0.11.2] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\964d33c2c2e431651e8444baf8fdaeb6\jetified-FishBun-0.11.2\AndroidManifest.xml:12:9-20:20
+68            android:name="com.sangcomz.fishbun.FishBunFileProvider"
+68-->[com.sangcomz:FishBun:0.11.2] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\964d33c2c2e431651e8444baf8fdaeb6\jetified-FishBun-0.11.2\AndroidManifest.xml:13:13-68
+69            android:authorities="com.example.appcsmju.fishbunfileprovider"
+69-->[com.sangcomz:FishBun:0.11.2] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\964d33c2c2e431651e8444baf8fdaeb6\jetified-FishBun-0.11.2\AndroidManifest.xml:14:13-71
+70            android:exported="false"
+70-->[com.sangcomz:FishBun:0.11.2] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\964d33c2c2e431651e8444baf8fdaeb6\jetified-FishBun-0.11.2\AndroidManifest.xml:15:13-37
+71            android:grantUriPermissions="true" >
+71-->[com.sangcomz:FishBun:0.11.2] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\964d33c2c2e431651e8444baf8fdaeb6\jetified-FishBun-0.11.2\AndroidManifest.xml:16:13-47
+72            <meta-data
+72-->[com.sangcomz:FishBun:0.11.2] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\964d33c2c2e431651e8444baf8fdaeb6\jetified-FishBun-0.11.2\AndroidManifest.xml:17:13-19:58
+73                android:name="android.support.FILE_PROVIDER_PATHS"
+73-->[com.sangcomz:FishBun:0.11.2] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\964d33c2c2e431651e8444baf8fdaeb6\jetified-FishBun-0.11.2\AndroidManifest.xml:18:17-67
+74                android:resource="@xml/provider_paths" />
+74-->[com.sangcomz:FishBun:0.11.2] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\964d33c2c2e431651e8444baf8fdaeb6\jetified-FishBun-0.11.2\AndroidManifest.xml:19:17-55
+75        </provider>
+76
+77        <activity
+77-->[com.sangcomz:FishBun:0.11.2] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\964d33c2c2e431651e8444baf8fdaeb6\jetified-FishBun-0.11.2\AndroidManifest.xml:22:9-25:51
+78            android:name="com.sangcomz.fishbun.ui.album.AlbumActivity"
+78-->[com.sangcomz:FishBun:0.11.2] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\964d33c2c2e431651e8444baf8fdaeb6\jetified-FishBun-0.11.2\AndroidManifest.xml:23:13-71
+79            android:label="@string/album"
+79-->[com.sangcomz:FishBun:0.11.2] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\964d33c2c2e431651e8444baf8fdaeb6\jetified-FishBun-0.11.2\AndroidManifest.xml:24:13-42
+80            android:theme="@style/FishBunTheme" />
+80-->[com.sangcomz:FishBun:0.11.2] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\964d33c2c2e431651e8444baf8fdaeb6\jetified-FishBun-0.11.2\AndroidManifest.xml:25:13-48
+81        <activity
+81-->[com.sangcomz:FishBun:0.11.2] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\964d33c2c2e431651e8444baf8fdaeb6\jetified-FishBun-0.11.2\AndroidManifest.xml:26:9-28:51
+82            android:name="com.sangcomz.fishbun.ui.picker.PickerActivity"
+82-->[com.sangcomz:FishBun:0.11.2] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\964d33c2c2e431651e8444baf8fdaeb6\jetified-FishBun-0.11.2\AndroidManifest.xml:27:13-73
+83            android:theme="@style/FishBunTheme" />
+83-->[com.sangcomz:FishBun:0.11.2] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\964d33c2c2e431651e8444baf8fdaeb6\jetified-FishBun-0.11.2\AndroidManifest.xml:28:13-48
+84        <activity
+84-->[com.sangcomz:FishBun:0.11.2] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\964d33c2c2e431651e8444baf8fdaeb6\jetified-FishBun-0.11.2\AndroidManifest.xml:29:9-31:54
+85            android:name="com.sangcomz.fishbun.ui.detail.DetailActivity"
+85-->[com.sangcomz:FishBun:0.11.2] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\964d33c2c2e431651e8444baf8fdaeb6\jetified-FishBun-0.11.2\AndroidManifest.xml:30:13-73
+86            android:theme="@style/DetailViewTheme" />
+86-->[com.sangcomz:FishBun:0.11.2] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\964d33c2c2e431651e8444baf8fdaeb6\jetified-FishBun-0.11.2\AndroidManifest.xml:31:13-51
+87    </application>
+88
+89</manifest>

@@ -1,4 +1,4 @@
-import 'dart:html';
+
 
 import 'package:appcsmju/Homebinding/HomeCarousel.dart';
 import 'package:appcsmju/footbar/Foot.dart';
