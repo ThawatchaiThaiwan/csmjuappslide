@@ -87,12 +87,12 @@ class _AnotherState extends State<Another> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(
-                          Icons.build_circle_outlined,
+                          Icons.library_books,
                           size: 50,
                           color: Colors.grey,
                         ),
                         Text(
-                          "แจ้งซ่อม",
+                          "แจ้งตกค้าง",
                           style: TextStyle(color: Colors.grey, fontSize: 20),
                         )
                       ],
@@ -161,7 +161,7 @@ class _AnotherState extends State<Another> {
                         MaterialPageRoute(builder: (context) => Activity_log()));
                   },
                   child: Container(
-                    width: 120,
+                    width: 70,
                     height: 70,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),

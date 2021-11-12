@@ -158,6 +158,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "multi_image_picker",
+      "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/multi_image_picker-4.8.01",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "nested",
       "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/nested-1.0.0",
       "packageUri": "lib/",
@@ -350,7 +356,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2021-10-28T08:21:55.635576Z",
+  "generated": "2021-11-12T05:32:00.695956Z",
   "generator": "pub",
   "generatorVersion": "2.14.3"
 }

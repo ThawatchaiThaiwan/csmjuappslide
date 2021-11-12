@@ -16,7 +16,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-
 class HomePage extends StatefulWidget {
   HomePage({
     Key? key,
@@ -27,7 +26,6 @@ class HomePage extends StatefulWidget {
   int currentTab = 0;
   final List<Widget> screens = [
     HomeCarousel(),
-    
   ];
 }
 
@@ -43,7 +41,7 @@ class _HomePageState extends State<HomePage> {
           leading: IconButton(
             onPressed: () {},
             icon: Icon(Icons.person),
-            color: Colors.black,     //ยังไม่ได้เชื่อปุ่ม icons
+            color: Colors.black, //ยังไม่ได้เชื่อปุ่ม icons
           ),
           actions: <Widget>[
             IconButton(
@@ -53,13 +51,12 @@ class _HomePageState extends State<HomePage> {
             ),
           ],
         ),
-        body: SafeArea(child : screens = HomeCarousel(),)
+        body: Container(
+          child : screens = HomeCarousel(),
+          )
         );
-
-    //child: Text(_dataFromAPI?.newsDetail ?? "loadind..."),
+        
   }
 }
+//(child : screens = HomeCarousel(),)
 
-
-/* child: Text("ไอดีข่าว:${post["newsId"]} \n รายละเอียด:${post["News_Detail"]}"),
-                        width: 206, */

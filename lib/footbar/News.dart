@@ -26,7 +26,7 @@ class _NewsState extends State<News> {
     setState(() {
       isLoading = true;
     });
-    var url = "https://wwwdev.csmju.com/api/newsapp";
+    var url = 'https://wwwdev.csmju.com/api/newsapp';
     var response = await http.get(Uri.parse(url));
     // print(response.body);
     if (response.statusCode == 200) {
@@ -86,15 +86,16 @@ class _NewsState extends State<News> {
 
     var picturenewUrl = item['News_Picture'];
     return Card(
+
       elevation: 1.5,
       child: Padding(
-        padding: const EdgeInsets.all(10.0),
+        padding: const EdgeInsets.all(20.0),
         child: ListTile(
           title: Row(
             children: <Widget>[
               Container(
-                width: 70,
-                height: 60,
+                width: 80,
+                height: 70,
                 decoration: BoxDecoration(
                     color: Colors.black,
                     borderRadius: BorderRadius.circular(10),
