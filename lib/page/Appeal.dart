@@ -1,7 +1,9 @@
 // ignore_for_file: non_constant_identifier_names
 
+import 'dart:ui';
 
 import 'package:appcsmju/post_api/AppealPost.dart';
+import 'package:get/get_navigation/src/routes/default_transitions.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
 
 import 'package:appcsmju/api/appealpost.dart';
@@ -43,6 +45,7 @@ class _AppealState extends State<Appeal> {
   TextEditingController PictureController4 = TextEditingController();
 
   final _formkey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,118 +83,148 @@ class _AppealState extends State<Appeal> {
                       width: 1,
                     ),
                   ),
-                  child: Column(
-                    children: <Widget>[
-                      SizedBox(height: 20.0),
-                      TextField(
-                        controller: TitelController1,
-                        decoration: InputDecoration(
-                            labelText: 'เรื่องที่จะร้องเรียน',
-                            labelStyle: TextStyle(
-                              color: Colors.grey[400],
-                            )),
-                      ),
-                      SizedBox(height: 20.0),
-                      TextField(
-                        controller: DateController2,
-                        decoration: InputDecoration(
-                            labelText: 'วันที่',
-                            labelStyle: TextStyle(
-                              color: Colors.grey[400],
-                            )),
-                      ),
-                      SizedBox(height: 20.0),
-                      TextField(
-                        controller: DetailController3,
-                        maxLines: 6,
-                        textAlign: TextAlign.start,
-                        decoration: InputDecoration(
-                            labelText: 'รายละเอียด',
-                            labelStyle: TextStyle(
-                              color: Colors.grey[400],
-                            )),
-                      ),
-                      SizedBox(height: 20.0),
-                      TextField(
-                        controller: PictureController4,
-                        decoration: InputDecoration(
-                            labelText: 'เลือกรูปภาพ',
-                            labelStyle: TextStyle(
-                              color: Colors.grey[400],
-                            )),
-                      ),
-                      SizedBox(height: 20.0),
-                      Container(
-                        width: 315,
-                        height: 30,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          border: Border.all(
-                            color: Color(0xd309ef04),
-                            width: 2,
-                          ),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Color(0x4f000000),
-                              blurRadius: 3,
-                              offset: Offset(0, 4),
-                            ),
-                          ],
-                          gradient: LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [Color(0xff08ef03), Color(0xd34ce749)],
-                          ),
+                  child: Form(
+                    key: _formkey,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        SizedBox(height: 20.0),
+                        Text(
+                          "เรื่องที่จะร้องเรียน",
+                          style: TextStyle(color: Colors.black, fontSize: 18),
                         ),
-                        child: ElevatedButton(
-                          child: Text('ส่งคำร้อง'),
-                          onPressed: () async {
-                            final String Complain_Title = TitelController1.text;
-                            final String Complain_Date = DateController2.text;
-                            final String Complain_Detail =
-                                DetailController3.text;
-                            final String Complain_Picture =
-                                PictureController4.text;
+                        TextField(
+                          controller: TitelController1,
+                          decoration: InputDecoration(
+                              hintText: 'กรอกชื่อเรื่อง',
+                              labelStyle: TextStyle(
+                                fontSize: 8,
+                                color: Colors.grey[400],
+                              )),
+                        ),
+                        SizedBox(height: 20.0),
+                        Text(
+                          "วันที่",
+                          style: TextStyle(fontSize: 18),
+                        ),
+                        TextField(
+                          controller: DateController2,
+                          decoration: InputDecoration(
+                              hintText: 'วัน/เดือน/ปี',
+                              labelStyle: TextStyle(
+                                fontSize: 8,
+                                color: Colors.grey[400],
+                              )),
+                        ),
+                        SizedBox(height: 20.0),
+                        Text(
+                          "รายละเอียด",
+                          style: TextStyle(fontSize: 18),
+                        ),
+                        TextField(
+                          controller: DetailController3,
+                          maxLines: 6,
+                          decoration: InputDecoration(
+                              hintText: 'กรอกรายละเอียด',
+                              labelStyle: TextStyle(
+                                fontSize: 8,
+                                color: Colors.grey[400],
+                              )),
+                        ),
+                        SizedBox(height: 20.0),
+                        Text(
+                          "เลือกรูปภาพ",
+                          style: TextStyle(fontSize: 18),
+                        ),
+                        TextField(
+                          controller: PictureController4,
+                          decoration: InputDecoration(
+                              hintText: 'เลือกรูปภาพ',
+                              labelStyle: TextStyle(
+                                fontSize: 8,
+                                color: Colors.grey[400],
+                              )),
+                        ),
+                        SizedBox(height: 20.0),
+                        Container(
+                          width: 360,
+                          height: 30,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            color: Colors.green[100],
+                            border: Border.all(
+                              color: Color(0xd309ef04),
+                              width: 2,
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color(0x4f000000),
+                                blurRadius: 3,
+                                offset: Offset(0, 4),
+                              ),
+                            ],
+                          ),
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                primary: Colors.green[400]),
+                            onPressed: () async {
+                              final String Complain_Title =
+                                  TitelController1.text;
+                              final String Complain_Date = DateController2.text;
+                              final String Complain_Detail =
+                                  DetailController3.text;
+                              final String Complain_Picture =
+                                  PictureController4.text;
 
-                            final PostAppeal? user = await createUser(
-                                Complain_Detail,
-                                Complain_Date,
-                                Complain_Picture,
-                                Complain_Title);
-                            _formkey.currentState?.reset();
-                          },
-                        ),
-                      ),
-                      SizedBox(height: 20.0),
-                      Container(
-                        width: 315,
-                        height: 30,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          border: Border.all(
-                            color: Color(0xd3e74949),
-                            width: 2,
+                              final PostAppeal? user = await createUser(
+                                  Complain_Detail,
+                                  Complain_Date,
+                                  Complain_Picture,
+                                  Complain_Title);
+                              // ignore: unused_element
+                              setState() {
+                                TitelController1.text = "";
+                                DateController2.text = "";
+                                DetailController3.text = "";
+                                PictureController4.text = "";
+                              }
+
+                              
+                            },
+                            child: Text('ส่งคำร้อง'),
                           ),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Color(0x4f000000),
-                              blurRadius: 3,
-                              offset: Offset(0, 4),
+                        ),
+                        SizedBox(height: 20.0),
+                        Container(
+                          width: 360,
+                          height: 30,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            color: Colors.red[10],
+                            border: Border.all(
+                              color: Color(0xd3e74949),
+                              width: 2,
                             ),
-                          ],
-                          gradient: LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [Color(0xffe90b0b), Color(0xd3e74949)],
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color(0x4f000000),
+                                blurRadius: 3,
+                                offset: Offset(0, 4),
+                              ),
+                            ],
                           ),
-                        ),
-                        child: ElevatedButton(
-                            child: Text('ยกเลิก'),
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.red[400],
+                            ),
                             onPressed: () {
                               setState(() {});
-                            }),
-                      ),
-                    ],
+                            },
+                            child: Text('ยกเลิก'),
+                          ),
+                        ),
+                      ],
+                    ),
                   )),
             )));
   }
