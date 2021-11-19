@@ -1,6 +1,10 @@
 import 'dart:convert';
 
+import 'package:appcsmju/api/apinew.dart';
+import 'package:appcsmju/api/article_model.dart';
+import 'package:appcsmju/controller/apinew_foot.dart';
 import 'package:appcsmju/footbar/Calendar.dart';
+import 'package:appcsmju/model/customListTile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -13,34 +17,8 @@ class News extends StatefulWidget {
 }
 
 class _NewsState extends State<News> {
-  List users = [];
-  bool isLoading = false;
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    this.fetchUser();
-  }
-
-  fetchUser() async {
-    setState(() {
-      isLoading = true;
-    });
-    var url = 'https://wwwdev.csmju.com/api/newsapp';
-    var response = await http.get(Uri.parse(url));
-    // print(response.body);
-    if (response.statusCode == 200) {
-      var items = json.decode(response.body);
-      setState(() {
-        users = items;
-        isLoading = false;
-      });
-    } else {
-      users = [];
-      isLoading = false;
-    }
-  }
-
+  ApiService client = ApiService();
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,108 +37,27 @@ class _NewsState extends State<News> {
           color: Colors.black,
         ),
       ),
-      body: getBody(),
-    );
-  }
-
-  Widget getBody() {
-    if (users.contains(null) || users.length < 0 || isLoading) {
-      return Center(
-          child: CircularProgressIndicator(
-        valueColor: new AlwaysStoppedAnimation<Color>(Colors.black),
-      ));
-    }
-    return ListView.builder(
-        itemCount: users.length,
-        itemBuilder: (context, index) {
-          return getCard(users[index]);
-        });
-  }
-
-  Widget getCard(item) {
-    var fullName = item['News_Title'] +
-        " " +
-        item['News_Detail'] +
-        " " +
-        item['News_Date'];
-
-    var picturenewUrl = item['News_Picture'];
-    return Card(
-
-      elevation: 1.5,
-      child: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: ListTile(
-          title: Row(
-            children: <Widget>[
-              Container(
-                width: 80,
-                height: 70,
-                decoration: BoxDecoration(
-                    color: Colors.black,
-                    borderRadius: BorderRadius.circular(10),
-                    image: DecorationImage(
-                        fit: BoxFit.cover, image: NetworkImage(picturenewUrl))),
-              ),
-              SizedBox(
-                width: 20,
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: <Widget>[
-                  SizedBox(
-                      width: MediaQuery.of(context).size.width - 150,
-                      child: Text(
-                        fullName,
-                        style: TextStyle(fontSize: 12),
-                      )),
-                  // ignore: deprecated_member_use
-                  FlatButton(
-                      onPressed: () {},
-                      child: Container(
-                        width: 80,
-                        height: 30,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(7),
-                          border: Border.all(
-                            color: Color(0xff4baef5),
-                            width: 2,
-                          ),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Color(0xff4baef5),
-                              blurRadius: 3,
-                              offset: Offset(0, 4),
-                            ),
-                          ],
-                          gradient: LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [Color(0xff4baef5), Color(0xff4baef5)],
-                          ),
-                        ),
-                        child: SizedBox(
-                          width: 20,
-                          height: 12,
-                          child: Text(
-                            "อ่านเพิ่มเติม",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Color(0xfff9f6f6),
-                              fontSize: 15,
-                            ),
-                          ),
-                        ),
-                      )),
-
-                  /* SizedBox(height: 10,),
-                  Text(email.toString(),style: TextStyle(color: Colors.grey),) */
-                ],
-              )
-            ],
-          ),
-        ),
+      body: FutureBuilder(
+        future: client.getArticle(),
+        builder: (BuildContext context, AsyncSnapshot<List<Article>> snapshot) {
+          //let's check if we got a response or not
+          if (snapshot.hasData) {
+            //Now let's make a list of articles
+            List<Article>? data = snapshot.data;
+            return ListView.builder(
+              //Now let's create our custom List tile
+              itemCount: data!.length,
+              itemBuilder: (context, index) =>
+                  customListTile(data[index], context),
+            );
+          }
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        },
       ),
     );
+    
+    
   }
 }

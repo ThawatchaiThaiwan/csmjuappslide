@@ -10,6 +10,7 @@ import 'package:appcsmju/api/appealpost.dart';
 import 'package:appcsmju/footbar/Another.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class Appeal extends StatefulWidget {
   @override
@@ -44,7 +45,7 @@ class _AppealState extends State<Appeal> {
   TextEditingController DetailController3 = TextEditingController();
   TextEditingController PictureController4 = TextEditingController();
 
-  final _formkey = GlobalKey<FormState>();
+  final formkey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +85,7 @@ class _AppealState extends State<Appeal> {
                     ),
                   ),
                   child: Form(
-                    key: _formkey,
+                    key: formkey,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
@@ -168,6 +169,26 @@ class _AppealState extends State<Appeal> {
                             style: ElevatedButton.styleFrom(
                                 primary: Colors.green[400]),
                             onPressed: () async {
+                              showDialog<String>(
+                                  context: context,
+                                  builder: (BuildContext context) =>
+                                      AlertDialog(
+                                        title: const Text('แจ้งเตือน'),
+                                        content: const Text('ติดต่อสาขาสำเร็จ'),
+                                        actions: <Widget>[
+                                          TextButton(
+                                            onPressed: () => Navigator.pop(
+                                              context,
+                                              'ตกลง',
+                                            ),
+                                            child: const Text(
+                                              'ตกลง',
+                                              textAlign: TextAlign.center,
+                                            ),
+                                          ),
+                                        ],
+                                      ));
+
                               final String Complain_Title =
                                   TitelController1.text;
                               final String Complain_Date = DateController2.text;
@@ -175,21 +196,15 @@ class _AppealState extends State<Appeal> {
                                   DetailController3.text;
                               final String Complain_Picture =
                                   PictureController4.text;
-
+                              TitelController1.text = "";
+                              DateController2.text = "";
+                              DetailController3.text = "";
+                              PictureController4.text = "";
                               final PostAppeal? user = await createUser(
                                   Complain_Detail,
                                   Complain_Date,
                                   Complain_Picture,
                                   Complain_Title);
-                              // ignore: unused_element
-                              setState() {
-                                TitelController1.text = "";
-                                DateController2.text = "";
-                                DetailController3.text = "";
-                                PictureController4.text = "";
-                              }
-
-                              
                             },
                             child: Text('ส่งคำร้อง'),
                           ),
