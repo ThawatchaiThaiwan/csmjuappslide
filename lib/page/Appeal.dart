@@ -55,7 +55,7 @@ class _AppealState extends State<Appeal> {
           backgroundColor: Colors.white,
           centerTitle: true,
           title: Text(
-            'ร้องเรียน',
+            'ติดต่อหลักสูตร',
             textAlign: TextAlign.center,
             style: TextStyle(color: Colors.black),
           ),
@@ -91,7 +91,7 @@ class _AppealState extends State<Appeal> {
                       children: <Widget>[
                         SizedBox(height: 20.0),
                         Text(
-                          "เรื่องที่จะร้องเรียน",
+                          "เรื่องที่จะติดต่อหลักสูตร",
                           style: TextStyle(color: Colors.black, fontSize: 18),
                         ),
                         TextField(
@@ -174,7 +174,7 @@ class _AppealState extends State<Appeal> {
                                   builder: (BuildContext context) =>
                                       AlertDialog(
                                         title: const Text('แจ้งเตือน'),
-                                        content: const Text('ติดต่อสาขาสำเร็จ'),
+                                        content: const Text('ติดต่อหลักสูตรสำเร็จ'),
                                         actions: <Widget>[
                                           TextButton(
                                             onPressed: () => Navigator.pop(

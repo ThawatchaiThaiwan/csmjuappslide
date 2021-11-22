@@ -5,6 +5,8 @@ import 'package:appcsmju/footbar/Calendar.dart';
 import 'package:appcsmju/footbar/Scan.dart';
 import 'package:appcsmju/page/login_page.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:barcode_scan/barcode_scan.dart';
 
 class Foot extends StatefulWidget {
   const Foot({Key? key}) : super(key: key);
@@ -12,6 +14,10 @@ class Foot extends StatefulWidget {
   @override
   _FootState createState() => _FootState();
 }
+
+String qrData = "No data found!";
+var data;
+bool hasdata = false;
 
 Widget currentScreen = HomePage();
 final PageStorageBucket bucket = PageStorageBucket();
@@ -41,7 +47,52 @@ class _FootState extends State<Foot> {
           color: Colors.black87,
         ),
         backgroundColor: Colors.blue,
-        onPressed: () {},
+        onPressed: () async {
+          var options = ScanOptions(
+            autoEnableFlash: true,
+          );
+          var data = await BarcodeScanner.scan(options: options);
+          setState(() {
+            qrData = data.rawContent.toString();
+            hasdata = true;
+          });
+
+          showDialog<String>(
+              context: context,
+              builder: (BuildContext context) => AlertDialog(
+                    title: Text(
+                      "พบแหล่งข้อมูล:  ${(qrData)}",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 20),
+                    ),
+                    actions: <Widget>[
+                      TextButton(
+                        child: const Text('ไปยังลิงค์',
+                            textAlign: TextAlign.center),
+                        onPressed: hasdata
+                            ? () async {
+                                if (!await canLaunch(qrData)) {
+                                  print(qrData);
+                                  await launch(qrData);
+                                } else {
+                                  throw 'Could not launch ';
+                                }
+                              }
+                            : null,
+                      ),
+                      TextButton(
+                        onPressed: () => Navigator.pop(
+                          context,
+                          'ยกเลิก',
+                        ),
+                        child: const Text(
+                          'ยกเลิก',
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ],
+                  ));
+        },
       ),
       //Fab position
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

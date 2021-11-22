@@ -5,13 +5,14 @@
     android:versionName="1.0.0" >
 
     <uses-sdk
-        android:minSdkVersion="16"
+        android:minSdkVersion="21"
         android:targetSdkVersion="30" />
     <!--
          Flutter needs it to communicate with the running application
          to allow setting breakpoints, to provide hot reload, etc.
     -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -64,6 +65,12 @@
             <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
             <uses-permission android:name="android.permission.CAMERA" />
         -->
+        <activity android:name="de.mintware.barcode_scan.BarcodeScannerActivity" />
+        <activity
+            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
+            android:exported="false"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+
         <provider
             android:name="com.sangcomz.fishbun.FishBunFileProvider"
             android:authorities="com.example.appcsmju.fishbunfileprovider"

@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:appcsmju/api/apinew.dart';
-import 'package:appcsmju/api/article_model.dart';
+
 import 'package:appcsmju/controller/apinew_foot.dart';
 import 'package:appcsmju/footbar/Calendar.dart';
 import 'package:appcsmju/model/customListTile.dart';
@@ -39,11 +39,11 @@ class _NewsState extends State<News> {
       ),
       body: FutureBuilder(
         future: client.getArticle(),
-        builder: (BuildContext context, AsyncSnapshot<List<Article>> snapshot) {
+        builder: (BuildContext context, AsyncSnapshot<List<Apinew>> snapshot) {
           //let's check if we got a response or not
           if (snapshot.hasData) {
             //Now let's make a list of articles
-            List<Article>? data = snapshot.data;
+            List<Apinew>? data = snapshot.data;
             return ListView.builder(
               //Now let's create our custom List tile
               itemCount: data!.length,

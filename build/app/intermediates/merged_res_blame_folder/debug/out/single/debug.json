@@ -8,10 +8,6 @@
         "source": "C:\\appcsmju-main\\android\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
     },
     {
-        "merged": "C:\\appcsmju-main\\build\\app\\intermediates\\res\\merged\\debug\\drawable_launch_background.xml.flat",
-        "source": "C:\\appcsmju-main\\android\\app\\src\\main\\res\\drawable\\launch_background.xml"
-    },
-    {
         "merged": "C:\\appcsmju-main\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
         "source": "C:\\appcsmju-main\\android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
     },

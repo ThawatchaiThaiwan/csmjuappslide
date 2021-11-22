@@ -26,10 +26,10 @@ class _AnotherState extends State<Another> {
           style: TextStyle(color: Colors.black),
         ),
         leading: IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.person),
-            color: Colors.black,     //ยังไม่ได้เชื่อปุ่ม icons
-          ),
+          onPressed: () {},
+          icon: Icon(Icons.person),
+          color: Colors.black, //ยังไม่ได้เชื่อปุ่ม icons
+        ),
         actions: <Widget>[
           IconButton(
             onPressed: () {},
@@ -120,7 +120,7 @@ class _AnotherState extends State<Another> {
                           color: Colors.grey,
                         ),
                         Text(
-                          "ร้องเรียน",
+                          "ติดต่อหลักสูตร",
                           style: TextStyle(color: Colors.grey, fontSize: 20),
                         )
                       ],
@@ -157,8 +157,10 @@ class _AnotherState extends State<Another> {
                 ),
                 InkWell(
                   onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Activity_log()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Activity_log()));
                   },
                   child: Container(
                     width: 70,

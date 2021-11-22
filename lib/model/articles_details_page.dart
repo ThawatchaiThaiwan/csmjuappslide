@@ -1,11 +1,12 @@
 //Now let's create the article details page
 
 
-import 'package:appcsmju/api/article_model.dart';
+import 'package:appcsmju/api/apinew.dart';
+
 import 'package:flutter/material.dart';
 
 class ArticlePage extends StatelessWidget {
-  final Article article;
+  final Apinew article;
 
   ArticlePage({required this.article});
 
@@ -13,7 +14,7 @@ class ArticlePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(article.News_Title),
+        title: Text(article.newsTitle),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -28,7 +29,7 @@ class ArticlePage extends StatelessWidget {
                 //let's add the height
 
                 image: DecorationImage(
-                    image: NetworkImage(article.News_Picture), fit: BoxFit.cover),
+                    image: NetworkImage(article.newsPicture), fit: BoxFit.cover),
                 borderRadius: BorderRadius.circular(12.0),
               ),
             ),
@@ -42,7 +43,7 @@ class ArticlePage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(15.0),
               ),
               child: Text(
-                article.News_Type,
+                article.newsDetail,
                 style: TextStyle(
                   color: Colors.white,
                 ),
@@ -52,7 +53,7 @@ class ArticlePage extends StatelessWidget {
               height: 8.0,
             ),
             Text(
-              article.News_Date,
+              article.newsTime,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16.0,
