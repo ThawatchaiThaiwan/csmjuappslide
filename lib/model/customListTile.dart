@@ -47,13 +47,16 @@ Widget customListTile(Apinew article, BuildContext context) {
           Container(
             padding: EdgeInsets.all(6.0),
             decoration: BoxDecoration(
-              color: Colors.cyan[200],
-              borderRadius: BorderRadius.circular(15.0),
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(0.0),
             ),
             child: Text(
               article.newsTitle,
               style: TextStyle(
-                color: Colors.white,
+                color: Colors.black,
+                fontSize: 18.0,
+                fontWeight: FontWeight.w200,
+                fontFamily: 'Prompt',
               ),
             ),
           ),

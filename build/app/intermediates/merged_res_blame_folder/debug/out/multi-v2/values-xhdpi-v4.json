@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\appcsmju-main\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-xhdpi-v4\\values-xhdpi-v4.xml",
+            "outputFile": "D:\\project\\code\\csmjuappslide\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-xhdpi-v4\\values-xhdpi-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\zadke\\.gradle\\caches\\transforms-2\\files-2.1\\141f03f22c329e9fb31843315c936564\\jetified-core-1.9.13\\res\\values-xhdpi-v4\\values-xhdpi-v4.xml",
+                    "source": "C:\\Users\\sucha\\.gradle\\caches\\transforms-2\\files-2.1\\88edde5265fa5930c4efed9f44b70c8b\\jetified-core-1.9.13\\res\\values-xhdpi-v4\\values-xhdpi-v4.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
