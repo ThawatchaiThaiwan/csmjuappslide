@@ -16,7 +16,12 @@ class ArticlePage extends StatelessWidget {
       backgroundColor: Colors.grey[75],
       appBar: AppBar(
           backgroundColor: Colors.white,
-          title: Text(article.newsTitle),
+          title: Text('           รายละเอียดข่าว',textAlign: TextAlign.center,
+          style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 31.0,
+              fontFamily: 'Sarabun'
+            ),),
           titleTextStyle: TextStyle(color: Colors.black),
           leading: Navigator.canPop(context)
               ? IconButton(
@@ -34,15 +39,14 @@ class ArticlePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              height: 200.0,
+              height: 245.0,
               width: double.infinity,
               decoration: BoxDecoration(
                 //let's add the height
-
                 image: DecorationImage(
                     image: NetworkImage(article.newsPicture),
                     fit: BoxFit.cover),
-                borderRadius: BorderRadius.circular(12.0),
+               // borderRadius: BorderRadius.circular(1.0),
               ),
             ),
             SizedBox(
@@ -51,13 +55,16 @@ class ArticlePage extends StatelessWidget {
             Container(
               padding: EdgeInsets.all(6.0),
               decoration: BoxDecoration(
-                color: Colors.cyan[200],
+               // color: Colors.black,
                 borderRadius: BorderRadius.circular(20.0),
               ),
               child: Text(
                 article.newsDetail,
                 style: TextStyle(
-                  color: Colors.white,
+                  color: Colors.black,
+                  fontSize: 27.0,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Sarabun',
                 ),
               ),
             ),

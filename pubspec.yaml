@@ -80,9 +80,9 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Prompt
+    - family: Sarabun
       fonts:
-        - asset: assets/fonts/Prompt-Bold.ttf
+        - asset: assets/fonts/TH/THSarabunNew.ttf
           style: italic
   #   - family: Trajan Pro
   #     fonts:
