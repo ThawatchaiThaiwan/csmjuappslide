@@ -1,7 +1,7 @@
 //Now let's create the article details page
 
-
 import 'package:appcsmju/api/apinew.dart';
+import 'package:appcsmju/footbar/News.dart';
 
 import 'package:flutter/material.dart';
 
@@ -13,11 +13,22 @@ class ArticlePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[75],
       appBar: AppBar(
-        title: Text(article.newsTitle),
-      ),
+          backgroundColor: Colors.white,
+          title: Text(article.newsTitle),
+          titleTextStyle: TextStyle(color: Colors.black),
+          leading: Navigator.canPop(context)
+              ? IconButton(
+                  icon: Icon(
+                    Icons.keyboard_backspace,
+                    color: Colors.black,
+                  ),
+                  onPressed: () => Navigator.of(context).pop(),
+                )
+              : News(),),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(10.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -29,7 +40,8 @@ class ArticlePage extends StatelessWidget {
                 //let's add the height
 
                 image: DecorationImage(
-                    image: NetworkImage(article.newsPicture), fit: BoxFit.cover),
+                    image: NetworkImage(article.newsPicture),
+                    fit: BoxFit.cover),
                 borderRadius: BorderRadius.circular(12.0),
               ),
             ),
@@ -39,8 +51,8 @@ class ArticlePage extends StatelessWidget {
             Container(
               padding: EdgeInsets.all(6.0),
               decoration: BoxDecoration(
-                color: Colors.red,
-                borderRadius: BorderRadius.circular(15.0),
+                color: Colors.cyan[200],
+                borderRadius: BorderRadius.circular(20.0),
               ),
               child: Text(
                 article.newsDetail,

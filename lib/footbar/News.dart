@@ -18,7 +18,7 @@ class News extends StatefulWidget {
 
 class _NewsState extends State<News> {
   ApiService client = ApiService();
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,9 +33,16 @@ class _NewsState extends State<News> {
         ),
         leading: IconButton(
           onPressed: () {},
-          icon: Icon(Icons.keyboard_backspace),
+          icon: Icon(Icons.person),
           color: Colors.black,
         ),
+        actions: <Widget>[
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.notifications_active),
+            color: Colors.black,
+          ),
+        ],
       ),
       body: FutureBuilder(
         future: client.getArticle(),
@@ -57,7 +64,5 @@ class _NewsState extends State<News> {
         },
       ),
     );
-    
-    
   }
 }

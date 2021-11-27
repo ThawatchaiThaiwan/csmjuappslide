@@ -47,11 +47,11 @@ Widget customListTile(Apinew article, BuildContext context) {
           Container(
             padding: EdgeInsets.all(6.0),
             decoration: BoxDecoration(
-              color: Colors.red,
+              color: Colors.cyan[200],
               borderRadius: BorderRadius.circular(15.0),
             ),
             child: Text(
-              article.newsDetail,
+              article.newsTitle,
               style: TextStyle(
                 color: Colors.white,
               ),
@@ -61,7 +61,7 @@ Widget customListTile(Apinew article, BuildContext context) {
             height: 8.0,
           ),
           Text(
-            article.newsTime,
+            article.newsDate,
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 16.0,
