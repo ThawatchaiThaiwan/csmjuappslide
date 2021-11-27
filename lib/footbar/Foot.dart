@@ -1,3 +1,4 @@
+import 'package:appcsmju/Homebinding/HomeCarousel.dart';
 import 'package:appcsmju/footbar/Home.dart';
 import 'package:appcsmju/footbar/Another.dart';
 import 'package:appcsmju/footbar/News.dart';

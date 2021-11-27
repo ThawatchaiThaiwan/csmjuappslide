@@ -1,3 +1,4 @@
+import 'package:appcsmju/footbar/Foot.dart';
 import 'package:appcsmju/page/login_page.dart';
 import 'package:appcsmju/routes/app_pages.dart';
 import 'package:appcsmju/routes/app_routes.dart';
@@ -11,11 +12,12 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      initialRoute: AppRoutes.HOME,
-      getPages: AppPages.list,
-      debugShowCheckedModeBanner: false,
-      themeMode: ThemeMode.system,
+    return MaterialApp(
+      title: 'CSMJU APP',
+      theme: ThemeData(
+        primaryColor: Colors.white,
+      ),
+      home:Foot() ,
     );
   }
 }

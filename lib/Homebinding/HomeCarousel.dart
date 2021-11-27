@@ -1,40 +1,76 @@
-import 'package:appcsmju/controller/home_controller.dart';
-import 'package:appcsmju/model/carousel_loading.dart';
-import 'package:appcsmju/model/carousel_slider_data_found.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 
-class HomeCarousel extends StatefulWidget {
-  HomeCarousel({
-    Key? key,
-  }) : super(key: key);
+import 'package:appcsmju/model/carousel.dart';
+import 'package:appcsmju/model/fetchUsingApi.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/material.dart';
+
+class HomePage  extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
+
   @override
-  GlobalKey key = new GlobalKey();
-  _HomeCarouselState createState() => _HomeCarouselState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _HomeCarouselState extends State<HomeCarousel> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        body: SafeArea(child: GetBuilder<HomeController>(
-            builder: (_c) {
-              if (_c.isLoading) if (_c.carouselData.length > 0)
-                return CarouselSliderDataFound(_c.carouselData);
-              else
-                return CarouselLoading();
-              else if (_c.carouselData.length > 0)
-                return CarouselSliderDataFound(_c.carouselData);
-              else
-                return Container(
-                  
-                );
-            },
-          ),
-          
-        )
-        );
+class _HomePageState extends State<HomePage> {
+  APi pro=APi.instance;
+  final List<String> imgList=[];
+   late  List<Apinew> news=[];
+   late Future<Apinew> futureAlbum;
+   
+ void getiii() async {
 
-    //child: Text(_dataFromAPI?.newsDetail ?? "loadind..."),
+    var a=await pro.GetNews(context);
+    int i=0;
+    // for(i=0;i<pro.li.length;++i){
+    //   imgList[i]=pro.li[i].newsPicture;
+    // }
+    a.forEach((value) {
+      Apinew order = new Apinew.fromJson(value);
+      imgList.add(order.newsPicture);
+    });
+
+    setState(() {
+
+      news=pro.li;
+
+      //futureAlbum = pro.GetNews(context);
+    });
+    //print(a);
+   // print(" image  of newssss isss ${imgList[0]}");
+
+
+  }
+
+  @override
+   Widget build(BuildContext context) {
+    getiii();
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Padding(
+        padding: const EdgeInsets.all(2.0),
+        child: Container(
+            child: CarouselSlider(
+              options: CarouselOptions(autoPlay: true,
+                  autoPlayInterval: Duration(seconds: 5),
+                  autoPlayAnimationDuration: Duration(milliseconds: 2000)
+              ),
+              items: imgList
+                  .map((item) => Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  child: Center(
+                      child: Image.network(item,
+                          fit: BoxFit.cover, width: 1000)),
+                ),
+              ))
+                  .toList(),
+            )),
+      ),
+    );
   }
 }
+
+
+
+
+

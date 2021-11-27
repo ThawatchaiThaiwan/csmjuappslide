@@ -1,4 +1,4 @@
-
+/* 
 
 import 'package:appcsmju/Homebinding/HomeCarousel.dart';
 import 'package:appcsmju/footbar/Foot.dart';
@@ -60,3 +60,4 @@ class _HomePageState extends State<HomePage> {
 }
 //(child : screens = HomeCarousel(),)
 
+ */
