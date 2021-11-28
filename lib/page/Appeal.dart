@@ -57,7 +57,7 @@ class _AppealState extends State<Appeal> {
           title: Text(
             'ติดต่อหลักสูตร',
             textAlign: TextAlign.center,
-            style: TextStyle(color: Colors.black),
+            style: TextStyle(color: Colors.black,fontSize: 27.0,fontWeight: FontWeight.bold,),
           ),
           leading: Navigator.canPop(context)
               ? IconButton(
@@ -89,21 +89,28 @@ class _AppealState extends State<Appeal> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        SizedBox(height: 20.0),
+                        SizedBox(height: 10.0),
                         Text(
-                          "เรื่องที่จะติดต่อหลักสูตร",
-                          style: TextStyle(color: Colors.black, fontSize: 18),
+                          " หัวข้อเรื่อง",
+                          style: TextStyle(color: Colors.black, fontSize: 25,fontWeight: FontWeight.bold,),
+                          
                         ),
                         TextField(
                           controller: TitelController1,
                           decoration: InputDecoration(
-                              hintText: 'กรอกชื่อเรื่อง',
+                            border: OutlineInputBorder(),
+                            labelText: 'หัวข้อเรื่อง',
+                             labelStyle: TextStyle(
+                                fontSize: 18,
+                                color: Colors.black,
+                              )
+                              /* hintText: 'กรอกชื่อเรื่อง',
                               labelStyle: TextStyle(
                                 fontSize: 8,
                                 color: Colors.grey[400],
-                              )),
+                              ) */),
                         ),
-                        SizedBox(height: 20.0),
+                       // SizedBox(height: 20.0),
                         Text(
                           "วันที่",
                           style: TextStyle(fontSize: 18),

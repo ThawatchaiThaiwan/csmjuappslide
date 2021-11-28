@@ -27,9 +27,9 @@ class _NewsState extends State<News> {
         backgroundColor: Colors.white,
         centerTitle: true,
         title: Text(
-          "ข่าว",
+          "ข่าวสาร",
           textAlign: TextAlign.center,
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Colors.black,fontSize: 27,fontWeight: FontWeight.bold),
         ),
         leading: IconButton(
           onPressed: () {},

@@ -53,7 +53,23 @@ Widget customListTile(Apinew article, BuildContext context) {
               article.newsTitle,
               style: TextStyle(
                 color: Colors.black,
-                fontSize: 28.0,
+                fontSize: 23.0,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Sarabun',
+              ),
+            ),
+          ),
+           Container(
+            padding: EdgeInsets.all(6.0),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(0.0),
+            ),
+            child: Text(
+              article.newsDate,
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 20.0,
                 fontWeight: FontWeight.bold,
                 fontFamily: 'Sarabun',
               ),
@@ -62,13 +78,7 @@ Widget customListTile(Apinew article, BuildContext context) {
           SizedBox(
             height: 8.0,
           ),
-          Text(
-            article.newsDate,
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 16.0,
-            ),
-          )
+          
         ],
       ),
     ),

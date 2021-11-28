@@ -16,6 +16,8 @@ class MyApp extends StatelessWidget {
       title: 'CSMJU APP',
       theme: ThemeData(
         primaryColor: Colors.white,
+        fontFamily: 'Sarabun',
+        
       ),
       home:Foot() ,
     );

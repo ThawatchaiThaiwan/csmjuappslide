@@ -16,10 +16,10 @@ class ArticlePage extends StatelessWidget {
       backgroundColor: Colors.grey[75],
       appBar: AppBar(
           backgroundColor: Colors.white,
-          title: Text('           รายละเอียดข่าว',textAlign: TextAlign.center,
+          title: Text('              รายละเอียดข่าว',textAlign: TextAlign.center,
           style: TextStyle(
               fontWeight: FontWeight.bold,
-              fontSize: 31.0,
+              fontSize: 27.0,
               fontFamily: 'Sarabun'
             ),),
           titleTextStyle: TextStyle(color: Colors.black),
@@ -54,6 +54,34 @@ class ArticlePage extends StatelessWidget {
             ),
             Container(
               padding: EdgeInsets.all(6.0),
+              
+              decoration: BoxDecoration(
+                
+               // color: Colors.black,
+                borderRadius: BorderRadius.circular(20.0),
+              ),
+              child: Text(
+                article.newsTitle,
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 25.0,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Sarabun',
+                  
+                ),
+                
+                
+              ),
+              
+            ),
+            Divider(
+           
+            thickness: 5,
+            indent: 20,
+            endIndent: 20,
+            ),
+             Container(
+              padding: EdgeInsets.all(6.0),
               decoration: BoxDecoration(
                // color: Colors.black,
                 borderRadius: BorderRadius.circular(20.0),
@@ -62,22 +90,17 @@ class ArticlePage extends StatelessWidget {
                 article.newsDetail,
                 style: TextStyle(
                   color: Colors.black,
-                  fontSize: 27.0,
-                  fontWeight: FontWeight.bold,
+                  fontSize: 25.0,
+                  //fontWeight: FontWeight.bold,
                   fontFamily: 'Sarabun',
                 ),
               ),
             ),
+            
             SizedBox(
               height: 8.0,
             ),
-            Text(
-              article.newsTime,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 16.0,
-              ),
-            )
+        
           ],
         ),
       ),

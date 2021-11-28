@@ -23,7 +23,7 @@ class _AnotherState extends State<Another> {
         title: Text(
           "บริการอื่นๆ",
           textAlign: TextAlign.center,
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Colors.black,fontSize: 27,fontWeight: FontWeight.bold),
         ),
         leading: IconButton(
           onPressed: () {},
@@ -65,7 +65,7 @@ class _AnotherState extends State<Another> {
                         ),
                         Text(
                           "โปรไฟล์",
-                          style: TextStyle(color: Colors.grey, fontSize: 20),
+                          style: TextStyle(color: Colors.grey, fontSize: 20,fontWeight: FontWeight.bold),
                         )
                       ],
                     ),
@@ -93,7 +93,7 @@ class _AnotherState extends State<Another> {
                         ),
                         Text(
                           "แจ้งตกค้าง",
-                          style: TextStyle(color: Colors.grey, fontSize: 20),
+                          style: TextStyle(color: Colors.grey, fontSize: 20,fontWeight: FontWeight.bold),
                         )
                       ],
                     ),
@@ -121,7 +121,7 @@ class _AnotherState extends State<Another> {
                         ),
                         Text(
                           "ติดต่อหลักสูตร",
-                          style: TextStyle(color: Colors.grey, fontSize: 20),
+                          style: TextStyle(color: Colors.grey, fontSize: 20,fontWeight: FontWeight.bold),
                         )
                       ],
                     ),
@@ -149,7 +149,7 @@ class _AnotherState extends State<Another> {
                         ),
                         Text(
                           "ยืม-คืน",
-                          style: TextStyle(color: Colors.grey, fontSize: 20),
+                          style: TextStyle(color: Colors.grey,  fontSize: 20,fontWeight: FontWeight.bold),
                         )
                       ],
                     ),
@@ -179,7 +179,7 @@ class _AnotherState extends State<Another> {
                         ),
                         Text(
                           "บันทึกกิจกรรม",
-                          style: TextStyle(color: Colors.grey, fontSize: 20),
+                          style: TextStyle(color: Colors.grey,  fontSize: 20,fontWeight: FontWeight.bold),
                         )
                       ],
                     ),
@@ -208,7 +208,7 @@ class _AnotherState extends State<Another> {
                         Text(
                           "ออกจากระบบ",
                           style:
-                              TextStyle(color: Colors.red[700], fontSize: 20),
+                              TextStyle(color: Colors.red[700],  fontSize: 20,fontWeight: FontWeight.bold),
                         )
                       ],
                     ),

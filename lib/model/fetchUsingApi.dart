@@ -32,7 +32,7 @@ List<Apinew> li=[];
       Apinew order = new Apinew.fromJson(value);
       li.add(order);
     });
-    print(li[0].newsTitle);
+    print('API GET');
 
 
     return data;

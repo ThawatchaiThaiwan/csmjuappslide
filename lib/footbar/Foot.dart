@@ -126,7 +126,7 @@ class _FootState extends State<Foot> {
                         Text(
                           'หน้าหลัก',
                           style: TextStyle(
-                            color: currentTab == 0 ? Colors.blue : Colors.grey,
+                            color: currentTab == 0 ? Colors.blue : Colors.grey,fontSize: 20,fontWeight: FontWeight.bold
                           ),
                         )
                       ],
@@ -149,9 +149,9 @@ class _FootState extends State<Foot> {
                           color: currentTab == 1 ? Colors.blue : Colors.grey,
                         ),
                         Text(
-                          '        ข่าว        ',
+                          '   ข่าวสาร   ',
                           style: TextStyle(
-                            color: currentTab == 1 ? Colors.blue : Colors.grey,
+                            color: currentTab == 1 ? Colors.blue : Colors.grey,fontSize: 20,fontWeight: FontWeight.bold
                           ),
                         )
                       ],
@@ -178,9 +178,9 @@ class _FootState extends State<Foot> {
                           color: currentTab == 2 ? Colors.blue : Colors.grey,
                         ),
                         Text(
-                          '   ปฏิทิน   ',
+                          ' ปฏิทิน ',
                           style: TextStyle(
-                            color: currentTab == 2 ? Colors.blue : Colors.grey,
+                            color: currentTab == 2 ? Colors.blue : Colors.grey,fontSize: 20,fontWeight: FontWeight.bold
                           ),
                         )
                       ],
@@ -205,7 +205,7 @@ class _FootState extends State<Foot> {
                         Text(
                           'บริการอื่น ๆ',
                           style: TextStyle(
-                            color: currentTab == 3 ? Colors.blue : Colors.grey,
+                            color: currentTab == 3 ? Colors.blue : Colors.grey,fontSize: 20,fontWeight: FontWeight.bold
                           ),
                         )
                       ],
