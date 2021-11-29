@@ -4,6 +4,7 @@ import 'dart:ui';
 
 import 'package:appcsmju/post_api/AppealPost.dart';
 import 'package:get/get_navigation/src/routes/default_transitions.dart';
+import 'package:intl/intl.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
 
 import 'package:appcsmju/api/appealpost.dart';
@@ -46,6 +47,10 @@ class _AppealState extends State<Appeal> {
   TextEditingController PictureController4 = TextEditingController();
 
   final formkey = GlobalKey<FormState>();
+  void initState() {
+    DateController2.text = ""; //set the initial value of text field
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -109,7 +114,7 @@ class _AppealState extends State<Appeal> {
                               contentPadding: const EdgeInsets.all(5),
                               hintText: 'เพิ่มหัวเรื่อง',
                               labelStyle: TextStyle(
-                                fontSize: 18,
+                                fontSize: 22,
                                 color: Colors.black,
                               )
                               /* hintText: 'กรอกชื่อเรื่อง',
@@ -135,9 +140,34 @@ class _AppealState extends State<Appeal> {
                               contentPadding: const EdgeInsets.all(5),
                               hintText: 'เลือกวันที่',
                               labelStyle: TextStyle(
-                                fontSize: 18,
+                                fontSize: 22,
                                 color: Colors.black,
                               )),
+                          readOnly:
+                              true, //set it true, so that user will not able to edit text
+                          onTap: () async {
+                            DateTime? pickedDate = await showDatePicker(
+                                context: context,
+                                initialDate: DateTime.now(),
+                                firstDate: DateTime(
+                                    2000), //DateTime.now() - not to allow to choose before today.
+                                lastDate: DateTime(2101));
+
+                            if (pickedDate != null) {
+                              print(
+                                  pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
+                              String formattedDate =
+                                  DateFormat('dd-MM-yyyy').format(pickedDate);
+                              print(
+                                  formattedDate); //formatted date output using intl package =>  2021-03-16
+                              //you can implement different kind of Date Format here according to your requirement
+
+                              setState(() {
+                                DateController2.text =
+                                    formattedDate; //set output date to TextField value.
+                              });
+                            } else {}
+                          },
                         ),
                         SizedBox(height: 20.0),
                         Text(
@@ -152,13 +182,12 @@ class _AppealState extends State<Appeal> {
                           controller: DetailController3,
                           keyboardType: TextInputType.multiline,
                           maxLines: 5,
-                          
                           decoration: InputDecoration(
                               border: OutlineInputBorder(),
                               contentPadding: const EdgeInsets.all(5),
                               hintText: 'เพิ่มรายละเอียด',
                               labelStyle: TextStyle(
-                                fontSize: 18,
+                                fontSize: 22,
                                 color: Colors.black,
                               )),
                         ),
@@ -178,7 +207,7 @@ class _AppealState extends State<Appeal> {
                               contentPadding: const EdgeInsets.all(5),
                               hintText: 'เลือกรูปภาพ',
                               labelStyle: TextStyle(
-                                fontSize: 18,
+                                fontSize: 22,
                                 color: Colors.grey[400],
                               )),
                         ),
@@ -243,7 +272,14 @@ class _AppealState extends State<Appeal> {
                                   Complain_Picture,
                                   Complain_Title);
                             },
-                            child: Text('ส่งคำร้อง'),
+                            child: Text(
+                              'ส่งคำร้อง',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                           ),
                         ),
                         SizedBox(height: 20.0),
@@ -272,7 +308,14 @@ class _AppealState extends State<Appeal> {
                             onPressed: () {
                               setState(() {});
                             },
-                            child: Text('ยกเลิก'),
+                            child: Text(
+                              'ยกเลิก',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                           ),
                         ),
                       ],

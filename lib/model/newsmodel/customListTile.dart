@@ -1,7 +1,9 @@
 
 import 'package:appcsmju/api/apinew.dart';
+import 'package:appcsmju/model/newsmodel/articles_details_page.dart';
 
-import 'package:appcsmju/model/articles_details_page.dart';
+
+
 import 'package:flutter/material.dart';
 
 Widget customListTile(Apinew article, BuildContext context) {

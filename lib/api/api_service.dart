@@ -1,4 +1,4 @@
-import 'package:appcsmju/model/login_model.dart';
+import 'package:appcsmju/model/loginmodel/login_model.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 

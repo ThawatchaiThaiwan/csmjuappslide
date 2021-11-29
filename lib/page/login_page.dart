@@ -1,7 +1,7 @@
 import 'package:appcsmju/ProgressHUD.dart';
 import 'package:appcsmju/api/api_service.dart';
 import 'package:appcsmju/footbar/Foot.dart';
-import 'package:appcsmju/model/login_model.dart';
+import 'package:appcsmju/model/loginmodel/login_model.dart';
 import 'package:flutter/material.dart';
 import '../footbar/Home.dart';
 

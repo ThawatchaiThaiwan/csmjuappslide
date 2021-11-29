@@ -1,6 +1,7 @@
 import 'dart:convert';
 
-import 'package:appcsmju/model/carousel.dart';
+import 'package:appcsmju/model/carouselmodel/carousel.dart';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 //import 'package:flutter/foundation.dart';

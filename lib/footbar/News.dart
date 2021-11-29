@@ -4,7 +4,7 @@ import 'package:appcsmju/api/apinew.dart';
 
 import 'package:appcsmju/controller/apinew_foot.dart';
 import 'package:appcsmju/footbar/Calendar.dart';
-import 'package:appcsmju/model/customListTile.dart';
+import 'package:appcsmju/model/newsmodel/customListTile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;

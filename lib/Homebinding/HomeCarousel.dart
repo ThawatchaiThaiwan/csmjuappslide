@@ -1,5 +1,6 @@
-import 'package:appcsmju/model/carousel.dart';
-import 'package:appcsmju/model/fetchUsingApi.dart';
+import 'package:appcsmju/model/carouselmodel/carousel.dart';
+
+import 'package:appcsmju/model/carouselmodel/fetchUsingApi.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
