@@ -57,7 +57,11 @@ class _AppealState extends State<Appeal> {
           title: Text(
             'ติดต่อหลักสูตร',
             textAlign: TextAlign.center,
-            style: TextStyle(color: Colors.black,fontSize: 27.0,fontWeight: FontWeight.bold,),
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 27.0,
+              fontWeight: FontWeight.bold,
+            ),
           ),
           leading: Navigator.canPop(context)
               ? IconButton(
@@ -69,13 +73,13 @@ class _AppealState extends State<Appeal> {
                 )
               : Another(),
         ),
-        body: Padding(
-            padding: const EdgeInsets.fromLTRB(10, 40, 10, 40),
+        body: SingleChildScrollView(
+            padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
             child: SafeArea(
               child: Container(
-                  padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                  padding: EdgeInsets.fromLTRB(15, 10, 15, 10),
                   width: 405,
-                  height: 740,
+                  height: 700,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(5),
@@ -92,15 +96,19 @@ class _AppealState extends State<Appeal> {
                         SizedBox(height: 10.0),
                         Text(
                           " หัวข้อเรื่อง",
-                          style: TextStyle(color: Colors.black, fontSize: 25,fontWeight: FontWeight.bold,),
-                          
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                         TextField(
                           controller: TitelController1,
                           decoration: InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: 'หัวข้อเรื่อง',
-                             labelStyle: TextStyle(
+                              border: OutlineInputBorder(),
+                              contentPadding: const EdgeInsets.all(5),
+                              hintText: 'เพิ่มหัวเรื่อง',
+                              labelStyle: TextStyle(
                                 fontSize: 18,
                                 color: Colors.black,
                               )
@@ -108,52 +116,73 @@ class _AppealState extends State<Appeal> {
                               labelStyle: TextStyle(
                                 fontSize: 8,
                                 color: Colors.grey[400],
-                              ) */),
+                              ) */
+                              ),
                         ),
-                       // SizedBox(height: 20.0),
+                        SizedBox(height: 20.0),
                         Text(
                           "วันที่",
-                          style: TextStyle(fontSize: 18),
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                         TextField(
                           controller: DateController2,
                           decoration: InputDecoration(
-                              hintText: 'วัน/เดือน/ปี',
+                              border: OutlineInputBorder(),
+                              contentPadding: const EdgeInsets.all(5),
+                              hintText: 'เลือกวันที่',
                               labelStyle: TextStyle(
-                                fontSize: 8,
-                                color: Colors.grey[400],
+                                fontSize: 18,
+                                color: Colors.black,
                               )),
                         ),
                         SizedBox(height: 20.0),
                         Text(
                           "รายละเอียด",
-                          style: TextStyle(fontSize: 18),
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                         TextField(
                           controller: DetailController3,
-                          maxLines: 6,
+                          keyboardType: TextInputType.multiline,
+                          maxLines: 5,
+                          
                           decoration: InputDecoration(
-                              hintText: 'กรอกรายละเอียด',
+                              border: OutlineInputBorder(),
+                              contentPadding: const EdgeInsets.all(5),
+                              hintText: 'เพิ่มรายละเอียด',
                               labelStyle: TextStyle(
-                                fontSize: 8,
-                                color: Colors.grey[400],
+                                fontSize: 18,
+                                color: Colors.black,
                               )),
                         ),
                         SizedBox(height: 20.0),
                         Text(
                           "เลือกรูปภาพ",
-                          style: TextStyle(fontSize: 18),
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                         TextField(
                           controller: PictureController4,
                           decoration: InputDecoration(
+                              border: OutlineInputBorder(),
+                              contentPadding: const EdgeInsets.all(5),
                               hintText: 'เลือกรูปภาพ',
                               labelStyle: TextStyle(
-                                fontSize: 8,
+                                fontSize: 18,
                                 color: Colors.grey[400],
                               )),
                         ),
-                        SizedBox(height: 20.0),
+                        SizedBox(height: 40.0),
                         Container(
                           width: 360,
                           height: 30,
@@ -181,7 +210,8 @@ class _AppealState extends State<Appeal> {
                                   builder: (BuildContext context) =>
                                       AlertDialog(
                                         title: const Text('แจ้งเตือน'),
-                                        content: const Text('ติดต่อหลักสูตรสำเร็จ'),
+                                        content:
+                                            const Text('ติดต่อหลักสูตรสำเร็จ'),
                                         actions: <Widget>[
                                           TextButton(
                                             onPressed: () => Navigator.pop(
