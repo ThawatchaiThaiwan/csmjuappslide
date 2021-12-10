@@ -173,12 +173,12 @@ class _AnotherState extends State<Another> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(
-                          Icons.data_saver_on,
+                          Icons.image,
                           size: 50,
                           color: Colors.grey,
                         ),
                         Text(
-                          "บันทึกกิจกรรม",
+                          "รูปภาพกิจกรรม",
                           style: TextStyle(color: Colors.grey,  fontSize: 20,fontWeight: FontWeight.bold),
                         )
                       ],

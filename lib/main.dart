@@ -1,5 +1,5 @@
 import 'package:appcsmju/footbar/Foot.dart';
-import 'package:appcsmju/page/login_page.dart';
+import 'package:appcsmju/model/loginmodel/login_page.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Sarabun',
         
       ),
-      home:Foot() ,
+      home:LoginPage() ,
     );
   }
 }

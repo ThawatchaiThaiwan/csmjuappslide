@@ -15,7 +15,7 @@ class APi{
   String baseUrl="https://wwwdev.csmju.com/api/newsapp";
   //fbclid=IwAR1Jo1tkaAx7Jlk06VPdQQjLFg2pCWy-dXNkiM6DrSj2MViAwS_hiI4k-0U
 
-List<Apinew> li=[];
+List<Apinews> li=[];
   Future<dynamic> GetNews(BuildContext context) async {
     String authKey = 'News_Detail=app';
     var url = Uri.parse(baseUrl);
@@ -30,7 +30,7 @@ List<Apinew> li=[];
     var new1=data;
 
     data.forEach((value) {
-      Apinew order = new Apinew.fromJson(value);
+      Apinews order = new Apinews.fromJson(value);
       li.add(order);
     });
     print('API GET');

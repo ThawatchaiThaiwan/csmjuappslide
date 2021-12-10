@@ -1,8 +1,5 @@
-
 import 'package:appcsmju/api/apinew.dart';
 import 'package:appcsmju/model/newsmodel/articles_details_page.dart';
-
-
 
 import 'package:flutter/material.dart';
 
@@ -39,11 +36,11 @@ Widget customListTile(Apinew article, BuildContext context) {
               //let's add the height
               image: DecorationImage(
                   image: NetworkImage(article.newsPicture), fit: BoxFit.cover),
-                  borderRadius: BorderRadius.circular(5.0),
+              borderRadius: BorderRadius.circular(5.0),
             ),
           ),
           SizedBox(
-            height: 10.0, 
+            height: 10.0,
           ),
           Container(
             padding: EdgeInsets.all(6.0),
@@ -61,7 +58,7 @@ Widget customListTile(Apinew article, BuildContext context) {
               ),
             ),
           ),
-           Container(
+          Container(
             padding: EdgeInsets.all(6.0),
             decoration: BoxDecoration(
               color: Colors.white,
@@ -80,7 +77,6 @@ Widget customListTile(Apinew article, BuildContext context) {
           SizedBox(
             height: 8.0,
           ),
-          
         ],
       ),
     ),

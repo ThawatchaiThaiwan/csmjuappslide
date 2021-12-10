@@ -1,10 +1,10 @@
-import 'package:appcsmju/Homebinding/HomeCarousel.dart';
+import 'package:appcsmju/model/carouselmodel/HomeCarousel.dart';
 import 'package:appcsmju/footbar/Home.dart';
 import 'package:appcsmju/footbar/Another.dart';
 import 'package:appcsmju/footbar/News.dart';
 import 'package:appcsmju/footbar/Calendar.dart';
 import 'package:appcsmju/footbar/Scan.dart';
-import 'package:appcsmju/page/login_page.dart';
+import 'package:appcsmju/model/loginmodel/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:barcode_scan/barcode_scan.dart';

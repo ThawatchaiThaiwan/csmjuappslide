@@ -8,8 +8,8 @@ import 'dart:convert';
 
 //String apinewToJson(List<Apinew> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class Apinew {
-    Apinew({
+class Apinews {
+    Apinews({
         //required this.newsId,
         required this.newsDetail,
         //required this.newsDate,
@@ -31,7 +31,7 @@ class Apinew {
     final String newsLinks;
     final String newsType;
 
-    factory Apinew.fromJson(Map<String, dynamic> json) => Apinew(
+    factory Apinews.fromJson(Map<String, dynamic> json) => Apinews(
         //newsId: json["newsId"] == 0 ? 0 : json["newsId"],
         newsDetail:json["News_Detail"],
         //newsDate: json["News_Date"] == null ? null : DateTime.parse(json["News_Date"]),

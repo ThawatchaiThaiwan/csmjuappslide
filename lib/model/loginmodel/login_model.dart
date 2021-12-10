@@ -1,36 +1,23 @@
-class LoginResponseModel {
-  final String token;
-  final String error;
+import 'dart:convert';
 
-  LoginResponseModel({required this.token, required this.error});
 
-  factory LoginResponseModel.fromJson(Map<String, dynamic> json) {
-    return LoginResponseModel(
-      token: json["token"] != null ? json["token"] : "",
-      error: json["error"] != null ? json["error"] : "",
-    );
-  }
+import 'package:appcsmju/model/loginmodel/apilogin.dart';
+import 'package:http/http.dart' as http;
 
-  toJson() {}
-  
-  
-}
-
-class LoginRequestModel {
-  String email;
-  String password;
-
-  LoginRequestModel({
-    required this.email,
-    required this.password,
-  });
-
-  Map<String, dynamic> toJson() {
-    Map<String, dynamic> map = {
-      'email': email.trim(),
-      'password': password.trim(),
+class AuthServices {
+  static Future<http.Response> login(String email, String password) async {
+    Map data = {
+      "email": email,
+      "password": password,
     };
-
-    return map;
+    var body = json.encode(data);
+    var url = Uri.parse(baseURL + 'login');
+    http.Response response = await http.post(
+      url,
+      headers: headers,
+      body: body,
+    );
+    print(response.body);
+    return response;
   }
 }

@@ -15,23 +15,26 @@ class ArticlePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey[75],
       appBar: AppBar(
-          backgroundColor: Colors.white,
-          title: Text('              รายละเอียดข่าว',textAlign: TextAlign.center,
+        backgroundColor: Colors.white,
+        title: Text(
+          ' รายละเอียดข่าว',
+          textAlign: TextAlign.center,
           style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 27.0,
-              fontFamily: 'Sarabun'
-            ),),
-          titleTextStyle: TextStyle(color: Colors.black),
-          leading: Navigator.canPop(context)
-              ? IconButton(
-                  icon: Icon(
-                    Icons.keyboard_backspace,
-                    color: Colors.black,
-                  ),
-                  onPressed: () => Navigator.of(context).pop(),
-                )
-              : News(),),
+              fontFamily: 'Sarabun'),
+        ),
+        titleTextStyle: TextStyle(color: Colors.black),
+        leading: Navigator.canPop(context)
+            ? IconButton(
+                icon: Icon(
+                  Icons.keyboard_backspace,
+                  color: Colors.black,
+                ),
+                onPressed: () => Navigator.of(context).pop(),
+              )
+            : News(),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Column(
@@ -46,7 +49,7 @@ class ArticlePage extends StatelessWidget {
                 image: DecorationImage(
                     image: NetworkImage(article.newsPicture),
                     fit: BoxFit.cover),
-               // borderRadius: BorderRadius.circular(1.0),
+                // borderRadius: BorderRadius.circular(1.0),
               ),
             ),
             SizedBox(
@@ -54,10 +57,8 @@ class ArticlePage extends StatelessWidget {
             ),
             Container(
               padding: EdgeInsets.all(6.0),
-              
               decoration: BoxDecoration(
-                
-               // color: Colors.black,
+                // color: Colors.black,
                 borderRadius: BorderRadius.circular(20.0),
               ),
               child: Text(
@@ -67,23 +68,18 @@ class ArticlePage extends StatelessWidget {
                   fontSize: 25.0,
                   fontWeight: FontWeight.bold,
                   fontFamily: 'Sarabun',
-                  
                 ),
-                
-                
               ),
-              
             ),
             Divider(
-           
-            thickness: 5,
-            indent: 20,
-            endIndent: 20,
+              thickness: 5,
+              indent: 20,
+              endIndent: 20,
             ),
-             Container(
+            Container(
               padding: EdgeInsets.all(6.0),
               decoration: BoxDecoration(
-               // color: Colors.black,
+                // color: Colors.black,
                 borderRadius: BorderRadius.circular(20.0),
               ),
               child: Text(
@@ -96,11 +92,9 @@ class ArticlePage extends StatelessWidget {
                 ),
               ),
             ),
-            
             SizedBox(
               height: 8.0,
             ),
-        
           ],
         ),
       ),
