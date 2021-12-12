@@ -19,16 +19,17 @@ class _LoginPageState extends State<LoginPage> {
 
   loginPressed() async {
     if (email.isNotEmpty && password.isNotEmpty) {
-      http.Response response = await AuthServices.login(email, password);
-      Map responseMap = jsonDecode(response.body);
-      if (response.statusCode == 200) {
+      http.Response response = await AuthServices().login(email, password);
+     Map<String,dynamic> userdata = new Map<String,dynamic>.from(json.decode(response.body));
+      //var responseMap = jsonDecode(userdata);// please wait i am trying okkk
+      if (response.statusCode == 200) {     
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (BuildContext context) => const Foot(),
+              builder: (BuildContext context) => Foot(),
             ));
       } else {
-        errorSnackBar(context, responseMap.values.first);
+        errorSnackBar(context, 'sorry to have issue');
       }
     } else {
       errorSnackBar(context, 'enter all required fields');
@@ -118,9 +119,9 @@ class _LoginPageState extends State<LoginPage> {
                         vertical: 10,
                         horizontal: 40,
                       ),
-                      onPressed: () {
+                      onPressed: () async{
                        
-                          loginPressed();
+                          await loginPressed();
                       },
                       child: Text(
                         "Login",

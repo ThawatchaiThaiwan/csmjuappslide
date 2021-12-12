@@ -5,11 +5,12 @@ import 'package:appcsmju/model/loginmodel/apilogin.dart';
 import 'package:http/http.dart' as http;
 
 class AuthServices {
-  static Future<http.Response> login(String email, String password) async {
-    Map data = {
+  Future<http.Response> login(String email, String password) async {
+    Map<String,dynamic> data = {
       "email": email,
       "password": password,
     };
+    
     var body = json.encode(data);
     var url = Uri.parse(baseURL + 'login');
     http.Response response = await http.post(
