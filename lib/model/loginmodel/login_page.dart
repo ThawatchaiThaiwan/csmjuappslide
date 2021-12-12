@@ -14,12 +14,12 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   bool hidePassword = true;
-  String _email = '';
-  String _password = '';
+  String email = '';
+  String password = '';
 
   loginPressed() async {
-    if (_email.isNotEmpty && _password.isNotEmpty) {
-      http.Response response = await AuthServices.login(_email, _password);
+    if (email.isNotEmpty && password.isNotEmpty) {
+      http.Response response = await AuthServices.login(email, password);
       Map responseMap = jsonDecode(response.body);
       if (response.statusCode == 200) {
         Navigator.push(
@@ -60,7 +60,7 @@ class _LoginPageState extends State<LoginPage> {
                           color: Color.fromARGB(255, 240, 240, 240)),
                       child: new TextFormField(
                         onChanged: (value) {
-                          _email = value;
+                          email = value;
                         },
                         style: TextStyle(color: Colors.black, fontSize: 25),
                         decoration: new InputDecoration(
@@ -82,7 +82,7 @@ class _LoginPageState extends State<LoginPage> {
                           color: Color.fromARGB(255, 240, 240, 240)),
                       child: new TextFormField(
                         onChanged: (value) {
-                          _password = value;
+                          password = value;
                         },
                         style: TextStyle(
                           color: Colors.black,
