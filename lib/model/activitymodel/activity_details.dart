@@ -1,14 +1,15 @@
 //Now let's create the article details page
 
-import 'package:appcsmju/APImodel/apinew.dart';
+import 'package:appcsmju/APImodel/Activity.dart';
+
 import 'package:appcsmju/footbar/News.dart';
 
 import 'package:flutter/material.dart';
 
-class ArticlePage extends StatelessWidget {
-  final Apinew article;
+class ActivityPage extends StatelessWidget {
+  final Activity activity;
 
-  ArticlePage({required this.article});
+  ActivityPage({required this.activity});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,7 @@ class ArticlePage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         title: Text(
-          ' รายละเอียดข่าว',
+          ' รายละเอียดกิจกรรม',
           textAlign: TextAlign.center,
           style: TextStyle(
               fontWeight: FontWeight.bold,
@@ -47,7 +48,7 @@ class ArticlePage extends StatelessWidget {
               decoration: BoxDecoration(
                 //let's add the height
                 image: DecorationImage(
-                    image: NetworkImage(article.newsPicture),
+                    image: NetworkImage(activity.Activity_Picture),
                     fit: BoxFit.cover),
                 // borderRadius: BorderRadius.circular(1.0),
               ),
@@ -62,7 +63,7 @@ class ArticlePage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20.0),
               ),
               child: Text(
-                article.newsTitle,
+                activity.Activitypic_Title,
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 25.0,
@@ -83,7 +84,7 @@ class ArticlePage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20.0),
               ),
               child: Text(
-                article.newsDetail,
+                activity.Activity_Date,
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 25.0,

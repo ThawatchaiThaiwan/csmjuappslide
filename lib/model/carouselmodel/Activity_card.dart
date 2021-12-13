@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class RecipeCard extends StatelessWidget {
+class ActivityCard extends StatelessWidget {
   final String thumbnailUrl;
-  RecipeCard({
+  ActivityCard({
     required this.thumbnailUrl,
   });
   @override

@@ -1,10 +1,10 @@
 import 'package:appcsmju/model/carouselmodel/HomeCarousel.dart';
-import 'package:appcsmju/footbar/Home.dart';
+
 import 'package:appcsmju/footbar/Another.dart';
 import 'package:appcsmju/footbar/News.dart';
 import 'package:appcsmju/footbar/Calendar.dart';
 import 'package:appcsmju/footbar/Scan.dart';
-import 'package:appcsmju/model/loginmodel/login_page.dart';
+
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:barcode_scan/barcode_scan.dart';
@@ -16,17 +16,17 @@ class Foot extends StatefulWidget {
   _FootState createState() => _FootState();
 }
 
-String qrData = "No data found!";
+
 var data;
 bool hasdata = false;
 
-Widget currentScreen = HomePage();
+Widget currentScreen = HomePageCarousel();
 final PageStorageBucket bucket = PageStorageBucket();
 
 class _FootState extends State<Foot> {
   int currentTab = 0;
   final List<Widget> screens = [
-    HomePage(),
+    HomePageCarousel(),
     News(),
     Scan(),
     Calendar(),
@@ -112,7 +112,7 @@ class _FootState extends State<Foot> {
                     minWidth: 40,
                     onPressed: () {
                       setState(() {
-                        currentScreen = HomePage();
+                        currentScreen = HomePageCarousel();
                         currentTab = 0;
                       });
                     },

@@ -1,36 +1,37 @@
-import 'package:appcsmju/api/apinew.dart';
-import 'package:appcsmju/controller/apinew_foot.dart';
+import 'package:appcsmju/APImodel/apinew.dart';
+import 'package:appcsmju/api/API_activity.dart';
+import 'package:appcsmju/api/apinew_foot.dart';
 
-import 'package:appcsmju/model/carouselmodel/carousel.dart';
+import 'package:appcsmju/APImodel/carousel.dart';
 
-import 'package:appcsmju/model/carouselmodel/fetchUsingApi.dart';
-import 'package:appcsmju/model/carouselmodel/reship.api.dart';
-import 'package:appcsmju/model/carouselmodel/reship.dart';
-import 'package:appcsmju/model/carouselmodel/reship_card.dart';
+import 'package:appcsmju/api/newApi.dart';
+
+import 'package:appcsmju/APImodel/Activity.dart';
+import 'package:appcsmju/model/carouselmodel/Activity_card.dart';
 import 'package:appcsmju/model/newsmodel/customListTile.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class HomePageCarousel extends StatefulWidget {
+  const HomePageCarousel({Key? key}) : super(key: key);
 
   @override
-  _HomePageState createState() => _HomePageState();
+  _HomePageCarouselState createState() => _HomePageCarouselState();
 }
 
 //animals.reversed.toList();
-class _HomePageState extends State<HomePage> {
-  late List<Recipe> _recipes;
+class _HomePageCarouselState extends State<HomePageCarousel> {
+  late List<Activity> _activity;
   bool _isLoading = true;
 
   @override
   void initState() {
     super.initState();
-    getRecipes();
+    getActivity();
   }
 
-  Future<void> getRecipes() async {
-    _recipes = await RecipeApi.getRecipe();
+  Future<void> getActivity() async {
+    _activity = await ActivityApiService.getsActivity();
     setState(() {
       _isLoading = false;
     });
@@ -42,7 +43,7 @@ class _HomePageState extends State<HomePage> {
   late List<Apinews> news = [];
   late Future<Apinews> futureAlbum;
   /* late final Apinew article;
-   _HomePageState({required this.article}); */
+   _HomePageCarouselState({required this.article}); */
 
   void getiii() async {
     var a = await pro.GetNews(context);
@@ -134,19 +135,21 @@ class _HomePageState extends State<HomePage> {
           SizedBox(
             height: 10,
           ),
-          Container(
-            width: double.infinity,
-            height: MediaQuery.of(context).size.height,
-            child: _isLoading
-                ? Center(child: CircularProgressIndicator())
-                : ListView.builder(
-                    /* padding: const EdgeInsets.all(3.0), */
-                    itemCount: _recipes.length,
-                    itemBuilder: (context, index) {
-                      return RecipeCard(
-                          thumbnailUrl: _recipes[index].activityDetail);
-                    },
-                  ),
+          SingleChildScrollView(
+            child: Container(
+              width: double.infinity,
+              height: MediaQuery.of(context).size.height,
+              child: _isLoading
+                  ? Center(child: CircularProgressIndicator())
+                  : ListView.builder(
+                      /* padding: const EdgeInsets.all(3.0), */
+                      itemCount: _activity.length,
+                      itemBuilder: (context, index) {
+                        return ActivityCard(
+                            thumbnailUrl: _activity[index].Activity_Picture);
+                      },
+                    ),
+            ),
           ),
         ]),
       ),

@@ -32,7 +32,7 @@ class _LoginPageState extends State<LoginPage> {
         errorSnackBar(context, 'sorry to have issue');
       }
     } else {
-      errorSnackBar(context, 'enter all required fields');
+      errorSnackBar(context, 'คุณใส่ข้อมูลไม่ครบถ้วน');
     }
   }
 

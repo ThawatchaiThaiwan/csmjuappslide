@@ -46,7 +46,10 @@ class _CalendarState extends State<Calendar> {
         title: Text(
           "ปฏิทินกิจกรรม",
           textAlign: TextAlign.center,
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 27.0,
+              fontFamily: 'Sarabun'),
         ),
         leading: IconButton(
           onPressed: () {},
@@ -74,6 +77,7 @@ class _CalendarState extends State<Calendar> {
               });
             },
             startingDayOfWeek: StartingDayOfWeek.sunday,
+
             daysOfWeekVisible: true,
 
             //Day Changed
@@ -98,19 +102,42 @@ class _CalendarState extends State<Calendar> {
                 shape: BoxShape.rectangle,
                 borderRadius: BorderRadius.circular(5.0),
               ),
-              selectedTextStyle: TextStyle(color: Colors.white),
+              selectedTextStyle: TextStyle(
+                color: Colors.black,
+                fontSize: 27,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Sarabun',
+              ),
               todayDecoration: BoxDecoration(
                 color: Colors.blueAccent,
                 shape: BoxShape.rectangle,
                 borderRadius: BorderRadius.circular(5.0),
               ),
+              todayTextStyle: TextStyle(
+                color: Colors.black,
+                fontSize: 27,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Sarabun',
+              ),
               defaultDecoration: BoxDecoration(
                 shape: BoxShape.rectangle,
                 borderRadius: BorderRadius.circular(5.0),
               ),
+              defaultTextStyle: TextStyle(
+                color: Colors.black,
+                fontSize: 27,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Sarabun',
+              ),
               weekendDecoration: BoxDecoration(
                 shape: BoxShape.rectangle,
                 borderRadius: BorderRadius.circular(5.0),
+              ),
+              weekendTextStyle: TextStyle(
+                color: Colors.black,
+                fontSize: 27,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Sarabun',
               ),
             ),
             headerStyle: HeaderStyle(
@@ -123,6 +150,9 @@ class _CalendarState extends State<Calendar> {
               ),
               formatButtonTextStyle: TextStyle(
                 color: Colors.white,
+                fontSize: 27,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Sarabun',
               ),
             ),
           ),
@@ -152,7 +182,6 @@ class _CalendarState extends State<Calendar> {
                 child: Text("ตกลง"),
                 onPressed: () {
                   if (_eventController.text.isEmpty) {
-
                   } else {
                     if (selectedEvents[selectedDay] != null) {
                       selectedEvents[selectedDay]!.add(
@@ -163,11 +192,10 @@ class _CalendarState extends State<Calendar> {
                         Event(title: _eventController.text)
                       ];
                     }
-
                   }
                   Navigator.pop(context);
                   _eventController.clear();
-                  setState((){});
+                  setState(() {});
                   return;
                 },
               ),
@@ -180,5 +208,3 @@ class _CalendarState extends State<Calendar> {
     );
   }
 }
-
-

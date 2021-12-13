@@ -1,5 +1,5 @@
-
-import 'package:appcsmju/api/apinew.dart';
+/* 
+import 'package:appcsmju/APImodel/apinew.dart';
 import 'package:http/http.dart' as http;
 
 
@@ -19,4 +19,4 @@ class RemoteService {
       return null;
     }
   }
-}
+} */

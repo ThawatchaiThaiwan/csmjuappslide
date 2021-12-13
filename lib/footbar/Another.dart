@@ -1,4 +1,4 @@
-import 'package:appcsmju/page/Activity%20log.dart';
+import 'package:appcsmju/page/Activityanoter.dart';
 import 'package:appcsmju/page/Appeal.dart';
 import 'package:appcsmju/page/Borrow_back.dart';
 import 'package:appcsmju/page/Profile.dart';
@@ -160,7 +160,7 @@ class _AnotherState extends State<Another> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => Activity_log()));
+                            builder: (context) => ActivityAnoter()));
                   },
                   child: Container(
                     width: 70,

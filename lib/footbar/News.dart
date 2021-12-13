@@ -1,13 +1,13 @@
-import 'dart:convert';
 
-import 'package:appcsmju/api/apinew.dart';
 
-import 'package:appcsmju/controller/apinew_foot.dart';
-import 'package:appcsmju/footbar/Calendar.dart';
+import 'package:appcsmju/APImodel/apinew.dart';
+
+import 'package:appcsmju/api/apinew_foot.dart';
+
 import 'package:appcsmju/model/newsmodel/customListTile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+
 
 class News extends StatefulWidget {
   const News({Key? key}) : super(key: key);
@@ -47,12 +47,12 @@ class _NewsState extends State<News> {
       body: FutureBuilder(
         future: client.getArticle(),
         builder: (BuildContext context, AsyncSnapshot<List<Apinew>> snapshot) {
-          //let's check if we got a response or not
+          
           if (snapshot.hasData) {
-            //Now let's make a list of articles
+            
             List<Apinew>? data = snapshot.data;
             return ListView.builder(
-              //Now let's create our custom List tile
+              
               itemCount: data!.length,
               itemBuilder: (context, index) =>
                   customListTile(data[index], context),

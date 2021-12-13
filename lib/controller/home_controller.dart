@@ -1,4 +1,4 @@
-import 'package:appcsmju/api/apinew.dart';
+/* import 'package:appcsmju/APImodel/apinew.dart';
 import 'package:appcsmju/api/remote_service.dart';
 import 'package:get/get.dart';
 
@@ -33,4 +33,4 @@ class HomeController extends GetxController{
       print('data fetch done');
     }
   }
-}
+} */

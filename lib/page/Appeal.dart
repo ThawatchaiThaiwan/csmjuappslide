@@ -7,7 +7,7 @@ import 'package:get/get_navigation/src/routes/default_transitions.dart';
 import 'package:intl/intl.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
 
-import 'package:appcsmju/api/appealpost.dart';
+import 'package:appcsmju/APImodel/appealpost.dart';
 import 'package:appcsmju/footbar/Another.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
