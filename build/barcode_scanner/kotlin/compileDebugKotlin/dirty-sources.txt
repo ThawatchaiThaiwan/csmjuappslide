@@ -1,0 +1,6 @@
+C:\flutter\.pub-cache\hosted\pub.dartlang.org\barcode_scanner-3.0.1\android\src\main\kotlin\io\scanbot\barcode\sdk\flutter\ICoroutineActivityResultHandler.kt
+C:\flutter\.pub-cache\hosted\pub.dartlang.org\barcode_scanner-3.0.1\android\src\main\kotlin\io\scanbot\barcode\sdk\flutter\ISdkSubplugin.kt
+C:\flutter\.pub-cache\hosted\pub.dartlang.org\barcode_scanner-3.0.1\android\src\main\kotlin\io\scanbot\barcode\sdk\flutter\ObjectMapper.kt
+C:\flutter\.pub-cache\hosted\pub.dartlang.org\barcode_scanner-3.0.1\android\src\main\kotlin\io\scanbot\barcode\sdk\flutter\ScanbotBarcodeSdkPlugin.kt
+C:\flutter\.pub-cache\hosted\pub.dartlang.org\barcode_scanner-3.0.1\android\src\main\kotlin\io\scanbot\barcode\sdk\flutter\UiConfigMapper.kt
+C:\flutter\.pub-cache\hosted\pub.dartlang.org\barcode_scanner-3.0.1\android\src\main\kotlin\io\scanbot\barcode\sdk\flutter\utils\FileUtils.kt

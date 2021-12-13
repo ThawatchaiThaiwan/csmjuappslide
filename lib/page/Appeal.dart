@@ -1,0 +1,326 @@
+// ignore_for_file: non_constant_identifier_names
+
+import 'dart:ui';
+
+import 'package:appcsmju/post_api/AppealPost.dart';
+import 'package:get/get_navigation/src/routes/default_transitions.dart';
+import 'package:intl/intl.dart';
+import 'package:multi_image_picker/multi_image_picker.dart';
+
+import 'package:appcsmju/APImodel/appealpost.dart';
+import 'package:appcsmju/footbar/Another.dart';
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'package:rflutter_alert/rflutter_alert.dart';
+
+class Appeal extends StatefulWidget {
+  @override
+  _AppealState createState() => _AppealState();
+}
+
+Future<PostAppeal?> createUser(String Complain_Detail, String Complain_Date,
+    String Complain_Picture, String Complain_Title) async {
+  final String apiUrl = "https://wwwdev.csmju.com/api/complainadd";
+
+  final response = await http.post(Uri.parse(apiUrl), body: {
+    "Complain_Title": Complain_Title,
+    "Complain_Date": Complain_Date,
+    "Complain_Detail": Complain_Detail,
+    "Complain_Picture": Complain_Picture,
+  });
+
+  if (response.statusCode == 201) {
+    final String responseString = response.body;
+
+    return postAppealFromJson(responseString);
+  } else {
+    return null;
+  }
+}
+
+class _AppealState extends State<Appeal> {
+  // ignore: unused_field
+  PostAppeal? _user;
+  TextEditingController TitelController1 = TextEditingController();
+  TextEditingController DateController2 = TextEditingController();
+  TextEditingController DetailController3 = TextEditingController();
+  TextEditingController PictureController4 = TextEditingController();
+
+  final formkey = GlobalKey<FormState>();
+  void initState() {
+    DateController2.text = ""; //set the initial value of text field
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        backgroundColor: Colors.grey[75],
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          centerTitle: true,
+          title: Text(
+            'ติดต่อหลักสูตร',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 27.0,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          leading: Navigator.canPop(context)
+              ? IconButton(
+                  icon: Icon(
+                    Icons.keyboard_backspace,
+                    color: Colors.black,
+                  ),
+                  onPressed: () => Navigator.of(context).pop(),
+                )
+              : Another(),
+        ),
+        body: SingleChildScrollView(
+            padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
+            child: SafeArea(
+              child: Container(
+                  padding: EdgeInsets.fromLTRB(15, 10, 15, 10),
+                  width: 405,
+                  height: 700,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(5),
+                    border: Border.all(
+                      color: Color(0xffd1cccc),
+                      width: 1,
+                    ),
+                  ),
+                  child: Form(
+                    key: formkey,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        SizedBox(height: 10.0),
+                        Text(
+                          " หัวข้อเรื่อง",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        TextField(
+                          controller: TitelController1,
+                          decoration: InputDecoration(
+                              border: OutlineInputBorder(),
+                              contentPadding: const EdgeInsets.all(5),
+                              hintText: 'เพิ่มหัวเรื่อง',
+                              labelStyle: TextStyle(
+                                fontSize: 22,
+                                color: Colors.black,
+                              )
+                              /* hintText: 'กรอกชื่อเรื่อง',
+                              labelStyle: TextStyle(
+                                fontSize: 8,
+                                color: Colors.grey[400],
+                              ) */
+                              ),
+                        ),
+                        SizedBox(height: 20.0),
+                        Text(
+                          "วันที่",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        TextField(
+                          controller: DateController2,
+                          decoration: InputDecoration(
+                              border: OutlineInputBorder(),
+                              contentPadding: const EdgeInsets.all(5),
+                              hintText: 'เลือกวันที่',
+                              labelStyle: TextStyle(
+                                fontSize: 22,
+                                color: Colors.black,
+                              )),
+                          readOnly:
+                              true, //set it true, so that user will not able to edit text
+                          onTap: () async {
+                            DateTime? pickedDate = await showDatePicker(
+                                context: context,
+                                initialDate: DateTime.now(),
+                                firstDate: DateTime(
+                                    2000), //DateTime.now() - not to allow to choose before today.
+                                lastDate: DateTime(2101));
+
+                            if (pickedDate != null) {
+                              print(
+                                  pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
+                              String formattedDate =
+                                  DateFormat('dd-MM-yyyy').format(pickedDate);
+                              print(
+                                  formattedDate); //formatted date output using intl package =>  2021-03-16
+                              //you can implement different kind of Date Format here according to your requirement
+
+                              setState(() {
+                                DateController2.text =
+                                    formattedDate; //set output date to TextField value.
+                              });
+                            } else {}
+                          },
+                        ),
+                        SizedBox(height: 20.0),
+                        Text(
+                          "รายละเอียด",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        TextField(
+                          controller: DetailController3,
+                          keyboardType: TextInputType.multiline,
+                          maxLines: 5,
+                          decoration: InputDecoration(
+                              border: OutlineInputBorder(),
+                              contentPadding: const EdgeInsets.all(5),
+                              hintText: 'เพิ่มรายละเอียด',
+                              labelStyle: TextStyle(
+                                fontSize: 22,
+                                color: Colors.black,
+                              )),
+                        ),
+                        SizedBox(height: 20.0),
+                        Text(
+                          "เลือกรูปภาพ",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        TextField(
+                          controller: PictureController4,
+                          decoration: InputDecoration(
+                              border: OutlineInputBorder(),
+                              contentPadding: const EdgeInsets.all(5),
+                              hintText: 'เลือกรูปภาพ',
+                              labelStyle: TextStyle(
+                                fontSize: 22,
+                                color: Colors.grey[400],
+                              )),
+                        ),
+                        SizedBox(height: 40.0),
+                        Container(
+                          width: 360,
+                          height: 30,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            color: Colors.green[100],
+                            border: Border.all(
+                              color: Color(0xd309ef04),
+                              width: 2,
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color(0x4f000000),
+                                blurRadius: 3,
+                                offset: Offset(0, 4),
+                              ),
+                            ],
+                          ),
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                primary: Colors.green[400]),
+                            onPressed: () async {
+                              showDialog<String>(
+                                  context: context,
+                                  builder: (BuildContext context) =>
+                                      AlertDialog(
+                                        title: const Text('แจ้งเตือน'),
+                                        content:
+                                            const Text('ติดต่อหลักสูตรสำเร็จ'),
+                                        actions: <Widget>[
+                                          TextButton(
+                                            onPressed: () => Navigator.pop(
+                                              context,
+                                              'ตกลง',
+                                            ),
+                                            child: const Text(
+                                              'ตกลง',
+                                              textAlign: TextAlign.center,
+                                            ),
+                                          ),
+                                        ],
+                                      ));
+
+                              final String Complain_Title =
+                                  TitelController1.text;
+                              final String Complain_Date = DateController2.text;
+                              final String Complain_Detail =
+                                  DetailController3.text;
+                              final String Complain_Picture =
+                                  PictureController4.text;
+                              TitelController1.text = "";
+                              DateController2.text = "";
+                              DetailController3.text = "";
+                              PictureController4.text = "";
+                              final PostAppeal? user = await createUser(
+                                  Complain_Detail,
+                                  Complain_Date,
+                                  Complain_Picture,
+                                  Complain_Title);
+                            },
+                            child: Text(
+                              'ส่งคำร้อง',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 20.0),
+                        Container(
+                          width: 360,
+                          height: 30,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            color: Colors.red[10],
+                            border: Border.all(
+                              color: Color(0xd3e74949),
+                              width: 2,
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color(0x4f000000),
+                                blurRadius: 3,
+                                offset: Offset(0, 4),
+                              ),
+                            ],
+                          ),
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.red[400],
+                            ),
+                            onPressed: () {
+                              setState(() {});
+                            },
+                            child: Text(
+                              'ยกเลิก',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  )),
+            )));
+  }
+}
