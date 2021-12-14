@@ -47,6 +47,7 @@ class _CalendarState extends State<Calendar> {
           "ปฏิทินกิจกรรม",
           textAlign: TextAlign.center,
           style: TextStyle(
+            color: Colors.black,
               fontWeight: FontWeight.bold,
               fontSize: 27.0,
               fontFamily: 'Sarabun'),

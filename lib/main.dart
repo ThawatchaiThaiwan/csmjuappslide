@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Sarabun',
         
       ),
-      home:LoginPage() ,
+      home:Foot() ,
     );
   }
 }

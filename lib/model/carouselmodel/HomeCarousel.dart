@@ -7,6 +7,7 @@ import 'package:appcsmju/APImodel/carousel.dart';
 import 'package:appcsmju/api/newApi.dart';
 
 import 'package:appcsmju/APImodel/Activity.dart';
+import 'package:appcsmju/model/activitymodel/customListactivity.dart';
 import 'package:appcsmju/model/carouselmodel/Activity_card.dart';
 import 'package:appcsmju/model/newsmodel/customListTile.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -86,6 +87,7 @@ class _HomePageCarouselState extends State<HomePageCarousel> {
         ],
       ),
       body: SingleChildScrollView(
+        
         padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
         child: Column(children: <Widget>[
           SizedBox(
@@ -124,7 +126,7 @@ class _HomePageCarouselState extends State<HomePageCarousel> {
             height: 10,
           ),
           Text(
-            'กิจกรรมที่น่าสนใจ',
+            'รูปภาพกิจกรรม',
             textAlign: TextAlign.start,
             style: TextStyle(
               color: Colors.black,
@@ -136,21 +138,41 @@ class _HomePageCarouselState extends State<HomePageCarousel> {
             height: 10,
           ),
           SingleChildScrollView(
-            child: Container(
-              width: double.infinity,
-              height: MediaQuery.of(context).size.height,
-              child: _isLoading
-                  ? Center(child: CircularProgressIndicator())
-                  : ListView.builder(
-                      /* padding: const EdgeInsets.all(3.0), */
-                      itemCount: _activity.length,
-                      itemBuilder: (context, index) {
-                        return ActivityCard(
-                            thumbnailUrl: _activity[index].Activity_Picture);
-                      },
-                    ),
+           /*  height: MediaQuery.of(context).size.height, */
+            child: FutureBuilder(
+              
+              future: ActivityApiService.getsActivity(),
+              builder:
+                  (BuildContext context, AsyncSnapshot<List<Activity>> snapshot) {
+                if (snapshot.hasData) {
+                  List<Activity>? data = snapshot.data;
+                  return ListView.builder(
+                    itemCount: data!.length,
+                    itemBuilder: (context, index) =>
+                        customListactivity(data[index], context),
+                  );
+                }
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              },
             ),
-          ),
+          ) /* SingleChildScrollView(
+                child: Container(
+                
+                height: MediaQuery.of(context).size.height,
+                child: _isLoading
+                    ? Center(child: CircularProgressIndicator())
+                    : ListView.builder(
+                        /* padding: const EdgeInsets.all(3.0), */
+                        itemCount: _activity.length,
+                        itemBuilder: (context, index) {
+                          return ActivityCard(
+                              thumbnailUrl: _activity[index].Activity_Picture);
+                        },
+                      ),
+                         ),
+             ), */
         ]),
       ),
     );

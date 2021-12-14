@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\project\\code\\csmjuappslide\\build\\path_provider_android\\intermediates\\res\\merged\\debug\\values-is\\values-is.xml",
+            "outputFile": "C:\\csmjuappslide-main\\build\\path_provider_android\\intermediates\\res\\merged\\debug\\values-is\\values-is.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\sucha\\.gradle\\caches\\transforms-2\\files-2.1\\2e94107f30f39be366a17347c2bf100b\\core-1.1.0\\res\\values-is\\values-is.xml",
+                    "source": "C:\\Users\\zadke\\.gradle\\caches\\transforms-2\\files-2.1\\2e94107f30f39be366a17347c2bf100b\\core-1.1.0\\res\\values-is\\values-is.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -16,10 +16,10 @@
             ]
         },
         {
-            "outputFile": "D:\\project\\code\\csmjuappslide\\build\\path_provider_android\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-is\\values-is.xml",
+            "outputFile": "C:\\csmjuappslide-main\\build\\path_provider_android\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-is\\values-is.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\sucha\\.gradle\\caches\\transforms-2\\files-2.1\\2e94107f30f39be366a17347c2bf100b\\core-1.1.0\\res\\values-is\\values-is.xml",
+                    "source": "C:\\Users\\zadke\\.gradle\\caches\\transforms-2\\files-2.1\\2e94107f30f39be366a17347c2bf100b\\core-1.1.0\\res\\values-is\\values-is.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
