@@ -1,3 +1,4 @@
+import 'package:appcsmju/footbar/Another.dart';
 import 'package:appcsmju/footbar/Foot.dart';
 import 'package:appcsmju/model/loginmodel/login_page.dart';
 
@@ -19,8 +20,11 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.white,
         fontFamily: 'Sarabun',
         
+        
+        
       ),
-      home:Foot() ,
+      
+      home:Another() ,
     );
   }
 }

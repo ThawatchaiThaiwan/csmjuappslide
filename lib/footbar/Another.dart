@@ -1,3 +1,4 @@
+import 'package:appcsmju/model/loginmodel/login_page.dart';
 import 'package:appcsmju/page/Activityanoter.dart';
 import 'package:appcsmju/page/Appeal.dart';
 import 'package:appcsmju/page/Borrow_back.dart';
@@ -23,7 +24,8 @@ class _AnotherState extends State<Another> {
         title: Text(
           "บริการอื่นๆ",
           textAlign: TextAlign.center,
-          style: TextStyle(color: Colors.black,fontSize: 27,fontWeight: FontWeight.bold),
+          style: TextStyle(
+              color: Colors.black, fontSize: 27, fontWeight: FontWeight.bold),
         ),
         leading: IconButton(
           onPressed: () {},
@@ -65,7 +67,10 @@ class _AnotherState extends State<Another> {
                         ),
                         Text(
                           "โปรไฟล์",
-                          style: TextStyle(color: Colors.grey, fontSize: 20,fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
                         )
                       ],
                     ),
@@ -93,7 +98,10 @@ class _AnotherState extends State<Another> {
                         ),
                         Text(
                           "แจ้งตกค้าง",
-                          style: TextStyle(color: Colors.grey, fontSize: 20,fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
                         )
                       ],
                     ),
@@ -121,7 +129,10 @@ class _AnotherState extends State<Another> {
                         ),
                         Text(
                           "ติดต่อหลักสูตร",
-                          style: TextStyle(color: Colors.grey, fontSize: 20,fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
                         )
                       ],
                     ),
@@ -149,7 +160,10 @@ class _AnotherState extends State<Another> {
                         ),
                         Text(
                           "ยืม-คืน",
-                          style: TextStyle(color: Colors.grey,  fontSize: 20,fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
                         )
                       ],
                     ),
@@ -179,7 +193,10 @@ class _AnotherState extends State<Another> {
                         ),
                         Text(
                           "รูปภาพกิจกรรม",
-                          style: TextStyle(color: Colors.grey,  fontSize: 20,fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
                         )
                       ],
                     ),
@@ -187,8 +204,56 @@ class _AnotherState extends State<Another> {
                 ),
                 InkWell(
                   onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Profile()));
+                    showDialog<String>(
+                        context: context,
+                        builder: (BuildContext context) => AlertDialog(
+                              title: const Text(
+                                'แจ้งเตือน',
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'Sarabun'),
+                              ),
+                              content: const Text(
+                                'ต้องการออกจากระบบหรือไม่',
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'Sarabun'),
+                              ),
+                              actions: <Widget>[
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => LoginPage()));
+                                  },
+                                  child: const Text(
+                                    'ตกลง',
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: 'Sarabun'),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                                TextButton(
+                                  onPressed: () => Navigator.pop(
+                                    context,
+                                    'ยกเลิก',
+                                  ),
+                                  child: const Text(
+                                    'ยกเลิก',
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: 'Sarabun'),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                              ],
+                            ));
                   },
                   child: Container(
                     width: 120,
@@ -207,8 +272,10 @@ class _AnotherState extends State<Another> {
                         ),
                         Text(
                           "ออกจากระบบ",
-                          style:
-                              TextStyle(color: Colors.red[700],  fontSize: 20,fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              color: Colors.red[700],
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
                         )
                       ],
                     ),

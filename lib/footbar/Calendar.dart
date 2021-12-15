@@ -47,7 +47,7 @@ class _CalendarState extends State<Calendar> {
           "ปฏิทินกิจกรรม",
           textAlign: TextAlign.center,
           style: TextStyle(
-            color: Colors.black,
+              color: Colors.black,
               fontWeight: FontWeight.bold,
               fontSize: 27.0,
               fontFamily: 'Sarabun'),
@@ -67,6 +67,7 @@ class _CalendarState extends State<Calendar> {
       ),
       body: Column(
         children: [
+          
           TableCalendar(
             focusedDay: selectedDay,
             firstDay: DateTime(1990),
@@ -92,6 +93,7 @@ class _CalendarState extends State<Calendar> {
             selectedDayPredicate: (DateTime date) {
               return isSameDay(selectedDay, date);
             },
+            
 
             eventLoader: _getEventsfromDay,
 
@@ -170,17 +172,32 @@ class _CalendarState extends State<Calendar> {
         onPressed: () => showDialog(
           context: context,
           builder: (context) => AlertDialog(
-            title: Text("เพิ่มกิจกรรมของคุณ"),
+            title: Text("เพิ่มกิจกรรมของคุณ",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Sarabun',
+                )),
             content: TextFormField(
               controller: _eventController,
             ),
             actions: [
               TextButton(
-                child: Text("ยกเลิก"),
+                child: Text("ยกเลิก",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Sarabun',
+                    )),
                 onPressed: () => Navigator.pop(context),
               ),
               TextButton(
-                child: Text("ตกลง"),
+                child: Text("ตกลง",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Sarabun',
+                    )),
                 onPressed: () {
                   if (_eventController.text.isEmpty) {
                   } else {

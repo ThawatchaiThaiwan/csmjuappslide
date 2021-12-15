@@ -137,7 +137,7 @@ class _HomePageCarouselState extends State<HomePageCarousel> {
           SizedBox(
             height: 10,
           ),
-          SingleChildScrollView(
+          /* SingleChildScrollView(
            /*  height: MediaQuery.of(context).size.height, */
             child: FutureBuilder(
               
@@ -157,7 +157,7 @@ class _HomePageCarouselState extends State<HomePageCarousel> {
                 );
               },
             ),
-          ) /* SingleChildScrollView(
+          ) */ SingleChildScrollView(
                 child: Container(
                 
                 height: MediaQuery.of(context).size.height,
@@ -172,7 +172,7 @@ class _HomePageCarouselState extends State<HomePageCarousel> {
                         },
                       ),
                          ),
-             ), */
+             ),
         ]),
       ),
     );
