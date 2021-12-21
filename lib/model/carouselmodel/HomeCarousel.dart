@@ -1,6 +1,5 @@
 import 'package:appcsmju/APImodel/apinew.dart';
 import 'package:appcsmju/api/API_activity.dart';
-import 'package:appcsmju/api/apinew_foot.dart';
 
 import 'package:appcsmju/APImodel/carousel.dart';
 
@@ -8,7 +7,8 @@ import 'package:appcsmju/api/newApi.dart';
 
 import 'package:appcsmju/APImodel/Activity.dart';
 import 'package:appcsmju/model/activitymodel/customListactivity.dart';
-import 'package:appcsmju/model/carouselmodel/Activity_card.dart';
+import 'package:appcsmju/model/carouselmodel/Activitycustombelow.dart';
+
 import 'package:appcsmju/model/newsmodel/customListTile.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -87,7 +87,6 @@ class _HomePageCarouselState extends State<HomePageCarousel> {
         ],
       ),
       body: SingleChildScrollView(
-        
         padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
         child: Column(children: <Widget>[
           SizedBox(
@@ -126,7 +125,7 @@ class _HomePageCarouselState extends State<HomePageCarousel> {
             height: 10,
           ),
           Text(
-            'รูปภาพกิจกรรม',
+            'โครงการล่าสุด',
             textAlign: TextAlign.start,
             style: TextStyle(
               color: Colors.black,
@@ -137,19 +136,20 @@ class _HomePageCarouselState extends State<HomePageCarousel> {
           SizedBox(
             height: 10,
           ),
-          /* SingleChildScrollView(
-           /*  height: MediaQuery.of(context).size.height, */
+          SingleChildScrollView(
+            scrollDirection: Axis.vertical ,
+            child: Container(
+            height: MediaQuery.of(context).size.height,
             child: FutureBuilder(
-              
               future: ActivityApiService.getsActivity(),
-              builder:
-                  (BuildContext context, AsyncSnapshot<List<Activity>> snapshot) {
+              builder: (BuildContext context,
+                  AsyncSnapshot<List<Activity>> snapshot) {
                 if (snapshot.hasData) {
                   List<Activity>? data = snapshot.data;
                   return ListView.builder(
                     itemCount: data!.length,
                     itemBuilder: (context, index) =>
-                        customListactivity(data[index], context),
+                        customActivityBelow(data[index], context),
                   );
                 }
                 return Center(
@@ -157,22 +157,8 @@ class _HomePageCarouselState extends State<HomePageCarousel> {
                 );
               },
             ),
-          ) */ SingleChildScrollView(
-                child: Container(
-                
-                height: MediaQuery.of(context).size.height,
-                child: _isLoading
-                    ? Center(child: CircularProgressIndicator())
-                    : ListView.builder(
-                        /* padding: const EdgeInsets.all(3.0), */
-                        itemCount: _activity.length,
-                        itemBuilder: (context, index) {
-                          return ActivityCard(
-                              thumbnailUrl: _activity[index].Activity_Picture);
-                        },
-                      ),
-                         ),
-             ),
+          )
+          )
         ]),
       ),
     );

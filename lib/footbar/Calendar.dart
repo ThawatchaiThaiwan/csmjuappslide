@@ -1,7 +1,9 @@
+
+
 import 'package:appcsmju/model/calendarmodel/evencalendar.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+
 
 class Calendar extends StatefulWidget {
   const Calendar({
@@ -67,8 +69,8 @@ class _CalendarState extends State<Calendar> {
       ),
       body: Column(
         children: [
-          
           TableCalendar(
+            
             focusedDay: selectedDay,
             firstDay: DateTime(1990),
             lastDay: DateTime(2050),
@@ -79,8 +81,9 @@ class _CalendarState extends State<Calendar> {
               });
             },
             startingDayOfWeek: StartingDayOfWeek.sunday,
-
+            
             daysOfWeekVisible: true,
+            
 
             //Day Changed
             onDaySelected: (DateTime selectDay, DateTime focusDay) {
@@ -93,13 +96,20 @@ class _CalendarState extends State<Calendar> {
             selectedDayPredicate: (DateTime date) {
               return isSameDay(selectedDay, date);
             },
-            
 
             eventLoader: _getEventsfromDay,
-
+            
+              
             //To style the Calendar
             calendarStyle: CalendarStyle(
+              
+             
               isTodayHighlighted: true,
+              outsideTextStyle:TextStyle(
+                color: Colors.black,
+                fontSize: 27,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Sarabun', ),
               selectedDecoration: BoxDecoration(
                 color: Colors.orangeAccent,
                 shape: BoxShape.rectangle,
@@ -144,9 +154,16 @@ class _CalendarState extends State<Calendar> {
               ),
             ),
             headerStyle: HeaderStyle(
+              
+              titleTextStyle: TextStyle(fontSize: 27,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Sarabun'),
+              
               formatButtonVisible: true,
               titleCentered: true,
               formatButtonShowsNext: false,
+              
+              
               formatButtonDecoration: BoxDecoration(
                 color: Colors.orangeAccent,
                 borderRadius: BorderRadius.circular(5.0),
@@ -180,6 +197,7 @@ class _CalendarState extends State<Calendar> {
                 )),
             content: TextFormField(
               controller: _eventController,
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
             ),
             actions: [
               TextButton(
@@ -200,6 +218,12 @@ class _CalendarState extends State<Calendar> {
                     )),
                 onPressed: () {
                   if (_eventController.text.isEmpty) {
+                    style:
+                    TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Sarabun',
+                    );
                   } else {
                     if (selectedEvents[selectedDay] != null) {
                       selectedEvents[selectedDay]!.add(

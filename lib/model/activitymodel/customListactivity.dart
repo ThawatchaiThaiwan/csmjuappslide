@@ -67,7 +67,7 @@ Widget customListactivity(Activity activity, BuildContext context) {
               borderRadius: BorderRadius.circular(0.0),
             ),
             child: Text(
-              activity.Activitypic_Detail,
+              activity.Activity_Date,
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 20.0,

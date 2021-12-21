@@ -84,7 +84,7 @@ class ActivityPage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20.0),
               ),
               child: Text(
-                activity.Activity_Date,
+                activity.Activitypic_Detail,
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 25.0,

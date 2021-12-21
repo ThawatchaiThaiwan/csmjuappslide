@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/* import 'package:flutter/material.dart';
 
 class ActivityCard extends StatelessWidget {
   final String thumbnailUrl;
@@ -38,3 +38,4 @@ class ActivityCard extends StatelessWidget {
     );
   }
 }
+ */

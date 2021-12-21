@@ -107,7 +107,7 @@ class _LoginPageState extends State<LoginPage> {
                               color: Theme.of(context).accentColor,
                               fontSize: 22,
                               fontWeight: FontWeight.bold),
-                          keyboardType: TextInputType.text,
+                          keyboardType: TextInputType.emailAddress,
                           onSaved: (input) =>
                               loginRequestModel.password = input!,
                           /* validator: (input) =>

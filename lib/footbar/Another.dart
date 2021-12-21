@@ -187,12 +187,12 @@ class _AnotherState extends State<Another> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(
-                          Icons.image,
+                          Icons.ballot,
                           size: 50,
                           color: Colors.grey,
                         ),
                         Text(
-                          "รูปภาพกิจกรรม",
+                          "โครงการทั้งหมด",
                           style: TextStyle(
                               color: Colors.grey,
                               fontSize: 20,
@@ -266,7 +266,7 @@ class _AnotherState extends State<Another> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(
-                          Icons.account_circle,
+                          Icons.logout,
                           size: 50,
                           color: Colors.red[700],
                         ),

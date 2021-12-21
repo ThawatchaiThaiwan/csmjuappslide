@@ -1,7 +1,18 @@
-2021/12/14-11:28:26.795 4d4 Reusing MANIFEST C:\Users\zadke\AppData\Local\Temp\flutter_tools.df613e04\flutter_tools_chrome_device.55539be2\Default\Local Storage\leveldb/MANIFEST-000001
-2021/12/14-11:28:26.796 4d4 Recovering log #7
-2021/12/14-11:28:26.797 4d4 Reusing old log C:\Users\zadke\AppData\Local\Temp\flutter_tools.df613e04\flutter_tools_chrome_device.55539be2\Default\Local Storage\leveldb/000007.log 
-2021/12/14-11:28:26.798 4d4 Delete type=0 #3
-2021/12/14-11:28:26.798 4d4 Delete type=0 #4
-2021/12/14-11:28:26.798 4d4 Delete type=2 #5
-2021/12/14-11:28:26.798 4d4 Delete type=2 #8
+2021/12/20-16:22:21.679 1c8c Reusing MANIFEST C:\Users\zadke\AppData\Local\Temp\flutter_tools.e3498ad3\flutter_tools_chrome_device.9a0bde13\Default\Local Storage\leveldb/MANIFEST-000001
+2021/12/20-16:22:21.680 1c8c Recovering log #9
+2021/12/20-16:22:21.681 1c8c Level-0 table #12: started
+2021/12/20-16:22:21.762 1c8c Level-0 table #12: 13106 bytes OK
+2021/12/20-16:22:21.924 1c8c Delete type=0 #3
+2021/12/20-16:22:21.924 1c8c Delete type=0 #4
+2021/12/20-16:22:21.924 1c8c Delete type=2 #5
+2021/12/20-16:22:21.924 1c8c Delete type=0 #7
+2021/12/20-16:22:21.924 1c8c Delete type=2 #8
+2021/12/20-16:22:21.924 1c8c Delete type=0 #9
+2021/12/20-16:22:21.929 28d8 Compacting 4@0 + 0@1 files
+2021/12/20-16:22:22.031 28d8 Generated table #14@0: 8 keys, 5003 bytes
+2021/12/20-16:22:22.033 28d8 Compacted 4@0 + 0@1 files => 5003 bytes
+2021/12/20-16:22:22.353 28d8 compacted to: files[ 0 1 0 0 0 0 0 ]
+2021/12/20-16:22:22.355 28d8 Delete type=2 #3
+2021/12/20-16:22:22.355 28d8 Delete type=2 #4
+2021/12/20-16:22:22.355 28d8 Delete type=2 #10
+2021/12/20-16:22:22.355 28d8 Delete type=2 #12

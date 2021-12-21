@@ -1,4 +1,5 @@
 import 'package:appcsmju/footbar/Another.dart';
+import 'package:appcsmju/footbar/Calendar.dart';
 import 'package:appcsmju/footbar/Foot.dart';
 import 'package:appcsmju/model/loginmodel/login_page.dart';
 
@@ -24,7 +25,8 @@ class MyApp extends StatelessWidget {
         
       ),
       
-      home:Another() ,
+      
+      home:Foot() ,
     );
   }
 }
