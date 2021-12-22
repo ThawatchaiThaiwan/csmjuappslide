@@ -18,7 +18,7 @@ class ActivityPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         title: Text(
-          ' รายละเอียดกิจกรรม',
+          ' รายละเอียดโครงการ',
           textAlign: TextAlign.center,
           style: TextStyle(
               fontWeight: FontWeight.bold,

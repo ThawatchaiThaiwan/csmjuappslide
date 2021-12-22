@@ -113,6 +113,7 @@ class _AppealState extends State<Appeal> {
                               border: OutlineInputBorder(),
                               contentPadding: const EdgeInsets.all(5),
                               hintText: 'เพิ่มหัวเรื่อง',
+                              hintStyle: TextStyle(fontSize: 20),
                               labelStyle: TextStyle(
                                 fontSize: 22,
                                 color: Colors.black,
@@ -139,6 +140,7 @@ class _AppealState extends State<Appeal> {
                               border: OutlineInputBorder(),
                               contentPadding: const EdgeInsets.all(5),
                               hintText: 'เลือกวันที่',
+                              hintStyle: TextStyle(fontSize: 20),
                               labelStyle: TextStyle(
                                 fontSize: 22,
                                 color: Colors.black,
@@ -186,6 +188,7 @@ class _AppealState extends State<Appeal> {
                               border: OutlineInputBorder(),
                               contentPadding: const EdgeInsets.all(5),
                               hintText: 'เพิ่มรายละเอียด',
+                              hintStyle: TextStyle(fontSize: 20),
                               labelStyle: TextStyle(
                                 fontSize: 22,
                                 color: Colors.black,
@@ -206,6 +209,7 @@ class _AppealState extends State<Appeal> {
                               border: OutlineInputBorder(),
                               contentPadding: const EdgeInsets.all(5),
                               hintText: 'เลือกรูปภาพ',
+                              hintStyle: TextStyle(fontSize: 20),
                               labelStyle: TextStyle(
                                 fontSize: 22,
                                 color: Colors.grey[400],
@@ -236,6 +240,7 @@ class _AppealState extends State<Appeal> {
                             onPressed: () async {
                               showDialog<String>(
                                   context: context,
+                                  
                                   builder: (BuildContext context) =>
                                       AlertDialog(
                                         title: const Text('แจ้งเตือน'),

@@ -1,9 +1,8 @@
-
+import 'dart:ui';
 
 import 'package:appcsmju/model/calendarmodel/evencalendar.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:flutter/material.dart';
-
 
 class Calendar extends StatefulWidget {
   const Calendar({
@@ -51,7 +50,7 @@ class _CalendarState extends State<Calendar> {
           style: TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.bold,
-              fontSize: 27.0,
+              fontSize: 20.0,
               fontFamily: 'Sarabun'),
         ),
         leading: IconButton(
@@ -70,7 +69,6 @@ class _CalendarState extends State<Calendar> {
       body: Column(
         children: [
           TableCalendar(
-            
             focusedDay: selectedDay,
             firstDay: DateTime(1990),
             lastDay: DateTime(2050),
@@ -80,10 +78,16 @@ class _CalendarState extends State<Calendar> {
                 format = _format;
               });
             },
-            startingDayOfWeek: StartingDayOfWeek.sunday,
-            
+            startingDayOfWeek: StartingDayOfWeek.monday,
+
             daysOfWeekVisible: true,
-            
+            daysOfWeekStyle: DaysOfWeekStyle(
+                weekdayStyle:
+                    TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                weekendStyle: TextStyle(
+                    color: Colors.redAccent,
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold)),
 
             //Day Changed
             onDaySelected: (DateTime selectDay, DateTime focusDay) {
@@ -98,18 +102,22 @@ class _CalendarState extends State<Calendar> {
             },
 
             eventLoader: _getEventsfromDay,
-            
-              
+
             //To style the Calendar
             calendarStyle: CalendarStyle(
-              
-             
-              isTodayHighlighted: true,
-              outsideTextStyle:TextStyle(
+              /* rangeStartTextStyle: TextStyle(
                 color: Colors.black,
-                fontSize: 27,
+                fontSize: 20,
                 fontWeight: FontWeight.bold,
-                fontFamily: 'Sarabun', ),
+                fontFamily: 'Sarabun',
+              ), */
+              isTodayHighlighted: true,
+              outsideTextStyle: TextStyle(
+                color: Colors.grey,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Sarabun',
+              ),
               selectedDecoration: BoxDecoration(
                 color: Colors.orangeAccent,
                 shape: BoxShape.rectangle,
@@ -117,7 +125,7 @@ class _CalendarState extends State<Calendar> {
               ),
               selectedTextStyle: TextStyle(
                 color: Colors.black,
-                fontSize: 27,
+                fontSize: 20,
                 fontWeight: FontWeight.bold,
                 fontFamily: 'Sarabun',
               ),
@@ -128,7 +136,7 @@ class _CalendarState extends State<Calendar> {
               ),
               todayTextStyle: TextStyle(
                 color: Colors.black,
-                fontSize: 27,
+                fontSize: 20,
                 fontWeight: FontWeight.bold,
                 fontFamily: 'Sarabun',
               ),
@@ -138,7 +146,7 @@ class _CalendarState extends State<Calendar> {
               ),
               defaultTextStyle: TextStyle(
                 color: Colors.black,
-                fontSize: 27,
+                fontSize: 20,
                 fontWeight: FontWeight.bold,
                 fontFamily: 'Sarabun',
               ),
@@ -147,30 +155,27 @@ class _CalendarState extends State<Calendar> {
                 borderRadius: BorderRadius.circular(5.0),
               ),
               weekendTextStyle: TextStyle(
-                color: Colors.black,
-                fontSize: 27,
+                color: Colors.redAccent,
+                fontSize: 20,
                 fontWeight: FontWeight.bold,
                 fontFamily: 'Sarabun',
               ),
             ),
             headerStyle: HeaderStyle(
-              
-              titleTextStyle: TextStyle(fontSize: 27,
-                fontWeight: FontWeight.bold,
-                fontFamily: 'Sarabun'),
-              
+              titleTextStyle: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Sarabun'),
               formatButtonVisible: true,
               titleCentered: true,
               formatButtonShowsNext: false,
-              
-              
               formatButtonDecoration: BoxDecoration(
                 color: Colors.orangeAccent,
                 borderRadius: BorderRadius.circular(5.0),
               ),
               formatButtonTextStyle: TextStyle(
                 color: Colors.white,
-                fontSize: 27,
+                fontSize: 20,
                 fontWeight: FontWeight.bold,
                 fontFamily: 'Sarabun',
               ),

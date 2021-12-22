@@ -22,7 +22,7 @@ class _ActivityAnoterState extends State<ActivityAnoter> {
         backgroundColor: Colors.white,
         centerTitle: true,
         title: Text(
-          "รูปภาพกิจกรรม",
+          "โครงการทั้งหมด",
           textAlign: TextAlign.center,
           style: TextStyle(color: Colors.black,
           fontSize: 27,

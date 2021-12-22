@@ -6,10 +6,10 @@ import 'package:appcsmju/APImodel/carousel.dart';
 import 'package:appcsmju/api/newApi.dart';
 
 import 'package:appcsmju/APImodel/Activity.dart';
-import 'package:appcsmju/model/activitymodel/customListactivity.dart';
+
 import 'package:appcsmju/model/carouselmodel/Activitycustombelow.dart';
 
-import 'package:appcsmju/model/newsmodel/customListTile.dart';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
@@ -99,6 +99,9 @@ class _HomePageCarouselState extends State<HomePageCarousel> {
                 fontSize: 28,
               ),
             ),
+          ),
+          SizedBox(
+            height: 10,
           ),
           Container(
             /* padding: const EdgeInsets.fromLTRB(7, 10, 7, 10), */
