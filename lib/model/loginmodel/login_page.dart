@@ -1,9 +1,13 @@
+import 'dart:convert';
+
 import 'package:appcsmju/ProgressHUD.dart';
+import 'package:appcsmju/api/apinew_foot.dart';
 import 'package:appcsmju/footbar/Foot.dart';
 import 'package:appcsmju/api/APIlogin.dart';
 import 'package:appcsmju/APImodel/login_model.dart';
 
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -18,6 +22,11 @@ class _LoginPageState extends State<LoginPage> {
   late LoginRequestModel loginRequestModel;
   final scaffoldKey = GlobalKey<ScaffoldState>();
   GlobalKey<FormState> globalFormKey = new GlobalKey<FormState>();
+  bool _isLoading = false;
+
+  /* TextEditingController usernameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  late ScaffoldState scaffoldState; */
 
   @override
   void initState() {
@@ -68,6 +77,7 @@ class _LoginPageState extends State<LoginPage> {
                                 const Radius.circular(25.0)),
                             color: Color.fromARGB(255, 240, 240, 240)),
                         child: new TextFormField(
+                          /* controller: usernameController, */
                           style: TextStyle(
                               color: Theme.of(context).accentColor,
                               fontSize: 22,
@@ -89,7 +99,7 @@ class _LoginPageState extends State<LoginPage> {
                                 borderSide: BorderSide(
                                     color: Theme.of(context).accentColor)),
                             prefixIcon: Icon(
-                              Icons.email,
+                              Icons.person,
                               color: Theme.of(context).accentColor,
                             ),
                           ),
@@ -103,6 +113,7 @@ class _LoginPageState extends State<LoginPage> {
                                 const Radius.circular(25.0)),
                             color: Color.fromARGB(255, 240, 240, 240)),
                         child: new TextFormField(
+                          /* controller: passwordController, */
                           style: TextStyle(
                               color: Theme.of(context).accentColor,
                               fontSize: 22,
@@ -218,14 +229,28 @@ class _LoginPageState extends State<LoginPage> {
     return false;
   }
 
-  routh() {}
+  /* void _login() async {
+    setState(() {
+      _isLoading = true;
+    });
+
+    var data = {
+      'username': usernameController.text,
+      'password': passwordController.text
+    };
+
+    var res = await ApiService().postData(data, 'login');
+    var body = json.decode(res.body);
+    if (body['success']) {
+      SharedPreferences localStorage = await SharedPreferences.getInstance();
+      localStorage.setString('token', body['token']);
+      localStorage.setString('user', json.encode(body['user']));
+      Navigator.push(
+          context, new MaterialPageRoute(builder: (context) => Foot()));
+    } else {}
+
+    setState(() {
+      _isLoading = false;
+    });
+  } */
 }
-/* if (response.statusCode == 200) {     
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (BuildContext context) => Foot(),
-            ));
-      } else {
-        errorSnackBar(context, 'sorry to have issue');
-      } */

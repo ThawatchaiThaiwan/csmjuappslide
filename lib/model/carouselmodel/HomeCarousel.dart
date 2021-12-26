@@ -9,7 +9,6 @@ import 'package:appcsmju/APImodel/Activity.dart';
 
 import 'package:appcsmju/model/carouselmodel/Activitycustombelow.dart';
 
-
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
@@ -140,28 +139,30 @@ class _HomePageCarouselState extends State<HomePageCarousel> {
             height: 10,
           ),
           SingleChildScrollView(
-            scrollDirection: Axis.vertical ,
-            child: Container(
-            height: MediaQuery.of(context).size.height,
-            child: FutureBuilder(
-              future: ActivityApiService.getsActivity(),
-              builder: (BuildContext context,
-                  AsyncSnapshot<List<Activity>> snapshot) {
-                if (snapshot.hasData) {
-                  List<Activity>? data = snapshot.data;
-                  return ListView.builder(
-                    itemCount: data!.length,
-                    itemBuilder: (context, index) =>
-                        customActivityBelow(data[index], context),
-                  );
-                }
-                return Center(
-                  child: CircularProgressIndicator(),
-                );
-              },
-            ),
-          )
-          )
+              physics: ScrollPhysics(),
+              child: Container(
+                height: MediaQuery.of(context).size.height,
+                child: FutureBuilder(
+                  future: ActivityApiService.getsActivity(),
+                  builder: (BuildContext context,
+                      AsyncSnapshot<List<Activity>> snapshot) {
+                    if (snapshot.hasData) {
+                      List<Activity>? data = snapshot.data;
+                      return ListView.builder(
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: data!.length,
+                        itemBuilder: (context, index) =>
+                            customActivityBelow(data[index], context),
+                      );
+                    }
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  },
+                ),
+              ))
         ]),
       ),
     );

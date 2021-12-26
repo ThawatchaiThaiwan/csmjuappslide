@@ -18,9 +18,13 @@ class _RepairState extends State<Repair> {
         backgroundColor: Colors.white,
         centerTitle: true,
         title: Text(
-          'แจ้งซ่อม',
+          'แจ้งตกค้าง',
           textAlign: TextAlign.center,
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+              fontSize: 25.0,
+              fontFamily: 'Sarabun'),
         ),
         leading: Navigator.canPop(context)
             ? IconButton(
@@ -32,13 +36,13 @@ class _RepairState extends State<Repair> {
               )
             : Another(),
       ),
-      body: Padding(
+      body: SingleChildScrollView(
           padding: const EdgeInsets.fromLTRB(10, 40, 10, 40),
           child: SafeArea(
             child: Container(
                 padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
                 width: 405,
-                height: 740,
+                height: 800,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(5),
@@ -103,7 +107,7 @@ class _RepairState extends State<Repair> {
                     SizedBox(height: 20.0),
                     TextField(
                       decoration: InputDecoration(
-                          labelText: 'รายวิชาที่ต้องการจะแจ้งตกค้าง',
+                          labelText: 'รายวิชาที่ต้องการแจ้งตกค้าง',
                           labelStyle: TextStyle(
                             color: Colors.grey[400],
                           )),
@@ -118,6 +122,14 @@ class _RepairState extends State<Repair> {
                     ),
                     SizedBox(height: 20.0),
                     TextField(
+                      decoration: InputDecoration(
+                          labelText: 'รายวิชานอกสาขาที่ต้องการแจ้ง',
+                          labelStyle: TextStyle(
+                            color: Colors.grey[400],
+                          )),
+                    ),
+                    SizedBox(height: 20.0),
+                    TextField(
                       maxLines: 6,
                       textAlign: TextAlign.start,
                       decoration: InputDecoration(
@@ -126,14 +138,16 @@ class _RepairState extends State<Repair> {
                             color: Colors.grey[400],
                           )),
                     ),
-                    SizedBox(height: 20.0),
+                     SizedBox(height: 40.0),
+                    
                     Container(
-                      width: 315,
+                      width: 360,
                       height: 30,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
+                        color: Colors.green[10],
                         border: Border.all(
-                          color: Color(0xd309ef04),
+                          color: Colors.green,
                           width: 2,
                         ),
                         boxShadow: [
@@ -143,24 +157,32 @@ class _RepairState extends State<Repair> {
                             offset: Offset(0, 4),
                           ),
                         ],
-                        gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [Color(0xff08ef03), Color(0xd34ce749)],
+                      ),
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.green[400],
+                        ),
+                        onPressed: () {
+                          setState(() {});
+                        },
+                        child: Text(
+                          'ยืนยันการส่งคำร้อง',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
-                      child: RaisedButton(
-                          child: Text('ส่งคำร้อง'),
-                          onPressed: () {
-                            setState(() {});
-                          }),
                     ),
                     SizedBox(height: 20.0),
+                    
                     Container(
-                      width: 315,
+                      width: 360,
                       height: 30,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
+                        color: Colors.red[10],
                         border: Border.all(
                           color: Color(0xd3e74949),
                           width: 2,
@@ -172,17 +194,23 @@ class _RepairState extends State<Repair> {
                             offset: Offset(0, 4),
                           ),
                         ],
-                        gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [Color(0xffe90b0b), Color(0xd3e74949)],
+                      ),
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.red[400],
+                        ),
+                        onPressed: () {
+                          setState(() {});
+                        },
+                        child: Text(
+                          'ยกเลิก',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
-                      child: RaisedButton(
-                          child: Text('ยกเลิก'),
-                          onPressed: () {
-                            setState(() {});
-                          }),
                     ),
                   ],
                 )),

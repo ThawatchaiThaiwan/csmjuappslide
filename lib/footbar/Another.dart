@@ -66,7 +66,7 @@ class _AnotherState extends State<Another> {
                           color: Colors.grey,
                         ),
                         Text(
-                          "โปรไฟล์",
+                          "ข้อมูลส่วนตัว",
                           style: TextStyle(
                               color: Colors.grey,
                               fontSize: 20,

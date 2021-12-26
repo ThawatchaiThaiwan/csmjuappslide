@@ -27,4 +27,8 @@ class ApiService {
       return data; */
     
   }
+
+  getData(String s) {}
+
+  postData(Map<String, String> data, String s) {}
 }

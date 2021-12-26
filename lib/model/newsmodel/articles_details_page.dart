@@ -1,5 +1,7 @@
 //Now let's create the article details page
 
+import 'dart:convert';
+
 import 'package:appcsmju/APImodel/apinew.dart';
 import 'package:appcsmju/footbar/News.dart';
 
@@ -21,7 +23,7 @@ class ArticlePage extends StatelessWidget {
           textAlign: TextAlign.center,
           style: TextStyle(
               fontWeight: FontWeight.bold,
-              fontSize: 27.0,
+              fontSize: 25.0,
               fontFamily: 'Sarabun'),
         ),
         titleTextStyle: TextStyle(color: Colors.black),
@@ -35,7 +37,7 @@ class ArticlePage extends StatelessWidget {
               )
             : News(),
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(10.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -63,7 +65,9 @@ class ArticlePage extends StatelessWidget {
               ),
               child: Text(
                 article.newsTitle,
+                textAlign: TextAlign.start,
                 style: TextStyle(
+                  letterSpacing: 1,
                   color: Colors.black,
                   fontSize: 25.0,
                   fontWeight: FontWeight.bold,
@@ -84,9 +88,11 @@ class ArticlePage extends StatelessWidget {
               ),
               child: Text(
                 article.newsDetail,
+                textAlign: TextAlign.justify,
                 style: TextStyle(
+                  letterSpacing: 0.98,
                   color: Colors.black,
-                  fontSize: 25.0,
+                  fontSize: 21.5,
                   //fontWeight: FontWeight.bold,
                   fontFamily: 'Sarabun',
                 ),

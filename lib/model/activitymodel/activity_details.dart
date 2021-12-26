@@ -1,6 +1,8 @@
 //Now let's create the article details page
 
 import 'package:appcsmju/APImodel/Activity.dart';
+import 'package:appcsmju/footbar/Another.dart';
+import 'package:appcsmju/footbar/Foot.dart';
 
 import 'package:appcsmju/footbar/News.dart';
 
@@ -22,7 +24,7 @@ class ActivityPage extends StatelessWidget {
           textAlign: TextAlign.center,
           style: TextStyle(
               fontWeight: FontWeight.bold,
-              fontSize: 27.0,
+              fontSize: 25.0,
               fontFamily: 'Sarabun'),
         ),
         titleTextStyle: TextStyle(color: Colors.black),
@@ -34,9 +36,9 @@ class ActivityPage extends StatelessWidget {
                 ),
                 onPressed: () => Navigator.of(context).pop(),
               )
-            : News(),
+            : Another(),
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(10.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -64,7 +66,9 @@ class ActivityPage extends StatelessWidget {
               ),
               child: Text(
                 activity.Activitypic_Title,
+                textAlign: TextAlign.start,
                 style: TextStyle(
+                  letterSpacing: 1.2,
                   color: Colors.black,
                   fontSize: 25.0,
                   fontWeight: FontWeight.bold,
@@ -85,9 +89,11 @@ class ActivityPage extends StatelessWidget {
               ),
               child: Text(
                 activity.Activitypic_Detail,
+                textAlign: TextAlign.justify,
                 style: TextStyle(
+                  letterSpacing: 0.98,
                   color: Colors.black,
-                  fontSize: 25.0,
+                  fontSize: 21.5,
                   //fontWeight: FontWeight.bold,
                   fontFamily: 'Sarabun',
                 ),

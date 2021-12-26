@@ -23,7 +23,7 @@ class Activitybelow extends StatelessWidget {
           textAlign: TextAlign.center,
           style: TextStyle(
               fontWeight: FontWeight.bold,
-              fontSize: 27.0,
+              fontSize: 25.0,
               fontFamily: 'Sarabun'),
         ),
         titleTextStyle: TextStyle(color: Colors.black),
@@ -65,7 +65,9 @@ class Activitybelow extends StatelessWidget {
               ),
               child: Text(
                 article.Activitypic_Title,
+                textAlign: TextAlign.start,
                 style: TextStyle(
+                  letterSpacing: 1.2,
                   color: Colors.black,
                   fontSize: 25.0,
                   fontWeight: FontWeight.bold,
@@ -86,9 +88,11 @@ class Activitybelow extends StatelessWidget {
               ),
               child: Text(
                 article.Activitypic_Detail,
+                textAlign: TextAlign.justify,
                 style: TextStyle(
+                  letterSpacing: 0.98,
                   color: Colors.black,
-                  fontSize: 25.0,
+                  fontSize: 21.5,
                   //fontWeight: FontWeight.bold,
                   fontFamily: 'Sarabun',
                 ),

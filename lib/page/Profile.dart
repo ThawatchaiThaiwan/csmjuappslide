@@ -1,5 +1,12 @@
+import 'dart:convert';
+
+import 'package:appcsmju/api/APIlogin.dart';
+import 'package:appcsmju/api/apinew_foot.dart';
 import 'package:appcsmju/footbar/Another.dart';
+import 'package:appcsmju/footbar/Foot.dart';
+import 'package:appcsmju/model/loginmodel/login_page.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Profile extends StatefulWidget {
   @override
@@ -7,28 +14,377 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+  var userData;
+  @override
+  void initState() {
+    _getUserInfo();
+    super.initState();
+  }
+
+  void _getUserInfo() async {
+    SharedPreferences localStorage = await SharedPreferences.getInstance();
+    var userJson = localStorage.getString('user');
+    var user = json.decode(userJson!);
+    setState(() {
+      userData = user;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.grey[75],
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          centerTitle: true,
-          title: Text(
-            'โปรไฟล์',
-            textAlign: TextAlign.center,
-            style: TextStyle(color: Colors.black),
-          ),
-          leading: Navigator.canPop(context)
-              ? IconButton(
-                  icon: Icon(
-                    Icons.keyboard_backspace,
-                    color: Colors.black,
-                    
+      backgroundColor: Colors.grey[75],
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        centerTitle: true,
+        title: Text(
+          'ข้อมูลส่วนตัว',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+              fontSize: 25.0,
+              fontFamily: 'Sarabun'),
+        ),
+        leading: Navigator.canPop(context)
+            ? IconButton(
+                icon: Icon(
+                  Icons.keyboard_backspace,
+                  color: Colors.black,
+                ),
+                onPressed: () => Navigator.of(context).pop(),
+              )
+            : Another(),
+      ),
+      body: Container(
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                ////////////// 1st card///////////
+                Card(
+                  elevation: 4.0,
+                  color: Colors.white,
+                  margin: EdgeInsets.only(left: 10, right: 10),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15)),
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                        left: 10, right: 10, top: 40, bottom: 40),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        ////////////  first name ////////////
+                        Card(
+                          elevation: 4.0,
+                          color: Colors.white,
+                          margin: EdgeInsets.only(
+                              left: 10, right: 10, top: 10, bottom: 10),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Container(
+                            padding:
+                                EdgeInsets.only(left: 15, top: 10, bottom: 10),
+                            width: MediaQuery.of(context).size.width,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Row(
+                                  children: <Widget>[
+                                    Padding(
+                                      padding: const EdgeInsets.only(right: 10),
+                                      child: Icon(
+                                        Icons.account_circle,
+                                        color: Colors.blue,
+                                      ),
+                                    ),
+                                    Text(
+                                      'ชื่อ',
+                                      textAlign: TextAlign.left,
+                                      style: TextStyle(
+                                        color: Colors.blue,
+                                        fontSize: 17.0,
+                                        decoration: TextDecoration.none,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 35),
+                                  child: Text(
+                                    userData != null
+                                        ? '${userData['firstName']}'
+                                        : '',
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(
+                                      color: Colors.blue,
+                                      fontSize: 15.0,
+                                      decoration: TextDecoration.none,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+
+                        ////////////// last name //////////////
+                        Card(
+                          elevation: 4.0,
+                          color: Colors.white,
+                          margin: EdgeInsets.only(
+                              left: 10, right: 10, top: 10, bottom: 10),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Container(
+                            padding:
+                                EdgeInsets.only(left: 15, top: 10, bottom: 10),
+                            width: MediaQuery.of(context).size.width,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Row(
+                                  children: <Widget>[
+                                    Padding(
+                                      padding: const EdgeInsets.only(right: 10),
+                                      child: Icon(
+                                        Icons.account_circle,
+                                        color: Colors.blue,
+                                      ),
+                                    ),
+                                    Text(
+                                      'นามสกุล',
+                                      textAlign: TextAlign.left,
+                                      style: TextStyle(
+                                        color: Colors.blue,
+                                        fontSize: 17.0,
+                                        decoration: TextDecoration.none,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 35),
+                                  child: Text(
+                                    userData != null
+                                        ? '${userData['lastName']}'
+                                        : '',
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(
+                                      color: Colors.blue,
+                                      fontSize: 15.0,
+                                      decoration: TextDecoration.none,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        ////////////  Email/////////
+                        Card(
+                          elevation: 4.0,
+                          color: Colors.white,
+                          margin: EdgeInsets.only(
+                              left: 10, right: 10, top: 10, bottom: 10),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Container(
+                            padding:
+                                EdgeInsets.only(left: 15, top: 10, bottom: 10),
+                            width: MediaQuery.of(context).size.width,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Row(
+                                  children: <Widget>[
+                                    Padding(
+                                      padding: const EdgeInsets.only(right: 10),
+                                      child: Icon(
+                                        Icons.mail,
+                                        color: Colors.blue,
+                                      ),
+                                    ),
+                                    Text(
+                                      'อีเมล',
+                                      textAlign: TextAlign.left,
+                                      style: TextStyle(
+                                        color: Colors.blue,
+                                        fontSize: 17.0,
+                                        decoration: TextDecoration.none,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 35),
+                                  child: Text(
+                                    userData != null
+                                        ? '${userData['email']}'
+                                        : '',
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(
+                                      color: Colors.blue,
+                                      fontSize: 15.0,
+                                      decoration: TextDecoration.none,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        ////////////////////// phone ///////////
+                        Card(
+                          elevation: 4.0,
+                          color: Colors.white,
+                          margin: EdgeInsets.only(
+                              left: 10, right: 10, top: 10, bottom: 10),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Container(
+                            padding:
+                                EdgeInsets.only(left: 15, top: 10, bottom: 10),
+                            width: MediaQuery.of(context).size.width,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Row(
+                                  children: <Widget>[
+                                    Padding(
+                                      padding: const EdgeInsets.only(right: 10),
+                                      child: Icon(
+                                        Icons.phone,
+                                        color: Colors.blue,
+                                      ),
+                                    ),
+                                    Text(
+                                      'เบอร์โทรศัพท์',
+                                      textAlign: TextAlign.left,
+                                      style: TextStyle(
+                                        color: Colors.blue,
+                                        fontSize: 17.0,
+                                        decoration: TextDecoration.none,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 35),
+                                  child: Text(
+                                    userData != null
+                                        ? '${userData['phone']}'
+                                        : '',
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(
+                                      color: Colors.blue,
+                                      fontSize: 15.0,
+                                      decoration: TextDecoration.none,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+
+                        ////////////end  part////////////
+                      ],
+                    ),
                   ),
-                  onPressed: () => Navigator.of(context).pop(),
+                ),
+
+                /////////////// Button////////////
+                Padding(
+                  padding: const EdgeInsets.only(top: 20, left: 10, right: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      /////////// Edit Button /////////////
+                      Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: FlatButton(
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                                top: 8, bottom: 8, left: 10, right: 10),
+                            child: Text(
+                              'แก้ไข',
+                              textDirection: TextDirection.ltr,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 15.0,
+                                decoration: TextDecoration.none,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          color: Colors.blue,
+                          shape: new RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(20.0)),
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                new MaterialPageRoute(
+                                    builder: (context) => Foot()));
+                          },
+                        ),
+                      ),
+
+                      ////////////// logout//////////
+                      Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: FlatButton(
+                            child: Padding(
+                              padding: EdgeInsets.only(
+                                  top: 8, bottom: 8, left: 10, right: 10),
+                              child: Text(
+                                'ยกเลิก',
+                                textDirection: TextDirection.ltr,
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 15.0,
+                                  decoration: TextDecoration.none,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            color: Colors.blue,
+                            shape: new RoundedRectangleBorder(
+                                borderRadius: new BorderRadius.circular(20.0)),
+                            onPressed: logout),
+                      ),
+                    ],
+                  ),
                 )
-              : Another(),
-        ));
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  void logout() async {
+    // logout from the server ...
+    var res = await ApiService().getData('logout');
+    var body = json.decode(res.body);
+    if (body['success']) {
+      SharedPreferences localStorage = await SharedPreferences.getInstance();
+      localStorage.remove('user');
+      localStorage.remove('token');
+      Navigator.push(
+          context, new MaterialPageRoute(builder: (context) => LoginPage()));
+    }
   }
 }
