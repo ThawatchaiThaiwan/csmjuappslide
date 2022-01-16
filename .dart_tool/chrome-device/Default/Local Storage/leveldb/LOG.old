@@ -1,12 +1,12 @@
-2021/12/24-14:08:24.016 290c Reusing MANIFEST C:\Users\zadke\AppData\Local\Temp\flutter_tools.98fdc106\flutter_tools_chrome_device.75e7d732\Default\Local Storage\leveldb/MANIFEST-000001
-2021/12/24-14:08:24.018 290c Recovering log #13
-2021/12/24-14:08:24.018 290c Reusing old log C:\Users\zadke\AppData\Local\Temp\flutter_tools.98fdc106\flutter_tools_chrome_device.75e7d732\Default\Local Storage\leveldb/000013.log 
-2021/12/24-14:08:24.019 290c Delete type=2 #3
-2021/12/24-14:08:24.019 290c Delete type=0 #3
-2021/12/24-14:08:24.019 290c Delete type=2 #4
-2021/12/24-14:08:24.020 290c Delete type=0 #4
-2021/12/24-14:08:24.020 290c Delete type=2 #5
-2021/12/24-14:08:24.020 290c Delete type=0 #7
-2021/12/24-14:08:24.020 290c Delete type=2 #8
-2021/12/24-14:08:24.020 290c Delete type=0 #9
-2021/12/24-14:08:24.030 290c Delete type=2 #10
+2022/01/10-13:21:41.640 1df0 Reusing MANIFEST C:\Users\zadke\AppData\Local\Temp\flutter_tools.f36b665\flutter_tools_chrome_device.b505b932\Default\Local Storage\leveldb/MANIFEST-000001
+2022/01/10-13:21:41.643 1df0 Recovering log #13
+2022/01/10-13:21:41.644 1df0 Reusing old log C:\Users\zadke\AppData\Local\Temp\flutter_tools.f36b665\flutter_tools_chrome_device.b505b932\Default\Local Storage\leveldb/000013.log 
+2022/01/10-13:21:41.646 1df0 Delete type=2 #3
+2022/01/10-13:21:41.646 1df0 Delete type=0 #3
+2022/01/10-13:21:41.646 1df0 Delete type=2 #4
+2022/01/10-13:21:41.646 1df0 Delete type=0 #4
+2022/01/10-13:21:41.646 1df0 Delete type=2 #5
+2022/01/10-13:21:41.646 1df0 Delete type=0 #7
+2022/01/10-13:21:41.646 1df0 Delete type=2 #8
+2022/01/10-13:21:41.646 1df0 Delete type=0 #9
+2022/01/10-13:21:41.684 1df0 Delete type=2 #10

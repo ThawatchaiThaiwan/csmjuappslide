@@ -18,7 +18,7 @@ class APIService {
     }
   }
 
-  postData(data, apiUrl) async {
+  /* postData(data, apiUrl) async {
     var fullUrl = url + apiUrl + await _getToken();
     return await http.post(fullUrl,
         body: jsonEncode(data), headers: _setHeaders());
@@ -39,6 +39,6 @@ class APIService {
     var token = localStorage.getString('token');
     return '?token=$token';
   }
-
+ */
   /* getData(String s) {} */
 }

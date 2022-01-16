@@ -1,17 +1,13 @@
 // ignore_for_file: non_constant_identifier_names
 
-import 'dart:ui';
+import 'dart:io';
 
 import 'package:appcsmju/post_api/AppealPost.dart';
-import 'package:get/get_navigation/src/routes/default_transitions.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
-import 'package:multi_image_picker/multi_image_picker.dart';
-
-import 'package:appcsmju/APImodel/appealpost.dart';
 import 'package:appcsmju/footbar/Another.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Action;
 import 'package:http/http.dart' as http;
-import 'package:rflutter_alert/rflutter_alert.dart';
 
 class Appeal extends StatefulWidget {
   @override
@@ -51,6 +47,10 @@ class _AppealState extends State<Appeal> {
     DateController2.text = ""; //set the initial value of text field
     super.initState();
   }
+
+  /////////////////////////////////////////////////////////image picker
+  final ImagePicker _picker = ImagePicker();
+  XFile? image;
 
   @override
   Widget build(BuildContext context) {
@@ -134,39 +134,36 @@ class _AppealState extends State<Appeal> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
+                        /*  Container(
+                          
+                          child: Text(DateTime.now().toString()),
+                          decoration: BoxDecoration(),
+                        ), */
                         TextField(
                           controller: DateController2,
                           decoration: InputDecoration(
                               border: OutlineInputBorder(),
                               contentPadding: const EdgeInsets.all(5),
-                              hintText: 'เลือกวันที่',
+                              hintText: DateTime.now().toString(),
                               hintStyle: TextStyle(fontSize: 20),
                               labelStyle: TextStyle(
                                 fontSize: 22,
                                 color: Colors.black,
                               )),
-                          readOnly:
-                              true, //set it true, so that user will not able to edit text
+                          readOnly: true,
                           onTap: () async {
                             DateTime? pickedDate = await showDatePicker(
                                 context: context,
                                 initialDate: DateTime.now(),
-                                firstDate: DateTime(
-                                    2000), //DateTime.now() - not to allow to choose before today.
+                                firstDate: DateTime(2000),
                                 lastDate: DateTime(2101));
-
                             if (pickedDate != null) {
-                              print(
-                                  pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
+                              print(pickedDate);
                               String formattedDate =
                                   DateFormat('dd-MM-yyyy').format(pickedDate);
-                              print(
-                                  formattedDate); //formatted date output using intl package =>  2021-03-16
-                              //you can implement different kind of Date Format here according to your requirement
-
+                              print(formattedDate);
                               setState(() {
-                                DateController2.text =
-                                    formattedDate; //set output date to TextField value.
+                                DateController2.text = formattedDate;
                               });
                             } else {}
                           },
@@ -204,6 +201,19 @@ class _AppealState extends State<Appeal> {
                           ),
                         ),
                         TextField(
+                          onTap: () {
+                            filePicker();
+                            image == null
+                                ? Text(
+                                    "ไม่มีรูปที่เลือก",
+                                    style: TextStyle(fontSize: 20),
+                                  )
+                                : Image.file(
+                                    File(image!.path),
+                                    width: 100,
+                                    fit: BoxFit.cover,
+                                  );
+                          },
                           controller: PictureController4,
                           decoration: InputDecoration(
                               border: OutlineInputBorder(),
@@ -217,7 +227,7 @@ class _AppealState extends State<Appeal> {
                         ),
                         SizedBox(height: 40.0),
                         Container(
-                          width: 360,
+                          width: 375,
                           height: 30,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
@@ -240,7 +250,6 @@ class _AppealState extends State<Appeal> {
                             onPressed: () async {
                               showDialog<String>(
                                   context: context,
-                                  
                                   builder: (BuildContext context) =>
                                       AlertDialog(
                                         title: const Text('แจ้งเตือน'),
@@ -262,7 +271,8 @@ class _AppealState extends State<Appeal> {
 
                               final String Complain_Title =
                                   TitelController1.text;
-                              final String Complain_Date = DateController2.text;
+                              final String Complain_Date = 
+                                  DateController2.text;
                               final String Complain_Detail =
                                   DetailController3.text;
                               final String Complain_Picture =
@@ -275,7 +285,8 @@ class _AppealState extends State<Appeal> {
                                   Complain_Detail,
                                   Complain_Date,
                                   Complain_Picture,
-                                  Complain_Title);
+                                  Complain_Title
+                                  );
                             },
                             child: Text(
                               'ส่งคำร้อง',
@@ -289,7 +300,7 @@ class _AppealState extends State<Appeal> {
                         ),
                         SizedBox(height: 20.0),
                         Container(
-                          width: 360,
+                          width: 375,
                           height: 30,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
@@ -311,7 +322,14 @@ class _AppealState extends State<Appeal> {
                               primary: Colors.red[400],
                             ),
                             onPressed: () {
-                              setState(() {});
+                              setState(() {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          Another(),
+                                    ));
+                              });
                             },
                             child: Text(
                               'ยกเลิก',
@@ -327,5 +345,15 @@ class _AppealState extends State<Appeal> {
                     ),
                   )),
             )));
+  }
+
+  Future<void> filePicker() async {
+    final XFile? selectImage =
+          await _picker.pickImage(source: ImageSource.gallery);
+          String? fileName = selectImage?.path.split('/').last;
+    /* print(selectImage!.path); */
+    setState(() {
+      image = selectImage;
+    });
   }
 }

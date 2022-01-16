@@ -2,10 +2,11 @@ import 'package:appcsmju/footbar/Another.dart';
 import 'package:appcsmju/footbar/Calendar.dart';
 import 'package:appcsmju/footbar/Foot.dart';
 import 'package:appcsmju/model/loginmodel/login_page.dart';
+import 'package:appcsmju/page/Appeal.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: debugPrintBeginFrameBanner,
       title: 'CSMJU APP',
       theme: ThemeData(
-        primaryColor: Colors.white,
+        primaryColor: Colors.blueGrey,
         fontFamily: 'Sarabun',
         
         
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
       ),
       
       
-      home:LoginPage() ,
+      home:Foot() ,
     );
   }
 }

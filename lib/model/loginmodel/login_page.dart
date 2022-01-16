@@ -1,10 +1,10 @@
 import 'dart:convert';
 
 import 'package:appcsmju/ProgressHUD.dart';
-import 'package:appcsmju/api/apinew_foot.dart';
 import 'package:appcsmju/footbar/Foot.dart';
 import 'package:appcsmju/api/APIlogin.dart';
 import 'package:appcsmju/APImodel/login_model.dart';
+import 'package:appcsmju/model/loginmodel/test_login.dart';
 
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -24,9 +24,22 @@ class _LoginPageState extends State<LoginPage> {
   GlobalKey<FormState> globalFormKey = new GlobalKey<FormState>();
   bool _isLoading = false;
 
-  /* TextEditingController usernameController = TextEditingController();
+  TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  late ScaffoldState scaffoldState; */
+  late ScaffoldState scaffoldState;
+  _showMsg(msg) {
+    //
+    final snackBar = SnackBar(
+      content: Text(msg),
+      action: SnackBarAction(
+        label: 'Close',
+        onPressed: () {
+          // Some code to undo the change!
+        },
+      ),
+    );
+    Scaffold.of(context).showSnackBar(snackBar);
+  }
 
   @override
   void initState() {
@@ -54,7 +67,10 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget _uiSteup(BuildContext context) {
     // ignore: unused_local_variable
-
+    var data = {
+      'username': usernameController.text,
+      'password': passwordController.text
+    };
     return Scaffold(
       resizeToAvoidBottomInset: true,
       key: scaffoldKey,
@@ -77,7 +93,7 @@ class _LoginPageState extends State<LoginPage> {
                                 const Radius.circular(25.0)),
                             color: Color.fromARGB(255, 240, 240, 240)),
                         child: new TextFormField(
-                          /* controller: usernameController, */
+                          controller: usernameController,
                           style: TextStyle(
                               color: Theme.of(context).accentColor,
                               fontSize: 22,
@@ -113,7 +129,7 @@ class _LoginPageState extends State<LoginPage> {
                                 const Radius.circular(25.0)),
                             color: Color.fromARGB(255, 240, 240, 240)),
                         child: new TextFormField(
-                          /* controller: passwordController, */
+                          controller: passwordController,
                           style: TextStyle(
                               color: Theme.of(context).accentColor,
                               fontSize: 22,
@@ -172,13 +188,24 @@ class _LoginPageState extends State<LoginPage> {
                             });
 
                             APIService apiService = new APIService();
-                            apiService.login(loginRequestModel).then((value) {
+                            apiService
+                                .login(loginRequestModel)
+                                .then((value) async {
                               if (value != null) {
                                 setState(() {
                                   isApiCallProcess = false;
                                 });
 
                                 if (value.token.isNotEmpty) {
+                                  var res = await CallApi().postData(data, '');
+                                  var body = json.decode(res.body);
+                                  SharedPreferences localStorage =
+                                      await SharedPreferences.getInstance();
+                                  localStorage.setString(
+                                      'access_token', body['access_token']);
+                                  localStorage.setString(
+                                      'User', json.encode(body['user']));
+
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
@@ -186,8 +213,9 @@ class _LoginPageState extends State<LoginPage> {
                                             Foot(),
                                       ));
                                 } else {
-                                  final snackBar =
-                                      SnackBar(content: Text('ไปพบ Username หรือ Password นี้!'));
+                                  final snackBar = SnackBar(
+                                      content: Text(
+                                          'ไปพบ Username หรือ Password นี้!'));
                                   scaffoldKey.currentState!
                                       .showSnackBar(snackBar);
                                 }
@@ -229,6 +257,41 @@ class _LoginPageState extends State<LoginPage> {
     return false;
   }
 
+  /* void _login() async {
+    setState(() {
+      _isLoading = true;
+    });
+
+    var data = {
+      'username': usernameController.text,
+      'password': passwordController.text
+    };
+
+    var res = await CallApi().postData(data, '');
+    var body = json.decode(res.body);
+    if (body['success']) {
+      SharedPreferences localStorage = await SharedPreferences.getInstance();
+      localStorage.setString('access_token', body['access_token']);
+      localStorage.setString('User', json.encode(body['user']));
+
+      /* localStorage.setString('uname', body['name']);
+      localStorage.setString('usurname', body['surname']);
+      localStorage.setString('uemail', body['email']); */
+      /* localStorage.setString('mobile', json.encode(body['mobile'])); */
+
+      /* Navigator.push(
+        context,
+        new MaterialPageRoute(
+            builder: (context) => Foot())); */
+
+    } else {
+      _showMsg(body['message']);
+    }
+
+    setState(() {
+      _isLoading = false;
+    });
+  } */
   /* void _login() async {
     setState(() {
       _isLoading = true;
