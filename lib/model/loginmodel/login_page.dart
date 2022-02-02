@@ -4,7 +4,7 @@ import 'package:appcsmju/ProgressHUD.dart';
 import 'package:appcsmju/footbar/Foot.dart';
 import 'package:appcsmju/api/APIlogin.dart';
 import 'package:appcsmju/APImodel/login_model.dart';
-import 'package:appcsmju/model/loginmodel/test_login.dart';
+
 
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -27,20 +27,6 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   late ScaffoldState scaffoldState;
-  _showMsg(msg) {
-    //
-    final snackBar = SnackBar(
-      content: Text(msg),
-      action: SnackBarAction(
-        label: 'Close',
-        onPressed: () {
-          // Some code to undo the change!
-        },
-      ),
-    );
-    Scaffold.of(context).showSnackBar(snackBar);
-  }
-
   @override
   void initState() {
     super.initState();
@@ -85,6 +71,7 @@ class _LoginPageState extends State<LoginPage> {
                   key: globalFormKey,
                   child: Column(
                     children: <Widget>[
+                      ////////////////////////////////////////////////////////>>>>> USERNAME
                       new Container(
                         margin: new EdgeInsets.only(
                             left: 20.0, right: 20.0, bottom: 10.0, top: 500.0),
@@ -121,6 +108,7 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                       ),
+                      //////////////////////////////////////////////////////////////////////////>>>>>>.PASSWORD
                       new Container(
                         margin: new EdgeInsets.only(
                             left: 20.0, right: 20.0, bottom: 10.0, top: 10.0),
@@ -170,11 +158,12 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                       ),
+                      ///////////////////////////////////////////////////>>>>>>ปุ่ม login
                       SizedBox(
                         height: 20,
                       ),
 
-                      // ignore: deprecated_member_use
+                      
                       FlatButton(
                         padding: EdgeInsets.symmetric(
                           vertical: 10,
@@ -197,14 +186,18 @@ class _LoginPageState extends State<LoginPage> {
                                 });
 
                                 if (value.token.isNotEmpty) {
-                                  var res = await CallApi().postData(data, '');
+                                  var res = await APIService().postData(data, '');
                                   var body = json.decode(res.body);
                                   SharedPreferences localStorage =
                                       await SharedPreferences.getInstance();
-                                  localStorage.setString(
-                                      'access_token', body['access_token']);
-                                  localStorage.setString(
-                                      'User', json.encode(body['user']));
+                                  /* localStorage.setString(
+                                      'access_token', body['access_token']); */
+                                /*   localStorage.setString(
+                                      'User', json.encode(body['user'])); */
+                                  localStorage.setString('name', body['name']);
+                                  localStorage.setString('surname', body['surname']);
+                                  localStorage.setString('email', body['email']);
+                                  localStorage.setString('mobile', body['mobile']);
 
                                   Navigator.push(
                                       context,

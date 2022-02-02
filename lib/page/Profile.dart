@@ -15,6 +15,10 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
   var userData;
+  var name;
+  var surname;
+  var mobile;
+  var email;
   @override
   void initState() {
     _getUserInfo();
@@ -23,10 +27,14 @@ class _ProfileState extends State<Profile> {
 
   void _getUserInfo() async {
     SharedPreferences localStorage = await SharedPreferences.getInstance();
-    var userJson = localStorage.getString('user');
-    var user = json.decode(userJson!);
+    /* var userJson = localStorage.getString('user');
+    var user = json.decode(userJson!); */
     setState(() {
-      userData = user;
+      name = localStorage.getString('name');
+      surname = localStorage.getString('surname');
+      email = localStorage.getString('email');
+      mobile = localStorage.getString('mobile');
+      //userData = user;
     });
   }
 
@@ -116,9 +124,7 @@ class _ProfileState extends State<Profile> {
                                 Padding(
                                   padding: const EdgeInsets.only(left: 35),
                                   child: Text(
-                                    userData != null
-                                        ? '${userData['firstName']}'
-                                        : '',
+                                    '$name',
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
                                       color: Colors.blue,
@@ -172,9 +178,7 @@ class _ProfileState extends State<Profile> {
                                 Padding(
                                   padding: const EdgeInsets.only(left: 35),
                                   child: Text(
-                                    userData != null
-                                        ? '${userData['lastName']}'
-                                        : '',
+                                         '$surname',
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
                                       color: Colors.blue,
@@ -227,9 +231,7 @@ class _ProfileState extends State<Profile> {
                                 Padding(
                                   padding: const EdgeInsets.only(left: 35),
                                   child: Text(
-                                    userData != null
-                                        ? '${userData['email']}'
-                                        : '',
+                                    '$email',
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
                                       color: Colors.blue,
@@ -282,9 +284,7 @@ class _ProfileState extends State<Profile> {
                                 Padding(
                                   padding: const EdgeInsets.only(left: 35),
                                   child: Text(
-                                    userData != null
-                                        ? '${userData['phone']}'
-                                        : '',
+                                    '$mobile',
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
                                       color: Colors.blue,
@@ -342,27 +342,30 @@ class _ProfileState extends State<Profile> {
                       ),
 
                       ////////////// logout//////////
+                       ////////////// logout//////////
+
                       Padding(
                         padding: const EdgeInsets.all(10.0),
                         child: FlatButton(
-                            child: Padding(
-                              padding: EdgeInsets.only(
-                                  top: 8, bottom: 8, left: 10, right: 10),
-                              child: Text(
-                                'ยกเลิก',
-                                textDirection: TextDirection.ltr,
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 15.0,
-                                  decoration: TextDecoration.none,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                                top: 8, bottom: 8, left: 10, right: 10),
+                            child: Text(
+                              'Logout',
+                              textDirection: TextDirection.ltr,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 15.0,
+                                decoration: TextDecoration.none,
+                                fontWeight: FontWeight.normal,
                               ),
                             ),
-                            color: Colors.blue,
-                            shape: new RoundedRectangleBorder(
-                                borderRadius: new BorderRadius.circular(20.0)),
-                            onPressed: logout),
+                          ),
+                          color: Color(0xFFFF835F),
+                          shape: new RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(20.0)),
+                          onPressed: logout
+                        ),
                       ),
                     ],
                   ),
@@ -378,13 +381,20 @@ class _ProfileState extends State<Profile> {
   void logout() async {
     // logout from the server ...
     var res = await ApiService().getData('logout');
-    var body = json.decode(res.body);
-    if (body['success']) {
+    var name;
+    var surname;
+    var mobile;
+    var email;
+    //var body = json.decode(res.body);
+    //if (body['success']) {
       SharedPreferences localStorage = await SharedPreferences.getInstance();
-      localStorage.remove('user');
-      localStorage.remove('token');
+      localStorage.remove('access_token');
+      localStorage.remove('name');
+      localStorage.remove('surname');
+      localStorage.remove('mobile');
+      localStorage.remove('email');
       Navigator.push(
           context, new MaterialPageRoute(builder: (context) => LoginPage()));
-    }
+   // }
   }
 }

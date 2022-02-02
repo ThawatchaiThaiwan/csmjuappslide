@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:appcsmju/APImodel/carousel.dart';
 
@@ -12,6 +13,7 @@ class APi{
 
   APi._internal();
   static APi get instance => _singleton;
+  var authToken = '1257|7D3I1qDi4m28ZWRMJTvSmVJ3kOYwSsBvyzJdQm16';
   String baseUrl="https://wwwdev.csmju.com/api/newsapp";
   //fbclid=IwAR1Jo1tkaAx7Jlk06VPdQQjLFg2pCWy-dXNkiM6DrSj2MViAwS_hiI4k-0U
 
@@ -19,7 +21,11 @@ List<Apinews> li=[];
   Future<dynamic> GetNews(BuildContext context) async {
     String authKey = 'News_Detail=app';
     var url = Uri.parse(baseUrl);
-    http.Response response = await http.get(url, headers: {"authKey": authKey});
+    http.Response response = await http.get(url, headers: {
+      
+      HttpHeaders.authorizationHeader: 'Bearer $authToken',
+    
+      "authKey": authKey});
 
     //print(data[0]);
     li.clear();
@@ -27,7 +33,7 @@ List<Apinews> li=[];
 //print(data);
 
     var data=json.decode(response.body);
-    var new1=data;
+
 
     data.forEach((value) {
       Apinews order = new Apinews.fromJson(value);

@@ -43,6 +43,7 @@ class ArticlePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            /////////////////////////////////////////////////////////////>>>>รูปภาพ
             Container(
               height: 245.0,
               width: double.infinity,
@@ -57,6 +58,7 @@ class ArticlePage extends StatelessWidget {
             SizedBox(
               height: 8.0,
             ),
+            //////////////////////////////////////////////////////////>>>>>>.หัวข้อ(title)
             Container(
               padding: EdgeInsets.all(6.0),
               decoration: BoxDecoration(
@@ -80,6 +82,7 @@ class ArticlePage extends StatelessWidget {
               indent: 20,
               endIndent: 20,
             ),
+            //////////////////////////////////////////////////////////>>>>>>>รายละเอียด
             Container(
               padding: EdgeInsets.all(6.0),
               decoration: BoxDecoration(

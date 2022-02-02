@@ -1,10 +1,7 @@
 //Now let's create the article details page
 
 import 'package:appcsmju/APImodel/Activity.dart';
-
-import 'package:appcsmju/footbar/News.dart';
-import 'package:appcsmju/model/carouselmodel/HomeCarousel.dart';
-
+import 'package:appcsmju/footbar/Home.dart';
 import 'package:flutter/material.dart';
 
 class Activitybelow extends StatelessWidget {
@@ -43,6 +40,7 @@ class Activitybelow extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            //////////////////////////////////////////////////////////>>>>>>>รูปภาพ
             Container(
               height: 245.0,
               width: double.infinity,
@@ -57,6 +55,7 @@ class Activitybelow extends StatelessWidget {
             SizedBox(
               height: 8.0,
             ),
+            /////////////////////////////////////////////////////////////>>>>>หัวข้อ
             Container(
               padding: EdgeInsets.all(6.0),
               decoration: BoxDecoration(
@@ -80,6 +79,7 @@ class Activitybelow extends StatelessWidget {
               indent: 20,
               endIndent: 20,
             ),
+            //////////////////////////////////////////////////////////>>>>>>.รายละเอียดโครงการ
             Container(
               padding: EdgeInsets.all(6.0),
               decoration: BoxDecoration(
@@ -101,6 +101,7 @@ class Activitybelow extends StatelessWidget {
             SizedBox(
               height: 8.0,
             ),
+            ///////////////////////////////////////////////////////>>>>>>วันที่
             Container(
               padding: EdgeInsets.all(6.0),
               decoration: BoxDecoration(

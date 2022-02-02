@@ -2,10 +2,6 @@
 
 import 'package:appcsmju/APImodel/Activity.dart';
 import 'package:appcsmju/footbar/Another.dart';
-import 'package:appcsmju/footbar/Foot.dart';
-
-import 'package:appcsmju/footbar/News.dart';
-
 import 'package:flutter/material.dart';
 
 class ActivityPage extends StatelessWidget {
@@ -44,6 +40,7 @@ class ActivityPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            ///////////////////////////////////////////////////////////>>>>>>>รูปภาพ
             Container(
               height: 245.0,
               width: double.infinity,
@@ -58,6 +55,7 @@ class ActivityPage extends StatelessWidget {
             SizedBox(
               height: 8.0,
             ),
+            ///////////////////////////////////////////////////////////>>>>>>หัวข้อ
             Container(
               padding: EdgeInsets.all(6.0),
               decoration: BoxDecoration(
@@ -81,6 +79,7 @@ class ActivityPage extends StatelessWidget {
               indent: 20,
               endIndent: 20,
             ),
+            ////////////////////////////////////////////////////////////>>>>>>รายละเอียด
             Container(
               padding: EdgeInsets.all(6.0),
               decoration: BoxDecoration(

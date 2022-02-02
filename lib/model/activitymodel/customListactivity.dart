@@ -1,8 +1,5 @@
 import 'package:appcsmju/APImodel/Activity.dart';
-import 'package:appcsmju/APImodel/apinew.dart';
 import 'package:appcsmju/model/activitymodel/activity_details.dart';
-
-
 import 'package:flutter/material.dart';
 
 Widget customListactivity(Activity activity, BuildContext context) {
@@ -31,19 +28,22 @@ Widget customListactivity(Activity activity, BuildContext context) {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          ////////////////////////////////////////////////////////////>>>>>>.รูปภาพ
           Container(
             height: 220.0,
             width: double.infinity,
             decoration: BoxDecoration(
               //let's add the height
               image: DecorationImage(
-                  image: NetworkImage(activity.Activity_Picture), fit: BoxFit.cover),
+                  image: NetworkImage(activity.Activity_Picture),
+                  fit: BoxFit.cover),
               borderRadius: BorderRadius.circular(5.0),
             ),
           ),
           SizedBox(
             height: 10.0,
           ),
+          ////////////////////////////////////////////////////////////>>>>>>.หัวข้อ
           Container(
             padding: EdgeInsets.all(6.0),
             decoration: BoxDecoration(
@@ -60,6 +60,7 @@ Widget customListactivity(Activity activity, BuildContext context) {
               ),
             ),
           ),
+          ////////////////////////////////////////////////////////////>>>>>>>>.วันที่
           Container(
             padding: EdgeInsets.all(6.0),
             decoration: BoxDecoration(

@@ -29,6 +29,7 @@ Widget customListTile(Apinew article, BuildContext context) {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          ////////////////////////////////////////////////////////>>>>>>>รูปภาพ
           Container(
             height: 220.0,
             width: double.infinity,
@@ -42,6 +43,7 @@ Widget customListTile(Apinew article, BuildContext context) {
           SizedBox(
             height: 10.0,
           ),
+          ////////////////////////////////////////////////////////////////>>>>.หัวข้อ(title)
           Container(
             padding: EdgeInsets.all(6.0),
             decoration: BoxDecoration(
@@ -58,6 +60,7 @@ Widget customListTile(Apinew article, BuildContext context) {
               ),
             ),
           ),
+          ////////////////////////////////////////////////////////////>>>>>>.วันที่
           Container(
             padding: EdgeInsets.all(6.0),
             decoration: BoxDecoration(

@@ -1,11 +1,6 @@
-
-
 import 'package:appcsmju/APImodel/apinew.dart';
-
 import 'package:appcsmju/api/apinew_foot.dart';
-
 import 'package:appcsmju/model/newsmodel/customListTile.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 
@@ -45,9 +40,9 @@ class _NewsState extends State<News> {
         ],
       ),
       body: FutureBuilder(
+        ///////////////////////////////////////////////////////////>>>>>>>>>>แสดงหน้าข่าว
         future: client.getArticle(),
         builder: (BuildContext context, AsyncSnapshot<List<Apinew>> snapshot) {
-          
           if (snapshot.hasData) {
             
             List<Apinew>? data = snapshot.data;

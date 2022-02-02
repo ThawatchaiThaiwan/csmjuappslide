@@ -8,26 +8,6 @@
         "source": "C:\\csmjuappslide-main\\android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
     },
     {
-        "merged": "C:\\csmjuappslide-main\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_logo_csmju.png.flat",
-        "source": "C:\\csmjuappslide-main\\android\\app\\src\\main\\res\\mipmap-xxxhdpi\\logo_csmju.png"
-    },
-    {
-        "merged": "C:\\csmjuappslide-main\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_logo_csmju.png.flat",
-        "source": "C:\\csmjuappslide-main\\android\\app\\src\\main\\res\\mipmap-xxhdpi\\logo_csmju.png"
-    },
-    {
-        "merged": "C:\\csmjuappslide-main\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-hdpi_logo_csmju.png.flat",
-        "source": "C:\\csmjuappslide-main\\android\\app\\src\\main\\res\\mipmap-hdpi\\logo_csmju.png"
-    },
-    {
-        "merged": "C:\\csmjuappslide-main\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_logo_csmju.png.flat",
-        "source": "C:\\csmjuappslide-main\\android\\app\\src\\main\\res\\mipmap-xhdpi\\logo_csmju.png"
-    },
-    {
-        "merged": "C:\\csmjuappslide-main\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-mdpi_logo_csmju.png.flat",
-        "source": "C:\\csmjuappslide-main\\android\\app\\src\\main\\res\\mipmap-mdpi\\logo_csmju.png"
-    },
-    {
         "merged": "C:\\csmjuappslide-main\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
         "source": "C:\\csmjuappslide-main\\android\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
     },

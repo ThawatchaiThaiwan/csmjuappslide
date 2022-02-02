@@ -1,46 +1,36 @@
-// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: non_constant_identifier_names, unnecessary_null_comparison
 
+import 'dart:async';
 import 'dart:io';
-
 import 'package:appcsmju/post_api/AppealPost.dart';
+
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:appcsmju/footbar/Another.dart';
 import 'package:flutter/material.dart' hide Action;
-import 'package:http/http.dart' as http;
+
 
 class Appeal extends StatefulWidget {
   @override
   _AppealState createState() => _AppealState();
 }
 
-Future<PostAppeal?> createUser(String Complain_Detail, String Complain_Date,
-    String Complain_Picture, String Complain_Title) async {
-  final String apiUrl = "https://wwwdev.csmju.com/api/complainadd";
+AppealService service = AppealService();
+File? _image;
+bool _validate = false;
+bool _validate2 = false;
+bool _validate3 = false;
 
-  final response = await http.post(Uri.parse(apiUrl), body: {
-    "Complain_Title": Complain_Title,
-    "Complain_Date": Complain_Date,
-    "Complain_Detail": Complain_Detail,
-    "Complain_Picture": Complain_Picture,
-  });
-
-  if (response.statusCode == 201) {
-    final String responseString = response.body;
-
-    return postAppealFromJson(responseString);
-  } else {
-    return null;
-  }
-}
-
+////////////////////////////////////////////////////////////////////////////////////////
 class _AppealState extends State<Appeal> {
+  /*  File file = new File(''); */
+
+  ////////////////////////////////////////////////////////////////////////////////////////
   // ignore: unused_field
-  PostAppeal? _user;
+  //PostAppeal? _user;
   TextEditingController TitelController1 = TextEditingController();
   TextEditingController DateController2 = TextEditingController();
   TextEditingController DetailController3 = TextEditingController();
-  TextEditingController PictureController4 = TextEditingController();
 
   final formkey = GlobalKey<FormState>();
   void initState() {
@@ -50,7 +40,18 @@ class _AppealState extends State<Appeal> {
 
   /////////////////////////////////////////////////////////image picker
   final ImagePicker _picker = ImagePicker();
-  XFile? image;
+
+  Future getImage() async {
+    final pickFile = await _picker.getImage(source: ImageSource.gallery);
+
+    setState(() {
+      if (pickFile != null) {
+        _image = File(pickFile.path);
+      } else {
+        print('No image selected.');
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +85,7 @@ class _AppealState extends State<Appeal> {
               child: Container(
                   padding: EdgeInsets.fromLTRB(15, 10, 15, 10),
                   width: 405,
-                  height: 700,
+                  height: 800,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(5),
@@ -98,6 +99,7 @@ class _AppealState extends State<Appeal> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
+                        /////////////////////////////////////////////////////>>>>หัวเรื่อง
                         SizedBox(height: 10.0),
                         Text(
                           " หัวข้อเรื่อง",
@@ -110,21 +112,19 @@ class _AppealState extends State<Appeal> {
                         TextField(
                           controller: TitelController1,
                           decoration: InputDecoration(
-                              border: OutlineInputBorder(),
-                              contentPadding: const EdgeInsets.all(5),
-                              hintText: 'เพิ่มหัวเรื่อง',
-                              hintStyle: TextStyle(fontSize: 20),
-                              labelStyle: TextStyle(
-                                fontSize: 22,
-                                color: Colors.black,
-                              )
-                              /* hintText: 'กรอกชื่อเรื่อง',
-                              labelStyle: TextStyle(
-                                fontSize: 8,
-                                color: Colors.grey[400],
-                              ) */
-                              ),
+                            errorText:
+                                _validate ? 'กรุณากรอกข้อมูลให้ครบ' : null,
+                            border: OutlineInputBorder(),
+                            contentPadding: const EdgeInsets.all(5),
+                            hintText: 'เพิ่มหัวเรื่อง',
+                            hintStyle: TextStyle(fontSize: 20),
+                            labelStyle: TextStyle(
+                              fontSize: 22,
+                              color: Colors.black,
+                            ),
+                          ),
                         ),
+                        ///////////////////////////////////////////////////////////>>>>>>.วันที่
                         SizedBox(height: 20.0),
                         Text(
                           "วันที่",
@@ -134,14 +134,11 @@ class _AppealState extends State<Appeal> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        /*  Container(
-                          
-                          child: Text(DateTime.now().toString()),
-                          decoration: BoxDecoration(),
-                        ), */
                         TextField(
                           controller: DateController2,
                           decoration: InputDecoration(
+                              errorText:
+                                  _validate2 ? 'กรุณากรอกข้อมูลให้ครบ' : null,
                               border: OutlineInputBorder(),
                               contentPadding: const EdgeInsets.all(5),
                               hintText: DateTime.now().toString(),
@@ -168,6 +165,7 @@ class _AppealState extends State<Appeal> {
                             } else {}
                           },
                         ),
+                        /////////////////////////////////////////////////////////////////>>>>.รายละเอียด
                         SizedBox(height: 20.0),
                         Text(
                           "รายละเอียด",
@@ -182,6 +180,8 @@ class _AppealState extends State<Appeal> {
                           keyboardType: TextInputType.multiline,
                           maxLines: 5,
                           decoration: InputDecoration(
+                              errorText:
+                                  _validate3 ? 'กรุณากรอกข้อมูลให้ครบ' : null,
                               border: OutlineInputBorder(),
                               contentPadding: const EdgeInsets.all(5),
                               hintText: 'เพิ่มรายละเอียด',
@@ -191,6 +191,7 @@ class _AppealState extends State<Appeal> {
                                 color: Colors.black,
                               )),
                         ),
+                        //////////////////////////////////////////////////////////>>>>>>.รูปภาพ
                         SizedBox(height: 20.0),
                         Text(
                           "เลือกรูปภาพ",
@@ -200,93 +201,126 @@ class _AppealState extends State<Appeal> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        TextField(
-                          onTap: () {
-                            filePicker();
-                            image == null
-                                ? Text(
-                                    "ไม่มีรูปที่เลือก",
-                                    style: TextStyle(fontSize: 20),
-                                  )
-                                : Image.file(
-                                    File(image!.path),
-                                    width: 100,
-                                    fit: BoxFit.cover,
-                                  );
-                          },
-                          controller: PictureController4,
-                          decoration: InputDecoration(
-                              border: OutlineInputBorder(),
-                              contentPadding: const EdgeInsets.all(5),
-                              hintText: 'เลือกรูปภาพ',
-                              hintStyle: TextStyle(fontSize: 20),
-                              labelStyle: TextStyle(
-                                fontSize: 22,
-                                color: Colors.grey[400],
-                              )),
+                        ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.white12,
+                            ),
+                            onPressed: () {
+                              getImage();
+                            },
+                            child: Text(
+                              "อัพโหลดรูปภาพ",
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 17,
+                                  fontFamily: 'Sarabun',
+                                  fontWeight: FontWeight.bold),
+                            )),
+                        SizedBox(height: 10.0),
+                        ///////////////////////////////////////////////////////>>>>>โชว์รูปภาพ
+                        Container(
+                          padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
+                          width: 340,
+                          height: 110,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              border: Border.all(color: Colors.grey),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.white,
+                                  blurRadius: 3,
+                                  offset: Offset(0, 4),
+                                )
+                              ]),
+                          child: Container(
+                            height: 330,
+                            width: 100,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5),
+                                color: Colors.grey[300],
+                                image: DecorationImage(
+                                    image: (_image != null)
+                                        ? FileImage(_image!)
+                                        : NetworkImage(
+                                                "https://www.google.com/imgres?imgurl=https%3A%2F%2Fimages.ctfassets.net%2F23aumh6u8s0i%2F4TsG2mTRrLFhlQ9G1m19sC%2F4c9f98d56165a0bdd71cbe7b9c2e2484%2Fflutter&imgrefurl=https%3A%2F%2Fauth0.com%2Fblog%2Fflutter-authentication-authorization-with-auth0-part-1-adding-authentication-to-an-app%2F&tbnid=lNQwUR-RALy6qM&vet=12ahUKEwjfsZCqrMz1AhUOAbcAHf_wAtEQMygcegUIARD0AQ..i&docid=SNh1PLjUtAswOM&w=588&h=528&itg=1&q=FLUTTER%20IMAGE&ved=2ahUKEwjfsZCqrMz1AhUOAbcAHf_wAtEQMygcegUIARD0AQ")
+                                            as ImageProvider,
+                                    fit: BoxFit.cover)),
+                          ),
                         ),
-                        SizedBox(height: 40.0),
+                        /////////////////////////////////////////////////////////>>>>>>ปุ่ม>ส่งคำร้อง
+                        SizedBox(height: 40),
                         Container(
                           width: 375,
                           height: 30,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5),
-                            color: Colors.green[100],
-                            border: Border.all(
-                              color: Color(0xd309ef04),
-                              width: 2,
-                            ),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Color(0x4f000000),
-                                blurRadius: 3,
-                                offset: Offset(0, 4),
-                              ),
-                            ],
+                          borderRadius: BorderRadius.circular(5),
+                          color: Colors.green[10],
+                          border: Border.all(
+                            color: Colors.green,
+                            width: 2,
                           ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Color(0x4f000000),
+                              blurRadius: 3,
+                              offset: Offset(0, 4),
+                            ),
+                          ],
+                        ),
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
                                 primary: Colors.green[400]),
                             onPressed: () async {
-                              showDialog<String>(
-                                  context: context,
-                                  builder: (BuildContext context) =>
-                                      AlertDialog(
-                                        title: const Text('แจ้งเตือน'),
-                                        content:
-                                            const Text('ติดต่อหลักสูตรสำเร็จ'),
-                                        actions: <Widget>[
-                                          TextButton(
-                                            onPressed: () => Navigator.pop(
-                                              context,
-                                              'ตกลง',
-                                            ),
-                                            child: const Text(
-                                              'ตกลง',
-                                              textAlign: TextAlign.center,
-                                            ),
-                                          ),
-                                        ],
-                                      ));
+                              if (formkey.currentState!.validate()) {
+                                formkey.currentState!.save();
+                                Map<String, String> body = {
+                                  'Complain_Title': TitelController1.text,
+                                  'Complain_Date': DateController2.text,
+                                  'Complain_Detail': DetailController3.text
+                                };
+                                setState(() {
+                                  TitelController1.text.isEmpty
+                                      ? _validate = true
+                                      : _validate = false;
+                                  DateController2.text.isEmpty
+                                      ? _validate2 = true
+                                      : _validate2 = false;
+                                  DetailController3.text.isEmpty
+                                      ? _validate3 = true
+                                      : _validate3 = false;
+                                });
 
-                              final String Complain_Title =
-                                  TitelController1.text;
-                              final String Complain_Date = 
-                                  DateController2.text;
-                              final String Complain_Detail =
-                                  DetailController3.text;
-                              final String Complain_Picture =
-                                  PictureController4.text;
+                                service.addImage(body, _image!.path);
+                                Navigator.pop(context);
+
+                                showDialog<String>(
+                                    context: context,
+                                    builder: (BuildContext context) =>
+                                        AlertDialog(
+                                          title: const Text('แจ้งเตือน'),
+                                          content: const Text(
+                                              'ติดต่อหลักสูตรสำเร็จ'),
+                                          actions: <Widget>[
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                context,
+                                                'ตกลง',
+                                              ),
+                                              child: const Text(
+                                                'ตกลง',
+                                                textAlign: TextAlign.center,
+                                              ),
+                                            ),
+                                          ],
+                                        ));
+                              }
+
                               TitelController1.text = "";
                               DateController2.text = "";
                               DetailController3.text = "";
-                              PictureController4.text = "";
-                              final PostAppeal? user = await createUser(
-                                  Complain_Detail,
-                                  Complain_Date,
-                                  Complain_Picture,
-                                  Complain_Title
-                                  );
+                              setState(() {
+                                _image = null;
+                              });
                             },
                             child: Text(
                               'ส่งคำร้อง',
@@ -298,6 +332,7 @@ class _AppealState extends State<Appeal> {
                             ),
                           ),
                         ),
+                        ////////////////////////////////////////////////>>>>>.ปุ่ม>ยกเลิก
                         SizedBox(height: 20.0),
                         Container(
                           width: 375,
@@ -345,15 +380,5 @@ class _AppealState extends State<Appeal> {
                     ),
                   )),
             )));
-  }
-
-  Future<void> filePicker() async {
-    final XFile? selectImage =
-          await _picker.pickImage(source: ImageSource.gallery);
-          String? fileName = selectImage?.path.split('/').last;
-    /* print(selectImage!.path); */
-    setState(() {
-      image = selectImage;
-    });
   }
 }

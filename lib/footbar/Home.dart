@@ -1,63 +1,169 @@
-/* 
-
-import 'package:appcsmju/Homebinding/HomeCarousel.dart';
-import 'package:appcsmju/footbar/Foot.dart';
-import 'package:appcsmju/model/carousel_loading.dart';
-import 'package:appcsmju/controller/home_controller.dart';
-import 'package:appcsmju/model/carousel_slider_data_found.dart';
-import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
-import 'package:appcsmju/api/remote_service.dart';
-
-import 'package:appcsmju/api/apinew.dart';
-import 'package:appcsmju/model/carousel_loading.dart';
-// ignore: unused_import
+import 'package:appcsmju/APImodel/apinew.dart';
+import 'package:appcsmju/api/API_activity.dart';
+import 'package:appcsmju/APImodel/carousel.dart';
+import 'package:appcsmju/api/newApi.dart';
+import 'package:appcsmju/APImodel/Activity.dart';
+import 'package:appcsmju/model/carouselmodel/Activitycustombelow.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 
-class HomePage extends StatefulWidget {
-  HomePage({
-    Key? key,
-  }) : super(key: key);
+class HomePageCarousel extends StatefulWidget {
+  const HomePageCarousel({Key? key}) : super(key: key);
+
   @override
-  GlobalKey key = new GlobalKey();
-  _HomePageState createState() => _HomePageState();
-  int currentTab = 0;
-  final List<Widget> screens = [
-    HomeCarousel(),
-  ];
+  _HomePageCarouselState createState() => _HomePageCarouselState();
 }
 
-class _HomePageState extends State<HomePage> {
+//animals.reversed.toList();
+class _HomePageCarouselState extends State<HomePageCarousel> {
+  late List<Activity> _activity;
+  bool _isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    getActivity();
+  }
+
+  Future<void> getActivity() async {
+    _activity = await ActivityApiService.getsActivity();
+    setState(() {
+      _isLoading = false;
+    });
+  }
+
+  ////////////////////////////////////////////////////////////////////////////////
+  APi pro = APi.instance;
+  final List<String> imgList = [];
+  late List<Apinews> news = [];
+  late Future<Apinews> futureAlbum;
+  /* late final Apinew article;
+   _HomePageCarouselState({required this.article}); */
+
+  void getiii() async {
+    var a = await pro.GetNews(context);
+    int i = 0;
+    // for(i=0;i<pro.li.length;++i){
+    //   imgList[i]=pro.li[i].newsPicture;
+    // }
+    a.forEach((value) {
+      Apinew order = new Apinew.fromJson(value);
+      imgList.add(order.newsPicture);
+    });
+    setState(() {
+      news = pro.li;
+      //futureAlbum = pro.GetNews(context);
+    });
+    //print(a);
+    // print(" image  of newssss isss ${imgList[0]}");
+  }
+
   @override
   Widget build(BuildContext context) {
-    HomeCarousel screens;
+    getiii();
+
     return Scaffold(
-        backgroundColor: Colors.grey[75],
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          centerTitle: true,
-          leading: IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.person),
-            color: Colors.black, //ยังไม่ได้เชื่อปุ่ม icons
-          ),
-          actions: <Widget>[
-            IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.notifications_active),
-              color: Colors.black,
-            ),
-          ],
+      backgroundColor: Colors.grey[75],
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        centerTitle: true,
+        leading: IconButton(
+          onPressed: () {},
+          icon: Icon(Icons.person),
+          color: Colors.black, //ยังไม่ได้เชื่อปุ่ม icons
         ),
-        body: Container(
-          child : screens = HomeCarousel(),
-          )
-        );
-        
+        actions: <Widget>[
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.notifications_active),
+            color: Colors.black,
+          ),
+        ],
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
+        child: Column(children: <Widget>[
+          ///////////////////////////////////////////////////////>>>>>>>>หัวข้อข่าวประชาสัมพันธ์
+          SizedBox(
+            child: Text(
+              "ข่าวประชาสัมพันธ์",
+              textAlign: TextAlign.start,
+              style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+                fontSize: 28,
+              ),
+            ),
+          ),
+          ///////////////////////////////////////////////////////>>>>>>>>ไสลด์ข่าวประชาสัมพันธ์
+          SizedBox(
+            height: 10,
+          ),
+          Container(
+            /* padding: const EdgeInsets.fromLTRB(7, 10, 7, 10), */
+            child: ClipRRect(
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+                child: CarouselSlider(
+                  options: CarouselOptions(
+                      autoPlay: true,
+                      autoPlayInterval: Duration(seconds: 5),
+                      autoPlayAnimationDuration: Duration(milliseconds: 2000)),
+                  items: imgList
+                      .map((item) => Padding(
+                            padding: const EdgeInsets.all(3.0),
+                            child: SafeArea(
+                              child: Center(
+                                  child: Image.network(item,
+                                      fit: BoxFit.cover, width: 1000)),
+                            ),
+                          ))
+                      .toList(),
+                )),
+          ),
+          ///////////////////////////////////////////////////////>>>>>>>>หัวข้อโครงการล่าสุด
+          SizedBox(
+            height: 10,
+          ),
+          Text(
+            'โครงการล่าสุด',
+            textAlign: TextAlign.start,
+            style: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+              fontSize: 28,
+            ),
+          ),
+          ///////////////////////////////////////////////////////>>>>>>>>รายการโครงการ
+          SizedBox(
+            height: 10,
+          ),
+          SingleChildScrollView(
+              physics: ScrollPhysics(),
+              child: Container(
+                height: MediaQuery.of(context).size.height,
+                child: FutureBuilder(
+                  future: ActivityApiService.getsActivity(),
+                  builder: (BuildContext context,
+                      AsyncSnapshot<List<Activity>> snapshot) {
+                    if (snapshot.hasData) {
+                      List<Activity>? data = snapshot.data;
+                      return ListView.builder(
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: data!.length,
+                        itemBuilder: (context, index) =>
+                            customActivityBelow(data[index], context),
+                      );
+                    }
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  },
+                ),
+              ))
+        ]),
+      ),
+    );
   }
 }
-//(child : screens = HomeCarousel(),)
-
- */

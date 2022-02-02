@@ -1,11 +1,13 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\csmjuappslide-main\android\app\src\main\AndroidManifest.xml:1:1-45:12
-INJECTED from C:\csmjuappslide-main\android\app\src\main\AndroidManifest.xml:1:1-45:12
-INJECTED from C:\csmjuappslide-main\android\app\src\main\AndroidManifest.xml:1:1-45:12
-INJECTED from C:\csmjuappslide-main\android\app\src\main\AndroidManifest.xml:1:1-45:12
-MERGED from C:\csmjuappslide-main\android\app\src\main\AndroidManifest.xml:1:1-45:12
+ADDED from C:\csmjuappslide-main\android\app\src\main\AndroidManifest.xml:1:1-46:12
+INJECTED from C:\csmjuappslide-main\android\app\src\main\AndroidManifest.xml:1:1-46:12
+INJECTED from C:\csmjuappslide-main\android\app\src\main\AndroidManifest.xml:1:1-46:12
+INJECTED from C:\csmjuappslide-main\android\app\src\main\AndroidManifest.xml:1:1-46:12
+MERGED from C:\csmjuappslide-main\android\app\src\main\AndroidManifest.xml:1:1-46:12
 MERGED from [:shared_preferences_android] C:\csmjuappslide-main\build\shared_preferences_android\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:image_picker] C:\csmjuappslide-main\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-19:12
+MERGED from [:flutter_plugin_android_lifecycle] C:\csmjuappslide-main\build\flutter_plugin_android_lifecycle\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:barcode_scan] C:\csmjuappslide-main\build\barcode_scan\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-13:12
 MERGED from [:sqflite] C:\csmjuappslide-main\build\sqflite\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:url_launcher_android] C:\csmjuappslide-main\build\url_launcher_android\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-14:12
@@ -14,10 +16,10 @@ MERGED from [:multi_image_picker] C:\csmjuappslide-main\build\multi_image_picker
 MERGED from [com.sangcomz:FishBun:0.11.2] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\964d33c2c2e431651e8444baf8fdaeb6\jetified-FishBun-0.11.2\AndroidManifest.xml:2:1-34:12
 MERGED from [com.google.android.material:material:1.1.0] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\ef3c407ab245da4935c321076ba42e32\material-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\f419bf2442c9ba50831eeba89000c9a9\appcompat-1.1.0\AndroidManifest.xml:17:1-24:12
-MERGED from [me.dm7.barcodescanner:zxing:1.9.13] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\f8896e4d54badd670f96108dff6c9d5c\jetified-zxing-1.9.13\AndroidManifest.xml:2:1-13:12
 MERGED from [com.github.bumptech.glide:glide:4.11.0] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\79f8042ebd63447be6ff90d2fc150f51\jetified-glide-4.11.0\AndroidManifest.xml:2:1-12:12
 MERGED from [androidx.exifinterface:exifinterface:1.3.1] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\d97bcdfa235c3699b3c46c3ab079ceb6\exifinterface-1.3.1\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\249572a22213d81f5256cf3e1140cb73\jetified-viewpager2-1.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [me.dm7.barcodescanner:zxing:1.9.13] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\f8896e4d54badd670f96108dff6c9d5c\jetified-zxing-1.9.13\AndroidManifest.xml:2:1-13:12
 MERGED from [me.dm7.barcodescanner:core:1.9.13] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\faad68c0099c0cba79fba4523fea563e\jetified-core-1.9.13\AndroidManifest.xml:2:1-13:12
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\2d1ee8b369a3512a36e6061d2ed872cf\legacy-support-v4-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\2fd9120a6da4df3dbabdd40f6a2d8995\fragment-1.1.0\AndroidManifest.xml:17:1-24:12
@@ -47,8 +49,8 @@ MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\zadke\.gradle\caches\trans
 MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\5948e9b6947236ccb3f5762413952c41\cardview-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\c39070be4a8b092ae5970162a829e305\cursoradapter-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.github.bumptech.glide:gifdecoder:4.11.0] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\d7dcc752a39847821bb8cfc484f4514d\jetified-gifdecoder-4.11.0\AndroidManifest.xml:2:1-11:12
-MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\5f606c30f064eed94124828de37fadc0\core-runtime-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\87cae496edf0d81af80ab48e3e89ecce\versionedparcelable-1.1.1\AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\5f606c30f064eed94124828de37fadc0\core-runtime-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\15792e6083b2b5b5a7ffa285d47daa24\lifecycle-viewmodel-2.1.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\b962778313a0e23f9ca3dbafc012c1af\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\15ddec56bd001fb2d4fc04a7d71346e8\documentfile-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -65,16 +67,18 @@ INJECTED from C:\csmjuappslide-main\android\app\src\debug\AndroidManifest.xml:1:
 		INJECTED from C:\csmjuappslide-main\android\app\src\debug\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\csmjuappslide-main\android\app\src\main\AndroidManifest.xml
-		ADDED from C:\csmjuappslide-main\android\app\src\main\AndroidManifest.xml:1:1-45:12
+		ADDED from C:\csmjuappslide-main\android\app\src\main\AndroidManifest.xml:1:1-46:12
 		INJECTED from C:\csmjuappslide-main\android\app\src\debug\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\csmjuappslide-main\android\app\src\main\AndroidManifest.xml
-		ADDED from C:\csmjuappslide-main\android\app\src\main\AndroidManifest.xml:1:1-45:12
+		ADDED from C:\csmjuappslide-main\android\app\src\main\AndroidManifest.xml:1:1-46:12
 		INJECTED from C:\csmjuappslide-main\android\app\src\debug\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\csmjuappslide-main\android\app\src\main\AndroidManifest.xml:1:11-69
 application
-ADDED from C:\csmjuappslide-main\android\app\src\main\AndroidManifest.xml:3:4-44:19
+ADDED from C:\csmjuappslide-main\android\app\src\main\AndroidManifest.xml:3:4-45:19
+MERGED from [:image_picker] C:\csmjuappslide-main\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-17:19
+MERGED from [:image_picker] C:\csmjuappslide-main\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-17:19
 MERGED from [:barcode_scan] C:\csmjuappslide-main\build\barcode_scan\intermediates\library_manifest\debug\AndroidManifest.xml:9:5-11:19
 MERGED from [:barcode_scan] C:\csmjuappslide-main\build\barcode_scan\intermediates\library_manifest\debug\AndroidManifest.xml:9:5-11:19
 MERGED from [:url_launcher_android] C:\csmjuappslide-main\build\url_launcher_android\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-12:19
@@ -83,10 +87,10 @@ MERGED from [com.sangcomz:FishBun:0.11.2] C:\Users\zadke\.gradle\caches\transfor
 MERGED from [com.sangcomz:FishBun:0.11.2] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\964d33c2c2e431651e8444baf8fdaeb6\jetified-FishBun-0.11.2\AndroidManifest.xml:11:5-32:19
 MERGED from [com.google.android.material:material:1.1.0] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\ef3c407ab245da4935c321076ba42e32\material-1.1.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.1.0] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\ef3c407ab245da4935c321076ba42e32\material-1.1.0\AndroidManifest.xml:22:5-20
-MERGED from [me.dm7.barcodescanner:zxing:1.9.13] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\f8896e4d54badd670f96108dff6c9d5c\jetified-zxing-1.9.13\AndroidManifest.xml:11:5-20
-MERGED from [me.dm7.barcodescanner:zxing:1.9.13] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\f8896e4d54badd670f96108dff6c9d5c\jetified-zxing-1.9.13\AndroidManifest.xml:11:5-20
 MERGED from [com.github.bumptech.glide:glide:4.11.0] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\79f8042ebd63447be6ff90d2fc150f51\jetified-glide-4.11.0\AndroidManifest.xml:10:5-20
 MERGED from [com.github.bumptech.glide:glide:4.11.0] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\79f8042ebd63447be6ff90d2fc150f51\jetified-glide-4.11.0\AndroidManifest.xml:10:5-20
+MERGED from [me.dm7.barcodescanner:zxing:1.9.13] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\f8896e4d54badd670f96108dff6c9d5c\jetified-zxing-1.9.13\AndroidManifest.xml:11:5-20
+MERGED from [me.dm7.barcodescanner:zxing:1.9.13] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\f8896e4d54badd670f96108dff6c9d5c\jetified-zxing-1.9.13\AndroidManifest.xml:11:5-20
 MERGED from [me.dm7.barcodescanner:core:1.9.13] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\faad68c0099c0cba79fba4523fea563e\jetified-core-1.9.13\AndroidManifest.xml:11:5-20
 MERGED from [me.dm7.barcodescanner:core:1.9.13] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\faad68c0099c0cba79fba4523fea563e\jetified-core-1.9.13\AndroidManifest.xml:11:5-20
 MERGED from [androidx.core:core:1.6.0] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\5f663b08eec19eef9a9d1af662d9025e\core-1.6.0\AndroidManifest.xml:24:5-89
@@ -151,6 +155,10 @@ INJECTED from C:\csmjuappslide-main\android\app\src\main\AndroidManifest.xml
 INJECTED from C:\csmjuappslide-main\android\app\src\main\AndroidManifest.xml
 MERGED from [:shared_preferences_android] C:\csmjuappslide-main\build\shared_preferences_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:shared_preferences_android] C:\csmjuappslide-main\build\shared_preferences_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:image_picker] C:\csmjuappslide-main\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:image_picker] C:\csmjuappslide-main\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:flutter_plugin_android_lifecycle] C:\csmjuappslide-main\build\flutter_plugin_android_lifecycle\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:flutter_plugin_android_lifecycle] C:\csmjuappslide-main\build\flutter_plugin_android_lifecycle\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:barcode_scan] C:\csmjuappslide-main\build\barcode_scan\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:barcode_scan] C:\csmjuappslide-main\build\barcode_scan\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:sqflite] C:\csmjuappslide-main\build\sqflite\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
@@ -167,14 +175,14 @@ MERGED from [com.google.android.material:material:1.1.0] C:\Users\zadke\.gradle\
 MERGED from [com.google.android.material:material:1.1.0] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\ef3c407ab245da4935c321076ba42e32\material-1.1.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\f419bf2442c9ba50831eeba89000c9a9\appcompat-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\f419bf2442c9ba50831eeba89000c9a9\appcompat-1.1.0\AndroidManifest.xml:20:5-22:41
-MERGED from [me.dm7.barcodescanner:zxing:1.9.13] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\f8896e4d54badd670f96108dff6c9d5c\jetified-zxing-1.9.13\AndroidManifest.xml:7:5-9:41
-MERGED from [me.dm7.barcodescanner:zxing:1.9.13] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\f8896e4d54badd670f96108dff6c9d5c\jetified-zxing-1.9.13\AndroidManifest.xml:7:5-9:41
 MERGED from [com.github.bumptech.glide:glide:4.11.0] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\79f8042ebd63447be6ff90d2fc150f51\jetified-glide-4.11.0\AndroidManifest.xml:6:5-8:41
 MERGED from [com.github.bumptech.glide:glide:4.11.0] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\79f8042ebd63447be6ff90d2fc150f51\jetified-glide-4.11.0\AndroidManifest.xml:6:5-8:41
 MERGED from [androidx.exifinterface:exifinterface:1.3.1] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\d97bcdfa235c3699b3c46c3ab079ceb6\exifinterface-1.3.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.exifinterface:exifinterface:1.3.1] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\d97bcdfa235c3699b3c46c3ab079ceb6\exifinterface-1.3.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\249572a22213d81f5256cf3e1140cb73\jetified-viewpager2-1.0.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\249572a22213d81f5256cf3e1140cb73\jetified-viewpager2-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [me.dm7.barcodescanner:zxing:1.9.13] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\f8896e4d54badd670f96108dff6c9d5c\jetified-zxing-1.9.13\AndroidManifest.xml:7:5-9:41
+MERGED from [me.dm7.barcodescanner:zxing:1.9.13] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\f8896e4d54badd670f96108dff6c9d5c\jetified-zxing-1.9.13\AndroidManifest.xml:7:5-9:41
 MERGED from [me.dm7.barcodescanner:core:1.9.13] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\faad68c0099c0cba79fba4523fea563e\jetified-core-1.9.13\AndroidManifest.xml:7:5-9:41
 MERGED from [me.dm7.barcodescanner:core:1.9.13] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\faad68c0099c0cba79fba4523fea563e\jetified-core-1.9.13\AndroidManifest.xml:7:5-9:41
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\2d1ee8b369a3512a36e6061d2ed872cf\legacy-support-v4-1.0.0\AndroidManifest.xml:20:5-44
@@ -233,10 +241,10 @@ MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\zadke\.gradle\
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\c39070be4a8b092ae5970162a829e305\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.github.bumptech.glide:gifdecoder:4.11.0] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\d7dcc752a39847821bb8cfc484f4514d\jetified-gifdecoder-4.11.0\AndroidManifest.xml:5:5-7:41
 MERGED from [com.github.bumptech.glide:gifdecoder:4.11.0] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\d7dcc752a39847821bb8cfc484f4514d\jetified-gifdecoder-4.11.0\AndroidManifest.xml:5:5-7:41
-MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\5f606c30f064eed94124828de37fadc0\core-runtime-2.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\5f606c30f064eed94124828de37fadc0\core-runtime-2.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\87cae496edf0d81af80ab48e3e89ecce\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\87cae496edf0d81af80ab48e3e89ecce\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\5f606c30f064eed94124828de37fadc0\core-runtime-2.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\5f606c30f064eed94124828de37fadc0\core-runtime-2.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\15792e6083b2b5b5a7ffa285d47daa24\lifecycle-viewmodel-2.1.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\15792e6083b2b5b5a7ffa285d47daa24\lifecycle-viewmodel-2.1.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\b962778313a0e23f9ca3dbafc012c1af\interpolator-1.0.0\AndroidManifest.xml:20:5-44
@@ -263,6 +271,22 @@ uses-permission#android.permission.INTERNET
 ADDED from C:\csmjuappslide-main\android\app\src\debug\AndroidManifest.xml:6:5-66
 	android:name
 		ADDED from C:\csmjuappslide-main\android\app\src\debug\AndroidManifest.xml:6:22-64
+provider#io.flutter.plugins.imagepicker.ImagePickerFileProvider
+ADDED from [:image_picker] C:\csmjuappslide-main\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-16:20
+	android:grantUriPermissions
+		ADDED from [:image_picker] C:\csmjuappslide-main\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:12:13-47
+	android:authorities
+		ADDED from [:image_picker] C:\csmjuappslide-main\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:10:13-74
+	android:exported
+		ADDED from [:image_picker] C:\csmjuappslide-main\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:11:13-37
+	android:name
+		ADDED from [:image_picker] C:\csmjuappslide-main\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-82
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from [:image_picker] C:\csmjuappslide-main\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-15:75
+	android:resource
+		ADDED from [:image_picker] C:\csmjuappslide-main\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:15:17-72
+	android:name
+		ADDED from [:image_picker] C:\csmjuappslide-main\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:14:17-67
 uses-permission#android.permission.CAMERA
 ADDED from [:barcode_scan] C:\csmjuappslide-main\build\barcode_scan\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-65
 	android:name
@@ -289,12 +313,6 @@ ADDED from [com.sangcomz:FishBun:0.11.2] C:\Users\zadke\.gradle\caches\transform
 		ADDED from [com.sangcomz:FishBun:0.11.2] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\964d33c2c2e431651e8444baf8fdaeb6\jetified-FishBun-0.11.2\AndroidManifest.xml:15:13-37
 	android:name
 		ADDED from [com.sangcomz:FishBun:0.11.2] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\964d33c2c2e431651e8444baf8fdaeb6\jetified-FishBun-0.11.2\AndroidManifest.xml:13:13-68
-meta-data#android.support.FILE_PROVIDER_PATHS
-ADDED from [com.sangcomz:FishBun:0.11.2] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\964d33c2c2e431651e8444baf8fdaeb6\jetified-FishBun-0.11.2\AndroidManifest.xml:17:13-19:58
-	android:resource
-		ADDED from [com.sangcomz:FishBun:0.11.2] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\964d33c2c2e431651e8444baf8fdaeb6\jetified-FishBun-0.11.2\AndroidManifest.xml:19:17-55
-	android:name
-		ADDED from [com.sangcomz:FishBun:0.11.2] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\964d33c2c2e431651e8444baf8fdaeb6\jetified-FishBun-0.11.2\AndroidManifest.xml:18:17-67
 activity#com.sangcomz.fishbun.ui.album.AlbumActivity
 ADDED from [com.sangcomz:FishBun:0.11.2] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\964d33c2c2e431651e8444baf8fdaeb6\jetified-FishBun-0.11.2\AndroidManifest.xml:22:9-25:51
 	android:label

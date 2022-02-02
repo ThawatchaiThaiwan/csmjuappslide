@@ -58,6 +58,10 @@ cupertino_icons
 2.12
 file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/cupertino_icons-1.0.4/
 file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/cupertino_icons-1.0.4/lib/
+dio
+2.12
+file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/dio-4.0.4/
+file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/dio-4.0.4/lib/
 fake_async
 2.12
 file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/fake_async-1.2.0/
@@ -134,10 +138,6 @@ linked_scroll_controller
 2.12
 file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/linked_scroll_controller-0.2.0/
 file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/linked_scroll_controller-0.2.0/lib/
-loading
-2.1
-file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/loading-1.0.2/
-file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/loading-1.0.2/lib/
 localstorage
 2.12
 file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/localstorage-4.0.0+1/
@@ -150,10 +150,6 @@ meta
 2.12
 file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/meta-1.7.0/
 file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/meta-1.7.0/lib/
-mime
-2.12
-file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/mime-1.0.1/
-file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/mime-1.0.1/lib/
 multi_image_picker
 2.12
 file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/multi_image_picker-4.8.01/

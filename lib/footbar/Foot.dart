@@ -1,4 +1,4 @@
-import 'package:appcsmju/model/carouselmodel/HomeCarousel.dart';
+import 'package:appcsmju/footbar/Home.dart';
 
 import 'package:appcsmju/footbar/Another.dart';
 import 'package:appcsmju/footbar/News.dart';
@@ -40,7 +40,7 @@ class _FootState extends State<Foot> {
         bucket: bucket,
       ),
 
-      // Fab Button
+      // Fab Button///////////////////////////////////////////////////>>>>>.qr แสกน
       floatingActionButton: FloatingActionButton(
         child: Icon(
           Icons.qr_code_scanner_sharp,
@@ -95,6 +95,7 @@ class _FootState extends State<Foot> {
                   ));
         },
       ),
+      ///////////////////////////////////////////////////////////////////////////////////////////////////
       //Fab position
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 
@@ -117,6 +118,7 @@ class _FootState extends State<Foot> {
                       });
                     },
                     child: Column(
+                      /////////////////////////////////////////////////////////////////////////////////>>>.หน้าหลัก
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Icon(
@@ -130,7 +132,7 @@ class _FootState extends State<Foot> {
                           ),
                         )
                       ],
-                      ///////////////////////////////////////////////////////////////////////////////////////////
+                      ////////////////////////////////////////////////////////////////////////////////ข่าวสาร
                     ),
                   ),
                   MaterialButton(
@@ -157,7 +159,7 @@ class _FootState extends State<Foot> {
                       ],
                     ),
                   )
-                  ///////////////////////////////////////////////////////////////////////////////////////////
+                  ////////////////////////////////////////////////////////////////////////////////>>>>>>.ปฏิทิน
                 ],
               ),
               Row(
@@ -185,7 +187,7 @@ class _FootState extends State<Foot> {
                         )
                       ],
                     ),
-                    ///////////////////////////////////////////////////////////////////////////////////////////
+                    ////////////////////////////////////////////////////////////////////////////////>>>>>.บริการอื่นๆ
                   ),
                   MaterialButton(
                     minWidth: 40,

@@ -3,7 +3,7 @@ import 'package:appcsmju/page/Activityanoter.dart';
 import 'package:appcsmju/page/Appeal.dart';
 import 'package:appcsmju/page/Borrow_back.dart';
 import 'package:appcsmju/page/Profile.dart';
-import 'package:appcsmju/page/Repair.dart';
+import 'package:appcsmju/page/Residue.dart';
 import 'package:flutter/material.dart';
 
 class Another extends StatefulWidget {
@@ -45,6 +45,7 @@ class _AnotherState extends State<Another> {
           padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
           child: GridView(
               children: [
+                //////////////////////////////////////////////////////////////////>>>>>.ข้อมูลส่วนตัว
                 InkWell(
                   onTap: () {
                     Navigator.push(context,
@@ -76,10 +77,11 @@ class _AnotherState extends State<Another> {
                     ),
                   ),
                 ),
+                ///////////////////////////////////////////////////////////>>>>แจ้งตกค้าง
                 InkWell(
                   onTap: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Repair()));
+                        MaterialPageRoute(builder: (context) => Residue()));
                   },
                   child: Container(
                     width: 120,
@@ -107,6 +109,7 @@ class _AnotherState extends State<Another> {
                     ),
                   ),
                 ),
+                /////////////////////////////////////////////////////////>>>>>.ยืมคืน
                 InkWell(
                   onTap: () {
                     Navigator.push(context,
@@ -138,6 +141,7 @@ class _AnotherState extends State<Another> {
                     ),
                   ),
                 ),
+                ///////////////////////////////////////////////////////////>>>>>>ยืมคืน
                 InkWell(
                   onTap: () {
                     Navigator.push(context,
@@ -169,6 +173,7 @@ class _AnotherState extends State<Another> {
                     ),
                   ),
                 ),
+                ////////////////////////////////////////////////////////>>>>>.โครงการทั้งหมด
                 InkWell(
                   onTap: () {
                     Navigator.push(
@@ -202,6 +207,7 @@ class _AnotherState extends State<Another> {
                     ),
                   ),
                 ),
+                //////////////////////////////////////////////////////>>>>>>.ออกจากระบบ
                 InkWell(
                   onTap: () {
                     showDialog<String>(
@@ -255,6 +261,7 @@ class _AnotherState extends State<Another> {
                               ],
                             ));
                   },
+                  
                   child: Container(
                     width: 120,
                     height: 70,
@@ -292,76 +299,3 @@ class _AnotherState extends State<Another> {
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* class _AnotherState extends State<Another> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('บริการอื่น ๆ'),
-      ),
-      body: ListView(
-        children: <Widget>[
-          ListTile(
-            title: Text('โปรไฟล์', style: Theme.of(context).textTheme.title),
-            trailing: Icon(Icons.arrow_forward_ios),
-            leading: Icon(Icons.account_circle),
-            onTap: () {},
-          ),
-          Divider(),
-          ListTile(
-            title:
-                Text('แจ้งซ่อม', style: Theme.of(context).textTheme.title),
-            trailing: Icon(Icons.arrow_forward_ios),
-            leading: Icon(Icons.shopping_cart),
-            onTap: () {
-            
-            },
-          ),
-          Divider(),
-          ListTile(
-            title: Text('ระบบบันทึกกิจกรรม', style: Theme.of(context).textTheme.title),
-            trailing: Icon(Icons.arrow_forward_ios),
-            leading: Icon(Icons.settings),
-            onTap: () {},
-          ),
-          Divider(),
-          ListTile(
-            title: Text('ร้องเรียนออนไลน์', style: Theme.of(context).textTheme.title),
-            trailing: Icon(Icons.arrow_forward_ios),
-            leading: Icon(Icons.info),
-            onTap: () {},
-          ),
-           ListTile(
-            title: Text('ยืม-คืน', style: Theme.of(context).textTheme.title),
-            trailing: Icon(Icons.arrow_forward_ios),
-            leading: Icon(Icons.info),
-            onTap: () {},
-          ),
-          Divider(),
-          ListTile(
-            title: Text('ออกจากระบบ', style: Theme.of(context).textTheme.title),
-            trailing: Icon(Icons.arrow_forward_ios),
-            leading: Icon(Icons.exit_to_app),
-            onTap: () {},
-          ),
-        ],
-      ),
-    );
-  }
-}
- */
-    

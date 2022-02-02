@@ -49,8 +49,8 @@ dependencies:
   shared_preferences_web: ^2.0.2
   intl: ^0.17.0
   image_picker: ^0.8.4+4
-  loading: ^1.0.2
-  mime: ^1.0.1
+  dio: ^4.0.4
+ 
   
   
   localstorage: ^4.0.0+1               

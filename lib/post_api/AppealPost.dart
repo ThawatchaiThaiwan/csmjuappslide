@@ -1,45 +1,23 @@
-// To parse this JSON data, do
-//
-//     final postAppeal = postAppealFromJson(jsonString);
-
+import 'package:http/http.dart' as http;
 import 'dart:convert';
-
-PostAppeal postAppealFromJson(String str) => PostAppeal.from(json.decode(str).map((x) => PostAppeal.fromJson(x)));
-
-String postAppealToJson(PostAppeal data) => json.encode(data.toJson());
-
-class PostAppeal {
-    PostAppeal({
-        required this.complainId,
-        required this.complainDetail,
-        required this.complainDate,
-        required this.complainPicture,
-        required this.complainTitle,
-    });
-
-    int complainId;
-    String complainDetail;
-    String complainDate;
-    String complainPicture;
-    String complainTitle;
-
-    factory PostAppeal.fromJson(Map<String, dynamic> json) => PostAppeal(
-        complainId: json["complainId"],
-        complainDetail: json["Complain_Detail"],
-        complainDate: json["Complain_Date"],
-        complainPicture: json["Complain_Picture"],
-        complainTitle: json["Complain_Title"],
-    );
-
-    Map<String, dynamic> toJson() => {
-        "complainId": complainId,
-        "Complain_Detail": complainDetail,
-        "Complain_Date": complainDate,
-        "Complain_Picture": complainPicture,
-        "Complain_Title": complainTitle,
+class AppealService {
+Future<bool> addImage(Map<String, String> body, String filepath) async {
+  var authToken = '1257|7D3I1qDi4m28ZWRMJTvSmVJ3kOYwSsBvyzJdQm16';
+    String addimageUrl = 'https://wwwdev.csmju.com/api/complain/create';
+    Map<String, String> headers = {
+      'Content-Type': 'multipart/form-data',
+      'Authorization': 'Bearer $authToken',
+      
     };
-
-  static from(map) {}
-
-  
+var request = http.MultipartRequest('POST', Uri.parse(addimageUrl))
+      ..fields.addAll(body)
+      ..headers.addAll(headers)
+      ..files.add(await http.MultipartFile.fromPath('Complain_Picture', filepath,));
+var response = await request.send();
+    if (response.statusCode == 201) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

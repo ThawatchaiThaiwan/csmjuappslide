@@ -28,7 +28,7 @@ Widget customActivityBelow(Activity article, BuildContext context) {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          
+          ///////////////////////////////////////////////////////////>>>>>>.หัวข้อ
           Container(
             padding: EdgeInsets.all(6.0),
             decoration: BoxDecoration(
@@ -45,6 +45,7 @@ Widget customActivityBelow(Activity article, BuildContext context) {
               ),
             ),
           ),
+          /////////////////////////////////////////////////////////////>>>>>>.วันที่
           Container(
             padding: EdgeInsets.all(6.0),
             decoration: BoxDecoration(

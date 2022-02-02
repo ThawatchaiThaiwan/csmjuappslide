@@ -1877,7 +1877,6 @@ layout text_view_without_line_height
 layout thumb_item
 menu menu_photo_album
 mipmap ic_launcher
-mipmap logo_csmju
 plurals mtrl_badge_content_description
 string abc_action_bar_home_description
 string abc_action_bar_up_description
@@ -2746,6 +2745,7 @@ styleable View android_theme android_focusable paddingEnd paddingStart theme
 styleable ViewBackgroundHelper android_background backgroundTint backgroundTintMode
 styleable ViewPager2 android_orientation
 styleable ViewStubCompat android_id android_layout android_inflatedId
+xml flutter_image_picker_file_paths
 xml provider_paths
 xml standalone_badge
 xml standalone_badge_gravity_bottom_end
