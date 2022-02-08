@@ -29,6 +29,21 @@ class _Borrow_BackState extends State<Borrow_Back> {
                   onPressed: () => Navigator.of(context).pop(),
                 )
               : Another(),
-        ));
+        ),
+      body: SingleChildScrollView(
+        padding: EdgeInsets.fromLTRB(10, 20, 10, 20),
+        child: Container(
+          padding: EdgeInsets.fromLTRB(10, 20, 10, 20),
+          height: 1100,
+          width: 405,
+          decoration: BoxDecoration(
+            color: Colors.grey,
+            borderRadius: BorderRadius.circular(10),
+            
+            
+          ),
+        ),
+      ),
+        );
   }
 }

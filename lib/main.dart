@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       ),
       
       
-      home :LoginPage() ,
+      home :Foot() ,
     );
   }
 }

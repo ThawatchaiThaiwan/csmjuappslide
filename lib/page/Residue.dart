@@ -1,12 +1,14 @@
+// ignore_for_file: non_constant_identifier_names, unused_field
+
 import 'dart:convert';
 import 'dart:async';
+import 'dart:html';
 
 import 'package:appcsmju/APImodel/Residuemodel.dart';
 import 'package:appcsmju/footbar/Another.dart';
+import 'package:appcsmju/footbar/Foot.dart';
 import 'package:appcsmju/post_api/ResiduePost.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
@@ -19,14 +21,15 @@ class _ResidueState extends State<Residue> {
   ///////////////////////////////////////////////////////////////////>>>>>>>.dropdown list group
   String? Groupvalue;
 
-  var groups = [
+  /* var groups = [
     'กลุ่มที่ 1',
     'กลุ่มที่ 2',
     'กลุ่มที่ 3',
-  ];
+  ]; */
 
 ////////////////////////////////////////////////////////////////////////////////// api dropdpw
 
+  // ignore: non_constant_identifier_names
   List? subject_data;
   String? subjectid;
   var url = Uri.encodeFull('https://wwwdev.csmju.com/api/subject');
@@ -43,6 +46,19 @@ class _ResidueState extends State<Residue> {
     });
 
     return "Sucess";
+  }
+
+///////////////////////////////////////////////////////////////////////////////////////>>>>>>.Radio
+  String? _radioValue;
+
+  //int? _radioValue2;
+  //int correctScore = 0;
+
+  void _handleRadioValueChange(value) {
+    setState(() {
+      _radioValue = value;
+      GroupController.text = _radioValue.toString();
+    });
   }
 
 /////////////////////////////////////////////////////////////////////>>>>>> validate
@@ -80,6 +96,7 @@ class _ResidueState extends State<Residue> {
   TextEditingController OfffieldGroupController = TextEditingController();
   TextEditingController DateController = TextEditingController();
   TextEditingController DetailController = TextEditingController();
+  TextEditingController AnotherGroupController = TextEditingController();
 
   /////////////////////////////////////////////////////////////////////////////>>>>.localstorage
   final _formkey = GlobalKey<FormState>();
@@ -98,8 +115,24 @@ class _ResidueState extends State<Residue> {
       email = localStorage.getString('email');
       mobile = localStorage.getString('mobile');
       //userData = user;
+       
+
+
     });
   }
+
+  ///////////////////////////////////////////////////////////////////////////////>>>>>cut string
+  
+  //String s = "abcdefghigklmnopqrstuvwxyzABCDEFGHIGKLMNOPQRSTUVWXYZ0123456789";
+  //dynamic s = document.getElementById('email') ;
+  //static ss = s.substring(s.indexOf(3,13);
+  //var student.substring(1, 4);
+  
+  /* static const string = 'dartlang';
+var result = string.substring(1); // 'artlang'
+result = string.substring(1, 4);  */
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -296,6 +329,39 @@ class _ResidueState extends State<Residue> {
                           ),
                         ],
                       ),
+                      /////////////////////////////////////////////////////////>>>>อีเมล์
+                      SizedBox(height: 20.0),
+                      Text(
+                        "อีเมล",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.fromLTRB(5, 10, 5, 10),
+                        width: 340,
+                        height: 50,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            border: Border.all(color: Colors.grey),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.white,
+                                blurRadius: 3,
+                                offset: Offset(0, 4),
+                              )
+                            ]),
+                        child: Text(
+                          '$email',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
                       /////////////////////////////////////////////////>>>>>>>> รายวิชา & กลุ่มเรียน
                       SizedBox(height: 20.0),
                       Text(
@@ -374,47 +440,60 @@ class _ResidueState extends State<Residue> {
                         ),
                       ),
                       ///////////////////////////////////////////////////>>>>>>> กลุ่มเรียนภายในสาขา
-                      DecoratedBox(
-                          decoration: BoxDecoration(
-                              border: new Border.all(color: Colors.grey),
-                              borderRadius: BorderRadius.circular(5.0)),
-                          child: Container(
-                            width: 340,
-                            height: 48,
-                            padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                Expanded(
-                                  child: DropdownButtonHideUnderline(
-                                    child: DropdownButton(
-                                      hint: Text(
-                                        "กรุณาเลือกกลุ่มเรียน",
-                                        style: TextStyle(
-                                          fontSize: 20,
-                                          color: Colors.grey,
-                                        ),
-                                      ),
-                                      items: groups.map((String items) {
-                                        return DropdownMenuItem(
-                                          value: items,
-                                          child: Text(items),
-                                        );
-                                      }).toList(),
-                                      onChanged: (String? groupValue) {
-                                        setState(() {
-                                          Groupvalue = groupValue!;
-                                          GroupController.text = Groupvalue!;
-                                          print(groupValue.toString());
-                                        });
-                                      },
-                                      value: Groupvalue,
-                                    ),
-                                  ),
-                                ),
-                              ],
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Radio<String>(
+                            value: "กลุ่มที่1",
+                            groupValue: _radioValue,
+                            onChanged: _handleRadioValueChange,
+                          ),
+                          new Text(
+                            'กลุ่มที่ 1',
+                            style: new TextStyle(fontSize: 16.0),
+                          ),
+                          SizedBox(width: 15.0),
+                          Radio<String>(
+                            value: "กลุ่มที่2",
+                            groupValue: _radioValue,
+                            onChanged: _handleRadioValueChange,
+                          ),
+                          new Text(
+                            'กลุ่มที่ 2',
+                            style: new TextStyle(
+                              fontSize: 16.0,
                             ),
-                          )),
+                          ),
+                          SizedBox(width: 15.0),
+                          Radio<String>(
+                            value: "อื่นๆ",
+                            groupValue: _radioValue,
+                            onChanged: _handleRadioValueChange,
+                          ),
+                          Expanded(
+                            flex: 4,
+                            child: TextField(
+                              controller: AnotherGroupController,
+                              decoration: InputDecoration(
+                                counterText: "",
+
+                                /*  errorText:
+                                _validate ? 'กรุณากรอกข้อมูลให้ครบ' : null,  */
+                                border: OutlineInputBorder(),
+                                contentPadding: const EdgeInsets.all(5),
+                                hintText: 'อื่นๆโปรดระบุ',
+                                hintStyle: TextStyle(fontSize: 20),
+                                labelStyle: TextStyle(
+                                  fontSize: 22,
+                                  color: Colors.black,
+                                ),
+                              ),
+                              maxLength: 2,
+                            ),
+                          ),
+                          SizedBox(width: 10.0),
+                        ],
+                      ),
                       ///////////////////////////////////////////////////////>>>>>รายวิชานอก & กลุ่มเรียนนอกสาขา
                       SizedBox(height: 20.0),
 
@@ -441,48 +520,6 @@ class _ResidueState extends State<Residue> {
                             color: Colors.black,
                           ),
                         ),
-                      ),
-
-                      ////////////////////////////////////////////////////>>>>>>>>วันที่แจ้ง
-                      SizedBox(height: 20),
-                      Text(
-                        "วันที่",
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      TextField(
-                        controller: DateController,
-                        decoration: InputDecoration(
-                            /*  errorText:
-                                  _validate2 ? 'กรุณากรอกข้อมูลให้ครบ' : null, */
-                            border: OutlineInputBorder(),
-                            contentPadding: const EdgeInsets.all(5),
-                            hintText: DateTime.now().toString(),
-                            hintStyle: TextStyle(fontSize: 20),
-                            labelStyle: TextStyle(
-                              fontSize: 22,
-                              color: Colors.black,
-                            )),
-                        readOnly: true,
-                        onTap: () async {
-                          DateTime? pickedDate = await showDatePicker(
-                              context: context,
-                              initialDate: DateTime.now(),
-                              firstDate: DateTime(2000),
-                              lastDate: DateTime(2101));
-                          if (pickedDate != null) {
-                            print(pickedDate);
-                            String formattedDate =
-                                DateFormat('dd-MM-yyyy').format(pickedDate);
-                            print(formattedDate);
-                            setState(() {
-                              DateController.text = formattedDate;
-                            });
-                          } else {}
-                        },
                       ),
                       ////////////////////////////////////////////////////////>>>>.รายละเอียด
                       SizedBox(height: 20.0),
@@ -539,7 +576,6 @@ class _ResidueState extends State<Residue> {
                               () async {
                                 if (_formkey.currentState!.validate()) {
                                   _formkey.currentState!.save();
-
                                   final String Subject_Internal =
                                       CoursesController.text;
                                   final String Subject_External =
@@ -548,13 +584,14 @@ class _ResidueState extends State<Residue> {
                                       DetailController.text;
                                   final String nameTh = name;
                                   final String surnameTh = surname;
-                                  final String EmailStudent = 'null';
+                                  final String EmailStudent = email;
                                   final String mobile = PhoneController.text;
                                   final String studentCode =
                                       StudentController.text;
                                   final String Sec_Internal =
                                       GroupController.text;
-                                  
+                                  final String Sec_Another =
+                                      AnotherGroupController.text;
 
                                   ///////////////////////////////////////////////////>>>>>>>>.post
                                   final Residues? _user = await POSTResidue(
@@ -567,7 +604,7 @@ class _ResidueState extends State<Residue> {
                                       mobile,
                                       studentCode,
                                       Sec_Internal,
-                                  );
+                                      Sec_Another);
 
                                   setState(() {
                                     StudentController.text.isEmpty
@@ -591,6 +628,9 @@ class _ResidueState extends State<Residue> {
                                     DetailController.text.isEmpty
                                         ? _validate8 = true
                                         : _validate8 = false;
+                                    AnotherGroupController.text.isEmpty
+                                        ? _validate8 = true
+                                        : _validate8 = false;
                                   });
 
                                   showDialog<String>(
@@ -612,7 +652,7 @@ class _ResidueState extends State<Residue> {
                                                       MaterialPageRoute(
                                                         builder: (BuildContext
                                                                 context) =>
-                                                            Another(),
+                                                            Foot(),
                                                       ));
                                                 },
                                               ),
@@ -627,7 +667,7 @@ class _ResidueState extends State<Residue> {
                                 CoursesController.text = "";
                                 GroupController.text = "";
                                 OfffieldCoursesController.text = "";
-                                
+
                                 DateController.text = "";
                                 DetailController.text = "";
                               },

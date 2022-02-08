@@ -1,10 +1,12 @@
+import 'package:appcsmju/api/apinew_foot.dart';
 import 'package:appcsmju/model/loginmodel/login_page.dart';
 import 'package:appcsmju/page/Activityanoter.dart';
 import 'package:appcsmju/page/Appeal.dart';
 import 'package:appcsmju/page/Borrow_back.dart';
-import 'package:appcsmju/page/Profile.dart';
+import 'package:appcsmju/page/Profile/Profile.dart';
 import 'package:appcsmju/page/Residue.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Another extends StatefulWidget {
   const Another({Key? key}) : super(key: key);
@@ -229,11 +231,20 @@ class _AnotherState extends State<Another> {
                               ),
                               actions: <Widget>[
                                 TextButton(
-                                  onPressed: () {
+                                  /* onPressed: () {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) => LoginPage()));
+                                  }, */
+                                  onPressed: () {
+                                    /* Navigator.pushAndRemoveUntil(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (BuildContext context) =>
+                                                LoginPage()),
+                                        ModalRoute.withName('/')); */
+                                    logout();
                                   },
                                   child: const Text(
                                     'ตกลง',
@@ -261,7 +272,6 @@ class _AnotherState extends State<Another> {
                               ],
                             ));
                   },
-                  
                   child: Container(
                     width: 120,
                     height: 70,
@@ -297,5 +307,24 @@ class _AnotherState extends State<Another> {
       ),
     );
   }
-}
 
+  void logout() async {
+    // logout from the server ...
+    var res = await ApiService().getData('logout');
+    var name;
+    var surname;
+    var mobile;
+    var email;
+    //var body = json.decode(res.body);
+    //if (body['success']) {
+    SharedPreferences localStorage = await SharedPreferences.getInstance();
+    localStorage.remove('access_token');
+    localStorage.remove('name');
+    localStorage.remove('surname');
+    localStorage.remove('mobile');
+    localStorage.remove('email');
+    Navigator.push(
+        context, new MaterialPageRoute(builder: (context) => LoginPage()));
+    // }
+  }
+}

@@ -5,7 +5,6 @@ import 'package:appcsmju/footbar/Foot.dart';
 import 'package:appcsmju/api/APIlogin.dart';
 import 'package:appcsmju/APImodel/login_model.dart';
 
-
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -163,7 +162,6 @@ class _LoginPageState extends State<LoginPage> {
                         height: 20,
                       ),
 
-                      
                       FlatButton(
                         padding: EdgeInsets.symmetric(
                           vertical: 10,
@@ -186,18 +184,25 @@ class _LoginPageState extends State<LoginPage> {
                                 });
 
                                 if (value.token.isNotEmpty) {
-                                  var res = await APIService().postData(data, '');
+                                  var res =
+                                      await APIService().postData(data, '');
                                   var body = json.decode(res.body);
                                   SharedPreferences localStorage =
                                       await SharedPreferences.getInstance();
                                   /* localStorage.setString(
                                       'access_token', body['access_token']); */
-                                /*   localStorage.setString(
+                                  /*   localStorage.setString(
                                       'User', json.encode(body['user'])); */
                                   localStorage.setString('name', body['name']);
-                                  localStorage.setString('surname', body['surname']);
-                                  localStorage.setString('email', body['email']);
-                                  localStorage.setString('mobile', body['mobile']);
+                                  localStorage.setString(
+                                      'surname', body['surname']);
+                                  localStorage.setString(
+                                      'email', body['email']);
+                                  localStorage.setString(
+                                      'mobile', body['mobile']);
+                                  var status = body['email'];
+                                  localStorage.setString(
+                                      'Studentcode', status.substring(3, 13));
 
                                   Navigator.push(
                                       context,

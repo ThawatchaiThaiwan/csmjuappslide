@@ -18,7 +18,8 @@ import 'package:http/http.dart' as http;
     String EmailStudent,
     String mobile,
     String studentCode,
-    String Sec_Internal,
+    String Sec_Internal, 
+    String Sec_Another,
     
 
   ) async {
@@ -39,6 +40,7 @@ import 'package:http/http.dart' as http;
       'mobile': mobile,
       'studentCode': studentCode,
       'Sec_Internal': Sec_Internal,
+      'Sec_Another': Sec_Another,
       
     }),
   );
