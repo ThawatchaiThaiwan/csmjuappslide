@@ -17,13 +17,13 @@ class _Borrow_BackState extends State<Borrow_Back> {
           title: Text(
             'ยืมคืน',
             textAlign: TextAlign.center,
-            style: TextStyle(color: Colors.black),
+            style: TextStyle(color: Colors.blueGrey[900]),
           ),
           leading: Navigator.canPop(context)
               ? IconButton(
                   icon: Icon(
                     Icons.keyboard_backspace,
-                    color: Colors.black,
+                    color: Colors.blueGrey[900],
                     
                   ),
                   onPressed: () => Navigator.of(context).pop(),

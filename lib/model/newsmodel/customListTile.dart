@@ -53,7 +53,7 @@ Widget customListTile(Apinew article, BuildContext context) {
             child: Text(
               article.newsTitle,
               style: TextStyle(
-                color: Colors.black,
+                color: Colors.blueGrey[900],
                 fontSize: 23.0,
                 fontWeight: FontWeight.bold,
                 fontFamily: 'Sarabun',
@@ -70,7 +70,7 @@ Widget customListTile(Apinew article, BuildContext context) {
             child: Text(
               article.newsDate,
               style: TextStyle(
-                color: Colors.black,
+                color: Colors.blueGrey[900],
                 fontSize: 20.0,
                 fontWeight: FontWeight.bold,
                 fontFamily: 'Sarabun',

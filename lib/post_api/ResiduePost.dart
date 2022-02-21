@@ -24,7 +24,6 @@ import 'package:http/http.dart' as http;
 
   ) async {
   final response = await http.post(
-   
     Uri.parse('https://wwwdev.csmju.com/api/residaual/create'),
     headers: <String, String>{
       'Content-Type': 'application/json',

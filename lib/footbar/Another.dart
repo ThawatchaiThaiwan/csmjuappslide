@@ -27,7 +27,7 @@ class _AnotherState extends State<Another> {
           "บริการอื่นๆ",
           textAlign: TextAlign.center,
           style: TextStyle(
-              color: Colors.black, fontSize: 27, fontWeight: FontWeight.bold),
+              color: Colors.blueGrey[900], fontSize: 27, fontWeight: FontWeight.bold),
         ),
         leading: IconButton(
           onPressed: () {},

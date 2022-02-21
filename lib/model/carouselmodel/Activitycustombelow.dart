@@ -38,7 +38,7 @@ Widget customActivityBelow(Activity article, BuildContext context) {
             child: Text(
               article.Activitypic_Title,
               style: TextStyle(
-                color: Colors.black,
+                color: Colors.blueGrey[900],
                 fontSize: 22.0,
                 fontWeight: FontWeight.bold,
                 fontFamily: 'Sarabun',
@@ -55,7 +55,7 @@ Widget customActivityBelow(Activity article, BuildContext context) {
             child: Text(
               article.Activity_Date,
               style: TextStyle(
-                color: Colors.black,
+                color: Colors.blueGrey[900],
                 fontSize: 15.0,
                 fontWeight: FontWeight.bold,
                 fontFamily: 'Sarabun',

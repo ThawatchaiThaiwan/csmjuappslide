@@ -24,7 +24,7 @@ class _ActivityAnoterState extends State<ActivityAnoter> {
         title: Text(
           "โครงการทั้งหมด",
           textAlign: TextAlign.center,
-          style: TextStyle(color: Colors.black,
+          style: TextStyle(color: Colors.blueGrey[900],
           fontSize: 27,
           fontWeight: FontWeight.bold),
         ),
@@ -32,7 +32,7 @@ class _ActivityAnoterState extends State<ActivityAnoter> {
             ? IconButton(
                 icon: Icon(
                   Icons.keyboard_backspace,
-                  color: Colors.black,
+                  color: Colors.blueGrey[900],
                 ),
                 onPressed: () => Navigator.of(context).pop(),
               )

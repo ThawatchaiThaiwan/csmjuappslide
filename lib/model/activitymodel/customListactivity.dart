@@ -53,7 +53,7 @@ Widget customListactivity(Activity activity, BuildContext context) {
             child: Text(
               activity.Activitypic_Title,
               style: TextStyle(
-                color: Colors.black,
+                color: Colors.blueGrey[900],
                 fontSize: 23.0,
                 fontWeight: FontWeight.bold,
                 fontFamily: 'Sarabun',
@@ -70,7 +70,7 @@ Widget customListactivity(Activity activity, BuildContext context) {
             child: Text(
               activity.Activity_Date,
               style: TextStyle(
-                color: Colors.black,
+                color: Colors.blueGrey[900],
                 fontSize: 20.0,
                 fontWeight: FontWeight.bold,
                 fontFamily: 'Sarabun',

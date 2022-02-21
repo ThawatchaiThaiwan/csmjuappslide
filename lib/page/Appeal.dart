@@ -9,7 +9,6 @@ import 'package:intl/intl.dart';
 import 'package:appcsmju/footbar/Another.dart';
 import 'package:flutter/material.dart' hide Action;
 
-
 class Appeal extends StatefulWidget {
   @override
   _AppealState createState() => _AppealState();
@@ -64,7 +63,7 @@ class _AppealState extends State<Appeal> {
             'ติดต่อหลักสูตร',
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: Colors.black,
+              color: Colors.blueGrey[900],
               fontSize: 27.0,
               fontWeight: FontWeight.bold,
             ),
@@ -73,7 +72,7 @@ class _AppealState extends State<Appeal> {
               ? IconButton(
                   icon: Icon(
                     Icons.keyboard_backspace,
-                    color: Colors.black,
+                    color: Colors.blueGrey[900],
                   ),
                   onPressed: () => Navigator.of(context).pop(),
                 )
@@ -104,7 +103,7 @@ class _AppealState extends State<Appeal> {
                         Text(
                           " หัวข้อเรื่อง",
                           style: TextStyle(
-                            color: Colors.black,
+                            color: Colors.blueGrey[900],
                             fontSize: 22,
                             fontWeight: FontWeight.bold,
                           ),
@@ -120,7 +119,7 @@ class _AppealState extends State<Appeal> {
                             hintStyle: TextStyle(fontSize: 20),
                             labelStyle: TextStyle(
                               fontSize: 22,
-                              color: Colors.black,
+                              color: Colors.blueGrey[900],
                             ),
                           ),
                         ),
@@ -129,7 +128,7 @@ class _AppealState extends State<Appeal> {
                         Text(
                           "วันที่",
                           style: TextStyle(
-                            color: Colors.black,
+                            color: Colors.blueGrey[900],
                             fontSize: 22,
                             fontWeight: FontWeight.bold,
                           ),
@@ -145,7 +144,7 @@ class _AppealState extends State<Appeal> {
                               hintStyle: TextStyle(fontSize: 20),
                               labelStyle: TextStyle(
                                 fontSize: 22,
-                                color: Colors.black,
+                                color: Colors.blueGrey[900],
                               )),
                           readOnly: true,
                           onTap: () async {
@@ -170,7 +169,7 @@ class _AppealState extends State<Appeal> {
                         Text(
                           "รายละเอียด",
                           style: TextStyle(
-                            color: Colors.black,
+                            color: Colors.blueGrey[900],
                             fontSize: 22,
                             fontWeight: FontWeight.bold,
                           ),
@@ -188,7 +187,7 @@ class _AppealState extends State<Appeal> {
                               hintStyle: TextStyle(fontSize: 20),
                               labelStyle: TextStyle(
                                 fontSize: 22,
-                                color: Colors.black,
+                                color: Colors.blueGrey[900],
                               )),
                         ),
                         //////////////////////////////////////////////////////////>>>>>>.รูปภาพ
@@ -196,7 +195,7 @@ class _AppealState extends State<Appeal> {
                         Text(
                           "เลือกรูปภาพ",
                           style: TextStyle(
-                            color: Colors.black,
+                            color: Colors.blueGrey[900],
                             fontSize: 22,
                             fontWeight: FontWeight.bold,
                           ),
@@ -211,7 +210,7 @@ class _AppealState extends State<Appeal> {
                             child: Text(
                               "อัพโหลดรูปภาพ",
                               style: TextStyle(
-                                  color: Colors.black,
+                                  color: Colors.blueGrey[900],
                                   fontSize: 17,
                                   fontFamily: 'Sarabun',
                                   fontWeight: FontWeight.bold),
@@ -253,20 +252,20 @@ class _AppealState extends State<Appeal> {
                           width: 375,
                           height: 30,
                           decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          color: Colors.green[10],
-                          border: Border.all(
-                            color: Colors.green,
-                            width: 2,
-                          ),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Color(0x4f000000),
-                              blurRadius: 3,
-                              offset: Offset(0, 4),
+                            borderRadius: BorderRadius.circular(5),
+                            color: Colors.green[10],
+                            border: Border.all(
+                              color: Colors.green,
+                              width: 2,
                             ),
-                          ],
-                        ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color(0x4f000000),
+                                blurRadius: 3,
+                                offset: Offset(0, 4),
+                              ),
+                            ],
+                          ),
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
                                 primary: Colors.green[400]),

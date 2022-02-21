@@ -24,18 +24,18 @@ class _NewsState extends State<News> {
         title: Text(
           "ข่าวสาร",
           textAlign: TextAlign.center,
-          style: TextStyle(color: Colors.black,fontSize: 27,fontWeight: FontWeight.bold),
+          style: TextStyle(color: Colors.blueGrey[900],fontSize: 27,fontWeight: FontWeight.bold),
         ),
         leading: IconButton(
           onPressed: () {},
           icon: Icon(Icons.person),
-          color: Colors.black,
+          color: Colors.blueGrey[900],
         ),
         actions: <Widget>[
           IconButton(
             onPressed: () {},
             icon: Icon(Icons.notifications_active),
-            color: Colors.black,
+            color: Colors.blueGrey[900],
           ),
         ],
       ),

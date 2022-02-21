@@ -105,6 +105,7 @@ class _ResidueState extends State<Residue> {
   var surname;
   var mobile;
   var email;
+  var studentcode;
   void _getUserInfo() async {
     SharedPreferences localStorage = await SharedPreferences.getInstance();
     /* var userJson = localStorage.getString('user');
@@ -114,25 +115,21 @@ class _ResidueState extends State<Residue> {
       surname = localStorage.getString('surname');
       email = localStorage.getString('email');
       mobile = localStorage.getString('mobile');
+      studentcode = localStorage.getString('Studentcode');
       //userData = user;
-       
-
-
     });
   }
 
   ///////////////////////////////////////////////////////////////////////////////>>>>>cut string
-  
+
   //String s = "abcdefghigklmnopqrstuvwxyzABCDEFGHIGKLMNOPQRSTUVWXYZ0123456789";
   //dynamic s = document.getElementById('email') ;
   //static ss = s.substring(s.indexOf(3,13);
   //var student.substring(1, 4);
-  
+
   /* static const string = 'dartlang';
 var result = string.substring(1); // 'artlang'
 result = string.substring(1, 4);  */
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -142,10 +139,10 @@ result = string.substring(1, 4);  */
         backgroundColor: Colors.white,
         centerTitle: true,
         title: Text(
-          'แจ้งตกค้าง',
+          'แจ้งรายวิชาตกค้าง',
           textAlign: TextAlign.center,
           style: TextStyle(
-              color: Colors.black,
+              color: Colors.blueGrey[900],
               fontWeight: FontWeight.bold,
               fontSize: 25.0,
               fontFamily: 'Sarabun'),
@@ -154,7 +151,7 @@ result = string.substring(1, 4);  */
             ? IconButton(
                 icon: Icon(
                   Icons.keyboard_backspace,
-                  color: Colors.black,
+                  color: Colors.blueGrey[900],
                 ),
                 onPressed: () => Navigator.of(context).pop(),
               )
@@ -185,7 +182,7 @@ result = string.substring(1, 4);  */
                       Text(
                         "ชื่อ",
                         style: TextStyle(
-                          color: Colors.black,
+                          color: Colors.blueGrey[900],
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
                         ),
@@ -195,8 +192,9 @@ result = string.substring(1, 4);  */
                         width: 340,
                         height: 50,
                         decoration: BoxDecoration(
+                            color: Colors.blueGrey[100],
                             borderRadius: BorderRadius.circular(5),
-                            border: Border.all(color: Colors.grey),
+                            border: Border.all(color: Colors.black87),
                             boxShadow: [
                               BoxShadow(
                                 color: Colors.white,
@@ -207,7 +205,7 @@ result = string.substring(1, 4);  */
                         child: Text(
                           '$name',
                           style: TextStyle(
-                            color: Colors.black,
+                            color: Colors.blueGrey[900],
                             fontSize: 22,
                             fontWeight: FontWeight.bold,
                           ),
@@ -218,7 +216,7 @@ result = string.substring(1, 4);  */
                       Text(
                         "นามสกุล",
                         style: TextStyle(
-                          color: Colors.black,
+                          color: Colors.blueGrey[900],
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
                         ),
@@ -228,8 +226,9 @@ result = string.substring(1, 4);  */
                         width: 340,
                         height: 50,
                         decoration: BoxDecoration(
+                            color: Colors.blueGrey[100],
                             borderRadius: BorderRadius.circular(5),
-                            border: Border.all(color: Colors.grey),
+                            border: Border.all(color: Colors.black87),
                             boxShadow: [
                               BoxShadow(
                                 color: Colors.white,
@@ -240,7 +239,7 @@ result = string.substring(1, 4);  */
                         child: Text(
                           '$surname',
                           style: TextStyle(
-                            color: Colors.black,
+                            color: Colors.blueGrey[900],
                             fontSize: 22,
                             fontWeight: FontWeight.bold,
                           ),
@@ -255,7 +254,7 @@ result = string.substring(1, 4);  */
                             child: Text(
                               "รหัสนักศึกษา",
                               style: TextStyle(
-                                color: Colors.black,
+                                color: Colors.blueGrey[900],
                                 fontSize: 22,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -266,7 +265,7 @@ result = string.substring(1, 4);  */
                             child: Text(
                               " เบอร์โทร",
                               style: TextStyle(
-                                color: Colors.black,
+                                color: Colors.blueGrey[900],
                                 fontSize: 22,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -278,29 +277,32 @@ result = string.substring(1, 4);  */
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Expanded(
-                              flex: 1,
-                              child: TextFormField(
-                                validator: (value) {
-                                  return value!.length < 10
-                                      ? 'กรุณากรออกรหัสนักศึกษาให้ครบ 10 ตัว'
-                                      : null;
-                                },
-                                controller: StudentController,
-                                decoration: InputDecoration(
-                                  counterText: '',
-                                  /* errorText:
-                                _validate ? 'กรุณากรอกข้อมูลให้ครบ' : null, */
-                                  border: OutlineInputBorder(),
-                                  contentPadding: const EdgeInsets.all(5),
-                                  hintText: 'กรอกรหัสนักศึกษา',
-                                  hintStyle: TextStyle(fontSize: 20),
-                                  labelStyle: TextStyle(
-                                    fontSize: 22,
-                                    color: Colors.black,
-                                  ),
+                            flex: 1,
+                            child: Container(
+                              padding: EdgeInsets.fromLTRB(5, 10, 5, 10),
+                              width: 340,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                  color: Colors.blueGrey[100],
+                                  borderRadius: BorderRadius.circular(5),
+                                  border: Border.all(color: Colors.black87),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.white,
+                                      blurRadius: 3,
+                                      offset: Offset(0, 4),
+                                    )
+                                  ]),
+                              child: Text(
+                                '$studentcode',
+                                style: TextStyle(
+                                  color: Colors.blueGrey[900],
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.bold,
                                 ),
-                                maxLength: 10,
-                              )),
+                              ),
+                            ),
+                          ),
                           SizedBox(width: 10.0),
                           Expanded(
                             flex: 1,
@@ -321,7 +323,7 @@ result = string.substring(1, 4);  */
                                 hintStyle: TextStyle(fontSize: 20),
                                 labelStyle: TextStyle(
                                   fontSize: 22,
-                                  color: Colors.black,
+                                  color: Colors.blueGrey[900],
                                 ),
                               ),
                               maxLength: 10,
@@ -334,7 +336,7 @@ result = string.substring(1, 4);  */
                       Text(
                         "อีเมล",
                         style: TextStyle(
-                          color: Colors.black,
+                          color: Colors.blueGrey[900],
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
                         ),
@@ -344,8 +346,9 @@ result = string.substring(1, 4);  */
                         width: 340,
                         height: 50,
                         decoration: BoxDecoration(
+                            color: Colors.blueGrey[100],
                             borderRadius: BorderRadius.circular(5),
-                            border: Border.all(color: Colors.grey),
+                            border: Border.all(color: Colors.black87),
                             boxShadow: [
                               BoxShadow(
                                 color: Colors.white,
@@ -356,7 +359,7 @@ result = string.substring(1, 4);  */
                         child: Text(
                           '$email',
                           style: TextStyle(
-                            color: Colors.black,
+                            color: Colors.blueGrey[900],
                             fontSize: 22,
                             fontWeight: FontWeight.bold,
                           ),
@@ -367,7 +370,7 @@ result = string.substring(1, 4);  */
                       Text(
                         " รายวิชาในสาขา",
                         style: TextStyle(
-                          color: Colors.black,
+                          color: Colors.blueGrey[900],
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
                         ),
@@ -402,7 +405,7 @@ result = string.substring(1, 4);  */
                                         "กรุณาเลือกรายวิชา",
                                         style: TextStyle(
                                           fontSize: 20,
-                                          color: Colors.grey,
+                                          color: Colors.blueGrey[900],
                                         ),
                                       ),
                                       items: subject_data?.map((item) {
@@ -434,7 +437,7 @@ result = string.substring(1, 4);  */
                       Text(
                         "กลุ่มเรียน",
                         style: TextStyle(
-                          color: Colors.black,
+                          color: Colors.blueGrey[900],
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
                         ),
@@ -450,7 +453,8 @@ result = string.substring(1, 4);  */
                           ),
                           new Text(
                             'กลุ่มที่ 1',
-                            style: new TextStyle(fontSize: 16.0),
+                            style: new TextStyle(
+                                fontSize: 16.0, color: Colors.blueGrey[900]),
                           ),
                           SizedBox(width: 15.0),
                           Radio<String>(
@@ -462,6 +466,7 @@ result = string.substring(1, 4);  */
                             'กลุ่มที่ 2',
                             style: new TextStyle(
                               fontSize: 16.0,
+                              color: Colors.blueGrey[900],
                             ),
                           ),
                           SizedBox(width: 15.0),
@@ -485,7 +490,7 @@ result = string.substring(1, 4);  */
                                 hintStyle: TextStyle(fontSize: 20),
                                 labelStyle: TextStyle(
                                   fontSize: 22,
-                                  color: Colors.black,
+                                  color: Colors.blueGrey[900],
                                 ),
                               ),
                               maxLength: 2,
@@ -500,7 +505,7 @@ result = string.substring(1, 4);  */
                       Text(
                         " รายวิชานอกสาขา",
                         style: TextStyle(
-                          color: Colors.black,
+                          color: Colors.blueGrey[900],
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
                         ),
@@ -517,7 +522,7 @@ result = string.substring(1, 4);  */
                           hintStyle: TextStyle(fontSize: 20),
                           labelStyle: TextStyle(
                             fontSize: 22,
-                            color: Colors.black,
+                            color: Colors.blueGrey[900],
                           ),
                         ),
                       ),
@@ -526,7 +531,7 @@ result = string.substring(1, 4);  */
                       Text(
                         "รายละเอียด",
                         style: TextStyle(
-                          color: Colors.black,
+                          color: Colors.blueGrey[900],
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
                         ),
@@ -544,7 +549,7 @@ result = string.substring(1, 4);  */
                             hintStyle: TextStyle(fontSize: 20),
                             labelStyle: TextStyle(
                               fontSize: 22,
-                              color: Colors.black,
+                              color: Colors.blueGrey[900],
                             )),
                       ),
                       SizedBox(height: 40.0),
@@ -582,12 +587,12 @@ result = string.substring(1, 4);  */
                                       OfffieldCoursesController.text;
                                   final String Residaual_Detail =
                                       DetailController.text;
-                                  final String nameTh = name;
-                                  final String surnameTh = surname;
+                                  final String nameThp = name;
+                                  final String surnameThp = surname;
                                   final String EmailStudent = email;
                                   final String mobile = PhoneController.text;
                                   final String studentCode =
-                                      StudentController.text;
+                                      studentcode;
                                   final String Sec_Internal =
                                       GroupController.text;
                                   final String Sec_Another =
@@ -598,8 +603,8 @@ result = string.substring(1, 4);  */
                                       Subject_Internal,
                                       Subject_External,
                                       Residaual_Detail,
-                                      nameTh,
-                                      surnameTh,
+                                      nameThp,
+                                      surnameThp,
                                       EmailStudent,
                                       mobile,
                                       studentCode,

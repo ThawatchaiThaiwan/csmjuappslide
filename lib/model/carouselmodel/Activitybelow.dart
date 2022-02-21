@@ -67,7 +67,7 @@ class Activitybelow extends StatelessWidget {
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   letterSpacing: 1.2,
-                  color: Colors.black,
+                  color: Colors.blueGrey[900],
                   fontSize: 25.0,
                   fontWeight: FontWeight.bold,
                   fontFamily: 'Sarabun',
@@ -91,7 +91,7 @@ class Activitybelow extends StatelessWidget {
                 textAlign: TextAlign.justify,
                 style: TextStyle(
                   letterSpacing: 0.98,
-                  color: Colors.black,
+                  color: Colors.blueGrey[900],
                   fontSize: 21.5,
                   //fontWeight: FontWeight.bold,
                   fontFamily: 'Sarabun',
@@ -111,7 +111,7 @@ class Activitybelow extends StatelessWidget {
               child: Text(
                 article.Activity_Date,
                 style: TextStyle(
-                  color: Colors.black,
+                  color: Colors.blueGrey[900],
                   fontSize: 25.0,
                   //fontWeight: FontWeight.bold,
                   fontFamily: 'Sarabun',

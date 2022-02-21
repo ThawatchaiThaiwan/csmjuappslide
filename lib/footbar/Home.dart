@@ -89,7 +89,7 @@ class _HomePageCarouselState extends State<HomePageCarousel> {
               "ข่าวประชาสัมพันธ์",
               textAlign: TextAlign.start,
               style: TextStyle(
-                color: Colors.black,
+                color: Colors.blueGrey[900],
                 fontWeight: FontWeight.bold,
                 fontSize: 28,
               ),
@@ -128,7 +128,7 @@ class _HomePageCarouselState extends State<HomePageCarousel> {
             'โครงการล่าสุด',
             textAlign: TextAlign.start,
             style: TextStyle(
-              color: Colors.black,
+              color: Colors.blueGrey [900],
               fontWeight: FontWeight.bold,
               fontSize: 28,
             ),

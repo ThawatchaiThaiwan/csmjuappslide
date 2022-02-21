@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:appcsmju/page/Profile/Edit_profile.dart';
 import 'package:http/http.dart' as http;
 import 'package:appcsmju/api/apinew_foot.dart';
 import 'package:appcsmju/footbar/Another.dart';
@@ -47,13 +48,10 @@ class _ProfileState extends State<Profile> {
   }
 
   ///////////////////////////////////////////////////////////////////>>>>>>>>>.get student
-  /* Future<List> _getStudent() async {
-    final response = await http.get(Uri.parse(
-        "https://wwwdev.csmju.com/api/student${studentcode}"));
-        print(studentcode);
-    return json.decode(response.body);
-    
-  } */
+  ///
+
+  /* var response = http.get(Uri.parse(
+      'https://wwwdev.csmju.com/api/student/studentCode ==@studentcode')); */
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +64,7 @@ class _ProfileState extends State<Profile> {
           'ข้อมูลส่วนตัว',
           textAlign: TextAlign.center,
           style: TextStyle(
-              color: Colors.black,
+              color: Colors.blueGrey[900],
               fontWeight: FontWeight.bold,
               fontSize: 25.0,
               fontFamily: 'Sarabun'),
@@ -75,7 +73,7 @@ class _ProfileState extends State<Profile> {
             ? IconButton(
                 icon: Icon(
                   Icons.keyboard_backspace,
-                  color: Colors.black,
+                  color: Colors.blueGrey[900],
                 ),
                 onPressed: () => Navigator.of(context).pop(),
               )
@@ -601,7 +599,7 @@ class _ProfileState extends State<Profile> {
                               Navigator.push(
                                   context,
                                   new MaterialPageRoute(
-                                      builder: (context) => Foot()));
+                                      builder: (context) => EditProfile()));
                             },
                           ),
                         ),
