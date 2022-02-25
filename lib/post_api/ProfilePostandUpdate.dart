@@ -1,103 +1,56 @@
-// ignore_for_file: non_constant_identifier_names
-
+import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-import 'package:appcsmju/APImodel/Profilemodel.dart';
-import 'package:appcsmju/APImodel/Residuemodel.dart';
-import 'package:http/http.dart' as http;
+class ProfileService {
+  Future<bool> addImage(Map<String, String> body, String filepath) async {
+    var authToken = '1257|7D3I1qDi4m28ZWRMJTvSmVJ3kOYwSsBvyzJdQm16';
+    String postimageUrl = 'https://wwwdev.csmju.com/api/student/create';
+    String updateimageUrl = 'https://wwwdev.csmju.com/api/student/update';
+    Map<String, String> headers = {
+      'Content-Type': 'multipart/form-data',
+      'Authorization': 'Bearer $authToken',
+    };
 
-var authToken = '1257|7D3I1qDi4m28ZWRMJTvSmVJ3kOYwSsBvyzJdQm16';
-
-Future<ProfileP?> POSTProfile(
-  String nameTh,
-  String surnameTh,
-  String nameEn,
-  String surnameEn,
-  String PictureProfile,
-  String EmailStudent,
-  String mobile,
-  String Address,
-  String studentCode,
-) async {
-  if (nameEn.isNotEmpty &&
-      surnameEn.isNotEmpty &&
-      PictureProfile.isNotEmpty &&
-      mobile.isNotEmpty &&
-      Address.isNotEmpty) {
-    final response = await http.post(
-      Uri.parse('https://wwwdev.csmju.com/api/student'),
-      headers: <String, String>{
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer $authToken'
-      },
-      body: jsonEncode(<String, String>{
-        'nameTh': nameTh,
-        'surnameTh': surnameTh,
-        'nameEn': nameEn,
-        'surnameEn': surnameEn,
-        'PictureProfile': PictureProfile,
-        'EmailStudent': EmailStudent,
-        'mobile': mobile,
-        'Address': Address,
-        'studentCode': studentCode,
-      }),
-    );
-    /* if (response.statusCode == 200) {
-      var messageSuccess = json.decode(response.body)['message'];
-      showMessage(context, messageSuccess);
-    } else {
-      var messageError = "Can not Post this user!!";
-      showMessage(context, messageError);
-    } */
-
-    nameEn.isNotEmpty &&
-        surnameEn.isNotEmpty &&
-        PictureProfile.isNotEmpty &&
-        mobile.isNotEmpty &&
-        Address.isNotEmpty;
-    final res = await http.put(
-      Uri.parse('https://wwwdev.csmju.com/api/student/where/studentCode/eq/$studentCode'),
-      headers: <String, String>{
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer $authToken'
-      },
-      body: jsonEncode(<String, String>{
-        'nameTh': nameTh,
-        'surnameTh': surnameTh,
-        'nameEn': nameEn,
-        'surnameEn': surnameEn,
-        'PictureProfile': PictureProfile,
-        'EmailStudent': EmailStudent,
-        'mobile': mobile,
-        'Address': Address,
-        'studentCode': studentCode,
-      }),
-    );
-
-    final resp = await http.post(
-      Uri.parse('https://wwwdev.csmju.com/api/student'),
-      headers: <String, String>{
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer $authToken'
-      },
-      body: jsonEncode(<String, String>{
-        'studentId': studentCode,
-        'nameTh': nameTh,
-        'surnameTh': surnameTh,
-        'nameEn': nameEn,
-        'surnameEn': surnameEn,
-        'PictureProfile': PictureProfile,
-        'EmailStudent': EmailStudent,
-        'mobile': mobile,
-        'Address': Address,
-        'studentCode': studentCode,
-      }),
-    );
-
-    /* if (response.statusCode == 201) {
-    return Residues.fromJson(jsonDecode(response.body));
-  } else {
-    throw Exception('Failed to post.');
-  } */
+    if (filepath != null) {
+      var request = http.MultipartRequest('UPDATE', Uri.parse(updateimageUrl));
+      request.headers.addAll(headers);
+      request.fields.addAll(body);
+      request.files.add(await http.MultipartFile.fromPath('image', filepath));
+      var response = await request.send();
+      print(response.statusCode);
+      if (response.statusCode == 200) {
+        return true;
+      } else {
+        return false;
+      }
+    } else if (filepath == null) {
+      var request = http.MultipartRequest('POST', Uri.parse(postimageUrl));
+      request.headers.addAll(headers);
+      request.fields.addAll(body);
+      request.files.add(await http.MultipartFile.fromPath('image', filepath));
+      var response = await request.send();
+      print(response.statusCode);
+      if (response.statusCode == 200) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  return false;
   }
+
+
+  
 }
+
+
+
+/* var request = http.MultipartRequest('POST', Uri.parse(addimageUrl))
+      ..fields.addAll(body)
+      ..headers.addAll(headers)
+      ..files.add(await http.MultipartFile.fromPath('Complain_Picture', filepath,));
+var response = await request.send();
+    if (response.statusCode == 201) {
+      return true;
+    } else {
+      return false; */

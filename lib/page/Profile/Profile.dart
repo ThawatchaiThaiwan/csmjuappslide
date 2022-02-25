@@ -1,20 +1,18 @@
 // ignore_for_file: unnecessary_null_comparison
 
-import 'dart:convert' as convert;
 import 'dart:convert';
 import 'dart:io';
 
 import 'package:appcsmju/APImodel/Profilemodel.dart';
 import 'package:appcsmju/page/Profile/Edit_profile.dart';
-import 'package:dio/dio.dart';
+
 import 'package:http/http.dart' as http;
 import 'package:appcsmju/api/apinew_foot.dart';
 import 'package:appcsmju/footbar/Another.dart';
-import 'package:appcsmju/footbar/Foot.dart';
+
 import 'package:appcsmju/model/loginmodel/login_page.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
-import 'package:localstorage/localstorage.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Profile extends StatefulWidget {
@@ -39,7 +37,7 @@ class _ProfileState extends State<Profile> {
   //var phone;
   var image;
 
-  set fromCheck(fromCheck) {}
+ 
 
   @override
   void initState() {
@@ -62,8 +60,6 @@ class _ProfileState extends State<Profile> {
   }
 
   ProfileP? profileP;
-  List<Map<String, dynamic>> members = [];
-  bool isLoading = true;
   Future<dynamic> findUser() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
 
@@ -104,96 +100,9 @@ class _ProfileState extends State<Profile> {
           print(studentcode);
           print(ID);
         });
-      } /* else {
-        SharedPreferences localStorage = await SharedPreferences.getInstance();
-        setState(() {
-          name = localStorage.getString('name');
-          surname = localStorage.getString('surname');
-          email = localStorage.getString('email');
-          mobile = localStorage.getString('mobile')!;
-          studentcode = localStorage.getString('Studentcode');
-          //userData = user;
-        });
-      } */
-    }
-
-    /*  if (response.statusCode == 200) {
-      setState(() {
-          profileP = ProfileP.fromMap(json.decode(response.body));
-          ID = profileP!.studentId;
-          name = profileP!.nameTh;
-          surname = profileP!.surnameTh;
-          nameEN = profileP!.nameEn;
-          surnameEN = profileP!.surnameEn;
-          image = profileP!.PictureProfile;
-          email = profileP!.EmailStudent;
-          mobile = profileP!.mobile;
-          address = profileP!.Address;
-          studentcode = profileP!.studentCode;
-        });
-    } else {
-      print('Request failed with status: ${response.statusCode}.');
-    } */
-
-    /* for (var item in json.decode(profileP!.toString())) {
-        setState(() {
-          profileP = ProfileP.fromMap(item);
-          ID = profileP!.studentId;
-          name = profileP!.nameTh;
-          surname = profileP!.surnameTh;
-          nameEN = profileP!.nameEn;
-          surnameEN = profileP!.surnameEn;
-          image = profileP!.PictureProfile;
-          email = profileP!.EmailStudent;
-          mobile = profileP!.mobile;
-          address = profileP!.Address;
-          studentcode = profileP!.studentCode;
-        });
-      }
-    }); */
+      } 
+    } 
   }
-
-  /* Future<ProfileP> _getUser(
-    
-  ) async {
-    var authToken = '1257|7D3I1qDi4m28ZWRMJTvSmVJ3kOYwSsBvyzJdQm16';
-    var url = 'https://api.csmju.com/api/profile/studentCode=${studentcode}';
-    //var url = 'https://wwwdev.csmju.com/api/student/${studentcode}';
-
-    var response = await http.get(Uri.parse(url), headers: <String, String>{
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer $authToken',
-    });
-    var fromcCh = json.decode(response.body);
-    print(fromcCh.toString());
-    if (response.statusCode == 200) {
-      if (fromCh != null) {
-        ID = profileP!.studentId;
-        studentcode = profileP!.studentCode;
-        name = profileP!.nameTh;
-        surname = profileP!.surnameTh;
-        nameEN = profileP!.nameEn;
-        surnameEN = profileP!.surnameEn;
-        email = profileP!.EmailStudent;
-        phone = profileP!.mobile;
-        address = profileP!.Address;
-        image = profileP!.PictureProfile;
-        print(nameEN);
-      } else {
-        SharedPreferences localStorage = await SharedPreferences.getInstance();
-        setState(() {
-          name = localStorage.getString('name');
-          surname = localStorage.getString('surname');
-          email = localStorage.getString('email');
-          mobile = localStorage.getString('mobile')!;
-          studentcode = localStorage.getString('Studentcode');
-          //userData = user;
-        });
-      }
-    }
-
-    return ProfileP.fromJson(jsonDecode(fromcCh.body));
-  } */
 
   @override
   Widget build(BuildContext context) {
@@ -250,59 +159,25 @@ class _ProfileState extends State<Profile> {
                         children: <Widget>[
                           ////////////////////////////////////////////////////////////////////>>>>>>>> image
 
-                          CircleAvatar(
-                            radius: 50,
-                            backgroundColor: Colors.blue[300],
-                            child: image == null
-                                ? Icon(Icons.person)
-                                : Image.network(
-                                    image,
-                                    fit: BoxFit.cover,
-                                  ),
-                          ),
-                          /*   
-                          Card(
-                            
-                            elevation: 3,
-                            color: Colors.blueAccent,
-                            margin: EdgeInsets.only(
-                                left: 10, right: 10, top: 10, bottom: 10),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(55),
-                            ),
-                            child: Container(
-                                padding: EdgeInsets.only(
-                                    left: 25, right: 25, top: 25, bottom: 25),
-                                height: 100,
-                                width: 100,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(55),
-                                 
-                                ),
-                                //width: MediaQuery.of(context).size.width,
-                                  child: Container(
-                                    
-                                    child: image == null
-                                        ? Icon(
-                                            Icons.person,
-                                            size: 50,
-                                            color: Colors.white,
-                                          )
-                                        : Image.network(
-                                            image,
-                                            
-                                            fit: BoxFit.cover,
-                                          ),
-                                  ),
-                                
-
-                                /* child: Icon(
-                                Icons.person,
-                                size: 70,
-                                color: Colors.white,
-                              ), */
-                                ),
-                          ), */
+                          Container(
+                              width: 100.0,
+                              height: 100.0,
+                              decoration: new BoxDecoration(
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.indigo,
+                                     
+                                      spreadRadius:
+                                          1.0, // has the effect of extending the shadow
+                                      
+                                    )
+                                  ],
+                                  shape: BoxShape.circle,
+                                  image: new DecorationImage(
+                                      fit: BoxFit.fill,
+                                      image: new NetworkImage(image == null
+                                          ? 'https://www.sacsteelwork.com/wp-content/uploads/2017/06/%E0%B8%AA%E0%B8%B5%E0%B8%AA%E0%B9%89%E0%B8%A1.jpg'
+                                          : image)))),
 
                           /////////////////////////////////////////////////////////////////////////>>>>>  first name
                           Card(

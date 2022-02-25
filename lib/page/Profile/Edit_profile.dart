@@ -1,10 +1,14 @@
 // ignore_for_file: non_constant_identifier_names
+import 'dart:convert';
+import 'dart:io';
 
+import 'package:http/http.dart' as http;
 import 'package:appcsmju/APImodel/Profilemodel.dart';
 import 'package:appcsmju/page/Profile/Profile.dart';
 import 'package:appcsmju/post_api/ProfilePostandUpdate.dart';
 import 'package:appcsmju/footbar/Another.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class EditProfile extends StatefulWidget {
@@ -20,11 +24,18 @@ class _EditProfileState extends State<EditProfile> {
   var mobile;
   var email;
   var studentcode;
+  var ID;
+  var nameEN;
+  var surnameEN;
+  var image;
+  var address;
+  var _image;
   ////////////////
 
   @override
   void initState() {
     _getUserInfop();
+    findUser();
     super.initState();
   }
 
@@ -33,7 +44,7 @@ class _EditProfileState extends State<EditProfile> {
     /* var userJson = localStorage.getString('user');
     var user = json.decode(userJson!); */
     setState(() {
-      name = localStorage.getString('name'); 
+      name = localStorage.getString('name');
       surname = localStorage.getString('surname');
       email = localStorage.getString('email');
       mobile = localStorage.getString('mobile');
@@ -42,16 +53,74 @@ class _EditProfileState extends State<EditProfile> {
     });
   }
 
+//////////////////////////////////////////////////////////////////////>>>>>>>>get user
+  ProfileP? profileP;
+  Future<dynamic> findUser() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+
+    studentcode = preferences.getString('Studentcode');
+    var authToken = '1257|7D3I1qDi4m28ZWRMJTvSmVJ3kOYwSsBvyzJdQm16';
+    var response = await http.get(
+      Uri.parse("https://wwwdev.csmju.com/api/student/$studentcode"),
+      headers: {
+        HttpHeaders.authorizationHeader: 'Bearer $authToken',
+      },
+    );
+    var getuser = json.decode(response.body);
+    print(getuser);
+    var user = getuser['data'];
+    print(user);
+    for (var dataStudent in user) {
+      print(dataStudent);
+      if (nameEN?.isnotEmpty ?? true) {
+        setState(() {
+          ID = dataStudent['id'];
+          name = dataStudent["nameTh"];
+          surname = dataStudent["surnameTh"];
+          nameEN = dataStudent["nameEn"];
+          surnameEN = dataStudent["surnameEn"];
+          email = dataStudent["EmailStudent"];
+          mobile = dataStudent["mobile"];
+          address = dataStudent["Address"];
+          image = dataStudent["PictureProfile"];
+          studentcode = dataStudent["studentCode"];
+          print(name);
+          print(surname);
+          print(nameEN);
+          print(surnameEN);
+          print(email);
+          print(mobile);
+          print(address);
+          print(image);
+          print(studentcode);
+          print(ID);
+        });
+      }
+    }
+  }
+
   ///////////////////////////////////////////////////////////////////>>>>>>>>>.controller.text
-  TextEditingController _nameEnController = TextEditingController();
-  TextEditingController _surnameEnController = TextEditingController();
+  TextEditingController _nameENController = TextEditingController();
+  TextEditingController _surnameENController = TextEditingController();
   TextEditingController _mobileController = TextEditingController();
   TextEditingController _addressController = TextEditingController();
   TextEditingController _pictureProfileController = TextEditingController();
 
+  /////////////////////////////////////////////////////////////////////////////////>>>>>>> imagepicker
+  final ImagePicker _picker = ImagePicker();
 
-  /////////////////////////////////////////////////////////////////////////////////
-  ProfileP? _userP;
+  Future getImage() async {
+    final pickFile = await _picker.getImage(source: ImageSource.gallery);
+
+    setState(() {
+      if (pickFile != null) {
+        _image = File(pickFile.path);
+      } else {
+        print('No image selected.');
+      }
+    });
+  }
+  //////////////////////////////////////////////////////////////////////////////////
 
   @override
   Widget build(BuildContext context) {
@@ -108,26 +177,41 @@ class _EditProfileState extends State<EditProfile> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           ////////////////////////////////////////////////////////////////////>>>>>>>> image
-                          Card(
-                            elevation: 3,
-                            color: Colors.blueAccent,
-                            margin: EdgeInsets.only(
-                                left: 10, right: 10, top: 10, bottom: 10),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(55),
-                            ),
-                            child: Container(
-                              padding: EdgeInsets.only(
-                                  left: 15, right: 15, top: 15, bottom: 15),
-                              height: 100,
-                              width: 100,
-                              //width: MediaQuery.of(context).size.width,
-                              child: Icon(
-                                Icons.person,
-                                size: 70,
-                                color: Colors.white,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                width: 100.0,
+                                height: 100.0,
+                                decoration: new BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.indigo,
+
+                                        spreadRadius:
+                                            1.0, // has the effect of extending the shadow
+                                      )
+                                    ],
+                                    shape: BoxShape.circle,
+                                    image: new DecorationImage(
+                                        fit: BoxFit.fill,
+                                        image: new NetworkImage(image == null
+                                            ? 'https://www.sacsteelwork.com/wp-content/uploads/2017/06/%E0%B8%AA%E0%B8%B5%E0%B8%AA%E0%B9%89%E0%B8%A1.jpg'
+                                            : image))),
                               ),
-                            ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              IconButton(
+                                icon: Icon(
+                                  Icons.image,
+                                  color: Colors.blueGrey[900],
+                                ),
+                                onPressed: () {
+                                  getImage();
+                                },
+                              ),
+                            ],
                           ),
 
                           /////////////////////////////////////////////////////////////////////////>>>>> ชื่อ Th
@@ -279,9 +363,9 @@ class _EditProfileState extends State<EditProfile> {
                                   Padding(
                                     padding: const EdgeInsets.only(left: 35),
                                     child: TextField(
-                                      controller: _nameEnController,
+                                      controller: _nameENController,
                                       decoration: InputDecoration(
-                                        hintText: 'ชื่อภาษาอังกฤษ',
+                                        hintText: nameEN,
                                       ),
                                       textAlign: TextAlign.left,
                                       style: TextStyle(
@@ -336,9 +420,9 @@ class _EditProfileState extends State<EditProfile> {
                                   Padding(
                                     padding: const EdgeInsets.only(left: 35),
                                     child: TextField(
-                                      controller: _surnameEnController,
+                                      controller: _surnameENController,
                                       decoration: InputDecoration(
-                                        hintText: 'นามสกุลภาษาอังกฤษ',
+                                        hintText: surnameEN,
                                       ),
                                       textAlign: TextAlign.left,
                                       style: TextStyle(
@@ -503,7 +587,7 @@ class _EditProfileState extends State<EditProfile> {
                                     child: TextField(
                                       controller: _mobileController,
                                       decoration: InputDecoration(
-                                        hintText: 'เบอร์โทรศัพท์',
+                                        hintText: mobile,
                                       ),
                                       textAlign: TextAlign.left,
                                       style: TextStyle(
@@ -558,8 +642,8 @@ class _EditProfileState extends State<EditProfile> {
                                     padding: const EdgeInsets.only(left: 35),
                                     child: TextField(
                                       controller: _addressController,
-                                      decoration: InputDecoration(
-                                          hintText: 'เพิ่มที่อยู่'),
+                                      decoration:
+                                          InputDecoration(hintText: address),
                                       textAlign: TextAlign.left,
                                       style: TextStyle(
                                         color: Colors.blue,
@@ -573,8 +657,8 @@ class _EditProfileState extends State<EditProfile> {
                                     padding: const EdgeInsets.only(left: 35),
                                     child: TextField(
                                       controller: _pictureProfileController,
-                                      decoration: InputDecoration(
-                                          hintText: 'iรูป'),
+                                      decoration:
+                                          InputDecoration(hintText: image),
                                       textAlign: TextAlign.left,
                                       style: TextStyle(
                                         color: Colors.blue,
@@ -656,64 +740,7 @@ class _EditProfileState extends State<EditProfile> {
                                     borderRadius:
                                         new BorderRadius.circular(20.0)),
                                 onPressed: () async {
-                                  if (_formKeyP.currentState!.validate()) {
-                                    _formKeyP.currentState!.save();
-
-                                    final String nameTh = name;
-                                    final String surnameTh = surname;
-                                    final String nameEn =
-                                        _nameEnController.text;
-                                    final String surnameEn =
-                                        _surnameEnController.text;
-                                    final String EmailStudent = email;
-                                    final String mobile =
-                                        _mobileController.text;
-                                    final String Address =
-                                        _addressController.text;
-                                    final String studentCode = studentcode;
-                                    
-                                    final String PictureProfile = _pictureProfileController.text;
-
-                                    ///////////////////////////////////////////////////>>>>>>>>.post
-                                    final ProfileP? _userP = await POSTProfile(
-                                      nameTh,
-                                      surnameTh,
-                                      nameEn,
-                                      surnameEn,
-                                      PictureProfile,
-                                      EmailStudent,
-                                      mobile,
-                                      Address,
-                                      studentCode,
-                                    );
-
-                                    /* setState(() {
-                                    StudentController.text.isEmpty
-                                        ? _validate1 = true
-                                        : _validate1 = false;
-                                    PhoneController.text.isEmpty
-                                        ? _validate2 = true
-                                        : _validate2 = false;
-                                    CoursesController.text.isEmpty
-                                        ? _validate3 = true
-                                        : _validate3 = false;
-                                    GroupController.text.isEmpty
-                                        ? _validate4 = true
-                                        : _validate4 = false;
-                                    OfffieldCoursesController.text.isEmpty
-                                        ? _validate5 = true
-                                        : _validate5 = false;
-                                    DateController.text.isEmpty
-                                        ? _validate7 = true
-                                        : _validate7 = false;
-                                    DetailController.text.isEmpty
-                                        ? _validate8 = true
-                                        : _validate8 = false;
-                                    AnotherGroupController.text.isEmpty
-                                        ? _validate8 = true
-                                        : _validate8 = false;
-                                  }); */
-                                  }
+                                  ///////////////////////////////////////////////////>>>>>>>>.post
                                 })),
                       ],
                     ),
