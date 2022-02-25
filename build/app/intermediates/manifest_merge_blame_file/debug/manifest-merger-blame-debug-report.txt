@@ -6,7 +6,7 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="21"
-9        android:targetSdkVersion="30" />
+9        android:targetSdkVersion="31" />
 10    <!--
 11         Flutter needs it to communicate with the running application
 12         to allow setting breakpoints, to provide hot reload, etc.
@@ -163,6 +163,19 @@
 103-->[com.sangcomz:FishBun:0.11.2] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\964d33c2c2e431651e8444baf8fdaeb6\jetified-FishBun-0.11.2\AndroidManifest.xml:30:13-73
 104            android:theme="@style/DetailViewTheme" />
 104-->[com.sangcomz:FishBun:0.11.2] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\964d33c2c2e431651e8444baf8fdaeb6\jetified-FishBun-0.11.2\AndroidManifest.xml:31:13-51
-105    </application>
-106
-107</manifest>
+105
+106        <uses-library
+106-->[androidx.window:window:1.0.0-beta04] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\a78fdf90e4c1f8464b19895cfb365f3f\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
+107            android:name="androidx.window.extensions"
+107-->[androidx.window:window:1.0.0-beta04] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\a78fdf90e4c1f8464b19895cfb365f3f\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
+108            android:required="false" />
+108-->[androidx.window:window:1.0.0-beta04] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\a78fdf90e4c1f8464b19895cfb365f3f\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
+109        <uses-library
+109-->[androidx.window:window:1.0.0-beta04] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\a78fdf90e4c1f8464b19895cfb365f3f\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
+110            android:name="androidx.window.sidecar"
+110-->[androidx.window:window:1.0.0-beta04] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\a78fdf90e4c1f8464b19895cfb365f3f\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
+111            android:required="false" />
+111-->[androidx.window:window:1.0.0-beta04] C:\Users\zadke\.gradle\caches\transforms-2\files-2.1\a78fdf90e4c1f8464b19895cfb365f3f\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
+112    </application>
+113
+114</manifest>

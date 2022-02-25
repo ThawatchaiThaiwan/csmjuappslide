@@ -4,6 +4,7 @@ import 'package:appcsmju/footbar/Foot.dart';
 import 'package:appcsmju/model/loginmodel/login_page.dart';
 import 'package:appcsmju/page/Appeal.dart';
 import 'package:appcsmju/page/Profile/Edit_profile.dart';
+import 'package:appcsmju/page/Profile/Profile.dart';
 
 import 'package:appcsmju/page/Residue.dart';
 
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
       ),
       
       
-      home :Residue() ,
+      home :Profile() ,
     );
   }
 }

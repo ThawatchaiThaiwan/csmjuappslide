@@ -2,7 +2,7 @@
 
 import 'dart:convert';
 import 'dart:async';
-import 'dart:html';
+
 
 import 'package:appcsmju/APImodel/Residuemodel.dart';
 import 'package:appcsmju/footbar/Another.dart';

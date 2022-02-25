@@ -58,7 +58,9 @@ attr actionOverflowButtonStyle
 attr actionOverflowMenuStyle
 attr actionProviderClass
 attr actionViewClass
+attr activityAction
 attr activityChooserViewStyle
+attr activityName
 attr alertDialogButtonGroupStyle
 attr alertDialogCenterButtons
 attr alertDialogStyle
@@ -66,6 +68,7 @@ attr alertDialogTheme
 attr allowStacking
 attr alpha
 attr alphabeticModifiers
+attr alwaysExpand
 attr arrowHeadLength
 attr arrowShaftLength
 attr autoCompleteTextViewStyle
@@ -147,6 +150,7 @@ attr chipStartPadding
 attr chipStrokeColor
 attr chipStrokeWidth
 attr chipStyle
+attr clearTop
 attr closeIcon
 attr closeIconEnabled
 attr closeIconEndPadding
@@ -238,6 +242,8 @@ attr fastScrollHorizontalThumbDrawable
 attr fastScrollHorizontalTrackDrawable
 attr fastScrollVerticalThumbDrawable
 attr fastScrollVerticalTrackDrawable
+attr finishPrimaryWithSecondary
+attr finishSecondaryWithPrimary
 attr firstBaselineToTopHeight
 attr floatingActionButtonStyle
 attr font
@@ -403,11 +409,13 @@ attr passwordToggleDrawable
 attr passwordToggleEnabled
 attr passwordToggleTint
 attr passwordToggleTintMode
+attr placeholderActivityName
 attr popupMenuStyle
 attr popupTheme
 attr popupWindowStyle
 attr preserveIconSpacing
 attr pressedTranslationZ
+attr primaryActivityName
 attr progressBarPadding
 attr progressBarStyle
 attr queryBackground
@@ -425,6 +433,8 @@ attr scrimVisibleHeightTrigger
 attr searchHintIcon
 attr searchIcon
 attr searchViewStyle
+attr secondaryActivityAction
+attr secondaryActivityName
 attr seekBarStyle
 attr selectableItemBackground
 attr selectableItemBackgroundBorderless
@@ -443,6 +453,10 @@ attr spanCount
 attr spinBars
 attr spinnerDropDownItemStyle
 attr spinnerStyle
+attr splitLayoutDirection
+attr splitMinSmallestWidth
+attr splitMinWidth
+attr splitRatio
 attr splitTrack
 attr srcCompat
 attr stackFromEnd
@@ -1088,6 +1102,7 @@ id actions
 id activity_chooser_view_content
 id add
 id alertTitle
+id androidx_window_activity_scope
 id async
 id auto
 id blocking
@@ -1144,6 +1159,8 @@ id line1
 id line3
 id listMode
 id list_item
+id locale
+id ltr
 id masked
 id message
 id mini
@@ -1174,6 +1191,7 @@ id rel_header_area
 id right
 id right_icon
 id right_side
+id rtl
 id save_image_matrix
 id save_non_transition_alpha
 id save_scale_type
@@ -1909,6 +1927,8 @@ styleable ActionMenuItemView android_minWidth
 styleable ActionMenuView
 styleable ActionMode background backgroundSplit closeItemLayout height subtitleTextStyle titleTextStyle
 styleable ActivityChooserView expandActivityOverflowButtonDrawable initialActivityCount
+styleable ActivityFilter activityAction activityName
+styleable ActivityRule alwaysExpand
 styleable AlertDialog android_layout buttonIconDimen buttonPanelSideLayout listItemLayout listLayout multiChoiceItemLayout showTitle singleChoiceItemLayout
 styleable AnimatedStateListDrawableCompat android_constantSize android_dither android_enterFadeDuration android_exitFadeDuration android_variablePadding android_visible
 styleable AnimatedStateListDrawableItem android_drawable android_id
@@ -1969,6 +1989,9 @@ styleable SearchView android_focusable android_imeOptions android_inputType andr
 styleable Snackbar snackbarButtonStyle snackbarStyle
 styleable SnackbarLayout android_maxWidth elevation maxActionInlineWidth
 styleable Spinner android_dropDownWidth android_entries android_popupBackground android_prompt popupTheme
+styleable SplitPairFilter primaryActivityName secondaryActivityAction secondaryActivityName
+styleable SplitPairRule clearTop finishPrimaryWithSecondary finishSecondaryWithPrimary splitLayoutDirection splitMinSmallestWidth splitMinWidth splitRatio
+styleable SplitPlaceholderRule placeholderActivityName splitLayoutDirection splitMinSmallestWidth splitMinWidth splitRatio
 styleable StateListDrawable android_constantSize android_dither android_enterFadeDuration android_exitFadeDuration android_variablePadding android_visible
 styleable StateListDrawableItem android_drawable
 styleable SwitchCompat android_textOff android_textOn android_thumb showText splitTrack switchMinWidth switchPadding switchTextAppearance thumbTextPadding thumbTint thumbTintMode track trackTint trackTintMode
