@@ -37,12 +37,10 @@ class _ProfileState extends State<Profile> {
   //var phone;
   var image;
 
- 
-
   @override
   void initState() {
     _getUserInfo();
-    findUser();
+    findUser(); 
     super.initState();
   }
 
@@ -79,7 +77,7 @@ class _ProfileState extends State<Profile> {
       print(dataStudent);
       if (nameEN?.isnotEmpty ?? true) {
         setState(() {
-          ID = dataStudent['id'];
+          ID = dataStudent['studentId'];
           name = dataStudent["nameTh"];
           surname = dataStudent["surnameTh"];
           nameEN = dataStudent["nameEn"];
@@ -100,14 +98,14 @@ class _ProfileState extends State<Profile> {
           print(studentcode);
           print(ID);
         });
-      } 
-    } 
+      }
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[75],
+      backgroundColor: Colors.blueGrey[100],
       appBar: AppBar(
         backgroundColor: Colors.white,
         centerTitle: true,
@@ -147,7 +145,7 @@ class _ProfileState extends State<Profile> {
                   ////////////// 1st card///////////
                   Card(
                     elevation: 4.0,
-                    color: Colors.white,
+                    color: Color(0xff24a878),
                     margin: EdgeInsets.only(left: 10, right: 10),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15)),
@@ -163,26 +161,31 @@ class _ProfileState extends State<Profile> {
                               width: 100.0,
                               height: 100.0,
                               decoration: new BoxDecoration(
+                                  border: Border.all(
+                                      width: 3,
+                                      color: Theme.of(context)
+                                          .scaffoldBackgroundColor),
                                   boxShadow: [
                                     BoxShadow(
-                                      color: Colors.indigo,
-                                     
-                                      spreadRadius:
-                                          1.0, // has the effect of extending the shadow
-                                      
-                                    )
+                                        spreadRadius: 3,
+                                        blurRadius: 10,
+                                        color: Colors.black.withOpacity(0.2),
+                                        offset: Offset(0, 10))
                                   ],
                                   shape: BoxShape.circle,
                                   image: new DecorationImage(
                                       fit: BoxFit.fill,
                                       image: new NetworkImage(image == null
-                                          ? 'https://www.sacsteelwork.com/wp-content/uploads/2017/06/%E0%B8%AA%E0%B8%B5%E0%B8%AA%E0%B9%89%E0%B8%A1.jpg'
+                                          ? 'https://wwwdev.csmju.com/images/news/thumbnail/no_img.jpg'
                                           : image)))),
 
                           /////////////////////////////////////////////////////////////////////////>>>>>  first name
+                          SizedBox(
+                            height: 10,
+                          ),
                           Card(
                             elevation: 4.0,
-                            color: Colors.white,
+                            color: Colors.blueGrey[100],
                             margin: EdgeInsets.only(
                                 left: 10, right: 10, top: 10, bottom: 10),
                             shape: RoundedRectangleBorder(
@@ -201,14 +204,14 @@ class _ProfileState extends State<Profile> {
                                             const EdgeInsets.only(right: 10),
                                         child: Icon(
                                           Icons.account_circle,
-                                          color: Colors.blue,
+                                          color: Colors.blueGrey[900],
                                         ),
                                       ),
                                       Text(
-                                        'ชื่อ',
+                                        'ชื่อ (Th)',
                                         textAlign: TextAlign.left,
                                         style: TextStyle(
-                                          color: Colors.blue,
+                                          color: Colors.blueGrey[900],
                                           fontSize: 17.0,
                                           decoration: TextDecoration.none,
                                           fontWeight: FontWeight.bold,
@@ -222,7 +225,7 @@ class _ProfileState extends State<Profile> {
                                       '$name',
                                       textAlign: TextAlign.left,
                                       style: TextStyle(
-                                        color: Colors.blue,
+                                        color: Colors.blueGrey[900],
                                         fontSize: 15.0,
                                         decoration: TextDecoration.none,
                                         fontWeight: FontWeight.bold,
@@ -256,14 +259,14 @@ class _ProfileState extends State<Profile> {
                                             const EdgeInsets.only(right: 10),
                                         child: Icon(
                                           Icons.account_circle,
-                                          color: Colors.blue,
+                                          color: Colors.black,
                                         ),
                                       ),
                                       Text(
-                                        'นามสกุล',
+                                        'นามสกุล (Th)',
                                         textAlign: TextAlign.left,
                                         style: TextStyle(
-                                          color: Colors.blue,
+                                          color: Colors.black,
                                           fontSize: 17.0,
                                           decoration: TextDecoration.none,
                                           fontWeight: FontWeight.bold,
@@ -277,7 +280,7 @@ class _ProfileState extends State<Profile> {
                                       '$surname',
                                       textAlign: TextAlign.left,
                                       style: TextStyle(
-                                        color: Colors.blue,
+                                        color: Colors.black,
                                         fontSize: 15.0,
                                         decoration: TextDecoration.none,
                                         fontWeight: FontWeight.bold,
@@ -291,7 +294,7 @@ class _ProfileState extends State<Profile> {
                           ///////////////////////////////////////////////////////////////////////////////>>>>>>>>ชื่อภาษาอังกฤษ
                           Card(
                             elevation: 4.0,
-                            color: Colors.white,
+                            color: Colors.blueGrey[100],
                             margin: EdgeInsets.only(
                                 left: 10, right: 10, top: 10, bottom: 10),
                             shape: RoundedRectangleBorder(
@@ -314,7 +317,7 @@ class _ProfileState extends State<Profile> {
                                         ),
                                       ),
                                       Text(
-                                        'ชื่อภาษาอังกฤษ',
+                                        'ชื่อ (En)',
                                         textAlign: TextAlign.left,
                                         style: TextStyle(
                                           color: Colors.blue,
@@ -368,7 +371,7 @@ class _ProfileState extends State<Profile> {
                                         ),
                                       ),
                                       Text(
-                                        'นามสกุลภาษาอังกฤษ',
+                                        'นามสกุล (En)',
                                         textAlign: TextAlign.left,
                                         style: TextStyle(
                                           color: Colors.blue,
@@ -670,7 +673,7 @@ class _ProfileState extends State<Profile> {
                                     color: Colors.white,
                                     fontSize: 15.0,
                                     decoration: TextDecoration.none,
-                                    fontWeight: FontWeight.normal,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),

@@ -22,11 +22,7 @@ bool _validate3 = false;
 
 ////////////////////////////////////////////////////////////////////////////////////////
 class _AppealState extends State<Appeal> {
-  /*  File file = new File(''); */
-
-  ////////////////////////////////////////////////////////////////////////////////////////
-  // ignore: unused_field
-  //PostAppeal? _user;
+ 
   TextEditingController TitelController1 = TextEditingController();
   TextEditingController DateController2 = TextEditingController();
   TextEditingController DetailController3 = TextEditingController();
@@ -39,7 +35,6 @@ class _AppealState extends State<Appeal> {
 
   /////////////////////////////////////////////////////////image picker
   final ImagePicker _picker = ImagePicker();
-
   Future getImage() async {
     final pickFile = await _picker.getImage(source: ImageSource.gallery);
 
