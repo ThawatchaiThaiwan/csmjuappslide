@@ -31,7 +31,7 @@ class _EditProfileState extends State<EditProfile> {
   var surnameEN;
   var image;
   var address;
-  File? _image;
+  File? imageprofile;
   ////////////////
 
 ////////////////////////////////////////////////////////////////////////////////>>>>
@@ -70,11 +70,9 @@ class _EditProfileState extends State<EditProfile> {
       },
     );
     var getuser = json.decode(response.body);
-    print(getuser);
     var user = getuser['data'];
     print(user);
     for (var dataStudent in user) {
-      print(dataStudent);
       if (nameEN?.isnotEmpty ?? true) {
         setState(() {
           ID = dataStudent['studentId'];
@@ -87,16 +85,6 @@ class _EditProfileState extends State<EditProfile> {
           address = dataStudent["Address"];
           image = dataStudent["PictureProfile"];
           studentcode = dataStudent["studentCode"];
-          print(name);
-          print(surname);
-          print(nameEN);
-          print(surnameEN);
-          print(email);
-          print(mobile);
-          print(address);
-          print(image);
-          print(studentcode);
-          print(ID);
         });
       }
     }
@@ -118,10 +106,9 @@ class _EditProfileState extends State<EditProfile> {
 
     setState(() {
       if (pickFile != null) {
-        _image = File(pickFile.path);
-        print(_image);
+        imageprofile = File(pickFile.path);
+        print(imageprofile);
       } else {
-
         print('No image selected.');
       }
     });
@@ -132,713 +119,405 @@ class _EditProfileState extends State<EditProfile> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blueGrey[100],
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        centerTitle: true,
-        title: Text(
-          'แก้ไขข้อมูลส่วนตัว',
-          textAlign: TextAlign.center,
-          style: TextStyle(
-              color: Colors.blueGrey[900],
-              fontWeight: FontWeight.bold,
-              fontSize: 25.0,
-              fontFamily: 'Sarabun'),
-        ),
-        leading: Navigator.canPop(context)
-            ? IconButton(
-                icon: Icon(
-                  Icons.keyboard_backspace,
-                  color: Colors.blueGrey[900],
-                ),
-                onPressed: () => Navigator.of(context).pop(),
-              )
-            : Another(),
-      ),
       body: SingleChildScrollView(
-        child: Container(
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Form(
-                key: formKeyP,
+        child: Stack(
+          children: [
+            SizedBox(
+              height: 300,
+              width: double.infinity,
+              ///////////////////////////////////////////////////////////รูปใหญ่
+              child: Container(
+                decoration: new BoxDecoration(
+                    image: new DecorationImage(
+                        fit: BoxFit.cover,
+                        image: new NetworkImage(
+                          imageprofile != null
+                              ? imageprofile!.path
+                              : image == null
+                                  ? 'https://wwwdev.csmju.com/images/news/thumbnail/no_img.jpg'
+                                  : image,
+                        ))),
+              ),
+            ),
+            Form(
+              key: formKeyP,
+              child: Container(
+                margin: EdgeInsets.fromLTRB(16, 200, 16, 16),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    /* Container(
-                        width: 20,
-                        height: 20,
-                        decoration: BoxDecoration(color: Colors.grey)
-                    ), */
-                    ////////////// 1st card///////////
-                    Card(
-                      elevation: 4.0,
-                      color: Color(0xff24a878),
-                      margin: EdgeInsets.only(left: 10, right: 10),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15)),
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                            left: 10, right: 10, top: 20, bottom: 20),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            ////////////////////////////////////////////////////////////////////>>>>>>>> image
-                            Stack(
-                              fit: StackFit.passthrough,
-                              children: [
-                                Container(
-                                  width: 100.0,
-                                  height: 100.0,
-                                  decoration: new BoxDecoration(
-                                      border: Border.all(
-                                          width: 3,
-                                          color: Theme.of(context)
-                                              .scaffoldBackgroundColor),
-                                      boxShadow: [
-                                        BoxShadow(
-                                            spreadRadius: 3,
-                                            blurRadius: 10,
-                                            color: Colors.black.withOpacity(0.2),
-                                            offset: Offset(0, 10))
-                                      ],
-                                      shape: BoxShape.circle,
-                                      image: new DecorationImage(
-                                          fit: BoxFit.fill,
-                                          image: new NetworkImage(
-                                            _image != null
-                                                ? _image!.path
-                                                : image == null
-                                                    ? 'https://wwwdev.csmju.com/images/news/thumbnail/no_img.jpg'
-                                                    : image,
-                                          ))),
-                                ),
-                                Positioned(
-                                    bottom: 0,
-                                    right: 0,
-                                    child: Container(
-                                      height: 37,
-                                      width: 37,
-                                      decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        border: Border.all(
-                                          width: 2,
-                                          color: Theme.of(context)
-                                              .scaffoldBackgroundColor,
-                                        ),
-                                        boxShadow: [
-                                          BoxShadow(
-                                              spreadRadius: 3,
-                                              blurRadius: 10,
-                                              color:
-                                                  Colors.black.withOpacity(0.2),
-                                              offset: Offset(0, 10))
-                                        ],
-                                        color: Colors.blueGrey[100],
-                                      ),
-                                      child: IconButton(
-                                        iconSize: 20,
-                                        icon: Icon(Icons.edit),
-                                        color: Colors.blue,
-                                        onPressed: () {
-                                          getImage();
-                                        },
-                                      ),
-                                    )),
-                              ],
-                            ),
-              
-                            /////////////////////////////////////////////////////////////////////////>>>>> ชื่อ Th
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Card(
-                              elevation: 4.0,
-                              color: Colors.blueGrey[100],
-                              margin: EdgeInsets.only(
-                                  left: 10, right: 10, top: 10, bottom: 10),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10)),
-                              child: Container(
-                                padding: EdgeInsets.only(
-                                    left: 15, top: 10, bottom: 10),
-                                width: MediaQuery.of(context).size.width,
+                  children: [
+                    Stack(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.all(16.0),
+                          margin: EdgeInsets.only(top: 16.0),
+                          decoration: BoxDecoration(
+                            color: Colors.blueGrey[800],
+                            borderRadius: BorderRadius.circular(5.0),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                margin: EdgeInsets.only(left: 96.0),
                                 child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Row(
-                                      children: <Widget>[
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(right: 10),
-                                          child: Icon(
-                                            Icons.account_circle,
-                                            color: Colors.blue,
-                                          ),
-                                        ),
-                                        Text(
-                                          'ชื่อ (Th)',
-                                          textAlign: TextAlign.left,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      //////////////////////////////////////////////////////////ชื่อ นามสกุล
+                                      Text('$name $surname',
                                           style: TextStyle(
-                                            color: Colors.blue,
-                                            fontSize: 17.0,
-                                            decoration: TextDecoration.none,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 35),
-                                      child: Text(
-                                        '$name',
-                                        textAlign: TextAlign.left,
-                                        style: TextStyle(
-                                          color: Colors.blue,
-                                          fontSize: 15.0,
-                                          decoration: TextDecoration.none,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                                              fontSize: 26.0,
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w900,
+                                              textBaseline:
+                                                  TextBaseline.alphabetic,
+                                              fontFamily: 'Sarabun')),
+                                      ///////////////////////////////////////////////////////////รหัสนักศึกษา
+                                      ListTile(
+                                        contentPadding: EdgeInsets.all(0),
+                                        title: Text('$studentcode',
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 20.0,
+                                              fontWeight: FontWeight.w500,
+                                              fontFamily: 'Sarabun',
+                                            )),
+                                        ////////////////////////////////////////////////////////////อีเมลบน
+                                        subtitle: Text('$email',
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 18.0,
+                                              fontWeight: FontWeight.w500,
+                                              fontFamily: 'Sarabun',
+                                            )),
+                                      )
+                                    ]),
                               ),
+                              SizedBox(height: 10.0),
+                            ],
+                          ),
+                        ),
+                        ///////////////////////////////////////////////////รูปเล็ก
+                        Stack(
+                          children: [
+                            Container(
+                              height: 80.0,
+                              width: 80.0,
+                              decoration: new BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  image: new DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image: new NetworkImage(
+                                        imageprofile != null
+                                            ? imageprofile!.path
+                                            : image == null
+                                                ? 'https://wwwdev.csmju.com/images/news/thumbnail/no_img.jpg'
+                                                : image,
+                                      ))),
+                              margin: EdgeInsets.only(left: 16.0),
                             ),
-              
-                            ////////////////////////////////////////////////////////////////////>>>>>>>> นามสกุล Th
-                            Card(
-                              elevation: 4.0,
-                              color: Colors.blueGrey[100],
-                              margin: EdgeInsets.only(
-                                  left: 10, right: 10, top: 10, bottom: 10),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10)),
-                              child: Container(
-                                padding: EdgeInsets.only(
-                                    left: 15, top: 10, bottom: 10),
-                                width: MediaQuery.of(context).size.width,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Row(
-                                      children: <Widget>[
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(right: 10),
-                                          child: Icon(
-                                            Icons.account_circle,
-                                            color: Colors.blue,
-                                          ),
-                                        ),
-                                        Text(
-                                          'นามสกุล (Th)',
-                                          textAlign: TextAlign.left,
-                                          style: TextStyle(
-                                            color: Colors.blue,
-                                            fontSize: 17.0,
-                                            decoration: TextDecoration.none,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ],
+                            Positioned(
+                                bottom: 0,
+                                right: 0,
+                                child: Container(
+                                  height: 37,
+                                  width: 37,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    border: Border.all(
+                                      width: 2,
+                                      color: Theme.of(context)
+                                          .scaffoldBackgroundColor,
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 35),
-                                      child: Text(
-                                        '$surname',
-                                        textAlign: TextAlign.left,
-                                        style: TextStyle(
-                                          color: Colors.blue,
-                                          fontSize: 15.0,
-                                          decoration: TextDecoration.none,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            ///////////////////////////////////////////////////////////////////////////////>>>>>>>>ชื่อภาษาอังกฤษ
-                            Card(
-                              elevation: 4.0,
-                              color: Colors.white,
-                              margin: EdgeInsets.only(
-                                  left: 10, right: 10, top: 10, bottom: 10),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10)),
-                              child: Container(
-                                padding: EdgeInsets.only(
-                                    left: 15, top: 10, bottom: 10),
-                                width: MediaQuery.of(context).size.width,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Row(
-                                      children: <Widget>[
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(right: 10),
-                                          child: Icon(
-                                            Icons.account_circle,
-                                            color: Colors.blue,
-                                          ),
-                                        ),
-                                        Text(
-                                          'ชื่อ (En)',
-                                          textAlign: TextAlign.left,
-                                          style: TextStyle(
-                                            color: Colors.blue,
-                                            fontSize: 17.0,
-                                            decoration: TextDecoration.none,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 35),
-                                      child: TextField(
-                                        controller: _nameENController,
-                                        decoration: InputDecoration(
-                                          hintText: nameEN,
-                                        ),
-                                        textAlign: TextAlign.left,
-                                        style: TextStyle(
-                                          color: Colors.blue,
-                                          fontSize: 15.0,
-                                          decoration: TextDecoration.none,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            ////////////////////////////////////////////////////////////////////////////>>>>>>>>.นามสกุลภาษาอังกฤษ
-                            Card(
-                              elevation: 4.0,
-                              color: Colors.white,
-                              margin: EdgeInsets.only(
-                                  left: 10, right: 10, top: 10, bottom: 10),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10)),
-                              child: Container(
-                                padding: EdgeInsets.only(
-                                    left: 15, top: 10, bottom: 10),
-                                width: MediaQuery.of(context).size.width,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Row(
-                                      children: <Widget>[
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(right: 10),
-                                          child: Icon(
-                                            Icons.account_circle,
-                                            color: Colors.blue,
-                                          ),
-                                        ),
-                                        Text(
-                                          'นามสกุล (En)',
-                                          textAlign: TextAlign.left,
-                                          style: TextStyle(
-                                            color: Colors.blue,
-                                            fontSize: 17.0,
-                                            decoration: TextDecoration.none,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 35),
-                                      child: TextField(
-                                        controller: _surnameENController,
-                                        decoration: InputDecoration(
-                                          hintText: surnameEN,
-                                        ),
-                                        textAlign: TextAlign.left,
-                                        style: TextStyle(
-                                          color: Colors.blue,
-                                          fontSize: 15.0,
-                                          decoration: TextDecoration.none,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            /////////////////////////////////////////////////////////////////////////////>>>>>>>>.StudentCode
-                            Card(
-                              elevation: 4.0,
-                              color: Colors.blueGrey[100],
-                              margin: EdgeInsets.only(
-                                  left: 10, right: 10, top: 10, bottom: 10),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10)),
-                              child: Container(
-                                padding: EdgeInsets.only(
-                                    left: 15, top: 10, bottom: 10),
-                                width: MediaQuery.of(context).size.width,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Row(
-                                      children: <Widget>[
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(right: 10),
-                                          child: Icon(
-                                            Icons.account_circle,
-                                            color: Colors.blue,
-                                          ),
-                                        ),
-                                        Text(
-                                          'รหัสนักศึกษา',
-                                          textAlign: TextAlign.left,
-                                          style: TextStyle(
-                                            color: Colors.blue,
-                                            fontSize: 17.0,
-                                            decoration: TextDecoration.none,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 35),
-                                      child: Text(
-                                        '$studentcode',
-                                        textAlign: TextAlign.left,
-                                        style: TextStyle(
-                                          color: Colors.blue,
-                                          fontSize: 15.0,
-                                          decoration: TextDecoration.none,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            //////////// ////////////////////////////////////////////////////////////////>>>>>>>> Email
-                            Card(
-                              elevation: 4.0,
-                              color: Colors.white,
-                              margin: EdgeInsets.only(
-                                  left: 10, right: 10, top: 10, bottom: 10),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10)),
-                              child: Container(
-                                padding: EdgeInsets.only(
-                                    left: 15, top: 10, bottom: 10),
-                                width: MediaQuery.of(context).size.width,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Row(
-                                      children: <Widget>[
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(right: 10),
-                                          child: Icon(
-                                            Icons.mail,
-                                            color: Colors.blue,
-                                          ),
-                                        ),
-                                        Text(
-                                          'อีเมล',
-                                          textAlign: TextAlign.left,
-                                          style: TextStyle(
-                                            color: Colors.blue,
-                                            fontSize: 17.0,
-                                            decoration: TextDecoration.none,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 35),
-                                      child: TextField(
-                                        controller: _emailController,
-                                        decoration: InputDecoration(
-                                          hintText: email,
-                                        ),
-                                        textAlign: TextAlign.left,
-                                        style: TextStyle(
-                                          color: Colors.blue,
-                                          fontSize: 15.0,
-                                          decoration: TextDecoration.none,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            ///////////////////////////////////////////////////////////// phone ///////////
-                            Card(
-                              elevation: 4.0,
-                              color: Colors.white,
-                              margin: EdgeInsets.only(
-                                  left: 10, right: 10, top: 10, bottom: 10),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10)),
-                              child: Container(
-                                padding: EdgeInsets.only(
-                                    left: 15, top: 10, bottom: 10),
-                                width: MediaQuery.of(context).size.width,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Row(
-                                      children: <Widget>[
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(right: 10),
-                                          child: Icon(
-                                            Icons.phone,
-                                            color: Colors.blue,
-                                          ),
-                                        ),
-                                        Text(
-                                          'เบอร์โทรศัพท์',
-                                          textAlign: TextAlign.left,
-                                          style: TextStyle(
-                                            color: Colors.blue,
-                                            fontSize: 17.0,
-                                            decoration: TextDecoration.none,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 35),
-                                      child: TextField(
-                                        controller: _mobileController,
-                                        decoration: InputDecoration(
-                                          hintText: mobile,
-                                        ),
-                                        textAlign: TextAlign.left,
-                                        style: TextStyle(
-                                          color: Colors.blue,
-                                          fontSize: 15.0,
-                                          decoration: TextDecoration.none,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            //////////////////////////////////////////////////////////>>>>>>> Address
-                            Card(
-                              elevation: 4.0,
-                              color: Colors.white,
-                              margin: EdgeInsets.only(
-                                  left: 10, right: 10, top: 10, bottom: 10),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10)),
-                              child: Container(
-                                padding: EdgeInsets.only(
-                                    left: 15, top: 10, bottom: 10),
-                                width: MediaQuery.of(context).size.width,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Row(
-                                      children: <Widget>[
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(right: 10),
-                                          child: Icon(
-                                            Icons.location_on,
-                                            color: Colors.blue,
-                                          ),
-                                        ),
-                                        Text(
-                                          'ที่อยู่',
-                                          textAlign: TextAlign.left,
-                                          style: TextStyle(
-                                            color: Colors.blue,
-                                            fontSize: 17.0,
-                                            decoration: TextDecoration.none,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 35),
-                                      child: TextField(
-                                        controller: _addressController,
-                                        decoration:
-                                            InputDecoration(hintText: address),
-                                        textAlign: TextAlign.left,
-                                        style: TextStyle(
-                                          color: Colors.blue,
-                                          fontSize: 15.0,
-                                          decoration: TextDecoration.none,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            ////////////end  part////////////
+                                    boxShadow: [
+                                      BoxShadow(
+                                          spreadRadius: 3,
+                                          blurRadius: 10,
+                                          color: Colors.black.withOpacity(0.2),
+                                          offset: Offset(0, 10))
+                                    ],
+                                    color: Colors.blueGrey[100],
+                                  ),
+                                  child: IconButton(
+                                    iconSize: 20,
+                                    icon: Icon(Icons.edit),
+                                    color: Colors.blue,
+                                    onPressed: () {
+                                      getImage();
+                                    },
+                                  ),
+                                ))
                           ],
                         ),
-                      ),
+                      ],
                     ),
-              
-                    /////////////// Button////////////
-                    Padding(
-                      padding:
-                          const EdgeInsets.only(top: 20, left: 10, right: 10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          /////////// Edit Button /////////////
-                          Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: FlatButton(
-                              child: Padding(
-                                padding: EdgeInsets.only(
-                                    top: 8, bottom: 8, left: 10, right: 10),
-                                child: Text(
-                                  'ยกเลิก',
-                                  textDirection: TextDirection.ltr,
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 15.0,
-                                    decoration: TextDecoration.none,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
+                    SizedBox(height: 10.0),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.blueGrey[600],
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                      child: Column(
+                        children: [
+                          ListTile(
+                            /////////////////////////////////////////////////////ข้อมูลผู้ใช้
+                            title: Text(
+                              'ข้อมูลผู้ใช้',
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Sarabun',
                               ),
-                              color: Colors.blue,
-                              shape: new RoundedRectangleBorder(
-                                  borderRadius: new BorderRadius.circular(20.0)),
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    new MaterialPageRoute(
-                                        builder: (context) => Profile()));
-                              },
                             ),
                           ),
-              
-                          ////////////// logout//////////
-                          ////////////// logout//////////
-              
-                          Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: FlatButton(
-                                  child: Padding(
-                                    padding: EdgeInsets.only(
-                                        top: 8, bottom: 8, left: 10, right: 10),
-                                    child: Text(
-                                      'บันทึก',
-                                      textDirection: TextDirection.ltr,
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 15.0,
-                                        decoration: TextDecoration.none,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
-                                  color: Colors.green[500],
-                                  shape: new RoundedRectangleBorder(
-                                      borderRadius:
-                                          new BorderRadius.circular(20.0)),
-                                  onPressed: () async {
-                                    if (formKeyP.currentState!.validate()) {
-                                      formKeyP.currentState!.save();
-                                      Map<String, String> body = {
-                                        //'studentId': ID,
-                                        'nameTh': name,
-                                        'surnameTh': surname,
-                                        'nameEn': _nameENController.text,
-                                        'surnameEn': _surnameENController.text,
-                                        'studentCode': studentcode,
-                                        'EmailStudent': _emailController.text,
-                                        'mobile': _mobileController.text,
-                                        'Address': _addressController.text,
-                                      };
-                                      print(body);
-                                      service.postImage(
-                                          body, _image!.path);
-                                      Navigator.pop(context);
-              
-                                      showDialog<String>(
-                                          context: context,
-                                          builder: (BuildContext context) =>
-                                              AlertDialog(
-                                                title: const Text('แจ้งเตือน'),
-                                                content: const Text(
-                                                    'ติดต่อหลักสูตรสำเร็จ'),
-                                                actions: <Widget>[
-                                                  TextButton(
-                                                    onPressed: () =>
-                                                        Navigator.pop(
-                                                      context,
-                                                      'ตกลง',
-                                                    ),
-                                                    child: const Text(
-                                                      'ตกลง',
-                                                      textAlign: TextAlign.center,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ));
-                                    }
-              
-                                    ///////////////////////////////////////////////////>>>>>>>>.post
-                                  })),
+                          //////////////////////////////////////////////////////ชื่อ-นามสกุล
+                          Divider(
+                            color: Colors.white,
+                          ),
+                          ListTile(
+                            title: Text(
+                              'ชื่อ (อังกฤษ)',
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w800,
+                                fontFamily: 'Sarabun',
+                              ),
+                            ),
+                            subtitle: TextField(
+                              controller: _nameENController,
+                              decoration: InputDecoration(
+                                hintText: '$nameEN',
+                                hintStyle: TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.white70,
+                                  fontWeight: FontWeight.w700,
+                                  fontFamily: 'Sarabun',
+                                ),
+                              ),
+                            ),
+                            leading: Icon(
+                              Icons.person,
+                              color: Colors.white,
+                            ),
+                          ),
+                          ListTile(
+                            title: Text(
+                              'นามสกุล (อังกฤษ)',
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w800,
+                                fontFamily: 'Sarabun',
+                              ),
+                            ),
+                            subtitle: TextField(
+                              controller: _surnameENController,
+                              decoration: InputDecoration(
+                                hintText: '$surnameEN',
+                                hintStyle: TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.white70,
+                                  fontWeight: FontWeight.w700,
+                                  fontFamily: 'Sarabun',
+                                ),
+                              ),
+                            ),
+                            leading: Icon(
+                              Icons.person,
+                              color: Colors.white,
+                            ),
+                          ),
+
+                          /////////////////////////////////////////////////////Email
+                          ListTile(
+                            title: Text(
+                              'อีเมล',
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w800,
+                                fontFamily: 'Sarabun',
+                              ),
+                            ),
+                            subtitle: TextField(
+                              controller: _emailController,
+                              decoration: InputDecoration(
+                                hintText: '$email',
+                                hintStyle: TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.white70,
+                                  fontWeight: FontWeight.w700,
+                                  fontFamily: 'Sarabun',
+                                ),
+                              ),
+                            ),
+                            leading: Icon(
+                              Icons.email,
+                              color: Colors.white,
+                            ),
+                          ),
+                          /////////////////////////////////////////////////////////เบอร์โทร
+                          ListTile(
+                            title: Text(
+                              'เบอร์โทรศัพท์',
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w800,
+                                fontFamily: 'Sarabun',
+                              ),
+                            ),
+                            subtitle: TextField(
+                              controller: _mobileController,
+                              decoration: InputDecoration(
+                                hintText: '$mobile',
+                                hintStyle: TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.white70,
+                                  fontWeight: FontWeight.w700,
+                                  fontFamily: 'Sarabun',
+                                ),
+                              ),
+                            ),
+                            leading: Icon(
+                              Icons.phone,
+                              color: Colors.white,
+                            ),
+                          ),
+                          /////////////////////////////////////////////////////////ที่อยู่
+                          ListTile(
+                            title: Text(
+                              'ที่อยู่',
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w800,
+                                fontFamily: 'Sarabun',
+                              ),
+                            ),
+                            subtitle: TextField(
+                              controller: _addressController,
+                              decoration: InputDecoration(
+                                hintText: '$address',
+                                hintStyle: TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.white70,
+                                  fontWeight: FontWeight.w700,
+                                  fontFamily: 'Sarabun',
+                                ),
+                              ),
+                              //hintText:'$address',
+                              /* style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500,
+                                fontFamily: 'Sarabun',
+                              ), */
+                            ),
+                            leading: Icon(
+                              Icons.location_on,
+                              color: Colors.white,
+                            ),
+                          ),
+                          SizedBox(height: 40),
+                          Container(
+                            width: 290,
+                            height: 30,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              color: Colors.white60,
+                              border: Border.all(
+                                color: Colors.white60,
+                                width: 2,
+                              ),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Color(0x4f000000),
+                                  blurRadius: 3,
+                                  offset: Offset(0, 4),
+                                ),
+                              ],
+                            ),
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  primary: Color(0xff24a878)),
+                              onPressed: () async {
+                                if (formKeyP.currentState!.validate()) {
+                                  formKeyP.currentState!.save();
+                                  Map<String, String> body = {
+                                    //'studentId': ID,
+                                    'nameTh': name,
+                                    'surnameTh': surname,
+                                    'nameEn': _nameENController.text,
+                                    'surnameEn': _surnameENController.text,
+                                    'studentCode': studentcode,
+                                    'EmailStudent': _emailController.text,
+                                    'mobile': _mobileController.text,
+                                    'Address': _addressController.text,
+                                  };
+                                  print(body);
+                                  service.postImage(body, imageprofile!.path);
+                                  Navigator.pop(context);
+
+                                  showDialog<String>(
+                                      context: context,
+                                      builder: (BuildContext context) =>
+                                          AlertDialog(
+                                            title: const Text('แจ้งเตือน'),
+                                            content: const Text(
+                                                'ติดต่อหลักสูตรสำเร็จ'),
+                                            actions: <Widget>[
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                  context,
+                                                  'ตกลง',
+                                                ),
+                                                child: const Text(
+                                                  'ตกลง',
+                                                  textAlign: TextAlign.center,
+                                                ),
+                                              ),
+                                            ],
+                                          ));
+                                }
+                              },
+                              child: Text(
+                                'บันทึก',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 20),
                         ],
                       ),
-                    )
+                    ),
+                    ///////////////////////////////////////////////////////////
                   ],
                 ),
               ),
             ),
-          ),
+            AppBar(
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              leading: Navigator.canPop(context)
+                  ? IconButton(
+                      icon: Icon(
+                        Icons.keyboard_backspace,
+                        color: Colors.blueGrey[900],
+                      ),
+                      onPressed: () => Navigator.of(context).pop(),
+                    )
+                  : Another(),
+            ),
+          ],
         ),
       ),
     );
   }
-
-  /* void logout() async {
-    // logout from the server ...
-    var res = await ApiService().getData('logout');
-    var name;
-    var surname;
-    var mobile;
-    var email;
-    //var body = json.decode(res.body);
-    //if (body['success']) {
-    SharedPreferences localStorage = await SharedPreferences.getInstance();
-    localStorage.remove('access_token');
-    localStorage.remove('name');
-    localStorage.remove('surname');
-    localStorage.remove('mobile');
-    localStorage.remove('email');
-    Navigator.push(
-        context, new MaterialPageRoute(builder: (context) => LoginPage()));
-    // }
-  } */
 }

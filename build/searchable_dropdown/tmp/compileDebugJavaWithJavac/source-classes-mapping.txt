@@ -1,0 +1,2 @@
+bsi/iceman/searchable_dropdown/BuildConfig.java
+ bsi.iceman.searchable_dropdown.BuildConfig
