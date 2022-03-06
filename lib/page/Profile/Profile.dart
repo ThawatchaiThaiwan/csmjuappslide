@@ -59,7 +59,7 @@ class _ProfileState extends State<Profile> {
     });
   }
 
-  ProfileP? profileP;
+  //ProfileP? profileP;
   Future<dynamic> findUser() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
 
@@ -72,9 +72,9 @@ class _ProfileState extends State<Profile> {
       },
     );
     var getuser = json.decode(response.body);
-    print(getuser);
+    //print(getuser);
     var user = getuser['data'];
-    print(user);
+    //print(user);
     for (var dataStudent in user) {
       print(dataStudent);
       if (nameEN?.isnotEmpty ?? true) {
@@ -89,7 +89,7 @@ class _ProfileState extends State<Profile> {
           address = dataStudent["Address"];
           image = dataStudent["PictureProfile"];
           studentcode = dataStudent["studentCode"];
-          print(name);
+          /* print(name);
           print(surname);
           print(nameEN);
           print(surnameEN);
@@ -98,7 +98,7 @@ class _ProfileState extends State<Profile> {
           print(address);
           print(image);
           print(studentcode);
-          print(ID);
+          print(ID); */
         });
       }
     }

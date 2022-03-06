@@ -57,7 +57,7 @@ class _Profile2State extends State<Profile2> {
     });
   }
 
-  ProfileP? profileP;
+
   Future<dynamic> findUser() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
 

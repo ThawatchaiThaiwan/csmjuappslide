@@ -2,6 +2,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:dio/dio.dart';
 import 'package:http/http.dart' as http;
 import 'package:appcsmju/APImodel/Profilemodel.dart';
 import 'package:appcsmju/page/Profile/Profile.dart';
@@ -57,7 +58,7 @@ class _EditProfileState extends State<EditProfile> {
   }
 
 //////////////////////////////////////////////////////////////////////>>>>>>>>get user
-  ProfileP? profileP;
+  //ProfileP? profileP;
   Future<dynamic> findUser() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
 
@@ -128,15 +129,15 @@ class _EditProfileState extends State<EditProfile> {
               ///////////////////////////////////////////////////////////รูปใหญ่
               child: Container(
                 decoration: new BoxDecoration(
-                    image: new DecorationImage(
-                        fit: BoxFit.cover,
-                        image: new NetworkImage(
-                          imageprofile != null
-                              ? imageprofile!.path
-                              : image == null
-                                  ? 'https://wwwdev.csmju.com/images/news/thumbnail/no_img.jpg'
-                                  : image,
-                        ))),
+                    image: DecorationImage(
+                        image: (imageprofile != null)
+                            ? FileImage(imageprofile!)
+                            : NetworkImage(
+                                image == null
+                                    ? 'https://wwwdev.csmju.com/images/news/thumbnail/no_img.jpg'
+                                    : image,
+                              ) as ImageProvider,
+                        fit: BoxFit.cover)),
               ),
             ),
             Form(
@@ -205,15 +206,15 @@ class _EditProfileState extends State<EditProfile> {
                               width: 80.0,
                               decoration: new BoxDecoration(
                                   borderRadius: BorderRadius.circular(10.0),
-                                  image: new DecorationImage(
-                                      fit: BoxFit.cover,
-                                      image: new NetworkImage(
-                                        imageprofile != null
-                                            ? imageprofile!.path
-                                            : image == null
-                                                ? 'https://wwwdev.csmju.com/images/news/thumbnail/no_img.jpg'
-                                                : image,
-                                      ))),
+                                  image: DecorationImage(
+                                      image: (imageprofile != null)
+                                          ? FileImage(imageprofile!)
+                                          : NetworkImage(
+                                              image == null
+                                                  ? 'https://wwwdev.csmju.com/images/news/thumbnail/no_img.jpg'
+                                                  : image,
+                                            ) as ImageProvider,
+                                      fit: BoxFit.cover)),
                               margin: EdgeInsets.only(left: 16.0),
                             ),
                             Positioned(
@@ -296,6 +297,12 @@ class _EditProfileState extends State<EditProfile> {
                                   fontFamily: 'Sarabun',
                                 ),
                               ),
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500,
+                                fontFamily: 'Sarabun',
+                              ),
                             ),
                             leading: Icon(
                               Icons.person,
@@ -322,6 +329,12 @@ class _EditProfileState extends State<EditProfile> {
                                   fontWeight: FontWeight.w700,
                                   fontFamily: 'Sarabun',
                                 ),
+                              ),
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500,
+                                fontFamily: 'Sarabun',
                               ),
                             ),
                             leading: Icon(
@@ -352,6 +365,12 @@ class _EditProfileState extends State<EditProfile> {
                                   fontFamily: 'Sarabun',
                                 ),
                               ),
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500,
+                                fontFamily: 'Sarabun',
+                              ),
                             ),
                             leading: Icon(
                               Icons.email,
@@ -379,6 +398,12 @@ class _EditProfileState extends State<EditProfile> {
                                   fontWeight: FontWeight.w700,
                                   fontFamily: 'Sarabun',
                                 ),
+                              ),
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500,
+                                fontFamily: 'Sarabun',
                               ),
                             ),
                             leading: Icon(
@@ -408,13 +433,12 @@ class _EditProfileState extends State<EditProfile> {
                                   fontFamily: 'Sarabun',
                                 ),
                               ),
-                              //hintText:'$address',
-                              /* style: TextStyle(
+                              style: TextStyle(
                                 fontSize: 20,
                                 color: Colors.white,
                                 fontWeight: FontWeight.w500,
                                 fontFamily: 'Sarabun',
-                              ), */
+                              ),
                             ),
                             leading: Icon(
                               Icons.location_on,
@@ -447,7 +471,7 @@ class _EditProfileState extends State<EditProfile> {
                                 if (formKeyP.currentState!.validate()) {
                                   formKeyP.currentState!.save();
                                   Map<String, String> body = {
-                                    //'studentId': ID,
+                                    'studentId': ID.toString(),
                                     'nameTh': name,
                                     'surnameTh': surname,
                                     'nameEn': _nameENController.text,
@@ -456,8 +480,11 @@ class _EditProfileState extends State<EditProfile> {
                                     'EmailStudent': _emailController.text,
                                     'mobile': _mobileController.text,
                                     'Address': _addressController.text,
+                                    
+                                        
                                   };
-                                  print(body);
+                                  
+                                  
                                   service.postImage(body, imageprofile!.path);
                                   Navigator.pop(context);
 
