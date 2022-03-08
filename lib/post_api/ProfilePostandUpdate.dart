@@ -1,10 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
-
-import 'package:appcsmju/footbar/Foot.dart';
 import 'package:dio/dio.dart';
 import 'package:http/http.dart' as http;
-import 'package:path/path.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileService {
@@ -13,7 +10,6 @@ class ProfileService {
   var surnameTh;
   var ID;
   var studentcode;
-  
 
   Future<bool> postImage(
     Map<String, String> body,
@@ -65,113 +61,94 @@ class ProfileService {
         print("post fail");
       }
     } else {
-      var response1 = await http.post(Uri.parse(updateimageUrl),
+      /* var request1 = http.MultipartRequest('POST', Uri.parse(updateimageUrl))
+       
+        ..fields.addAll(body)
+        ..headers.addAll(headers)
+        ..files.add(http.MultipartFile.fromBytes(
+          'PictureProfile',
+          File(filepath).readAsBytesSync(),
+        ));
+        
+        var response1 = await request1.send();
+        if (response1.statusCode == 200) {
+        print("put success");
+      } else {
+        var messageError = "Can not update this user!!";
+        print(messageError);
+      }  */
+
+      /* String fileName = file.path.split('/').last;
+        FormData formData = FormData.fromMap({
+          "file": await MultipartFile.fromFile(file.path, filename: fileName),
+        }); */
+
+      var response1 = await http.put(Uri.parse(updateimageUrl),
           headers: {
             "Content-Type": "application/json",
             'Authorization': 'Bearer $authToken1',
           },
-          
           body: jsonEncode({
             "nameTh": nameTh,
             "surnameTh": surnameTh,
             "studentId": ID,
             "studentCode": studentcode,
-            "pictureProfile": filepath,
-            "nameEn": body['_nameENController.text'],
-            "surnameEn": body['_surnameENController.text'],
-            "EmailStudent": body['_emailController.text'],
-            "mobile": body['_mobileController.text'],
-            "Address": body['_addressController.text'],
+            "nameEn": body['nameEn'],
+            "surnameEn": body['surnameEn'],
+            "EmailStudent": body['EmailStudent'],
+            "mobile": body['mobile'],
+            "Address": body['Address'],
           }));
-      if (response1.statusCode == 200) {
-        var messageSuccess = json.decode(response.body)['message'];
 
-        print(messageSuccess);
+      if (nameEN?.isNotEmpty ?? true) {
+        var request1 = http.MultipartRequest('PUT', Uri.parse(updateimageUrl))
+          ..headers.addAll(headers,
+              )
+          ..files.add(await http.MultipartFile.fromPath(
+            'PictureProfile',
+            filepath,
+          ));
+
+        var response1 = await request1.send();
+        if (response1.statusCode == 200) {
+          print("put success");
+        } else {
+          var messageError = "Can not update this user!!555555555";
+          print(messageError);
+        }
+        
+        
+      }else { 
+          var messageError = "Can not update this user!!";
+          print(messageError);
+        }
+
+      /* Dio dio = new Dio();
+
+      FormData formData = FormData.fromMap({
+        "PictureProfile": await MultipartFile.fromFile(filepath, filename: 'file.jpg'),
+      });
+
+      var response = await dio.post(updateimageUrl,
+          data: formData,
+          options: Options(
+              followRedirects: false,
+              // will not throw errors
+              validateStatus: (status) => true,
+              headers: {
+                "Content-Type": "application/json",
+                'Authorization': 'Bearer $authToken1',
+              }));
+
+      if (response.statusCode == 200) {
+        print("put success");
       } else {
         var messageError = "Can not update this user!!";
         print(messageError);
-      }
-
-      /* String stringValue = ID.toString();
-      var request1 = http.MultipartRequest('POST', Uri.parse(updateimageUrl))
-        ..fields.addAll(body)
-        ..headers.addAll(headers)
-        ..files.add(await http.MultipartFile.fromPath(
-          'PictureProfile',
-          filepath,
-        )); */
-      /* var response1 = await dio.put(updateimageUrl,
-          data: body,
-
-          options: Options(
-            headers: {
-              'Authorization': 'Bearer $authToken1',
-              'Content-Type': 'multipart/form-data',
-            },
-          )); */
-      /* request1.fields['nameTh'] = nameTh;
-      request1.fields['surnameTh'] = surnameTh;
-      request1.fields['studentCode'] = studentcode;
-      request1.fields.addAll(body);
-      request1.headers.addAll(headers);
-      request1.fields['studentId'] = stringValue;
-      request1.files.add(await http.MultipartFile.fromPath(
-        'PictureProfile',
-        filepath,
-      ));*/
-      //var response1 = await request.send();
-      if (response1.statusCode == 200) {
-        print('response1.statusCode');
-      } else {
-        print(response1.statusCode);
-      }
-      //Dio dio = new Dio();
-
-      /* FormData formData = new FormData.fromMap(
-        {
-          'nameTh': body['nameTh'],
-          "surnameTh": body['surnameTh'],
-          "nameEn": body['_nameENController.text'],
-          "surnameEn": body['_surnameENController.text'],
-          "studentCode": body['studentcode'],
-          "EmailStudent": body['_emailController.text'],
-          "mobile": body['_mobileController.text'],
-          "Address": body['_addressController.text'],
-          "PictureProfile": await http.MultipartFile.fromPath(
-            'PictureProfile',
-            filepath,
-          ),
-        },
-      ); */
-      ;
-
-      /* var response = await dio.put(updateimageUrl,
-          data: formData,
-          options: Options(followRedirects: false, headers: {
-            HttpHeaders.authorizationHeader: 'Bearer $authToken1',
-          })); */
-
+        print(response.statusCode);
+      } */
     }
-    /*  var request = http.MultipartRequest('PUT', Uri.parse(updateimageUrl))
-      ..fields.addAll(body)
-      ..headers.addAll(headers)
-      ..files.add(await http.MultipartFile.fromPath(
-        'PictureProfile',
-        filepath,
-      ));
-      return true; */
+
     return true;
   }
 }
-
-
-
-/* var request = http.MultipartRequest('POST', Uri.parse(addimageUrl))
-      ..fields.addAll(body)
-      ..headers.addAll(headers)
-      ..files.add(await http.MultipartFile.fromPath('Complain_Picture', filepath,));
-var response = await request.send();
-    if (response.statusCode == 201) {
-      return true;
-    } else {
-      return false; */

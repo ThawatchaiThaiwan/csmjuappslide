@@ -468,6 +468,12 @@ class _EditProfileState extends State<EditProfile> {
                               style: ElevatedButton.styleFrom(
                                   primary: Color(0xff24a878)),
                               onPressed: () async {
+                               /*  final bytes =
+                                    File(imageprofile!.path).readAsBytesSync();
+                                String base64Image = "data:image/png;base64," +
+                                    base64Encode(bytes);
+
+                                print("img_pan : $base64Image"); */
                                 if (formKeyP.currentState!.validate()) {
                                   formKeyP.currentState!.save();
                                   Map<String, String> body = {
@@ -480,11 +486,10 @@ class _EditProfileState extends State<EditProfile> {
                                     'EmailStudent': _emailController.text,
                                     'mobile': _mobileController.text,
                                     'Address': _addressController.text,
+                                    'image': imageprofile!.path,
                                     
-                                        
                                   };
-                                  
-                                  
+
                                   service.postImage(body, imageprofile!.path);
                                   Navigator.pop(context);
 

@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
       ),
       
       
-      home :Another() ,
+      home :Foot() ,
     );
   }
 }
