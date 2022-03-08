@@ -468,7 +468,7 @@ class _EditProfileState extends State<EditProfile> {
                               style: ElevatedButton.styleFrom(
                                   primary: Color(0xff24a878)),
                               onPressed: () async {
-                               /*  final bytes =
+                                /* final bytes =
                                     File(imageprofile!.path).readAsBytesSync();
                                 String base64Image = "data:image/png;base64," +
                                     base64Encode(bytes);
@@ -486,13 +486,15 @@ class _EditProfileState extends State<EditProfile> {
                                     'EmailStudent': _emailController.text,
                                     'mobile': _mobileController.text,
                                     'Address': _addressController.text,
-                                    'image': imageprofile!.path,
+                                    //'PictureProfile': base64Image,
                                     
                                   };
+                                  
 
                                   service.postImage(body, imageprofile!.path);
                                   Navigator.pop(context);
 
+                                  
                                   showDialog<String>(
                                       context: context,
                                       builder: (BuildContext context) =>

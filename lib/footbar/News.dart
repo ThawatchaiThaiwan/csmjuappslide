@@ -1,8 +1,8 @@
 import 'package:appcsmju/APImodel/apinew.dart';
 import 'package:appcsmju/api/apinew_foot.dart';
 import 'package:appcsmju/model/newsmodel/customListTile.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-
 
 class News extends StatefulWidget {
   const News({Key? key}) : super(key: key);
@@ -24,7 +24,10 @@ class _NewsState extends State<News> {
         title: Text(
           "ข่าวสาร",
           textAlign: TextAlign.center,
-          style: TextStyle(color: Colors.blueGrey[900],fontSize: 27,fontWeight: FontWeight.bold),
+          style: TextStyle(
+              color: Colors.blueGrey[900],
+              fontSize: 27,
+              fontWeight: FontWeight.bold),
         ),
         leading: IconButton(
           onPressed: () {},
@@ -44,13 +47,20 @@ class _NewsState extends State<News> {
         future: client.getArticle(),
         builder: (BuildContext context, AsyncSnapshot<List<Apinew>> snapshot) {
           if (snapshot.hasData) {
-            
             List<Apinew>? data = snapshot.data;
-            return ListView.builder(
-              
-              itemCount: data!.length,
-              itemBuilder: (context, index) =>
-                  customListTile(data[index], context),
+            return SingleChildScrollView(
+              child: ListView.builder(
+                
+                scrollDirection: Axis.vertical,
+                physics: NeverScrollableScrollPhysics(
+                  parent: BouncingScrollPhysics(),
+                ),
+                shrinkWrap: true,
+                reverse: true,
+                itemCount: data!.length,
+                itemBuilder: (context, index) =>
+                    customListTile(data[index], context),
+              ),
             );
           }
           return Center(

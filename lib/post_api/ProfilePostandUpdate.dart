@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -29,13 +30,12 @@ class ProfileService {
     var user = getuser['data'];
     print(user);
     for (var dataStudent in user) {
-      if (ID?.isnotEmpty ?? true) {
-        ID = dataStudent['studentId'];
-        nameEN = dataStudent["nameEn"];
-        nameTh = dataStudent["nameTh"];
-        surnameTh = dataStudent["surnameTh"];
-        print(ID);
-      }
+      ID = dataStudent['studentId'];
+      nameEN = dataStudent["nameEn"];
+      nameTh = dataStudent["nameTh"];
+      surnameTh = dataStudent["surnameTh"];
+      print(ID);
+      print(nameEN);
     }
     String id = ID.toString();
     var authToken1 = '1257|7D3I1qDi4m28ZWRMJTvSmVJ3kOYwSsBvyzJdQm16';
@@ -82,7 +82,7 @@ class ProfileService {
         FormData formData = FormData.fromMap({
           "file": await MultipartFile.fromFile(file.path, filename: fileName),
         }); */
-
+     var image = base64Url.encode(File(filepath).readAsBytesSync());
       var response1 = await http.put(Uri.parse(updateimageUrl),
           headers: {
             "Content-Type": "application/json",
@@ -91,38 +91,55 @@ class ProfileService {
           body: jsonEncode({
             "nameTh": nameTh,
             "surnameTh": surnameTh,
-            "studentId": ID,
+            "studentId": id,
             "studentCode": studentcode,
             "nameEn": body['nameEn'],
             "surnameEn": body['surnameEn'],
             "EmailStudent": body['EmailStudent'],
             "mobile": body['mobile'],
             "Address": body['Address'],
+            "PictureProfile": image, 
           }));
+      if (response1.statusCode == 200) {
+        print("put success");
+        print(filepath);
+      } else {
+        var messageError = "Can not update this user!!";
+        print(messageError);
+        print(response1.statusCode);
+      }
 
-      if (nameEN?.isNotEmpty ?? true) {
-        var request1 = http.MultipartRequest('PUT', Uri.parse(updateimageUrl))
-          ..headers.addAll(headers,
-              )
-          ..files.add(await http.MultipartFile.fromPath(
-            'PictureProfile',
-            filepath,
-          ));
+      /* BaseOptions options = new BaseOptions(
+        baseUrl: updateimageUrl,
+        connectTimeout: 5000,
+        receiveTimeout: 3000,
+      );
 
-        var response1 = await request1.send();
-        if (response1.statusCode == 200) {
-          print("put success");
-        } else {
-          var messageError = "Can not update this user!!555555555";
-          print(messageError);
-        }
-        
-        
-      }else { 
-          var messageError = "Can not update this user!!";
-          print(messageError);
-        }
+      Dio dio = new Dio(options);
+      FormData formData = FormData.fromMap({
+        "PictureProfile":
+            await MultipartFile.fromFile(filepath, filename: 'file.jpg'),
+      });
 
+      var response = await dio.put(updateimageUrl,
+          data: formData,
+          options: Options(
+              followRedirects: false,
+              // will not throw errors
+              validateStatus: (status) => true,
+              headers: {
+                "Content-Type": "application/json",
+                'Authorization': 'Bearer $authToken1',
+              }));
+
+      if (response.statusCode == 200) {
+        print("put success");
+      } else {
+        var messageError = "Can not update this user!!";
+        print(messageError);
+        print(response.statusCode);
+      }
+ */
       /* Dio dio = new Dio();
 
       FormData formData = FormData.fromMap({
@@ -147,8 +164,9 @@ class ProfileService {
         print(messageError);
         print(response.statusCode);
       } */
-    }
 
-    return true;
+      
+    }
+    return false;
   }
 }

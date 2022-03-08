@@ -147,13 +147,20 @@ class _HomePageCarouselState extends State<HomePageCarousel> {
                       AsyncSnapshot<List<Activity>> snapshot) {
                     if (snapshot.hasData) {
                       List<Activity>? data = snapshot.data;
-                      return ListView.builder(
-                        shrinkWrap: true,
-                        scrollDirection: Axis.vertical,
-                        physics: NeverScrollableScrollPhysics(),
-                        itemCount: data!.length,
-                        itemBuilder: (context, index) =>
-                            customActivityBelow(data[index], context),
+                      return Align(
+                        alignment: Alignment.topCenter,
+                        child: ListView.builder(
+                          
+                          reverse: true,
+                          shrinkWrap: true,
+                          scrollDirection: Axis.vertical,
+                          physics: NeverScrollableScrollPhysics(
+                              parent: BouncingScrollPhysics(),
+                          ),
+                          itemCount: data!.length < 5 ? data.length : 5,
+                          itemBuilder: (context, index) =>
+                              customActivityBelow(data[index], context),
+                        ),
                       );
                     }
                     return Center(
