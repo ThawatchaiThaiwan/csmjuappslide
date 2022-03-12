@@ -4,6 +4,7 @@ import 'package:appcsmju/page/Activityanoter.dart';
 import 'package:appcsmju/page/Appeal.dart';
 import 'package:appcsmju/page/Borrow_back.dart';
 import 'package:appcsmju/page/Profile/Profile.dart';
+import 'package:appcsmju/page/ReserveRoom.dart';
 import 'package:appcsmju/page/Residue.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -14,6 +15,9 @@ class Another extends StatefulWidget {
   @override
   _AnotherState createState() => _AnotherState();
 }
+
+int curenttap = 0;
+Color _color = Colors.blueGrey;
 
 class _AnotherState extends State<Another> {
   @override
@@ -27,7 +31,9 @@ class _AnotherState extends State<Another> {
           "บริการอื่นๆ",
           textAlign: TextAlign.center,
           style: TextStyle(
-              color: Colors.blueGrey[900], fontSize: 27, fontWeight: FontWeight.bold),
+              color: Colors.blueGrey[900],
+              fontSize: 27,
+              fontWeight: FontWeight.bold),
         ),
         leading: IconButton(
           onPressed: () {},
@@ -42,267 +48,388 @@ class _AnotherState extends State<Another> {
           ),
         ],
       ),
-      body: Container(
+      body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
-          child: GridView(
-              children: [
-                //////////////////////////////////////////////////////////////////>>>>>.ข้อมูลส่วนตัว
-                InkWell(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Profile()));
-                  },
-                  child: Container(
-                    width: 120,
-                    height: 70,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Color(0x237dc0f3),
-                        border: Border.all(color: Color(0x237dc0f3))),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.account_circle,
-                          size: 50,
-                          color: Colors.grey,
+          child: Column(children: [
+            //////////////////////////////////////////////////////////////////>>>>>.ข้อมูลส่วนตัว
+            Card(
+              elevation: 4,
+              color:Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Profile()));
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Row(
+                    children: <Widget>[
+                      Icon(
+                        Icons.perm_identity_rounded,
+                        color: Colors.blueGrey[900],
+                        size: 22,
+                      ),
+                      SizedBox(
+                        width: 15,
+                      ),
+                      Text(
+                        "ข้อมูลส่วนตัว",
+                        style: TextStyle(
+                            fontSize: 27,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.blueGrey[900]),
+                      ),
+                      Expanded(
+                          child: ListTile(
+                        trailing: Icon(
+                          Icons.arrow_forward_ios,
+                          size: 20,
+                          color: Colors.blueGrey[900],
                         ),
-                        Text(
-                          "ข้อมูลส่วนตัว",
-                          style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
-                        )
-                      ],
-                    ),
+                      ))
+                    ],
                   ),
                 ),
-                ///////////////////////////////////////////////////////////>>>>แจ้งตกค้าง
-                InkWell(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Residue()));
-                  },
-                  child: Container(
-                    width: 120,
-                    height: 70,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Color(0x237dc0f3),
-                        border: Border.all(color: Color(0x237dc0f3))),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.library_books,
-                          size: 50,
-                          color: Colors.grey,
+              ),
+            ),
+
+            ///////////////////////////////////////////////////////////>>>>แจ้งตกค้าง
+            Card(
+              elevation: 4,
+              color:Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: InkWell(
+                onTap: () {
+                  
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Residue()));
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Row(
+                    children: <Widget>[
+                      Icon(
+                        Icons.mail_outline_sharp,
+                        color: Colors.blueGrey[900],
+                        size: 22,
+                      ),
+                      SizedBox(
+                        width: 15,
+                      ),
+                      Text(
+                        "แจ้งรายวิชาตกค้าง",
+                        style: TextStyle(
+                            fontSize: 27,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.blueGrey[900]),
+                      ),
+                      Expanded(
+                          child: ListTile(
+                        trailing: Icon(
+                          Icons.arrow_forward_ios,
+                          size: 20,
+                          color: Colors.blueGrey[900],
                         ),
-                        Text(
-                          "แจ้งตกค้าง",
-                          style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
-                        )
-                      ],
-                    ),
+                      ))
+                    ],
                   ),
                 ),
-                /////////////////////////////////////////////////////////>>>>>.ยืมคืน
-                InkWell(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Appeal()));
-                  },
-                  child: Container(
-                    width: 120,
-                    height: 70,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Color(0x237dc0f3),
-                        border: Border.all(color: Color(0x237dc0f3))),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.feedback_outlined,
-                          size: 50,
-                          color: Colors.grey,
+              ),
+            ),
+            /////////////////////////////////////////////////////////>>>>>.ยืมคืน
+            Card(
+              elevation: 4,
+              color: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Appeal()));
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Row(
+                    children: <Widget>[
+                      Icon(
+                        Icons.comment_outlined,
+                        color: Colors.blueGrey[900],
+                        size: 22,
+                      ),
+                      SizedBox(
+                        width: 15,
+                      ),
+                      Text(
+                        "ติดต่อหลักสูตร",
+                        style: TextStyle(
+                            fontSize: 27,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.blueGrey[900]),
+                      ),
+                      Expanded(
+                          child: ListTile(
+                        trailing: Icon(
+                          Icons.arrow_forward_ios,
+                          size: 20,
+                          color: Colors.blueGrey[900],
                         ),
-                        Text(
-                          "ติดต่อหลักสูตร",
-                          style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
-                        )
-                      ],
-                    ),
+                      ))
+                    ],
                   ),
                 ),
-                ///////////////////////////////////////////////////////////>>>>>>ยืมคืน
-                InkWell(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Borrow_Back()));
-                  },
-                  child: Container(
-                    width: 120,
-                    height: 70,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Color(0x237dc0f3),
-                        border: Border.all(color: Color(0x237dc0f3))),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.compare_arrows,
-                          size: 50,
-                          color: Colors.grey,
+              ),
+            ),
+            ///////////////////////////////////////////////////////////>>>>>>ยืมคืน
+            Card(
+              elevation: 4,
+              color:Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Borrow_Back()));
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Row(
+                    children: <Widget>[
+                      Icon(
+                        Icons.real_estate_agent_outlined,
+                        color: Colors.blueGrey[900],
+                        size: 22,
+                      ),
+                      SizedBox(
+                        width: 15,
+                      ),
+                      Text(
+                        "ยิมคืน",
+                        style: TextStyle(
+                            fontSize: 27,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.blueGrey[900]),
+                      ),
+                      Expanded(
+                          child: ListTile(
+                        trailing: Icon(
+                          Icons.arrow_forward_ios,
+                          size: 20,
+                          color: Colors.blueGrey[900],
                         ),
-                        Text(
-                          "ยืม-คืน",
-                          style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
-                        )
-                      ],
-                    ),
+                      ))
+                    ],
                   ),
                 ),
-                ////////////////////////////////////////////////////////>>>>>.โครงการทั้งหมด
-                InkWell(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ActivityAnoter()));
-                  },
-                  child: Container(
-                    width: 70,
-                    height: 70,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Color(0x237dc0f3),
-                        border: Border.all(color: Color(0x237dc0f3))),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.ballot,
-                          size: 50,
-                          color: Colors.grey,
+              ),
+            ),
+            ///////////////////////////////////////////////////////////////>>>>>จองห้องเรียน
+
+            Card(
+              elevation: 4,
+              color:Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => ReserveRoom()));
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Row(
+                    children: <Widget>[
+                      Icon(
+                        Icons.book_outlined,
+                        color: Colors.blueGrey[900],
+                        size: 22,
+                      ),
+                      SizedBox(
+                        width: 15,
+                      ),
+                      Text(
+                        "จองห้องเรียน",
+                        style: TextStyle(
+                            fontSize: 27,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.blueGrey[900]),
+                      ),
+                      Expanded(
+                          child: ListTile(
+                        trailing: Icon(
+                          Icons.arrow_forward_ios,
+                          size: 20,
+                          color: Colors.blueGrey[900],
                         ),
-                        Text(
-                          "โครงการทั้งหมด",
-                          style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
-                        )
-                      ],
-                    ),
+                      ))
+                    ],
                   ),
                 ),
-                //////////////////////////////////////////////////////>>>>>>.ออกจากระบบ
-                InkWell(
-                  onTap: () {
-                    showDialog<String>(
-                        context: context,
-                        builder: (BuildContext context) => AlertDialog(
-                              title: const Text(
-                                'แจ้งเตือน',
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                    fontFamily: 'Sarabun'),
-                              ),
-                              content: const Text(
-                                'ต้องการออกจากระบบหรือไม่',
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                    fontFamily: 'Sarabun'),
-                              ),
-                              actions: <Widget>[
-                                TextButton(
-                                  /* onPressed: () {
+              ),
+            ),
+            ////////////////////////////////////////////////////////>>>>>.โครงการทั้งหมด
+            Card(
+              elevation: 4,
+              color:Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ActivityAnoter()));
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Row(
+                    children: <Widget>[
+                      Icon(
+                        Icons.library_books_outlined,
+                        color: Colors.blueGrey[900],
+                        size: 22,
+                      ),
+                      SizedBox(
+                        width: 15,
+                      ),
+                      Text(
+                        "โครงกราทั้งหมด",
+                        style: TextStyle(
+                            fontSize: 27,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.blueGrey[900]),
+                      ),
+                      Expanded(
+                          child: ListTile(
+                        trailing: Icon(
+                          Icons.arrow_forward_ios,
+                          size: 20,
+                          color: Colors.blueGrey[900],
+                        ),
+                      ))
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            
+            //////////////////////////////////////////////////////>>>>>>.ออกจากระบบ
+
+            Card(
+              elevation: 4,
+              color:Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: InkWell(
+                onTap: () {
+                  showDialog<String>(
+                      context: context,
+                      builder: (BuildContext context) => AlertDialog(
+                            title: const Text(
+                              'แจ้งเตือน',
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Sarabun'),
+                            ),
+                            content: const Text(
+                              'ต้องการออกจากระบบหรือไม่',
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Sarabun'),
+                            ),
+                            actions: <Widget>[
+                              TextButton(
+                                /* onPressed: () {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) => LoginPage()));
                                   }, */
-                                  onPressed: () {
-                                    /* Navigator.pushAndRemoveUntil(
+                                onPressed: () {
+                                  /* Navigator.pushAndRemoveUntil(
                                         context,
                                         MaterialPageRoute(
                                             builder: (BuildContext context) =>
                                                 LoginPage()),
                                         ModalRoute.withName('/')); */
-                                    logout();
-                                  },
-                                  child: const Text(
-                                    'ตกลง',
-                                    style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                        fontFamily: 'Sarabun'),
-                                    textAlign: TextAlign.center,
-                                  ),
+                                  logout();
+                                },
+                                child: const Text(
+                                  'ตกลง',
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'Sarabun'),
+                                  textAlign: TextAlign.center,
                                 ),
-                                TextButton(
-                                  onPressed: () => Navigator.pop(
-                                    context,
-                                    'ยกเลิก',
-                                  ),
-                                  child: const Text(
-                                    'ยกเลิก',
-                                    style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                        fontFamily: 'Sarabun'),
-                                    textAlign: TextAlign.center,
-                                  ),
+                              ),
+                              TextButton(
+                                onPressed: () => Navigator.pop(
+                                  context,
+                                  'ยกเลิก',
                                 ),
-                              ],
-                            ));
-                  },
-                  child: Container(
-                    width: 120,
-                    height: 70,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Color(0x237dc0f3),
-                        border: Border.all(color: Color(0x237dc0f3))),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.logout,
-                          size: 50,
-                          color: Colors.red[700],
+                                child: const Text(
+                                  'ยกเลิก',
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'Sarabun'),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                            ],
+                          ));
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Row(
+                    children: <Widget>[
+                      Icon(
+                        Icons.login_outlined,
+                        color: Colors.blueGrey[900],
+                        size: 22,
+                      ),
+                      SizedBox(
+                        width: 15,
+                      ),
+                      Text(
+                        "ออกจากระบบ",
+                        style: TextStyle(
+                            fontSize: 27,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.blueGrey[900]),
+                      ),
+                      Expanded(
+                          child: ListTile(
+                        trailing: Icon(
+                          Icons.arrow_forward_ios,
+                          size: 20,
+                          color: Colors.blueGrey[900],
                         ),
-                        Text(
-                          "ออกจากระบบ",
-                          style: TextStyle(
-                              color: Colors.red[700],
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
-                        )
-                      ],
-                    ),
+                      ))
+                    ],
                   ),
                 ),
-              ],
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              ),
+            )
+          ]
+              /* gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   mainAxisSpacing: 10,
-                  crossAxisSpacing: 10)),
+                  crossAxisSpacing: 10) */
+              ),
         ),
       ),
     );

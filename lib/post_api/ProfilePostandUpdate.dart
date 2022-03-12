@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -40,14 +41,15 @@ class ProfileService {
     String id = ID.toString();
     var authToken1 = '1257|7D3I1qDi4m28ZWRMJTvSmVJ3kOYwSsBvyzJdQm16';
     String postimageUrl = 'https://wwwdev.csmju.com/api/student/create';
-    String updateimageUrl = 'https://wwwdev.csmju.com/api/student/update/$id';
-    print(updateimageUrl);
+    
+    
     Map<String, String> headers = {
       'Content-Type': 'multipart/form-data',
       'Authorization': 'Bearer $authToken1',
     };
     if (nameEN?.isEmpty ?? true) {
       var request = http.MultipartRequest('POST', Uri.parse(postimageUrl))
+        ..fields['PictureProfile'] = filepath
         ..fields.addAll(body)
         ..headers.addAll(headers)
         ..files.add(await http.MultipartFile.fromPath(
@@ -60,30 +62,62 @@ class ProfileService {
       } else {
         print("post fail");
       }
-    } else {
-      /* var request1 = http.MultipartRequest('POST', Uri.parse(updateimageUrl))
-       
+    }
+    if (nameEN?.isNotEmpty ?? false) {
+      
+      String updateimageUrl = 'https://wwwdev.csmju.com/api/student/update/$id';
+      print(updateimageUrl);
+      var request = http.MultipartRequest('POST', Uri.parse(updateimageUrl))
+        //..fields['studentId'] = id
         ..fields.addAll(body)
         ..headers.addAll(headers)
-        ..files.add(http.MultipartFile.fromBytes(
+        ..files.add(await http.MultipartFile.fromPath(
           'PictureProfile',
-          File(filepath).readAsBytesSync(),
+          filepath,
         ));
-        
-        var response1 = await request1.send();
-        if (response1.statusCode == 200) {
-        print("put success");
+      var response1 = await request.send();
+      var responsed = await http.Response.fromStream(response1);
+      if (responsed.statusCode == 201) {
+        print("update success");
+        print(responsed.statusCode);
       } else {
-        var messageError = "Can not update this user!!";
-        print(messageError);
-      }  */
+        print("update fail");
+        print(responsed.statusCode);
+      }
+    }
 
-      /* String fileName = file.path.split('/').last;
-        FormData formData = FormData.fromMap({
-          "file": await MultipartFile.fromFile(file.path, filename: fileName),
-        }); */
-     var image = base64Url.encode(File(filepath).readAsBytesSync());
-      var response1 = await http.put(Uri.parse(updateimageUrl),
+    /* var request = http.MultipartRequest("POST", Uri.parse(url));
+
+    request.headers.addAll(headers);
+    request.fields.addAll(updateProfileInfo.toJson());
+
+    request.files
+        .add(await http.MultipartFile.fromPath('image', imageFile.path));
+    request.files.add(
+        await http.MultipartFile.fromPath('signature', signatureFile.path));
+
+    print(" Update Profile Json ${updateProfileInfo.toJson()}");
+    print("Request Fields ${request.fields}");
+    http.StreamedResponse response = await request.send();
+
+    String respStr = await response.stream.bytesToString();
+    dynamic respJson;
+
+    try {
+      respJson = jsonDecode(respStr);
+    } on FormatException catch (e) {
+      print(e.toString());
+    }
+
+    print('API ${response.statusCode}\n  $respJson');
+
+    bool isSuccess = response.statusCode == 200;
+    var data = json.decode(respStr);
+ */
+
+/*      var image = base64Url.encode(File(filepath).readAsBytesSync());
+ */
+    /* var response1 = await http.put(Uri.parse(updateimageUrl),
           headers: {
             "Content-Type": "application/json",
             'Authorization': 'Bearer $authToken1',
@@ -98,7 +132,7 @@ class ProfileService {
             "EmailStudent": body['EmailStudent'],
             "mobile": body['mobile'],
             "Address": body['Address'],
-            "PictureProfile": image, 
+            "PictureProfile": await MultipartFile.fromFile(filepath),
           }));
       if (response1.statusCode == 200) {
         print("put success");
@@ -107,9 +141,9 @@ class ProfileService {
         var messageError = "Can not update this user!!";
         print(messageError);
         print(response1.statusCode);
-      }
+      } */
 
-      /* BaseOptions options = new BaseOptions(
+    /* BaseOptions options = new BaseOptions(
         baseUrl: updateimageUrl,
         connectTimeout: 5000,
         receiveTimeout: 3000,
@@ -140,7 +174,7 @@ class ProfileService {
         print(response.statusCode);
       }
  */
-      /* Dio dio = new Dio();
+    /* Dio dio = new Dio();
 
       FormData formData = FormData.fromMap({
         "PictureProfile": await MultipartFile.fromFile(filepath, filename: 'file.jpg'),
@@ -164,9 +198,6 @@ class ProfileService {
         print(messageError);
         print(response.statusCode);
       } */
-
-      
-    }
-    return false;
+    return true;
   }
 }

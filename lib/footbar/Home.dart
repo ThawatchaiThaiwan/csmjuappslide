@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:io';
+import 'package:http/http.dart' as http;
 import 'package:appcsmju/APImodel/apinew.dart';
 import 'package:appcsmju/api/API_activity.dart';
 import 'package:appcsmju/APImodel/carousel.dart';
@@ -6,6 +9,7 @@ import 'package:appcsmju/APImodel/Activity.dart';
 import 'package:appcsmju/model/carouselmodel/Activitycustombelow.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePageCarousel extends StatefulWidget {
   const HomePageCarousel({Key? key}) : super(key: key);
@@ -23,6 +27,44 @@ class _HomePageCarouselState extends State<HomePageCarousel> {
   void initState() {
     super.initState();
     getActivity();
+    findUser();
+  }
+
+  /* void _getUserInfop() async {
+    SharedPreferences localStorage = await SharedPreferences.getInstance();
+    /* var userJson = localStorage.getString('user');
+    var user = json.decode(userJson!); */
+    setState(() {
+      studentcode = localStorage.getString('Studentcode');
+      //userData = user;
+    });
+  } */
+  var ID;
+  var image;
+  var studentcode;
+//////////////////////////////////////////////////////////////////////>>>>>>>>get user
+  //ProfileP? profileP;
+  Future<dynamic> findUser() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+
+    studentcode = preferences.getString('Studentcode');
+    var authToken = '1257|7D3I1qDi4m28ZWRMJTvSmVJ3kOYwSsBvyzJdQm16';
+    var response = await http.get(
+      Uri.parse("https://wwwdev.csmju.com/api/student/$studentcode"),
+      headers: {
+        HttpHeaders.authorizationHeader: 'Bearer $authToken',
+      },
+    );
+    var getuser = json.decode(response.body);
+    var user = getuser['data'];
+    print(user);
+    for (var dataStudent in user) {
+      setState(() {
+        image = dataStudent['PictureProfile'];
+      });
+
+      print(image);
+    }
   }
 
   Future<void> getActivity() async {
@@ -66,18 +108,35 @@ class _HomePageCarouselState extends State<HomePageCarousel> {
       backgroundColor: Colors.grey[75],
       appBar: AppBar(
         backgroundColor: Colors.white,
-        centerTitle: true,
-        leading: IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.person),
-          color: Colors.black, //ยังไม่ได้เชื่อปุ่ม icons
+        leading: InkWell(
+          onTap: () {},
+          child: ClipRRect(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                  width: 100.0,
+                  height: 100.0,
+                  decoration: new BoxDecoration(
+                      border: Border.all(
+                          width: 3,
+                          color: Theme.of(context).scaffoldBackgroundColor),
+                      shape: BoxShape.circle,
+                      image: new DecorationImage(
+                          fit: BoxFit.scaleDown,
+                          image: new NetworkImage(image == null
+                              ? 'https://wwwdev.csmju.com/images/news/thumbnail/no_img.jpg'
+                              : image)))),
+            ),
+          ),
         ),
-        actions: <Widget>[
+        actions: [
           IconButton(
             onPressed: () {},
-            icon: Icon(Icons.notifications_active),
-            color: Colors.black,
-          ),
+            icon: Icon(
+              Icons.notifications,
+              color: Colors.black,
+            ),
+          )
         ],
       ),
       body: SingleChildScrollView(
@@ -128,7 +187,7 @@ class _HomePageCarouselState extends State<HomePageCarousel> {
             'โครงการล่าสุด',
             textAlign: TextAlign.start,
             style: TextStyle(
-              color: Colors.blueGrey [900],
+              color: Colors.blueGrey[900],
               fontWeight: FontWeight.bold,
               fontSize: 28,
             ),
@@ -150,12 +209,11 @@ class _HomePageCarouselState extends State<HomePageCarousel> {
                       return Align(
                         alignment: Alignment.topCenter,
                         child: ListView.builder(
-                          
                           reverse: true,
                           shrinkWrap: true,
                           scrollDirection: Axis.vertical,
                           physics: NeverScrollableScrollPhysics(
-                              parent: BouncingScrollPhysics(),
+                            parent: BouncingScrollPhysics(),
                           ),
                           itemCount: data!.length < 5 ? data.length : 5,
                           itemBuilder: (context, index) =>

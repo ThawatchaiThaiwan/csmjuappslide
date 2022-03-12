@@ -2,17 +2,9 @@
 
 import 'dart:convert';
 import 'dart:io';
-import 'dart:ui';
-
-import 'package:appcsmju/APImodel/Profilemodel.dart';
 import 'package:appcsmju/page/Profile/Edit_profile.dart';
-import 'package:get/get.dart';
-
 import 'package:http/http.dart' as http;
-import 'package:appcsmju/api/apinew_foot.dart';
 import 'package:appcsmju/footbar/Another.dart';
-
-import 'package:appcsmju/model/loginmodel/login_page.dart';
 import 'package:flutter/material.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';

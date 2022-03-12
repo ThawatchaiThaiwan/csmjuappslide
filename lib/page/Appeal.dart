@@ -201,7 +201,9 @@ class _AppealState extends State<Appeal> {
                             ),
                             onPressed: () {
                               getImage();
+                              print(_image);
                             },
+                            
                             child: Text(
                               "อัพโหลดรูปภาพ",
                               style: TextStyle(

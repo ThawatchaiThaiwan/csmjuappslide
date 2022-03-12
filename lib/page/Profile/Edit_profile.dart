@@ -1,11 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 import 'dart:convert';
 import 'dart:io';
-
-import 'package:dio/dio.dart';
 import 'package:http/http.dart' as http;
-import 'package:appcsmju/APImodel/Profilemodel.dart';
-import 'package:appcsmju/page/Profile/Profile.dart';
 import 'package:appcsmju/post_api/ProfilePostandUpdate.dart';
 import 'package:appcsmju/footbar/Another.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +15,8 @@ class EditProfile extends StatefulWidget {
 
 class _EditProfileState extends State<EditProfile> {
   ProfileService service = ProfileService();
+  
+
   final formKeyP = GlobalKey<FormState>();
 
   var userData;
@@ -487,14 +485,14 @@ class _EditProfileState extends State<EditProfile> {
                                     'mobile': _mobileController.text,
                                     'Address': _addressController.text,
                                     //'PictureProfile': base64Image,
-                                    
                                   };
-                                  
 
-                                  service.postImage(body, imageprofile!.path);
+                                  
+                                    service.postImage(body, imageprofile!.path);
                                   Navigator.pop(context);
-
                                   
+
+                                
                                   showDialog<String>(
                                       context: context,
                                       builder: (BuildContext context) =>

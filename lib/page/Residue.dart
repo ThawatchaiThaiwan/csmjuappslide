@@ -3,7 +3,6 @@
 import 'dart:convert';
 import 'dart:async';
 
-
 import 'package:appcsmju/APImodel/Residuemodel.dart';
 import 'package:appcsmju/footbar/Another.dart';
 import 'package:appcsmju/footbar/Foot.dart';
@@ -591,8 +590,7 @@ result = string.substring(1, 4);  */
                                   final String surnameThp = surname;
                                   final String EmailStudent = email;
                                   final String mobile = PhoneController.text;
-                                  final String studentCode =
-                                      studentcode;
+                                  final String studentCode = studentcode;
                                   final String Sec_Internal =
                                       GroupController.text;
                                   final String Sec_Another =
