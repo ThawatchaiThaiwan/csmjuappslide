@@ -85,6 +85,7 @@ class _EditProfileState extends State<EditProfile> {
           image = dataStudent["PictureProfile"];
           studentcode = dataStudent["studentCode"];
         });
+        
       }
     }
   }

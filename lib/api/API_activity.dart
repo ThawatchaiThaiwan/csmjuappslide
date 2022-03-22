@@ -17,7 +17,7 @@ class ActivityApiService {
     },);
 
 
-     if(res.statusCode == 200){
+     if(res.statusCode == 200){ 
         return activityFromJson(res.body);
       }
       return getsActivity();

@@ -1,10 +1,16 @@
+import 'dart:convert';
+import 'dart:io';
+import 'package:appcsmju/page/ReserveRoom/ReserveRoom.dart';
+import 'package:appcsmju/page/notifications/notifications.dart';
+import 'package:http/http.dart' as http;
+
 import 'package:appcsmju/api/apinew_foot.dart';
 import 'package:appcsmju/model/loginmodel/login_page.dart';
 import 'package:appcsmju/page/Activityanoter.dart';
 import 'package:appcsmju/page/Appeal.dart';
 import 'package:appcsmju/page/Borrow_back.dart';
 import 'package:appcsmju/page/Profile/Profile.dart';
-import 'package:appcsmju/page/ReserveRoom.dart';
+
 import 'package:appcsmju/page/Residue.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -21,11 +27,76 @@ Color _color = Colors.blueGrey;
 
 class _AnotherState extends State<Another> {
   @override
+  void initState() {
+    super.initState();
+
+    findUser();
+  }
+
+  var ID;
+  var image;
+  var studentcode;
+//////////////////////////////////////////////////////////////////////>>>>>>>>get user
+  //ProfileP? profileP;
+  Future<dynamic> findUser() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+
+    studentcode = preferences.getString('Studentcode');
+    var authToken = '1257|7D3I1qDi4m28ZWRMJTvSmVJ3kOYwSsBvyzJdQm16';
+    var response = await http.get(
+      Uri.parse("https://wwwdev.csmju.com/api/student/$studentcode"),
+      headers: {
+        HttpHeaders.authorizationHeader: 'Bearer $authToken',
+      },
+    );
+    var getuser = json.decode(response.body);
+    var user = getuser['data'];
+    print(user);
+    for (var dataStudent in user) {
+      setState(() {
+        image = dataStudent['PictureProfile'];
+      });
+
+      print(image);
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[75],
       appBar: AppBar(
         backgroundColor: Colors.white,
+        leading: InkWell(
+          onTap: () {
+            Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => Profile(
+                    
+                  )));
+            
+          
+          },
+          child: ClipRRect(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                  width: 100.0,
+                  height: 100.0,
+                  decoration: new BoxDecoration(
+                      border: Border.all(
+                          width: 3,
+                          color: Theme.of(context).scaffoldBackgroundColor),
+                      shape: BoxShape.circle,
+                      image: new DecorationImage(
+                          fit: BoxFit.scaleDown,
+                          image: new NetworkImage(image == null
+                              ? 'https://wwwdev.csmju.com/images/news/thumbnail/no_img.jpg'
+                              : image)))),
+            ),
+          ),
+        ),
         centerTitle: true,
         title: Text(
           "บริการอื่นๆ",
@@ -35,17 +106,19 @@ class _AnotherState extends State<Another> {
               fontSize: 27,
               fontWeight: FontWeight.bold),
         ),
-        leading: IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.person),
-          color: Colors.black, //ยังไม่ได้เชื่อปุ่ม icons
-        ),
-        actions: <Widget>[
+        actions: [
           IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.notifications_active),
-            color: Colors.black,
-          ),
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return Notifications();
+              }));
+            },
+            
+            icon: Icon(
+              Icons.notifications,
+              color: Colors.blueGrey[900],
+            ),
+          )
         ],
       ),
       body: SingleChildScrollView(
@@ -55,7 +128,7 @@ class _AnotherState extends State<Another> {
             //////////////////////////////////////////////////////////////////>>>>>.ข้อมูลส่วนตัว
             Card(
               elevation: 4,
-              color:Colors.white,
+              color: Colors.white,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
               ),
@@ -100,13 +173,12 @@ class _AnotherState extends State<Another> {
             ///////////////////////////////////////////////////////////>>>>แจ้งตกค้าง
             Card(
               elevation: 4,
-              color:Colors.white,
+              color: Colors.white,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
               ),
               child: InkWell(
                 onTap: () {
-                  
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => Residue()));
                 },
@@ -189,14 +261,14 @@ class _AnotherState extends State<Another> {
             ///////////////////////////////////////////////////////////>>>>>>ยืมคืน
             Card(
               elevation: 4,
-              color:Colors.white,
+              color: Colors.white,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
               ),
               child: InkWell(
                 onTap: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Borrow_Back()));
+                      MaterialPageRoute(builder: (context) => Borrowreturn()));
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
@@ -234,14 +306,14 @@ class _AnotherState extends State<Another> {
 
             Card(
               elevation: 4,
-              color:Colors.white,
+              color: Colors.white,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
               ),
               child: InkWell(
                 onTap: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => ReserveRoom()));
+                      MaterialPageRoute(builder: (context) => ReserveRoom1()));
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
@@ -278,7 +350,7 @@ class _AnotherState extends State<Another> {
             ////////////////////////////////////////////////////////>>>>>.โครงการทั้งหมด
             Card(
               elevation: 4,
-              color:Colors.white,
+              color: Colors.white,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
               ),
@@ -321,12 +393,12 @@ class _AnotherState extends State<Another> {
                 ),
               ),
             ),
-            
+
             //////////////////////////////////////////////////////>>>>>>.ออกจากระบบ
 
             Card(
               elevation: 4,
-              color:Colors.white,
+              color: Colors.white,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
               ),

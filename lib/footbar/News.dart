@@ -1,8 +1,16 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:appcsmju/APImodel/apinew.dart';
 import 'package:appcsmju/api/apinew_foot.dart';
 import 'package:appcsmju/model/newsmodel/customListTile.dart';
-import 'package:flutter/gestures.dart';
+import 'package:appcsmju/page/notifications/notifications.dart';
+import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../page/Profile/Profile.dart';
 
 class News extends StatefulWidget {
   const News({Key? key}) : super(key: key);
@@ -12,7 +20,41 @@ class News extends StatefulWidget {
 }
 
 class _NewsState extends State<News> {
+  @override
+  void initState() {
+    super.initState();
+
+    findUser();
+  }
+
   ApiService client = ApiService();
+  var ID;
+  var image;
+  var studentcode;
+//////////////////////////////////////////////////////////////////////>>>>>>>>get user
+  //ProfileP? profileP;
+  Future<dynamic> findUser() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+
+    studentcode = preferences.getString('Studentcode');
+    var authToken = '1257|7D3I1qDi4m28ZWRMJTvSmVJ3kOYwSsBvyzJdQm16';
+    var response = await http.get(
+      Uri.parse("https://wwwdev.csmju.com/api/student/$studentcode"),
+      headers: {
+        HttpHeaders.authorizationHeader: 'Bearer $authToken',
+      },
+    );
+    var getuser = json.decode(response.body);
+    var user = getuser['data'];
+    print(user);
+    for (var dataStudent in user) {
+      setState(() {
+        image = dataStudent['PictureProfile'];
+      });
+
+      print(image);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +62,32 @@ class _NewsState extends State<News> {
       backgroundColor: Colors.grey[75],
       appBar: AppBar(
         backgroundColor: Colors.white,
+        leading: InkWell(
+          onTap: () {
+            
+           Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return Profile();
+            }));
+          },
+          child: ClipRRect(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                  width: 100.0,
+                  height: 100.0,
+                  decoration: new BoxDecoration(
+                      border: Border.all(
+                          width: 3,
+                          color: Theme.of(context).scaffoldBackgroundColor),
+                      shape: BoxShape.circle,
+                      image: new DecorationImage(
+                          fit: BoxFit.scaleDown,
+                          image: new NetworkImage(image == null
+                              ? 'https://wwwdev.csmju.com/images/news/thumbnail/no_img.jpg'
+                              : image)))),
+            ),
+          ),
+        ),
         centerTitle: true,
         title: Text(
           "ข่าวสาร",
@@ -29,17 +97,19 @@ class _NewsState extends State<News> {
               fontSize: 27,
               fontWeight: FontWeight.bold),
         ),
-        leading: IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.person),
-          color: Colors.blueGrey[900],
-        ),
-        actions: <Widget>[
+        actions: [
           IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.notifications_active),
-            color: Colors.blueGrey[900],
-          ),
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return Notifications();
+              }));
+            },
+            
+            icon: Icon(
+              Icons.notifications,
+              color: Colors.blueGrey[900],
+            ),
+          )
         ],
       ),
       body: FutureBuilder(
@@ -50,7 +120,6 @@ class _NewsState extends State<News> {
             List<Apinew>? data = snapshot.data;
             return SingleChildScrollView(
               child: ListView.builder(
-                
                 scrollDirection: Axis.vertical,
                 physics: NeverScrollableScrollPhysics(
                   parent: BouncingScrollPhysics(),

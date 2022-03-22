@@ -161,7 +161,7 @@ result = string.substring(1, 4);  */
           child: SafeArea(
             child: Container(
                 padding: EdgeInsets.fromLTRB(15, 10, 15, 10),
-                width: 405,
+                width: double.infinity,
                 height: 1100,
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -188,7 +188,7 @@ result = string.substring(1, 4);  */
                       ),
                       Container(
                         padding: EdgeInsets.fromLTRB(5, 10, 5, 10),
-                        width: 340,
+                        width: double.infinity,
                         height: 50,
                         decoration: BoxDecoration(
                             color: Colors.blueGrey[100],
@@ -222,7 +222,7 @@ result = string.substring(1, 4);  */
                       ),
                       Container(
                         padding: EdgeInsets.fromLTRB(5, 10, 5, 10),
-                        width: 340,
+                        width: double.infinity,
                         height: 50,
                         decoration: BoxDecoration(
                             color: Colors.blueGrey[100],
@@ -279,7 +279,7 @@ result = string.substring(1, 4);  */
                             flex: 1,
                             child: Container(
                               padding: EdgeInsets.fromLTRB(5, 10, 5, 10),
-                              width: 340,
+                              width: double.infinity,
                               height: 50,
                               decoration: BoxDecoration(
                                   color: Colors.blueGrey[100],
@@ -342,7 +342,7 @@ result = string.substring(1, 4);  */
                       ),
                       Container(
                         padding: EdgeInsets.fromLTRB(5, 10, 5, 10),
-                        width: 340,
+                        width: double.infinity,
                         height: 50,
                         decoration: BoxDecoration(
                             color: Colors.blueGrey[100],
@@ -383,7 +383,7 @@ result = string.substring(1, 4);  */
                               border: new Border.all(color: Colors.grey),
                               borderRadius: BorderRadius.circular(5.0)),
                           child: Container(
-                            width: 340,
+                            width: double.infinity,
                             height: 48,
                             padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
                             child: Row(
@@ -420,7 +420,7 @@ result = string.substring(1, 4);  */
                                       }).toList(),
                                       onChanged: (String? newVal) {
                                         setState(() {
-                                          subjectid = newVal!;
+                                          subjectid = newVal;
                                           CoursesController.text = subjectid!;
                                           print(subjectid.toString());
                                         });
@@ -554,13 +554,13 @@ result = string.substring(1, 4);  */
                       SizedBox(height: 40.0),
                       /////////////////////////////////////////////////////>>>>>ปุ่ม ส่งคำร้อง
                       Container(
-                        width: 360,
+                        width: double.infinity,
                         height: 30,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5),
-                          color: Colors.green[10],
+                          color: Colors.green[700],
                           border: Border.all(
-                            color: Colors.green,
+                            color: Color(0xff24a878),
                             width: 2,
                           ),
                           boxShadow: [
@@ -573,7 +573,7 @@ result = string.substring(1, 4);  */
                         ),
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            primary: Colors.green[400],
+                            primary: Color(0xff24a878),
                           ),
                           onPressed: () {
                             setState(
@@ -689,7 +689,7 @@ result = string.substring(1, 4);  */
                       ///////////////////////////////////////////////////>>>>>>>ปุ่มยกเลิก
                       SizedBox(height: 20.0),
                       Container(
-                        width: 360,
+                        width: double.infinity,
                         height: 30,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5),

@@ -22,7 +22,6 @@ bool _validate3 = false;
 
 ////////////////////////////////////////////////////////////////////////////////////////
 class _AppealState extends State<Appeal> {
- 
   TextEditingController TitelController1 = TextEditingController();
   TextEditingController DateController2 = TextEditingController();
   TextEditingController DetailController3 = TextEditingController();
@@ -78,7 +77,7 @@ class _AppealState extends State<Appeal> {
             child: SafeArea(
               child: Container(
                   padding: EdgeInsets.fromLTRB(15, 10, 15, 10),
-                  width: 405,
+                  width: double.infinity,
                   height: 800,
                   decoration: BoxDecoration(
                     color: Colors.white,
@@ -203,7 +202,6 @@ class _AppealState extends State<Appeal> {
                               getImage();
                               print(_image);
                             },
-                            
                             child: Text(
                               "อัพโหลดรูปภาพ",
                               style: TextStyle(
@@ -216,7 +214,7 @@ class _AppealState extends State<Appeal> {
                         ///////////////////////////////////////////////////////>>>>>โชว์รูปภาพ
                         Container(
                           padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
-                          width: 340,
+                          width: double.infinity,
                           height: 110,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5),
@@ -246,13 +244,13 @@ class _AppealState extends State<Appeal> {
                         /////////////////////////////////////////////////////////>>>>>>ปุ่ม>ส่งคำร้อง
                         SizedBox(height: 40),
                         Container(
-                          width: 375,
+                          width: double.infinity,
                           height: 30,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
-                            color: Colors.green[10],
+                            color: Colors.green[700],
                             border: Border.all(
-                              color: Colors.green,
+                              color: Color(0xff24a878),
                               width: 2,
                             ),
                             boxShadow: [
@@ -265,7 +263,8 @@ class _AppealState extends State<Appeal> {
                           ),
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                                primary: Colors.green[400]),
+                              primary: Color(0xff24a878),
+                            ),
                             onPressed: () async {
                               if (formkey.currentState!.validate()) {
                                 formkey.currentState!.save();
@@ -331,7 +330,7 @@ class _AppealState extends State<Appeal> {
                         ////////////////////////////////////////////////>>>>>.ปุ่ม>ยกเลิก
                         SizedBox(height: 20.0),
                         Container(
-                          width: 375,
+                          width: double.infinity,
                           height: 30,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),

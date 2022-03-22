@@ -1,6 +1,12 @@
-import 'dart:ui';
+import 'dart:convert';
+import 'dart:io';
+import 'package:appcsmju/page/Profile/Profile.dart';
+import 'package:appcsmju/page/notifications/notifications.dart';
+import 'package:get/route_manager.dart';
+import 'package:http/http.dart' as http;
 
 import 'package:appcsmju/model/calendarmodel/evencalendar.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:flutter/material.dart';
 
@@ -34,7 +40,36 @@ class _CalendarState extends State<Calendar> {
   @override
   void dispose() {
     _eventController.dispose();
+    findUser();
     super.dispose();
+  }
+
+  var ID;
+  var image;
+  var studentcode;
+//////////////////////////////////////////////////////////////////////>>>>>>>>get user
+  //ProfileP? profileP;
+  Future<dynamic> findUser() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+
+    studentcode = preferences.getString('Studentcode');
+    var authToken = '1257|7D3I1qDi4m28ZWRMJTvSmVJ3kOYwSsBvyzJdQm16';
+    var response = await http.get(
+      Uri.parse("https://wwwdev.csmju.com/api/student/$studentcode"),
+      headers: {
+        HttpHeaders.authorizationHeader: 'Bearer $authToken',
+      },
+    );
+    var getuser = json.decode(response.body);
+    var user = getuser['data'];
+    print(user);
+    for (var dataStudent in user) {
+      setState(() {
+        image = dataStudent['PictureProfile'];
+      });
+
+      print(image);
+    }
   }
 
   @override
@@ -43,27 +78,54 @@ class _CalendarState extends State<Calendar> {
       backgroundColor: Colors.grey[75],
       appBar: AppBar(
         backgroundColor: Colors.white,
+        leading: InkWell(
+          onTap: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return Profile();
+            }));
+            
+          },
+          child: ClipRRect(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                  width: 100.0,
+                  height: 100.0,
+                  decoration: new BoxDecoration(
+                      border: Border.all(
+                          width: 3,
+                          color: Theme.of(context).scaffoldBackgroundColor),
+                      shape: BoxShape.circle,
+                      image: new DecorationImage(
+                          fit: BoxFit.scaleDown,
+                          image: new NetworkImage(image == null
+                              ? 'https://wwwdev.csmju.com/images/news/thumbnail/no_img.jpg'
+                              : image)))),
+            ),
+          ),
+        ),
         centerTitle: true,
         title: Text(
           "ปฏิทินกิจกรรม",
           textAlign: TextAlign.center,
           style: TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-              fontSize: 20.0,
-              fontFamily: 'Sarabun'),
+              color: Colors.blueGrey[900],
+              fontSize: 27,
+              fontWeight: FontWeight.bold),
         ),
-        leading: IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.person),
-          color: Colors.black,
-        ),
-        actions: <Widget>[
+        actions: [
           IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.notifications_active),
-            color: Colors.black,
-          ),
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return Notifications();
+              }));
+            },
+            
+            icon: Icon(
+              Icons.notifications,
+              color: Colors.blueGrey[900],
+            ),
+          )
         ],
       ),
       body: Column(

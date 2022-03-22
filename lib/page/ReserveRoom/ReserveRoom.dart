@@ -1,29 +1,49 @@
 import 'dart:convert';
+import 'package:appcsmju/APImodel/ReserveRoommodel.dart';
 import 'package:appcsmju/footbar/Foot.dart';
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:appcsmju/page/ReserveRoom/ListReserve.dart';
+import 'package:dropdown_search/dropdown_search.dart';
+
+
 import 'package:http/http.dart' as http;
 import 'package:appcsmju/footbar/Another.dart';
 import 'package:flutter/material.dart';
-import 'package:searchable_dropdown/searchable_dropdown.dart';
-
+import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:appcsmju/post_api/ReserveRoompost.dart';
 
-class ReserveRoom extends StatefulWidget {
-  const ReserveRoom({Key? key}) : super(key: key);
+class ReserveRoom1 extends StatefulWidget {
+  const ReserveRoom1({Key? key}) : super(key: key);
 
   @override
-  State<ReserveRoom> createState() => _ReserveRoomState();
+  State<ReserveRoom1> createState() => _ReserveRoom1State();
 }
 
-class _ReserveRoomState extends State<ReserveRoom> {
+class _ReserveRoom1State extends State<ReserveRoom1> {
+  //ReserveRoomService service = ReserveRoomService();
   ////////////////////////////////////////////////////////////////////////////////// api dropdpw
 
   // ignore: non_constant_identifier_names
-  List? subject_data;
-  String? subjectid;
+  /* List<String> adviser = [
+    "อาจารย์ อรรถวิทชังคมานนท์",
+    "ผู้ช่วยศาสตราจารย์ ก่องกาญจน์ดุลยไชย",
+    "อาจารย์ ดร. กิตติกรหาญตระกูล",
+    "ผู้ช่วยศาสตราจารย์ ดร. สนิทสิทธิ"
+        "อาจารย์ อลงกตกองมณี"
+        "ผู้ช่วยศาสตราจารย์ ภานุวัฒน์เมฆะ"
+        "ผู้ช่วยศาสตราจารย์ ดร. พาสน์ปราโมกข์ชน"
+        "ผู้ช่วยศาสตราจารย์ ดร. ปวีณเขื่อนแก้ว"
+        "อาจารย์ ดร. พยุงศักดิ์เกษมสำราญ"
+        "อาจารย์ ดร. สมนึกสินธุปวน"
+        "อาจารย์ ดร. นษิตันติธารานุกุล"
+        "อาจารย์ ดร. กิติศักดิ์โอสถานันต์กุล"
+  ]; */
+  String? adviser_id;
+  List? room_data;
+  String? roomid;
   String? time;
   var url = Uri.encodeFull('https://wwwdev.csmju.com/api/classroom');
-  Future<String> country() async {
+  Future<String> room() async {
     var authToken = '1257|7D3I1qDi4m28ZWRMJTvSmVJ3kOYwSsBvyzJdQm16';
     var res = await http.get(Uri.parse(url), headers: {
       "Accept": "application/json",
@@ -32,7 +52,7 @@ class _ReserveRoomState extends State<ReserveRoom> {
     var resBody = json.decode(res.body);
     print(resBody);
     setState(() {
-      subject_data = resBody;
+      room_data = resBody;
     });
 
     return "Sucess";
@@ -68,9 +88,11 @@ class _ReserveRoomState extends State<ReserveRoom> {
   @override
   void initState() {
     _getUserInfo();
+    // _TimefristController.text = "";
+    //_TimeendController.text = "";
     //DateController2.text = "";
     super.initState();
-    this.country();
+    this.room();
   }
 
   /////////////////////////////////////////////////////////////////////>>>>>>>. post
@@ -80,10 +102,16 @@ class _ReserveRoomState extends State<ReserveRoom> {
 
   TextEditingController _roomController = TextEditingController();
   TextEditingController _phoneController = TextEditingController();
-  TextEditingController _dateController = TextEditingController();
+  TextEditingController _TimefristController = TextEditingController();
+  TextEditingController _TimeendController = TextEditingController();
+  TextEditingController _DeteilController = TextEditingController();
+  TextEditingController _AdviserController = TextEditingController();
 
   /////////////////////////////////////////////////////////////////////////////>>>>.localstorage
   final formkey = GlobalKey<FormState>();
+
+  ReserveRoommodel? _user;
+
   var userData;
   var name;
   var surname;
@@ -106,6 +134,10 @@ class _ReserveRoomState extends State<ReserveRoom> {
 
   @override
   Widget build(BuildContext context) {
+    final hoursfrist = _timefrist.hour.toString().padLeft(2, '0');
+    final minutesfrist = _timefrist.minute.toString().padLeft(2, '0');
+    final hoursend = _timeend.hour.toString().padLeft(2, '0');
+    final minutesend = _timeend.minute.toString().padLeft(2, '0');
     return Scaffold(
       backgroundColor: Colors.grey[75],
       appBar: AppBar(
@@ -129,6 +161,18 @@ class _ReserveRoomState extends State<ReserveRoom> {
                 onPressed: () => Navigator.of(context).pop(),
               )
             : Another(),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ListReserve()));
+            },
+            icon: Icon(
+              Icons.repeat,
+              color: Colors.blueGrey[900],
+            ),
+          )
+        ],
       ),
       body: SingleChildScrollView(
           padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
@@ -136,7 +180,7 @@ class _ReserveRoomState extends State<ReserveRoom> {
             child: Container(
                 padding: EdgeInsets.fromLTRB(15, 10, 15, 10),
                 width: double.infinity,
-                height: 950,
+                height: 1000,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(5),
@@ -186,7 +230,7 @@ class _ReserveRoomState extends State<ReserveRoom> {
                             flex: 1,
                             child: Container(
                               padding: EdgeInsets.fromLTRB(5, 10, 5, 10),
-                              width: 340,
+                              width: double.infinity,
                               height: 50,
                               decoration: BoxDecoration(
                                   color: Colors.blueGrey[100],
@@ -214,7 +258,7 @@ class _ReserveRoomState extends State<ReserveRoom> {
                             flex: 1,
                             child: Container(
                               padding: EdgeInsets.fromLTRB(5, 10, 5, 10),
-                              width: 340,
+                              width: double.infinity,
                               height: 50,
                               decoration: BoxDecoration(
                                   color: Colors.blueGrey[100],
@@ -338,7 +382,7 @@ class _ReserveRoomState extends State<ReserveRoom> {
                       ),
                       Container(
                         padding: EdgeInsets.fromLTRB(5, 10, 5, 10),
-                        width: 340,
+                        width: double.infinity,
                         height: 50,
                         decoration: BoxDecoration(
                             color: Colors.blueGrey[100],
@@ -379,8 +423,8 @@ class _ReserveRoomState extends State<ReserveRoom> {
                               border: new Border.all(color: Colors.grey),
                               borderRadius: BorderRadius.circular(5.0)),
                           child: Container(
-                            width: 340,
-                            height: 48,
+                            width: double.infinity,
+                            height: 50,
                             padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -394,36 +438,38 @@ class _ReserveRoomState extends State<ReserveRoom> {
                                 ), */
 
                                 Expanded(
-                                  child: DropdownButtonHideUnderline(
-                                    child: DropdownButton(
-                                      //isCaseSensitiveSearch: true,
-                                      hint: Text(
-                                        "กรุณาเลือกห้องเรียน",
-                                        style: TextStyle(
-                                          fontSize: 20,
-                                          color: Colors.blueGrey[900],
-                                        ),
-                                      ),
-                                      items: subject_data!.map((item) {
-                                        return new DropdownMenuItem(
-                                            child: new Text(
-                                              item['Classroom_Name'],
-                                              style: TextStyle(
-                                                fontSize: 18.0,
-                                              ),
-                                            ),
-                                            value:
-                                                item['ClassroomId'].toString());
-                                      }).toList(),
-                                      onChanged: (String? newVal) {
-                                        setState(() {
-                                          subjectid = newVal;
-                                          _roomController.text = subjectid!;
-                                          print(subjectid.toString());
-                                        });
-                                      },
-                                      value: subjectid,
+                                  child: DropdownButton(
+                                    underline: Padding(
+                                      padding: EdgeInsets.fromLTRB(2, 5, 2, 5),
                                     ),
+                                    isExpanded: true,
+                                    hint: Text(
+                                      "กรุณาเลือกรายวิชา",
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                        color: Colors.blueGrey[900],
+                                      ),
+                                    ),
+                                    items: room_data?.map((item) {
+                                      return new DropdownMenuItem(
+                                        child: new Text(
+                                          item['Classroom_Name'],
+                                          style: TextStyle(
+                                            fontSize: 18.0,
+                                          ),
+                                        ),
+                                        value:
+                                            item['Classroom_Name'].toString(),
+                                      );
+                                    }).toList(),
+                                    onChanged: (String? newVal) {
+                                      setState(() {
+                                        roomid = newVal;
+                                        _roomController.text = roomid!;
+                                        print(roomid.toString());
+                                      });
+                                    },
+                                    value: roomid,
                                   ),
                                 )
                               ],
@@ -463,65 +509,72 @@ class _ReserveRoomState extends State<ReserveRoom> {
                         children: [
                           Expanded(
                             flex: 1,
-                            child: TextFormField(
-                              onTap: (() {
-                                _selectTime(context);
+                            child: Container(
+                              // padding: EdgeInsets.fromLTRB(5, 10, 5, 10),
+                              height: 40,
+                              width: 40,
+                              child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  primary: Color(0xff24a878),
+                                ),
+                                onPressed: () {
+                                  _selectTimefrist(context);
 
-                                setState(() {
-                                  time = selectedTime.toString();
-                                  _dateController.text = time.toString();
-                                });
-                              }),
-
-                              validator: (value) {
-                                return value!.length < 10
-                                    ? 'กรุณาเลือกเวลาเริ่มต้น'
-                                    : null;
-                              },
-                              controller: _dateController,
-
-                              decoration: InputDecoration(
-                                counterText: '',
-                                /* errorText:
-                                _validate ? 'กรุณากรอกข้อมูลให้ครบ' : null, */
-                                border: OutlineInputBorder(),
-                                contentPadding: const EdgeInsets.all(5),
-                                hintText:
-                                    "${selectedTime.hour}:${selectedTime.minute}",
-                                hintStyle: TextStyle(fontSize: 20),
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  color: Colors.blueGrey[900],
+                                  setState(() {
+                                    newTimefirst = hoursfrist.toString() +
+                                        ":" +
+                                        minutesfrist.toString();
+                                    _TimefristController.text =
+                                        newTimefirst.toString();
+                                    print(_TimefristController.text);
+                                  });
+                                },
+                                child: Text(
+                                  '$hoursfrist:$minutesfrist',
+                                  style: TextStyle(
+                                    color: Colors.blueGrey[900],
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
-                              //maxLength: 10,
                             ),
                           ),
+
                           SizedBox(width: 10.0),
                           //////////////////////////////////////////////////////>>>>>.วันสิ้นสุด
                           Expanded(
                             flex: 1,
-                            child: TextFormField(
-                              validator: (value) {
-                                return value!.length < 10
-                                    ? 'กรุณาเลือกเวลาสิ้นสุด'
-                                    : null;
-                              },
-                              //controller: PhoneController,
-                              decoration: InputDecoration(
-                                counterText: '',
-                                /* errorText:
-                                _validate ? 'กรุณากรอกข้อมูลให้ครบ' : null, */
-                                border: OutlineInputBorder(),
-                                contentPadding: const EdgeInsets.all(5),
-                                hintText: 'เลือกเวลาสิ้นสุด',
-                                hintStyle: TextStyle(fontSize: 20),
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  color: Colors.blueGrey[900],
+                            child: Container(
+                              //padding: EdgeInsets.fromLTRB(5, 10, 5, 10),
+                              width: 40,
+                              height: 40,
+                              child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  primary: Color(0xff24a878),
+                                ),
+                                onPressed: () {
+                                  _selectTimeend(context);
+
+                                  setState(() {
+                                    //newTimeend = _timeend;
+                                    _TimeendController.text =
+                                        hoursend.toString() +
+                                            ":" +
+                                            minutesend.toString();
+
+                                    print(_TimeendController.text);
+                                  });
+                                },
+                                child: Text(
+                                  '$hoursend:$minutesend',
+                                  style: TextStyle(
+                                    color: Colors.blueGrey[900],
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
-                              //maxLength: 10,
                             ),
                           ),
                         ],
@@ -537,12 +590,12 @@ class _ReserveRoomState extends State<ReserveRoom> {
                         ),
                       ),
                       TextFormField(
-                        validator: (value) {
+                        /* validator: (value) {
                           return value!.length < 10
                               ? 'กรุณากรอกเบอร์ให้ครบถ้วน  '
                               : null;
-                        },
-                        //controller: PhoneController,
+                        }, */
+                        controller: _DeteilController,
                         decoration: InputDecoration(
                           counterText: '',
                           /* errorText:
@@ -569,40 +622,63 @@ class _ReserveRoomState extends State<ReserveRoom> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      TextFormField(
-                        validator: (value) {
-                          return value!.length < 10
-                              ? 'กรุณากรอกให้ครบถ้วน  '
-                              : null;
-                        },
-                        //controller: PhoneController,
-                        decoration: InputDecoration(
-                          counterText: '',
-                          /* errorText:
-                                _validate ? 'กรุณากรอกข้อมูลให้ครบ' : null, */
-                          border: OutlineInputBorder(),
-                          contentPadding: const EdgeInsets.all(5),
-                          hintText: 'เพิ่มชื่ออาจารย์ผู้รับรอง',
-                          hintStyle: TextStyle(fontSize: 20),
-                          labelStyle: TextStyle(
-                            fontSize: 22,
-                            color: Colors.blueGrey[900],
+                      Expanded(
+                        child: SingleChildScrollView(
+                          child: DropdownSearch<String>(
+                            mode: Mode.DIALOG,
+                            showSelectedItems: true,
+                            items: [
+                              "อาจารย์ อรรถวิทชังคมานนท์",
+                              "ผู้ช่วยศาสตราจารย์ ก่องกาญจน์ดุลยไชย",
+                              "อาจารย์ ดร. กิตติกรหาญตระกูล",
+                              "ผู้ช่วยศาสตราจารย์ ดร. สนิทสิทธิ",
+                              "อาจารย์ อลงกตกองมณี",
+                              "ผู้ช่วยศาสตราจารย์ ภานุวัฒน์เมฆะ",
+                              "ผู้ช่วยศาสตราจารย์ ดร. พาสน์ปราโมกข์ชน",
+                              "ผู้ช่วยศาสตราจารย์ ดร. ปวีณเขื่อนแก้ว",
+                              "อาจารย์ ดร. พยุงศักดิ์เกษมสำราญ",
+                              "อาจารย์ ดร. สมนึกสินธุปวน",
+                              "อาจารย์ ดร. นษิตันติธารานุกุล",
+                              "อาจารย์ ดร. กิติศักดิ์โอสถานันต์กุล"
+                            ],
+
+                            hint: "กรุณาเลือกอาจารย์ผู้รับรอง",
+                            popupItemDisabled: (String s) => s.startsWith('I'),
+                            onChanged: (String? newVal) {
+                              setState(() {
+                                adviser_id = newVal;
+                                _AdviserController.text = adviser_id!;
+                                print(adviser_id.toString());
+                              });
+                            },
+                            //value: roomid,
                           ),
                         ),
-                        //maxLines: 5,
-                        maxLength: 50,
+                      ),
+                      ///////////////////////////////////////////////////>>>>>>หมายเหตุ
+                      Container(
+                        padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
+                        child: Text(
+                          "*หมายเหตุ : เมื่อเลิกใช้งานแล้วกรุณารักษาความสะอาด จัดห้องในตำแหน่งเติมและหากมีอุปกรณ์ชำรุดหรือสูญหายผู้ขอใช้ห้องต้องรับผิดชอบทั้งหมด",
+                          style: TextStyle(
+                            letterSpacing: 1.2,
+                            fontSize: 16,
+                            color: Colors.red,
+                            fontStyle: FontStyle.italic,
+                          ),
+                        ),
                       ),
 
                       SizedBox(height: 40.0),
                       /////////////////////////////////////////////////////>>>>>ปุ่ม ส่งคำร้อง
                       Container(
-                        width: 360,
+                        width: double.infinity,
                         height: 30,
-                        decoration: BoxDecoration(
+                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5),
-                          color: Colors.green[10],
+                          color: Colors.green[700],
                           border: Border.all(
-                            color: Colors.green,
+                            color: Color(0xff24a878),
                             width: 2,
                           ),
                           boxShadow: [
@@ -615,70 +691,49 @@ class _ReserveRoomState extends State<ReserveRoom> {
                         ),
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            primary: Colors.green[400],
+                            primary: Color(0xff24a878),
                           ),
                           onPressed: () {
-                            setState(
-                              () async {
-                                /* if (_formkey.currentState!.validate()) {
-                                  _formkey.currentState!.save();
-                                  final String Subject_Internal =
-                                      CoursesController.text;
-                                  final String Subject_External =
-                                      OfffieldCoursesController.text;
-                                  final String Residaual_Detail =
-                                      DetailController.text;
-                                  final String nameThp = name;
-                                  final String surnameThp = surname;
-                                  final String EmailStudent = email;
-                                  final String mobile = PhoneController.text;
-                                  final String studentCode =
-                                      studentcode;
-                                  final String Sec_Internal =
-                                      GroupController.text;
-                                  final String Sec_Another =
-                                      AnotherGroupController.text;
+                            setState(() async {
+                              if (formkey.currentState!.validate()) {
+                                formkey.currentState!.save();
 
-                                  ///////////////////////////////////////////////////>>>>>>>>.post
-                                  final Residues? _user = await POSTResidue(
-                                      Subject_Internal,
-                                      Subject_External,
-                                      Residaual_Detail,
-                                      nameThp,
-                                      surnameThp,
-                                      EmailStudent,
-                                      mobile,
-                                      studentCode,
-                                      Sec_Internal,
-                                      Sec_Another);
+                                final String Classroom_Name =
+                                    _roomController.text;
+                                final String Book_TimeStart =
+                                    _TimefristController.text;
+                                final String Book_TimeEnd =
+                                    _TimeendController.text;
+                                final String Book_Detail =
+                                    _DeteilController.text;
+                                final String FirstName = name;
+                                final String LastName = surname;
+                                final String StudentCode = studentcode;
+                                final String Email = email;
+                                final String Adviser = _AdviserController.text;
+                                final String Book_Status = 'รอการอนุมัติ';
+                                final String Book_Date =
+                                    DateFormat('dd-MM-yyyy')
+                                        .format(DateTime.now());
 
-                                  /* setState(() {
-                                    StudentController.text.isEmpty
-                                        ? _validate1 = true
-                                        : _validate1 = false;
-                                    PhoneController.text.isEmpty
-                                        ? _validate2 = true
-                                        : _validate2 = false;
-                                    CoursesController.text.isEmpty
-                                        ? _validate3 = true
-                                        : _validate3 = false;
-                                    GroupController.text.isEmpty
-                                        ? _validate4 = true
-                                        : _validate4 = false;
-                                    OfffieldCoursesController.text.isEmpty
-                                        ? _validate5 = true
-                                        : _validate5 = false;
-                                    DateController.text.isEmpty
-                                        ? _validate7 = true
-                                        : _validate7 = false;
-                                    DetailController.text.isEmpty
-                                        ? _validate8 = true
-                                        : _validate8 = false;
-                                    AnotherGroupController.text.isEmpty
-                                        ? _validate8 = true
-                                        : _validate8 = false;
-                                  }); */
+                                ///////////////////////////////////////////////////>>>>>>>>.post
+                                final ReserveRoommodel? _user =
+                                    await postReserveRoom(
+                                        Classroom_Name,
+                                        Book_TimeStart,
+                                        Book_TimeEnd,
+                                        Book_Detail,
+                                        FirstName,
+                                        LastName,
+                                        StudentCode,
+                                        Email,
+                                        Adviser,
+                                        Book_Status,
+                                        Book_Date);
 
+                                ///////////////////////////////////////////////////>>>>>>>>.post
+
+                                if (_DeteilController.text.isNotEmpty) {
                                   showDialog<String>(
                                       context: context,
                                       builder: (BuildContext context) =>
@@ -705,19 +760,8 @@ class _ReserveRoomState extends State<ReserveRoom> {
                                             ],
                                           ));
                                 }
-
-                                /* name = '';
-                                surname = ""; */
-                                StudentController.text = "";
-                                PhoneController.text = "";
-                                CoursesController.text = "";
-                                GroupController.text = "";
-                                OfffieldCoursesController.text = "";
-
-                                DateController.text = "";
-                                DetailController.text = ""; */
-                              },
-                            );
+                              }
+                            });
                           },
                           child: Text(
                             'ยืนยันการจอง',
@@ -732,7 +776,7 @@ class _ReserveRoomState extends State<ReserveRoom> {
                       ///////////////////////////////////////////////////>>>>>>>ปุ่มยกเลิก
                       SizedBox(height: 20.0),
                       Container(
-                        width: 360,
+                        width: double.infinity,
                         height: 30,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5),
@@ -773,17 +817,48 @@ class _ReserveRoomState extends State<ReserveRoom> {
     );
   }
 
-  TimeOfDay selectedTime = TimeOfDay.now();
+  TimeOfDay _timefrist = TimeOfDay.now();
+
+  var newTimefirst;
+  _selectTimefrist(BuildContext context) async {
+    final TimeOfDay? timeOfDay = await showTimePicker(
+      context: context,
+      initialTime: _timefrist,
+      //initialEntryMode: TimePickerEntryMode.dial,
+    );
+    if (timeOfDay != null) {
+      setState(() {
+        _timefrist = timeOfDay;
+      });
+    }
+  }
+
+  TimeOfDay _timeend = TimeOfDay.now();
+  var _timeend1;
+  var newTimeend;
+  _selectTimeend(BuildContext context) async {
+    final TimeOfDay? timeOfDay = await showTimePicker(
+      context: context,
+      initialTime: _timeend,
+      //initialEntryMode: TimePickerEntryMode.dial,
+    );
+    if (timeOfDay != null) {
+      setState(() {
+        _timeend = timeOfDay;
+      });
+    }
+  }
+
+  /* TimeOfDay selectedTime = TimeOfDay.now();
   _selectTime(BuildContext context) async {
     final TimeOfDay? timeOfDay = await showTimePicker(
       context: context,
       initialTime: selectedTime,
       initialEntryMode: TimePickerEntryMode.dial,
+      
     );
-    if (timeOfDay != null && timeOfDay != selectedTime) {
-      setState(() {
-        selectedTime = timeOfDay;
-      });
-    }
-  }
+    setState(() {
+      selectedTime = timeOfDay!;
+    }); */
+
 }

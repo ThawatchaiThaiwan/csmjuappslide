@@ -1,5 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:appcsmju/page/Profile/Profile.dart';
+import 'package:appcsmju/page/notifications/notifications.dart';
 import 'package:http/http.dart' as http;
 import 'package:appcsmju/APImodel/apinew.dart';
 import 'package:appcsmju/api/API_activity.dart';
@@ -109,7 +111,12 @@ class _HomePageCarouselState extends State<HomePageCarousel> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         leading: InkWell(
-          onTap: () {},
+          onTap: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return Profile();
+            }));
+          
+          },
           child: ClipRRect(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
@@ -131,10 +138,15 @@ class _HomePageCarouselState extends State<HomePageCarousel> {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return Notifications();
+              }));
+            },
+            
             icon: Icon(
               Icons.notifications,
-              color: Colors.black,
+              color: Colors.blueGrey[900],
             ),
           )
         ],
@@ -199,6 +211,7 @@ class _HomePageCarouselState extends State<HomePageCarousel> {
           SingleChildScrollView(
               physics: ScrollPhysics(),
               child: Container(
+               
                 height: MediaQuery.of(context).size.height,
                 child: FutureBuilder(
                   future: ActivityApiService.getsActivity(),
