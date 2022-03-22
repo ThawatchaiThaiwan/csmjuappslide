@@ -58,7 +58,7 @@ class _AppealState extends State<Appeal> {
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.blueGrey[900],
-              fontSize: 27.0,
+              fontSize: 25,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -78,7 +78,7 @@ class _AppealState extends State<Appeal> {
               child: Container(
                   padding: EdgeInsets.fromLTRB(15, 10, 15, 10),
                   width: double.infinity,
-                  height: 800,
+                  height: 600,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(5),
@@ -98,32 +98,36 @@ class _AppealState extends State<Appeal> {
                           " หัวข้อเรื่อง",
                           style: TextStyle(
                             color: Colors.blueGrey[900],
-                            fontSize: 22,
+                            fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        TextField(
-                          controller: TitelController1,
-                          decoration: InputDecoration(
-                            errorText:
-                                _validate ? 'กรุณากรอกข้อมูลให้ครบ' : null,
-                            border: OutlineInputBorder(),
-                            contentPadding: const EdgeInsets.all(5),
-                            hintText: 'เพิ่มหัวเรื่อง',
-                            hintStyle: TextStyle(fontSize: 20),
-                            labelStyle: TextStyle(
-                              fontSize: 22,
-                              color: Colors.blueGrey[900],
+                        Container(
+                          width: double.infinity,
+                          height: 48,
+                          child: TextField(
+                            controller: TitelController1,
+                            decoration: InputDecoration(
+                              errorText:
+                                  _validate ? 'กรุณากรอกข้อมูลให้ครบ' : null,
+                              border: OutlineInputBorder(),
+                              contentPadding: const EdgeInsets.all(5),
+                              hintText: 'เพิ่มหัวเรื่อง',
+                              hintStyle: TextStyle(fontSize: 18),
+                              labelStyle: TextStyle(
+                                fontSize: 2018,
+                                color: Colors.blueGrey[900],
+                              ),
                             ),
                           ),
                         ),
-                        ///////////////////////////////////////////////////////////>>>>>>.วันที่
+                        /* ///////////////////////////////////////////////////////////>>>>>>.วันที่
                         SizedBox(height: 20.0),
                         Text(
                           "วันที่",
                           style: TextStyle(
                             color: Colors.blueGrey[900],
-                            fontSize: 22,
+                            fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -157,14 +161,14 @@ class _AppealState extends State<Appeal> {
                               });
                             } else {}
                           },
-                        ),
+                        ), */
                         /////////////////////////////////////////////////////////////////>>>>.รายละเอียด
-                        SizedBox(height: 20.0),
+                        SizedBox(height: 10.0),
                         Text(
                           "รายละเอียด",
                           style: TextStyle(
                             color: Colors.blueGrey[900],
-                            fontSize: 22,
+                            fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -178,19 +182,19 @@ class _AppealState extends State<Appeal> {
                               border: OutlineInputBorder(),
                               contentPadding: const EdgeInsets.all(5),
                               hintText: 'เพิ่มรายละเอียด',
-                              hintStyle: TextStyle(fontSize: 20),
+                              hintStyle: TextStyle(fontSize: 18),
                               labelStyle: TextStyle(
                                 fontSize: 22,
                                 color: Colors.blueGrey[900],
                               )),
                         ),
                         //////////////////////////////////////////////////////////>>>>>>.รูปภาพ
-                        SizedBox(height: 20.0),
+                        SizedBox(height: 10.0),
                         Text(
                           "เลือกรูปภาพ",
                           style: TextStyle(
                             color: Colors.blueGrey[900],
-                            fontSize: 22,
+                            fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -242,7 +246,7 @@ class _AppealState extends State<Appeal> {
                           ),
                         ),
                         /////////////////////////////////////////////////////////>>>>>>ปุ่ม>ส่งคำร้อง
-                        SizedBox(height: 40),
+                        SizedBox(height: 30),
                         Container(
                           width: double.infinity,
                           height: 30,
@@ -318,10 +322,10 @@ class _AppealState extends State<Appeal> {
                               });
                             },
                             child: Text(
-                              'ส่งคำร้อง',
+                              'ยืนยัน',
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 22,
+                                fontSize: 20,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -365,7 +369,7 @@ class _AppealState extends State<Appeal> {
                               'ยกเลิก',
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 22,
+                                fontSize: 20,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),

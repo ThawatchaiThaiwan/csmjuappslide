@@ -21,7 +21,7 @@ class _NotificationsState extends State<Notifications> {
           textAlign: TextAlign.center,
           style: TextStyle(
             color: Colors.blueGrey[900],
-            fontSize: 27.0,
+            fontSize: 25,
             fontWeight: FontWeight.bold,
           ),
         ),

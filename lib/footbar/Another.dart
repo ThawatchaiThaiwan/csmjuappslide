@@ -103,7 +103,7 @@ class _AnotherState extends State<Another> {
           textAlign: TextAlign.center,
           style: TextStyle(
               color: Colors.blueGrey[900],
-              fontSize: 27,
+              fontSize: 25,
               fontWeight: FontWeight.bold),
         ),
         actions: [
@@ -152,7 +152,7 @@ class _AnotherState extends State<Another> {
                       Text(
                         "ข้อมูลส่วนตัว",
                         style: TextStyle(
-                            fontSize: 27,
+                            fontSize: 25,
                             fontWeight: FontWeight.bold,
                             color: Colors.blueGrey[900]),
                       ),
@@ -197,7 +197,7 @@ class _AnotherState extends State<Another> {
                       Text(
                         "แจ้งรายวิชาตกค้าง",
                         style: TextStyle(
-                            fontSize: 27,
+                            fontSize: 25,
                             fontWeight: FontWeight.bold,
                             color: Colors.blueGrey[900]),
                       ),
@@ -241,7 +241,7 @@ class _AnotherState extends State<Another> {
                       Text(
                         "ติดต่อหลักสูตร",
                         style: TextStyle(
-                            fontSize: 27,
+                            fontSize: 25,
                             fontWeight: FontWeight.bold,
                             color: Colors.blueGrey[900]),
                       ),
@@ -283,9 +283,9 @@ class _AnotherState extends State<Another> {
                         width: 15,
                       ),
                       Text(
-                        "ยิมคืน",
+                        "ยืมคืน",
                         style: TextStyle(
-                            fontSize: 27,
+                            fontSize: 25,
                             fontWeight: FontWeight.bold,
                             color: Colors.blueGrey[900]),
                       ),
@@ -330,7 +330,7 @@ class _AnotherState extends State<Another> {
                       Text(
                         "จองห้องเรียน",
                         style: TextStyle(
-                            fontSize: 27,
+                            fontSize: 25,
                             fontWeight: FontWeight.bold,
                             color: Colors.blueGrey[900]),
                       ),
@@ -374,9 +374,9 @@ class _AnotherState extends State<Another> {
                         width: 15,
                       ),
                       Text(
-                        "โครงกราทั้งหมด",
+                        "โครงการทั้งหมด",
                         style: TextStyle(
-                            fontSize: 27,
+                            fontSize: 25,
                             fontWeight: FontWeight.bold,
                             color: Colors.blueGrey[900]),
                       ),

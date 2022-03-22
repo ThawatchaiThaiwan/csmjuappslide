@@ -162,7 +162,7 @@ class _HomePageCarouselState extends State<HomePageCarousel> {
               style: TextStyle(
                 color: Colors.blueGrey[900],
                 fontWeight: FontWeight.bold,
-                fontSize: 28,
+                fontSize: 25,
               ),
             ),
           ),
@@ -201,7 +201,7 @@ class _HomePageCarouselState extends State<HomePageCarousel> {
             style: TextStyle(
               color: Colors.blueGrey[900],
               fontWeight: FontWeight.bold,
-              fontSize: 28,
+              fontSize: 25,
             ),
           ),
           ///////////////////////////////////////////////////////>>>>>>>>รายการโครงการ

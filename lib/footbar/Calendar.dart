@@ -110,7 +110,7 @@ class _CalendarState extends State<Calendar> {
           textAlign: TextAlign.center,
           style: TextStyle(
               color: Colors.blueGrey[900],
-              fontSize: 27,
+              fontSize: 25,
               fontWeight: FontWeight.bold),
         ),
         actions: [

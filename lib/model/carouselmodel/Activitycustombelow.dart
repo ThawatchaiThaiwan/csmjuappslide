@@ -39,7 +39,7 @@ Widget customActivityBelow(Activity article, BuildContext context) {
               article.Activitypic_Title,
               style: TextStyle(
                 color: Colors.blueGrey[900],
-                fontSize: 22.0,
+                fontSize: 20,
                 fontWeight: FontWeight.bold,
                 fontFamily: 'Sarabun',
               ),

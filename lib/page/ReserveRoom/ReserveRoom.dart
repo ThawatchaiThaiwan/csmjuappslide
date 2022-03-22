@@ -149,7 +149,7 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
           style: TextStyle(
               color: Colors.blueGrey[900],
               fontWeight: FontWeight.bold,
-              fontSize: 25.0,
+              fontSize: 25,
               fontFamily: 'Sarabun'),
         ),
         leading: Navigator.canPop(context)
@@ -180,7 +180,7 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
             child: Container(
                 padding: EdgeInsets.fromLTRB(15, 10, 15, 10),
                 width: double.infinity,
-                height: 1000,
+                height: 820,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(5),
@@ -196,198 +196,57 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                     children: <Widget>[
                       ///////////////////////////////////////////////////>>>>>>.ชื่อ นามสกุล
                       SizedBox(height: 10.0),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          Expanded(
-                            child: Text(
-                              "ชื่อ",
-                              style: TextStyle(
-                                color: Colors.blueGrey[900],
-                                fontSize: 22,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                          SizedBox(width: 7.0),
-                          Expanded(
-                            child: Text(
-                              "นามสกุล",
-                              style: TextStyle(
-                                color: Colors.blueGrey[900],
-                                fontSize: 22,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ],
+                      Text(
+                        "ชื่อ-นามสกุล",
+                        style: TextStyle(
+                          color: Colors.blueGrey[900],
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                      SizedBox(height: 10.0),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Expanded(
-                            flex: 1,
-                            child: Container(
-                              padding: EdgeInsets.fromLTRB(5, 10, 5, 10),
-                              width: double.infinity,
-                              height: 50,
-                              decoration: BoxDecoration(
-                                  color: Colors.blueGrey[100],
-                                  borderRadius: BorderRadius.circular(5),
-                                  border: Border.all(color: Colors.black87),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.white,
-                                      blurRadius: 3,
-                                      offset: Offset(0, 4),
-                                    )
-                                  ]),
-                              child: Text(
-                                '$name',
-                                style: TextStyle(
-                                  color: Colors.blueGrey[900],
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
+                      
+                      Container(
+                        padding: EdgeInsets.fromLTRB(5, 10, 5, 10),
+                        width: double.infinity,
+                        height: 48,
+                        decoration: BoxDecoration(
+                            color: Colors.blueGrey[100],
+                            borderRadius: BorderRadius.circular(5),
+                            border: Border.all(color: Colors.grey),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.white,
+                                blurRadius: 3,
+                                offset: Offset(0, 4),
+                              )
+                            ]),
+                        child: Text(
+                          '$name $surname',
+                          style: TextStyle(
+                            color: Colors.blueGrey[900],
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
                           ),
-                          SizedBox(width: 10.0),
-                          Expanded(
-                            flex: 1,
-                            child: Container(
-                              padding: EdgeInsets.fromLTRB(5, 10, 5, 10),
-                              width: double.infinity,
-                              height: 50,
-                              decoration: BoxDecoration(
-                                  color: Colors.blueGrey[100],
-                                  borderRadius: BorderRadius.circular(5),
-                                  border: Border.all(color: Colors.black87),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.white,
-                                      blurRadius: 3,
-                                      offset: Offset(0, 4),
-                                    )
-                                  ]),
-                              child: Text(
-                                '$surname',
-                                style: TextStyle(
-                                  color: Colors.blueGrey[900],
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-
-                      /////////////////////////////////////////////////////////>>>>รหัสนักศึกษา&เบอร์โทร
-                      SizedBox(height: 20.0),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          Expanded(
-                            child: Text(
-                              "รหัสนักศึกษา",
-                              style: TextStyle(
-                                color: Colors.blueGrey[900],
-                                fontSize: 22,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                          SizedBox(width: 7.0),
-                          Expanded(
-                            child: Text(
-                              " เบอร์โทร",
-                              style: TextStyle(
-                                color: Colors.blueGrey[900],
-                                fontSize: 22,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Expanded(
-                            flex: 1,
-                            child: Container(
-                              padding: EdgeInsets.fromLTRB(5, 10, 5, 10),
-                              width: 340,
-                              height: 50,
-                              decoration: BoxDecoration(
-                                  color: Colors.blueGrey[100],
-                                  borderRadius: BorderRadius.circular(5),
-                                  border: Border.all(color: Colors.black87),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.white,
-                                      blurRadius: 3,
-                                      offset: Offset(0, 4),
-                                    )
-                                  ]),
-                              child: Text(
-                                '$studentcode',
-                                style: TextStyle(
-                                  color: Colors.blueGrey[900],
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(width: 10.0),
-                          Expanded(
-                            flex: 1,
-                            child: TextFormField(
-                              validator: (value) {
-                                return value!.length < 10
-                                    ? 'กรุณากรอกเบอร์ให้ครบถ้วน  '
-                                    : null;
-                              },
-                              //controller: PhoneController,
-                              decoration: InputDecoration(
-                                counterText: '',
-                                /* errorText:
-                                _validate ? 'กรุณากรอกข้อมูลให้ครบ' : null, */
-                                border: OutlineInputBorder(),
-                                contentPadding: const EdgeInsets.all(5),
-                                hintText: 'เบอร์โทร',
-                                hintStyle: TextStyle(fontSize: 20),
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  color: Colors.blueGrey[900],
-                                ),
-                              ),
-                              maxLength: 10,
-                            ),
-                          ),
-                        ],
+                        ),
                       ),
                       /////////////////////////////////////////////////////////>>>>อีเมล์
-                      SizedBox(height: 20.0),
+                      SizedBox(height: 10.0),
                       Text(
                         "อีเมล",
                         style: TextStyle(
                           color: Colors.blueGrey[900],
-                          fontSize: 22,
+                          fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       Container(
                         padding: EdgeInsets.fromLTRB(5, 10, 5, 10),
                         width: double.infinity,
-                        height: 50,
+                        height: 48,
                         decoration: BoxDecoration(
                             color: Colors.blueGrey[100],
                             borderRadius: BorderRadius.circular(5),
-                            border: Border.all(color: Colors.black87),
+                            border: Border.all(color: Colors.grey),
                             boxShadow: [
                               BoxShadow(
                                 color: Colors.white,
@@ -399,18 +258,19 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                           '$email',
                           style: TextStyle(
                             color: Colors.blueGrey[900],
-                            fontSize: 22,
+                            fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
+                      
                       /////////////////////////////////////////////////>>>>>>>> รายวิชา & กลุ่มเรียน
-                      SizedBox(height: 20.0),
+                      SizedBox(height: 10.0),
                       Text(
                         "เลือกห้องเรียน",
                         style: TextStyle(
                           color: Colors.blueGrey[900],
-                          fontSize: 22,
+                          fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -424,7 +284,7 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                               borderRadius: BorderRadius.circular(5.0)),
                           child: Container(
                             width: double.infinity,
-                            height: 50,
+                            height: 48,
                             padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -446,7 +306,7 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                                     hint: Text(
                                       "กรุณาเลือกรายวิชา",
                                       style: TextStyle(
-                                        fontSize: 20,
+                                        fontSize: 18,
                                         color: Colors.blueGrey[900],
                                       ),
                                     ),
@@ -475,7 +335,7 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                               ],
                             ),
                           )),
-                      SizedBox(height: 20.0),
+                      SizedBox(height: 10.0),
                       //////////////////////////////////////////////////////>>>>>.วันเริ่มต้น
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -485,7 +345,7 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                               "เวลาเริ่มต้นการจอง",
                               style: TextStyle(
                                 color: Colors.blueGrey[900],
-                                fontSize: 22,
+                                fontSize: 20,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -496,7 +356,7 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                               " เวลาสิ้นสุดการจอง",
                               style: TextStyle(
                                 color: Colors.blueGrey[900],
-                                fontSize: 22,
+                                fontSize: 20,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -533,7 +393,7 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                                   '$hoursfrist:$minutesfrist',
                                   style: TextStyle(
                                     color: Colors.blueGrey[900],
-                                    fontSize: 22,
+                                    fontSize: 18,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -570,7 +430,7 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                                   '$hoursend:$minutesend',
                                   style: TextStyle(
                                     color: Colors.blueGrey[900],
-                                    fontSize: 22,
+                                    fontSize: 18,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -580,12 +440,12 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                         ],
                       ),
                       /////////////////////////////////////////////////////////>>>>รายละเอียด
-                      SizedBox(height: 20.0),
+                      SizedBox(height: 10.0),
                       Text(
                         "รายละเอียด",
                         style: TextStyle(
                           color: Colors.blueGrey[900],
-                          fontSize: 22,
+                          fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -603,56 +463,55 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                           border: OutlineInputBorder(),
                           contentPadding: const EdgeInsets.all(5),
                           hintText: 'เพิ่มรายละเอียด',
-                          hintStyle: TextStyle(fontSize: 20),
+                          hintStyle: TextStyle(fontSize: 18),
                           labelStyle: TextStyle(
-                            fontSize: 22,
+                            fontSize: 18,
                             color: Colors.blueGrey[900],
                           ),
                         ),
                         maxLines: 5,
                         //maxLength: 10,
                       ),
-                      SizedBox(height: 20.0),
+                      SizedBox(height: 10.0),
                       /////////////////////////////////////////////////////////>>>>>อาจารย์ผู้รับรอง
                       Text(
                         "ชื่ออาจารย์ผู้รับรอง",
                         style: TextStyle(
                           color: Colors.blueGrey[900],
-                          fontSize: 22,
+                          fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      Expanded(
-                        child: SingleChildScrollView(
-                          child: DropdownSearch<String>(
-                            mode: Mode.DIALOG,
-                            showSelectedItems: true,
-                            items: [
-                              "อาจารย์ อรรถวิทชังคมานนท์",
-                              "ผู้ช่วยศาสตราจารย์ ก่องกาญจน์ดุลยไชย",
-                              "อาจารย์ ดร. กิตติกรหาญตระกูล",
-                              "ผู้ช่วยศาสตราจารย์ ดร. สนิทสิทธิ",
-                              "อาจารย์ อลงกตกองมณี",
-                              "ผู้ช่วยศาสตราจารย์ ภานุวัฒน์เมฆะ",
-                              "ผู้ช่วยศาสตราจารย์ ดร. พาสน์ปราโมกข์ชน",
-                              "ผู้ช่วยศาสตราจารย์ ดร. ปวีณเขื่อนแก้ว",
-                              "อาจารย์ ดร. พยุงศักดิ์เกษมสำราญ",
-                              "อาจารย์ ดร. สมนึกสินธุปวน",
-                              "อาจารย์ ดร. นษิตันติธารานุกุล",
-                              "อาจารย์ ดร. กิติศักดิ์โอสถานันต์กุล"
-                            ],
+                      SingleChildScrollView(
+                        child: DropdownSearch<String>(
+                          mode: Mode.DIALOG,
+                          showSelectedItems: true,
+                          items: [
+                            "อาจารย์ อรรถวิทชังคมานนท์",
+                            "ผู้ช่วยศาสตราจารย์ ก่องกาญจน์ดุลยไชย",
+                            "อาจารย์ ดร. กิตติกรหาญตระกูล",
+                            "ผู้ช่วยศาสตราจารย์ ดร. สนิทสิทธิ",
+                            "อาจารย์ อลงกตกองมณี",
+                            "ผู้ช่วยศาสตราจารย์ ภานุวัฒน์เมฆะ",
+                            "ผู้ช่วยศาสตราจารย์ ดร. พาสน์ปราโมกข์ชน",
+                            "ผู้ช่วยศาสตราจารย์ ดร. ปวีณเขื่อนแก้ว",
+                            "อาจารย์ ดร. พยุงศักดิ์เกษมสำราญ",
+                            "อาจารย์ ดร. สมนึกสินธุปวน",
+                            "อาจารย์ ดร. นษิตันติธารานุกุล",
+                            "อาจารย์ ดร. กิติศักดิ์โอสถานันต์กุล"
+                          ],
 
-                            hint: "กรุณาเลือกอาจารย์ผู้รับรอง",
-                            popupItemDisabled: (String s) => s.startsWith('I'),
-                            onChanged: (String? newVal) {
-                              setState(() {
-                                adviser_id = newVal;
-                                _AdviserController.text = adviser_id!;
-                                print(adviser_id.toString());
-                              });
-                            },
-                            //value: roomid,
-                          ),
+                          hint: "กรุณาเลือกอาจารย์ผู้รับรอง",
+                          
+                          popupItemDisabled: (String s) => s.startsWith('I'),
+                          onChanged: (String? newVal) {
+                            setState(() {
+                              adviser_id = newVal;
+                              _AdviserController.text = adviser_id!;
+                              print(adviser_id.toString());
+                            });
+                          },
+                          //value: roomid,
                         ),
                       ),
                       ///////////////////////////////////////////////////>>>>>>หมายเหตุ
@@ -669,7 +528,7 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                         ),
                       ),
 
-                      SizedBox(height: 40.0),
+                      SizedBox(height: 30.0),
                       /////////////////////////////////////////////////////>>>>>ปุ่ม ส่งคำร้อง
                       Container(
                         width: double.infinity,
@@ -740,7 +599,7 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                                           AlertDialog(
                                             title: const Text('แจ้งเตือน'),
                                             content:
-                                                const Text('แจ้งตกค้างสำเร็จ'),
+                                                const Text('จองห้องสำเร็จ'),
                                             actions: <Widget>[
                                               TextButton(
                                                 child: const Text(
@@ -764,10 +623,10 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                             });
                           },
                           child: Text(
-                            'ยืนยันการจอง',
+                            'ยืนยัน',
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 22,
+                              fontSize: 20,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -804,7 +663,7 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                             'ยกเลิก',
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 22,
+                              fontSize: 20,
                               fontWeight: FontWeight.bold,
                             ),
                           ),

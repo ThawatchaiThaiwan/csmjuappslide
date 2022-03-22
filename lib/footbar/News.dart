@@ -94,7 +94,7 @@ class _NewsState extends State<News> {
           textAlign: TextAlign.center,
           style: TextStyle(
               color: Colors.blueGrey[900],
-              fontSize: 27,
+              fontSize: 25,
               fontWeight: FontWeight.bold),
         ),
         actions: [
