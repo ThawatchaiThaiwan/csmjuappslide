@@ -19,7 +19,7 @@ class ActivityPage extends StatelessWidget {
           ' รายละเอียดโครงการ',
           textAlign: TextAlign.center,
           style: TextStyle(
-            color: Colors.blueGrey[900],
+              color: Colors.blueGrey[900],
               fontWeight: FontWeight.bold,
               fontSize: 25,
               fontFamily: 'Sarabun'),

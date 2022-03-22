@@ -101,13 +101,12 @@ class _BorrowreturnState extends State<Borrowreturn> {
       body: SingleChildScrollView(
         padding: EdgeInsets.fromLTRB(10, 20, 10, 20),
         child: SafeArea(
-          
           child: Form(
             key: formkey,
             child: Container(
               padding: EdgeInsets.fromLTRB(15, 10, 15, 10),
               width: double.infinity,
-              height: 650,
+              height: 710,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(5),
@@ -123,7 +122,6 @@ class _BorrowreturnState extends State<Borrowreturn> {
                     height: 10,
                   ),
                   FindDropdown<Borrowbackmodel>(
-                    
                     label: 'ค้นหาอุปกรณ์',
                     labelStyle: TextStyle(
                       color: Colors.blueGrey[900],
@@ -134,13 +132,14 @@ class _BorrowreturnState extends State<Borrowreturn> {
                     onFind: (String where) => getData(where),
                     searchBoxDecoration: InputDecoration(
                         hintText: "ชื่ออุปกรณ์", border: OutlineInputBorder()),
-                    onChanged: (Borrowbackmodel? item,) {
+                    onChanged: (
+                      Borrowbackmodel? item,
+                    ) {
                       setState(() {
                         var y = item.toString();
                         _EquipmenController.text = y;
                       });
                     },
-                    
                   ),
                   SizedBox(height: 10),
                   Row(
@@ -186,11 +185,10 @@ class _BorrowreturnState extends State<Borrowreturn> {
                           dateLabelText: 'เลือกวันที่ยืม',
                           onChanged: (val) {
                             setState(() {
-                              
                               var date = val.toString();
                               _DatefristController.text = date;
-                            });},
-                          
+                            });
+                          },
                           validator: (val) {
                             return null;
                           },
@@ -214,16 +212,13 @@ class _BorrowreturnState extends State<Borrowreturn> {
                           dateLabelText: 'เลือกวันที่คืน',
                           onChanged: (val) {
                             setState(() {
-                              
                               var date1 = val.toString();
                               _DatereturnController.text = date1;
-                            });},
-                          
+                            });
+                          },
                           validator: (val) {
                             return null;
                           },
-                            
-                          
                           onSaved: (val) => print(val),
                           style: TextStyle(
                               color: Colors.blueGrey[900],
@@ -368,7 +363,8 @@ class _BorrowreturnState extends State<Borrowreturn> {
                     height: 20,
                   ),
                   Container(
-                    child: Text("*กรุณาคืนของที่ยืมให้ตรงตามกำหนด",
+                    child: Text(
+                        "*ผู้ยืมมีหน้าที่ต้องชดใช้ความเสียหายในกรณีที่ทรัพย์สินชํารุด หรือสูญหาย ตามมูลค่าทรัพย์สิน หากความเสียหายนั้นเกิดจากความประมาทของผู้ยืม",
                         style: TextStyle(
                           color: Colors.red,
                           fontSize: 18,
@@ -377,7 +373,7 @@ class _BorrowreturnState extends State<Borrowreturn> {
                           fontStyle: FontStyle.italic,
                         )),
                   ),
-          
+
                   SizedBox(
                     height: 25,
                   ),
@@ -405,67 +401,64 @@ class _BorrowreturnState extends State<Borrowreturn> {
                       ),
                       onPressed: () {
                         setState(() async {
-                                if (formkey.currentState!.validate()) {
-                                  formkey.currentState!.save();
-          
-                                  final String Equipment_Name =
-                                      _EquipmenController.text;
-                                  final String Borrow_Date =
-                                      _DatefristController.text;
-                                  final String Borrow_Details =
-                                      _NoteController.text;
-                                  final String Return_Date =
-                                      _DatereturnController.text;
-                                  final String Status = "รอการอนุมัติ";
-                                  final String FirstName = name;
-                                  final String LastName = surname;
-                                  final String Email = email;
-                                  
-          
-                                  ///////////////////////////////////////////////////>>>>>>>>.post
-                                  final BorrowReturnPostmodel? _user =
-                                      await postBorrowreturn(
-                                          Equipment_Name,
-                                          Borrow_Date,
-                                          Borrow_Details,
-                                          Return_Date,
-                                          Status,
-                                          FirstName,
-                                          LastName,
-                                          Email,
-                                          );
-          
-                                  ///////////////////////////////////////////////////>>>>>>>>.post
-          
-                                  if (_NoteController.text.isNotEmpty) {
-                                    showDialog<String>(
-                                        context: context,
-                                        builder: (BuildContext context) =>
-                                            AlertDialog(
-                                              title: const Text('แจ้งเตือน'),
-                                              content:
-                                                  const Text('ยืมสำเร็จ'),
-                                              actions: <Widget>[
-                                                TextButton(
-                                                  child: const Text(
-                                                    'ตกลง',
-                                                    textAlign: TextAlign.center,
-                                                  ),
-                                                  onPressed: () {
-                                                    Navigator.push(
-                                                        context,
-                                                        MaterialPageRoute(
-                                                          builder: (BuildContext
-                                                                  context) =>
-                                                              Foot(),
-                                                        ));
-                                                  },
-                                                ),
-                                              ],
-                                            ));
-                                  }
-                                }
-                              });
+                          if (formkey.currentState!.validate()) {
+                            formkey.currentState!.save();
+
+                            final String Equipment_Name =
+                                _EquipmenController.text;
+                            final String Borrow_Date =
+                                _DatefristController.text;
+                            final String Borrow_Details = _NoteController.text;
+                            final String Return_Date =
+                                _DatereturnController.text;
+                            final String Status = "รอการอนุมัติ";
+                            final String FirstName = name;
+                            final String LastName = surname;
+                            final String Email = email;
+
+                            ///////////////////////////////////////////////////>>>>>>>>.post
+                            final BorrowReturnPostmodel? _user =
+                                await postBorrowreturn(
+                              Equipment_Name,
+                              Borrow_Date,
+                              Borrow_Details,
+                              Return_Date,
+                              Status,
+                              FirstName,
+                              LastName,
+                              Email,
+                            );
+
+                            ///////////////////////////////////////////////////>>>>>>>>.post
+
+                            if (_NoteController.text.isNotEmpty) {
+                              showDialog<String>(
+                                  context: context,
+                                  builder: (BuildContext context) =>
+                                      AlertDialog(
+                                        title: const Text('แจ้งเตือน'),
+                                        content: const Text('ยืมสำเร็จ'),
+                                        actions: <Widget>[
+                                          TextButton(
+                                            child: const Text(
+                                              'ตกลง',
+                                              textAlign: TextAlign.center,
+                                            ),
+                                            onPressed: () {
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                    builder: (BuildContext
+                                                            context) =>
+                                                        Foot(),
+                                                  ));
+                                            },
+                                          ),
+                                        ],
+                                      ));
+                            }
+                          }
+                        });
                       },
                       child: Text(
                         'ยืนยัน',
