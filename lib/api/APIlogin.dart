@@ -30,13 +30,13 @@ class APIService {
             headers: _setHeaders()
         );
     }
-  getData(apiUrl) async {
+  /* getData(apiUrl) async {
        var fullUrl =  Uri.parse(url + apiUrl+ await _getToken()) ;
        return await http.get(
          fullUrl, 
          headers: _setHeaders()
        );
-    }
+    } */
 
 
 

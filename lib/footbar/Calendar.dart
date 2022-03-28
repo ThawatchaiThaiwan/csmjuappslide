@@ -123,7 +123,7 @@ class _CalendarState extends State<Calendar> {
             
             icon: Icon(
               Icons.notifications,
-              color: Colors.blueGrey[900],
+              color: Colors.blueGrey[800],
             ),
           )
         ],

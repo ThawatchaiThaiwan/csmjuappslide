@@ -1,19 +1,17 @@
-import 'dart:convert';
-import 'dart:ui';
+// ignore_for_file: non_constant_identifier_names
 
+import 'dart:convert';
+import 'package:find_dropdown/find_dropdown.dart';
+import 'package:http/http.dart' as http;
 import 'package:appcsmju/APImodel/BorrowReturnPostmodel.dart';
 import 'package:appcsmju/APImodel/Borrowmodel.dart';
 import 'package:appcsmju/footbar/Another.dart';
 import 'package:appcsmju/footbar/Foot.dart';
+import 'package:appcsmju/page/Borrowreturn.dart/Borrowstatus.dart';
 import 'package:appcsmju/post_api/BorrowReturnpost.dart';
 import 'package:date_time_picker/date_time_picker.dart';
-import 'package:dio/dio.dart';
-
-import 'package:find_dropdown/find_dropdown.dart';
 import 'package:flutter/material.dart';
-
-import 'package:http/http.dart' as http;
-import 'package:intl/intl.dart';
+import 'package:searchable_dropdown/searchable_dropdown.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Borrowreturn extends StatefulWidget {
@@ -22,10 +20,12 @@ class Borrowreturn extends StatefulWidget {
 }
 
 class _BorrowreturnState extends State<Borrowreturn> {
+  Map<String, String> selectedValueMap = Map();
   @override
   void initState() {
     _getUserInfo();
-    //equipment();
+    equipmentapp();
+    selectedValueMap["server"] = "";
     super.initState();
   }
 
@@ -49,6 +49,53 @@ class _BorrowreturnState extends State<Borrowreturn> {
       studentcode = localStorage.getString('Studentcode');
       //userData = user;
     });
+  }
+
+  /////////////////////////////////////////////////////////////////////////>>>>>>>api dropdow
+
+  /* Future<List> getServerData() async {
+    String url = 'https://wwwdev.csmju.com/api/equipmentapp';
+//    String url = 'http://192.168.43.34:3000/numbers';
+    var authToken = '1257|7D3I1qDi4m28ZWRMJTvSmVJ3kOYwSsBvyzJdQm16';
+    final response = await http.get(Uri.parse(url), headers: {
+      "Accept": "application/json",
+      "Authorization": "Bearer $authToken"
+    });
+
+    if (response.statusCode == 200) {
+      print(response.body);
+      List<dynamic> responseBody = json.decode(response.body);
+      // ignore: deprecated_member_use
+      List<String> countries =
+          new List.from(responseBody.map((item) => item['Equipment_Name']));
+      for (int i = 0; i < responseBody.length; i++) {
+        countries.add(responseBody[i]['Equipment_Name']);
+      }
+      return countries;
+    } else {
+      print("error from server : $response");
+      throw Exception('Failed to load post');
+    }
+  } */
+
+  List? room_data;
+  List<Borrowblackmodel> equipment_data = [];
+  String? roomid;
+  var selectedNumber;
+  var url = Uri.encodeFull('https://wwwdev.csmju.com/api/equipmentapp');
+  Future<String> equipmentapp() async {
+    var authToken = '1257|7D3I1qDi4m28ZWRMJTvSmVJ3kOYwSsBvyzJdQm16';
+    var res = await http.get(Uri.parse(url), headers: {
+      "Accept": "application/json",
+      'Authorization': 'Bearer $authToken',
+    }); //if you have any auth key place here...properly..
+    var resBody = json.decode(res.body);
+    print(resBody);
+    setState(() {
+      room_data = resBody;
+    });
+
+    return "Sucess";
   }
 
   ///////////////////////////////////////////////////////////////////>>>>>> textcontroller
@@ -80,7 +127,7 @@ class _BorrowreturnState extends State<Borrowreturn> {
             ? IconButton(
                 icon: Icon(
                   Icons.keyboard_backspace,
-                  color: Colors.blueGrey[900],
+                  color: Colors.blueGrey[800],
                 ),
                 onPressed: () => Navigator.of(context).pop(),
               )
@@ -88,12 +135,12 @@ class _BorrowreturnState extends State<Borrowreturn> {
         actions: [
           IconButton(
             onPressed: () {
-              /* Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => ListReserve())); */
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ListBorrow()));
             },
             icon: Icon(
               Icons.repeat,
-              color: Colors.blueGrey[900],
+              color: Colors.blueGrey[800],
             ),
           )
         ],
@@ -121,26 +168,108 @@ class _BorrowreturnState extends State<Borrowreturn> {
                   SizedBox(
                     height: 10,
                   ),
-                  FindDropdown<Borrowbackmodel>(
-                    label: 'ค้นหาอุปกรณ์',
-                    labelStyle: TextStyle(
-                      color: Colors.blueGrey[900],
-                      fontSize: 20,
-                      fontFamily: 'Sarabun',
-                      fontWeight: FontWeight.bold,
+
+                  /* Container(
+                    height: 50,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(5),
+                      border: Border.all(
+                        color: Color(0xffd1cccc),
+                        width: 1,
+                      ),
                     ),
-                    onFind: (String where) => getData(where),
-                    searchBoxDecoration: InputDecoration(
-                        hintText: "ชื่ออุปกรณ์", border: OutlineInputBorder()),
-                    onChanged: (
-                      Borrowbackmodel? item,
-                    ) {
-                      setState(() {
-                        var y = item.toString();
-                        _EquipmenController.text = y;
-                      });
-                    },
+                    child: FutureBuilder<List>(
+                      future: getServerData(),
+                      builder: (context, snapshot) {
+                        if (snapshot.hasData) {
+                          return getSearchableDropdown(
+                              snapshot.data, "อุปกรณ์");
+                        } else if (snapshot.hasError) {
+                          return Text("${snapshot.error}");
+                        }
+                        return CircularProgressIndicator();
+                      },
+                    ),
+                  ), */
+
+                  //////////////////////////////////////////////////////////////////
+                  Container(
+                    height: 48,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: Colors.blueGrey[100],
+                      borderRadius: BorderRadius.circular(5),
+                      border: Border.all(color: Colors.grey),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.white,
+                          blurRadius: 3,
+                          offset: Offset(0, 4),
+                        )
+                      ],
+                    ),
+                    child: SearchableDropdown.single(
+                      items: (room_data != null && room_data!.isNotEmpty)
+                          ? room_data?.map((item) {
+                              return new DropdownMenuItem(
+                                child: new Text(
+                                  item['Equipment_Name'],
+                                  style: TextStyle(
+                                    fontSize: 18.0,
+                                  ),
+                                ),
+                                value: item['Equipment_Name'].toString(),
+                              );
+                            }).toList()
+                          : [],
+                      value: roomid,
+                      hint: "Select one",
+                      searchHint: null,
+                      onChanged: (value) {
+                        setState(() {
+                          roomid = value;
+                          _EquipmenController.text = roomid.toString();
+                        });
+                      },
+                      dialogBox: false,
+                      isExpanded: true,
+                      menuConstraints:
+                          BoxConstraints.tight(Size.fromHeight(350)),
+                    ),
                   ),
+                  ////////////////////////////////////////////////////////////////////////
+
+                  /* SearchableDropdown(
+
+      items: items.map((item) {
+        List<DropdownMenuItem> items = [];
+    for (int i = 0; i < listData!.length; i++) {
+      items.add(new DropdownMenuItem(
+        child: new Text(
+          listData[i],
+        ),
+        value: listData[i],
+      ));
+    }
+      }).toList(),
+      value: selectedValueMap,
+      isCaseSensitiveSearch: false,
+      hint: new Text(
+        'เลือกอุปกรณ์',
+      ),
+      searchHint: new Text(
+        'ค้นหาอุปกรณ์',
+        style: new TextStyle(fontSize: 20),
+      ),
+      onChanged: (value) {
+        setState(() {
+          selectedValueMap = value;
+          _EquipmenController.text = selectedValueMap.toString();
+        });
+      },
+    ), */
                   SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -278,7 +407,7 @@ class _BorrowreturnState extends State<Borrowreturn> {
                   Container(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      "email",
+                      "อีเมล",
                       style: TextStyle(
                           color: Colors.blueGrey[900],
                           fontSize: 20,
@@ -316,7 +445,7 @@ class _BorrowreturnState extends State<Borrowreturn> {
                     ),
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 10,
                   ),
                   Container(
                     alignment: Alignment.centerLeft,
@@ -366,9 +495,10 @@ class _BorrowreturnState extends State<Borrowreturn> {
                     child: Text(
                         "*ผู้ยืมมีหน้าที่ต้องชดใช้ความเสียหายในกรณีที่ทรัพย์สินชํารุด หรือสูญหาย ตามมูลค่าทรัพย์สิน หากความเสียหายนั้นเกิดจากความประมาทของผู้ยืม",
                         style: TextStyle(
+                          letterSpacing: 1.2,
                           color: Colors.red,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                          fontWeight: FontWeight.normal,
                           fontFamily: 'Sarabun',
                           fontStyle: FontStyle.italic,
                         )),
@@ -516,11 +646,49 @@ class _BorrowreturnState extends State<Borrowreturn> {
     );
   }
 
-  Future<List<Borrowbackmodel>> getData(where) async {
+  /* Widget getSearchableDropdown(List<dynamic>? listData, mapKey) {
+    List<DropdownMenuItem> items = [];
+    for (int i = 0; i < listData!.length; i++) {
+      items.add(new DropdownMenuItem(
+        child: new Text(
+          listData[i],
+        ),
+        value: listData[i],
+      ));
+    }
+    return ButtonTheme(
+      alignedDropdown: true,
+      child: DropdownButtonHideUnderline(
+        child: new SearchableDropdown(
+          items: items,
+          value: selectedValueMap[mapKey],
+          isCaseSensitiveSearch: false,
+          hint: new Text(
+            'เลือกอุปกรณ์',
+          ),
+          searchHint: new Text(
+            'ค้นหาอุปกรณ์',
+            style: new TextStyle(fontSize: 20),
+          ),
+          onChanged: (value) {
+            setState(() {
+              selectedValueMap[mapKey] = value;
+              _EquipmenController.text = selectedValueMap[mapKey].toString();
+            });
+          },
+        ),
+      ),
+    );
+  } */
+
+  /* Future<List<Borrowbackmodel>> getData(filter) async {
     var authToken = '1257|7D3I1qDi4m28ZWRMJTvSmVJ3kOYwSsBvyzJdQm16';
+    var queryParameters = {
+      'filter': filter,
+    };
     var response = await Dio().get(
-      "https://wwwdev.csmju.com/api/newsapp",
-      queryParameters: {"where": where},
+      "https://wwwdev.csmju.com/api/equipments/code/",
+      queryParameters: queryParameters,
       options: Options(
         headers: {
           "Accept": "application/json",
@@ -531,7 +699,7 @@ class _BorrowreturnState extends State<Borrowreturn> {
 
     var models = Borrowbackmodel.fromJsonList(response.data);
     return models;
-  }
+  } */
 }
 /* FindDropdown<Borrowbackmodel>(
                             label: "Nome",

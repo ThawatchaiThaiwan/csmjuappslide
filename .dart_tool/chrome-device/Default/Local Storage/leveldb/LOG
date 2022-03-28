@@ -1,5 +1,7 @@
-2022/03/22-11:13:20.734 2e6c Reusing MANIFEST C:\Users\zadke\AppData\Local\Temp\flutter_tools.ab7d6d28\flutter_tools_chrome_device.444c3bd6\Default\Local Storage\leveldb/MANIFEST-000001
-2022/03/22-11:13:20.736 2e6c Recovering log #7
-2022/03/22-11:13:20.739 2e6c Reusing old log C:\Users\zadke\AppData\Local\Temp\flutter_tools.ab7d6d28\flutter_tools_chrome_device.444c3bd6\Default\Local Storage\leveldb/000007.log 
-2022/03/22-11:13:20.740 2e6c Delete type=0 #3
-2022/03/22-11:13:20.740 2e6c Delete type=0 #4
+2022/03/27-13:12:25.771 13f0 Reusing MANIFEST C:\Users\zadke\AppData\Local\Temp\flutter_tools.18589cb6\flutter_tools_chrome_device.a67ffb0a\Default\Local Storage\leveldb/MANIFEST-000001
+2022/03/27-13:12:25.772 13f0 Recovering log #7
+2022/03/27-13:12:25.772 13f0 (ignoring error) C:\Users\zadke\AppData\Local\Temp\flutter_tools.18589cb6\flutter_tools_chrome_device.a67ffb0a\Default\Local Storage\leveldb/000007.log: dropping 1846 bytes; Corruption: missing start of fragmented record(2)
+2022/03/27-13:12:25.772 13f0 Reusing old log C:\Users\zadke\AppData\Local\Temp\flutter_tools.18589cb6\flutter_tools_chrome_device.a67ffb0a\Default\Local Storage\leveldb/000007.log 
+2022/03/27-13:12:25.773 13f0 Delete type=0 #3
+2022/03/27-13:12:25.773 13f0 Delete type=0 #4
+2022/03/27-13:12:25.786 13f0 Delete type=2 #6

@@ -146,7 +146,7 @@ class _HomePageCarouselState extends State<HomePageCarousel> {
             
             icon: Icon(
               Icons.notifications,
-              color: Colors.blueGrey[900],
+              color: Colors.blueGrey[800],
             ),
           )
         ],

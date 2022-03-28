@@ -91,7 +91,7 @@ class _LoginPageState extends State<LoginPage> {
                           //  ? "รหัสนักศึกษาไม่ถูกต้อง"
                           //  : null,
                           decoration: new InputDecoration(
-                            hintText: "Username",
+                            hintText: "mju+รหัสนักศึกษา",
                             enabledBorder: UnderlineInputBorder(
                                 borderSide: BorderSide(
                                     color: Theme.of(context)
@@ -128,7 +128,7 @@ class _LoginPageState extends State<LoginPage> {
                               input!.length < 6 ? "รหัสผ่านไม่ถูกต้อง" : null, */
                           obscureText: hidePassword,
                           decoration: new InputDecoration(
-                            hintText: "Password",
+                            hintText: "mju@วันเดือน",
                             enabledBorder: UnderlineInputBorder(
                                 borderSide: BorderSide(
                                     color: Theme.of(context)

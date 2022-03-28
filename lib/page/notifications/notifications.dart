@@ -29,7 +29,7 @@ class _NotificationsState extends State<Notifications> {
             ? IconButton(
                 icon: Icon(
                   Icons.keyboard_backspace,
-                  color: Colors.blueGrey[900],
+                  color: Colors.blueGrey[800],
                 ),
                 onPressed: () => Navigator.of(context).pop(),
               )

@@ -23,12 +23,12 @@ class Reservedeteil extends StatelessWidget {
               fontSize: 25.0,
               fontFamily: 'Sarabun'),
         ),
-        titleTextStyle: TextStyle(color: Colors.black),
+        titleTextStyle: TextStyle(color: Colors.blueGrey[900]),
         leading: Navigator.canPop(context)
             ? IconButton(
                 icon: Icon(
                   Icons.keyboard_backspace,
-                  color: Colors.black,
+                  color: Colors.blueGrey[800],
                 ),
                 onPressed: () => Navigator.of(context).pop(),
               )

@@ -150,7 +150,7 @@ result = string.substring(1, 4);  */
             ? IconButton(
                 icon: Icon(
                   Icons.keyboard_backspace,
-                  color: Colors.blueGrey[900],
+                  color: Colors.blueGrey[800],
                 ),
                 onPressed: () => Navigator.of(context).pop(),
               )

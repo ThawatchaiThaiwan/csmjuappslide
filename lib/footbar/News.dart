@@ -107,7 +107,7 @@ class _NewsState extends State<News> {
             
             icon: Icon(
               Icons.notifications,
-              color: Colors.blueGrey[900],
+              color: Colors.blueGrey[800],
             ),
           )
         ],

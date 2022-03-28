@@ -14,7 +14,7 @@ Widget customListTile(Apinew article, BuildContext context) {
                   )));
     },
     child: Container(
-      margin: EdgeInsets.all(12.0),
+      margin: EdgeInsets.all(10.0),
       padding: EdgeInsets.all(8.0),
       decoration: BoxDecoration(
           color: Colors.white,
@@ -31,7 +31,7 @@ Widget customListTile(Apinew article, BuildContext context) {
         children: [
           ////////////////////////////////////////////////////////>>>>>>>รูปภาพ
           Container(
-            height: 220.0,
+            height: 200.0,
             width: double.infinity,
             decoration: BoxDecoration(
               //let's add the height
@@ -76,9 +76,6 @@ Widget customListTile(Apinew article, BuildContext context) {
                 fontFamily: 'Sarabun',
               ),
             ),
-          ),
-          SizedBox(
-            height: 8.0,
           ),
         ],
       ),

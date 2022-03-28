@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'dart:convert';
 import 'package:appcsmju/APImodel/ReserveRoommodel.dart';
 import 'package:appcsmju/footbar/Foot.dart';
@@ -23,7 +25,7 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
   //ReserveRoomService service = ReserveRoomService();
   ////////////////////////////////////////////////////////////////////////////////// api dropdpw
 
-  // ignore: non_constant_identifier_names
+  
   /* List<String> adviser = [
     "อาจารย์ อรรถวิทชังคมานนท์",
     "ผู้ช่วยศาสตราจารย์ ก่องกาญจน์ดุลยไชย",
@@ -101,7 +103,6 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
   ///////////////////////////////////////////////////////////////////>>>>>>>>>controller
 
   TextEditingController _roomController = TextEditingController();
-  TextEditingController _phoneController = TextEditingController();
   TextEditingController _TimefristController = TextEditingController();
   TextEditingController _TimeendController = TextEditingController();
   TextEditingController _DeteilController = TextEditingController();
@@ -156,7 +157,7 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
             ? IconButton(
                 icon: Icon(
                   Icons.keyboard_backspace,
-                  color: Colors.blueGrey[900],
+                  color: Colors.blueGrey[800],
                 ),
                 onPressed: () => Navigator.of(context).pop(),
               )
@@ -168,8 +169,8 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                   MaterialPageRoute(builder: (context) => ListReserve()));
             },
             icon: Icon(
-              Icons.repeat,
-              color: Colors.blueGrey[900],
+              Icons.list_rounded,
+              color: Colors.blueGrey[800],
             ),
           )
         ],
@@ -487,18 +488,18 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                           mode: Mode.DIALOG,
                           showSelectedItems: true,
                           items: [
-                            "อาจารย์ อรรถวิทชังคมานนท์",
-                            "ผู้ช่วยศาสตราจารย์ ก่องกาญจน์ดุลยไชย",
-                            "อาจารย์ ดร. กิตติกรหาญตระกูล",
-                            "ผู้ช่วยศาสตราจารย์ ดร. สนิทสิทธิ",
-                            "อาจารย์ อลงกตกองมณี",
-                            "ผู้ช่วยศาสตราจารย์ ภานุวัฒน์เมฆะ",
-                            "ผู้ช่วยศาสตราจารย์ ดร. พาสน์ปราโมกข์ชน",
-                            "ผู้ช่วยศาสตราจารย์ ดร. ปวีณเขื่อนแก้ว",
-                            "อาจารย์ ดร. พยุงศักดิ์เกษมสำราญ",
-                            "อาจารย์ ดร. สมนึกสินธุปวน",
-                            "อาจารย์ ดร. นษิตันติธารานุกุล",
-                            "อาจารย์ ดร. กิติศักดิ์โอสถานันต์กุล"
+                            "อาจารย์ อรรถวิท ชังคมานนท์",
+                            "ผู้ช่วยศาสตราจารย์ ก่องกาญจน์ ดุลยไชย",
+                            "อาจารย์ ดร.กิตติกร หาญตระกูล",
+                            "ผู้ช่วยศาสตราจารย์ ดร.สนิท สิทธิ",
+                            "อาจารย์ อลงกต กองมณี",
+                            "ผู้ช่วยศาสตราจารย์ ภานุวัฒน์ เมฆะ",
+                            "ผู้ช่วยศาสตราจารย์ ดร.พาสน์ ปราโมกข์ชน",
+                            "ผู้ช่วยศาสตราจารย์ ดร.ปวีณ เขื่อนแก้ว",
+                            "อาจารย์ ดร.พยุงศักดิ์ เกษมสำราญ",
+                            "อาจารย์ ดร.สมนึก สินธุปวน",
+                            "อาจารย์ ดร.นษิ ตันติธารานุกุล",
+                            "อาจารย์ ดร.กิติศักดิ์ โอสถานันต์กุล"
                           ],
 
                           hint: "กรุณาเลือกอาจารย์ผู้รับรอง",

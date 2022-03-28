@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:appcsmju/page/Borrowreturn.dart/Borrow_back.dart';
 import 'package:appcsmju/page/ReserveRoom/ReserveRoom.dart';
 import 'package:appcsmju/page/notifications/notifications.dart';
 import 'package:http/http.dart' as http;
@@ -8,7 +9,7 @@ import 'package:appcsmju/api/apinew_foot.dart';
 import 'package:appcsmju/model/loginmodel/login_page.dart';
 import 'package:appcsmju/page/Activityanoter.dart';
 import 'package:appcsmju/page/Appeal.dart';
-import 'package:appcsmju/page/Borrow_back.dart';
+
 import 'package:appcsmju/page/Profile/Profile.dart';
 
 import 'package:appcsmju/page/Residue.dart';
@@ -70,13 +71,7 @@ class _AnotherState extends State<Another> {
         leading: InkWell(
           onTap: () {
             Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => Profile(
-                    
-                  )));
-            
-          
+                context, MaterialPageRoute(builder: (context) => Profile()));
           },
           child: ClipRRect(
             child: Padding(
@@ -113,10 +108,9 @@ class _AnotherState extends State<Another> {
                 return Notifications();
               }));
             },
-            
             icon: Icon(
               Icons.notifications,
-              color: Colors.blueGrey[900],
+              color: Colors.blueGrey[800],
             ),
           )
         ],
@@ -514,6 +508,7 @@ class _AnotherState extends State<Another> {
     var surname;
     var mobile;
     var email;
+    var Studentcode;
     //var body = json.decode(res.body);
     //if (body['success']) {
     SharedPreferences localStorage = await SharedPreferences.getInstance();
@@ -522,6 +517,7 @@ class _AnotherState extends State<Another> {
     localStorage.remove('surname');
     localStorage.remove('mobile');
     localStorage.remove('email');
+    localStorage.remove('Studentcode');
     Navigator.push(
         context, new MaterialPageRoute(builder: (context) => LoginPage()));
     // }

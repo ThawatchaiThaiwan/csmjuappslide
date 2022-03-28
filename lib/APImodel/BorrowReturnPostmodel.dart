@@ -15,7 +15,7 @@ List<BorrowReturnPostmodel> borrowReturnPostmodelFromJson(String str) => List<Bo
 
 class BorrowReturnPostmodel {
     BorrowReturnPostmodel({
-        required this.borrow_returnId,
+        
         required this.Equipment_Name,
         required this.Borrow_Date,
         required this.Borrow_Details,
@@ -29,7 +29,7 @@ class BorrowReturnPostmodel {
     });
 
     
-    int borrow_returnId;
+    
     String Equipment_Name;
     String Borrow_Date;
     String Borrow_Details;
@@ -42,15 +42,15 @@ class BorrowReturnPostmodel {
 
     factory BorrowReturnPostmodel.fromJson(Map<String, dynamic> json) {
       return BorrowReturnPostmodel(
-        borrow_returnId: json["Classroom_Name"],
-        Equipment_Name: json["Book_TimeStart"],
-        Borrow_Date: json["Book_TimeEnd"],
-        Borrow_Details: json["Book_Date"],
-        Return_Date: json["Status_Book"],
-        Status: json["Book_Detail"],
+       
+        Equipment_Name: json["Equipment_Name"],
+        Borrow_Date: json["Borrow_Date"],
+        Borrow_Details: json["Borrow_Details"],
+        Return_Date: json["Return_Date"],
+        Status: json["Status"],
         FirstName: json["FirstName"],
         LastName: json["LastName"],
-        Email: json["StudentCode"],
+        Email: json["Email"],
         
       );
     }
