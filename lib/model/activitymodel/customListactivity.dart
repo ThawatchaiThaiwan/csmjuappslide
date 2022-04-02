@@ -51,7 +51,7 @@ Widget customListactivity(Activity activity, BuildContext context) {
               borderRadius: BorderRadius.circular(0.0),
             ),
             child: Text(
-              activity.Activitypic_Title,
+              activity.Activity_Title,
               style: TextStyle(
                 color: Colors.blueGrey[900],
                 fontSize: 20.0,
@@ -68,7 +68,7 @@ Widget customListactivity(Activity activity, BuildContext context) {
               borderRadius: BorderRadius.circular(0.0),
             ),
             child: Text(
-              activity.Activity_Date,
+              "วันที่ : " + activity.Activity_Start,
               style: TextStyle(
                 color: Colors.blueGrey[900],
                 fontSize: 18.0,

@@ -113,7 +113,7 @@ class _AppealState extends State<Appeal> {
                               border: OutlineInputBorder(),
                               contentPadding: const EdgeInsets.all(5),
                               hintText: 'เพิ่มหัวเรื่อง',
-                              hintStyle: TextStyle(fontSize: 18),
+                              hintStyle: TextStyle(fontSize: 19),
                               labelStyle: TextStyle(
                                 fontSize: 2018,
                                 color: Colors.blueGrey[900],
@@ -182,7 +182,7 @@ class _AppealState extends State<Appeal> {
                               border: OutlineInputBorder(),
                               contentPadding: const EdgeInsets.all(5),
                               hintText: 'เพิ่มรายละเอียด',
-                              hintStyle: TextStyle(fontSize: 18),
+                              hintStyle: TextStyle(fontSize: 19),
                               labelStyle: TextStyle(
                                 fontSize: 22,
                                 color: Colors.blueGrey[900],

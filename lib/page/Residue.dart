@@ -205,7 +205,7 @@ result = string.substring(1, 4);  */
                           '$name $surname',
                           style: TextStyle(
                             color: Colors.blueGrey[900],
-                            fontSize: 18,
+                            fontSize: 19,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -239,7 +239,7 @@ result = string.substring(1, 4);  */
                           '$email',
                           style: TextStyle(
                             color: Colors.blueGrey[900],
-                            fontSize: 18,
+                            fontSize: 19,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -297,7 +297,7 @@ result = string.substring(1, 4);  */
                                 '$studentcode',
                                 style: TextStyle(
                                   color: Colors.blueGrey[900],
-                                  fontSize: 18,
+                                  fontSize: 19,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -320,9 +320,9 @@ result = string.substring(1, 4);  */
                                 border: OutlineInputBorder(),
                                 contentPadding: const EdgeInsets.all(5),
                                 hintText: 'เบอร์โทร',
-                                hintStyle: TextStyle(fontSize: 18),
+                                hintStyle: TextStyle(fontSize: 19),
                                 labelStyle: TextStyle(
-                                  fontSize: 18,
+                                  fontSize: 19,
                                   color: Colors.blueGrey[900],
                                 ),
                               ),
@@ -371,7 +371,7 @@ result = string.substring(1, 4);  */
                                       hint: Text(
                                         "กรุณาเลือกรายวิชา",
                                         style: TextStyle(
-                                          fontSize: 18,
+                                          fontSize: 19,
                                           color: Colors.blueGrey[900],
                                         ),
                                       ),
@@ -421,7 +421,7 @@ result = string.substring(1, 4);  */
                           new Text(
                             'กลุ่มที่ 1',
                             style: new TextStyle(
-                                fontSize: 16.0, color: Colors.blueGrey[900]),
+                                fontSize: 19.0, color: Colors.blueGrey[900]),
                           ),
                           SizedBox(width: 15.0),
                           Radio<String>(
@@ -432,7 +432,7 @@ result = string.substring(1, 4);  */
                           new Text(
                             'กลุ่มที่ 2',
                             style: new TextStyle(
-                              fontSize: 16.0,
+                              fontSize: 19.0,
                               color: Colors.blueGrey[900],
                             ),
                           ),
@@ -454,9 +454,9 @@ result = string.substring(1, 4);  */
                                 border: OutlineInputBorder(),
                                 contentPadding: const EdgeInsets.all(5),
                                 hintText: 'อื่นๆโปรดระบุ',
-                                hintStyle: TextStyle(fontSize: 18),
+                                hintStyle: TextStyle(fontSize: 19),
                                 labelStyle: TextStyle(
-                                  fontSize: 18,
+                                  fontSize: 19,
                                   color: Colors.blueGrey[900],
                                 ),
                               ),
@@ -486,9 +486,9 @@ result = string.substring(1, 4);  */
                           border: OutlineInputBorder(),
                           contentPadding: const EdgeInsets.all(5),
                           hintText: 'รายวิชานอกสาขา ( ถ้าไม่มีให้ใส่ - )',
-                          hintStyle: TextStyle(fontSize: 18),
+                          hintStyle: TextStyle(fontSize: 19),
                           labelStyle: TextStyle(
-                            fontSize: 18,
+                            fontSize: 19,
                             color: Colors.blueGrey[900],
                           ),
                         ),
@@ -513,9 +513,9 @@ result = string.substring(1, 4);  */
                             border: OutlineInputBorder(),
                             contentPadding: const EdgeInsets.all(5),
                             hintText: 'เพิ่มรายละเอียด',
-                            hintStyle: TextStyle(fontSize: 18),
+                            hintStyle: TextStyle(fontSize: 19),
                             labelStyle: TextStyle(
-                              fontSize: 18,
+                              fontSize: 19,
                               color: Colors.blueGrey[900],
                             )),
                       ),

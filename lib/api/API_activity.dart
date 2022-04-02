@@ -12,7 +12,7 @@ class ActivityApiService {
 
  static Future<List<Activity>> getsActivity() async {
     var authToken = '1257|7D3I1qDi4m28ZWRMJTvSmVJ3kOYwSsBvyzJdQm16';
-    Response res = await get(Uri.parse("https://wwwdev.csmju.com/api/activitypic"),headers: {
+    Response res = await get(Uri.parse("https://wwwdev.csmju.com/api/activity"),headers: {
       HttpHeaders.authorizationHeader: 'Bearer $authToken',
     },);
 

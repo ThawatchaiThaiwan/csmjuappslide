@@ -8,33 +8,50 @@ String activityToJson(List<Activity> data) =>
 
 class Activity {
   Activity({
-    required this.activity_pictureId,
-    required this.Activitypic_Title,
-    required this.Activity_Date,
-    required this.Activitypic_Detail,
+    required this.activityId,
+    required this.Activity_Start,
+    required this.Activity_TimeStart,
+    required this.Activity_TimeEnd,
+    required this.Activity_Organizer,
+    required this.Activity_Location,
+    required this.Activity_Detail,
+    required this.Activity_Title,
     required this.Activity_Picture,
   });
 
-  int activity_pictureId;
-  String Activitypic_Title;
-  String Activity_Date;
-  String Activitypic_Detail;
+  int activityId;
+  String Activity_Start;
+  String Activity_TimeStart;
+  String Activity_TimeEnd;
+  String Activity_Organizer;
+  String Activity_Location;
+  String Activity_Detail;
+  String Activity_Title;
   String Activity_Picture;
 
   factory Activity.fromJson(Map<String, dynamic> json) {
     return Activity(
-      activity_pictureId: json["activity_pictureId"] as int,
-      Activitypic_Title: json["Activitypic_Title"] as String,
-      Activity_Date: json["Activity_Date"] as String,
-      Activitypic_Detail: json["Activitypic_Detail"] as String,
+      activityId: json["activityId"] as int,
+      Activity_Start: json["Activity_Start"] as String,
+      Activity_TimeStart: json["Activity_TimeStart"] as String,
+      Activity_TimeEnd: json["Activity_TimeEnd"] as String,
+      Activity_Organizer: json["Activity_Organizer"] as String,
+      Activity_Location: json["Activity_Location"] as String,
+      Activity_Detail: json["Activity_Detail"] as String,
+      Activity_Title: json["Activity_Title"] as String,   
       Activity_Picture: json["Activity_Picture"] as String,
     );
   }
 
   Map<String, dynamic> toJson() => {
-        "activity_pictureId": activity_pictureId,
-        "Activity_Date": Activity_Date,
-        "Activitypic_Detail": Activitypic_Detail,
+        "activityId": activityId,
+        "Activity_Start": Activity_Start,
+        "Activity_TimeStart": Activity_TimeStart,
+        "Activity_TimeEnd": Activity_TimeEnd,
+        "Activity_Organizer": Activity_Organizer,
+        "Activity_Location": Activity_Location,
+        "Activity_Detail": Activity_Detail,
+        "Activity_Title": Activity_Title,     
         "Activity_Picture": Activity_Picture,
       };
 

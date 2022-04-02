@@ -6,10 +6,12 @@ INJECTED from C:\csmjuappslide-main\android\app\src\main\AndroidManifest.xml:1:1
 INJECTED from C:\csmjuappslide-main\android\app\src\main\AndroidManifest.xml:1:1-46:12
 MERGED from C:\csmjuappslide-main\android\app\src\main\AndroidManifest.xml:1:1-46:12
 MERGED from [:shared_preferences_android] C:\csmjuappslide-main\build\shared_preferences_android\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:searchable_dropdown] C:\csmjuappslide-main\build\searchable_dropdown\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:image_picker] C:\csmjuappslide-main\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-19:12
 MERGED from [:flutter_plugin_android_lifecycle] C:\csmjuappslide-main\build\flutter_plugin_android_lifecycle\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:barcode_scan] C:\csmjuappslide-main\build\barcode_scan\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-13:12
 MERGED from [:sqflite] C:\csmjuappslide-main\build\sqflite\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:search_choices] C:\csmjuappslide-main\build\search_choices\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:url_launcher_android] C:\csmjuappslide-main\build\url_launcher_android\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-14:12
 MERGED from [:path_provider_android] C:\csmjuappslide-main\build\path_provider_android\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:multi_image_picker] C:\csmjuappslide-main\build\multi_image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
@@ -159,6 +161,8 @@ INJECTED from C:\csmjuappslide-main\android\app\src\main\AndroidManifest.xml
 INJECTED from C:\csmjuappslide-main\android\app\src\main\AndroidManifest.xml
 MERGED from [:shared_preferences_android] C:\csmjuappslide-main\build\shared_preferences_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:shared_preferences_android] C:\csmjuappslide-main\build\shared_preferences_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:searchable_dropdown] C:\csmjuappslide-main\build\searchable_dropdown\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:searchable_dropdown] C:\csmjuappslide-main\build\searchable_dropdown\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:image_picker] C:\csmjuappslide-main\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:image_picker] C:\csmjuappslide-main\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:flutter_plugin_android_lifecycle] C:\csmjuappslide-main\build\flutter_plugin_android_lifecycle\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
@@ -167,6 +171,8 @@ MERGED from [:barcode_scan] C:\csmjuappslide-main\build\barcode_scan\intermediat
 MERGED from [:barcode_scan] C:\csmjuappslide-main\build\barcode_scan\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:sqflite] C:\csmjuappslide-main\build\sqflite\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:sqflite] C:\csmjuappslide-main\build\sqflite\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:search_choices] C:\csmjuappslide-main\build\search_choices\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:search_choices] C:\csmjuappslide-main\build\search_choices\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:url_launcher_android] C:\csmjuappslide-main\build\url_launcher_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:url_launcher_android] C:\csmjuappslide-main\build\url_launcher_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:path_provider_android] C:\csmjuappslide-main\build\path_provider_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
@@ -277,6 +283,8 @@ INJECTED from C:\csmjuappslide-main\android\app\src\debug\AndroidManifest.xml
 		INJECTED from C:\csmjuappslide-main\android\app\src\debug\AndroidManifest.xml
 uses-permission#android.permission.INTERNET
 ADDED from C:\csmjuappslide-main\android\app\src\debug\AndroidManifest.xml:6:5-66
+MERGED from [:search_choices] C:\csmjuappslide-main\build\search_choices\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-67
+MERGED from [:search_choices] C:\csmjuappslide-main\build\search_choices\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-67
 	android:name
 		ADDED from C:\csmjuappslide-main\android\app\src\debug\AndroidManifest.xml:6:22-64
 provider#io.flutter.plugins.imagepicker.ImagePickerFileProvider

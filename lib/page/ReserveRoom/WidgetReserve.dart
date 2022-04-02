@@ -69,7 +69,7 @@ class Reservedeteil extends StatelessWidget {
                   style: TextStyle(
                     letterSpacing: 1.2,
                     color: Colors.blueGrey[900],
-                    fontSize: 20.0,
+                    fontSize: 19.0,
                     fontWeight: FontWeight.normal,
                     fontFamily: 'Sarabun',
                   ),
@@ -90,7 +90,7 @@ class Reservedeteil extends StatelessWidget {
                         "เวลาเริ่มต้น : ",
                         style: TextStyle(
                           color: Colors.blueGrey[900],
-                          fontSize: 22,
+                          fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -105,7 +105,7 @@ class Reservedeteil extends StatelessWidget {
                         "เวลาสิ้นสุด : ",
                         style: TextStyle(
                           color: Colors.blueGrey[900],
-                          fontSize: 22,
+                          fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -130,7 +130,7 @@ class Reservedeteil extends StatelessWidget {
                         style: TextStyle(
                           letterSpacing: 1.2,
                           color: Colors.blueGrey[900],
-                          fontSize: 20.0,
+                          fontSize: 19.0,
                           fontWeight: FontWeight.normal,
                           fontFamily: 'Sarabun',
                         ),
@@ -153,7 +153,7 @@ class Reservedeteil extends StatelessWidget {
                         style: TextStyle(
                           letterSpacing: 1.2,
                           color: Colors.blueGrey[900],
-                          fontSize: 20.0,
+                          fontSize: 19.0,
                           fontWeight: FontWeight.normal,
                           fontFamily: 'Sarabun',
                         ),
@@ -180,7 +180,7 @@ class Reservedeteil extends StatelessWidget {
                         "ชื่อ - นามสกุล : ",
                         style: TextStyle(
                           color: Colors.blueGrey[900],
-                          fontSize: 22,
+                          fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -195,7 +195,7 @@ class Reservedeteil extends StatelessWidget {
                         "รหัสนักศึกษา : ",
                         style: TextStyle(
                           color: Colors.blueGrey[900],
-                          fontSize: 22,
+                          fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -220,7 +220,7 @@ class Reservedeteil extends StatelessWidget {
                         style: TextStyle(
                           letterSpacing: 1.2,
                           color: Colors.blueGrey[900],
-                          fontSize: 20.0,
+                          fontSize: 19.0,
                           fontWeight: FontWeight.normal,
                           fontFamily: 'Sarabun',
                         ),
@@ -243,7 +243,7 @@ class Reservedeteil extends StatelessWidget {
                         style: TextStyle(
                           letterSpacing: 1.2,
                           color: Colors.blueGrey[900],
-                          fontSize: 20.0,
+                          fontSize: 19.0,
                           fontWeight: FontWeight.normal,
                           fontFamily: 'Sarabun',
                         ),
@@ -275,7 +275,7 @@ class Reservedeteil extends StatelessWidget {
                   article.Email,
                   style: TextStyle(
                     color: Colors.blueGrey[900],
-                    fontSize: 20.0,
+                    fontSize: 19.0,
                     //fontWeight: FontWeight.bold,
                     fontFamily: 'Sarabun',
                   ),
@@ -304,7 +304,7 @@ class Reservedeteil extends StatelessWidget {
                   article.Book_Detail,
                   style: TextStyle(
                     color: Colors.blueGrey[900],
-                    fontSize: 20.0,
+                    fontSize: 19.0,
                     //fontWeight: FontWeight.bold,
                     fontFamily: 'Sarabun',
                   ),
@@ -330,7 +330,7 @@ class Reservedeteil extends StatelessWidget {
                   article.Adviser,
                   style: TextStyle(
                     color: Colors.blueGrey[900],
-                    fontSize: 20.0,
+                    fontSize: 19.0,
                     //fontWeight: FontWeight.bold,
                     fontFamily: 'Sarabun',
                   ),

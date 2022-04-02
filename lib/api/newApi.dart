@@ -18,11 +18,11 @@ class APi {
 
   List<Apinews> li = [];
   Future<dynamic> GetNews(BuildContext context) async {
-    String authKey = 'News_Detail=app';
+    //String authKey = 'News_Detail=app';
     var url = Uri.parse(baseUrl);
     http.Response response = await http.get(url, headers: {
       HttpHeaders.authorizationHeader: 'Bearer $authToken',
-      "authKey": authKey
+      //"authKey": authKey
     });
 
     //print(data[0]);
@@ -34,7 +34,7 @@ class APi {
       Apinews order = new Apinews.fromJson(value);
       li.add(order);
     });
-    print('API GET');
+   
 
     return data;
 

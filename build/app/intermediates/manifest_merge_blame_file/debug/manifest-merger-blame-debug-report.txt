@@ -25,7 +25,7 @@
 19        android:debuggable="true"
 20        android:icon="@mipmap/ic_launcher"
 20-->C:\csmjuappslide-main\android\app\src\main\AndroidManifest.xml:5:9-43
-21        android:label="appcsmju" >
+21        android:label="CsmjuApp" >
 21-->C:\csmjuappslide-main\android\app\src\main\AndroidManifest.xml:4:9-33
 22        <activity
 22-->C:\csmjuappslide-main\android\app\src\main\AndroidManifest.xml:6:9-35:20

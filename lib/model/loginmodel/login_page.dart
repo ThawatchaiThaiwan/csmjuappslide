@@ -128,7 +128,7 @@ class _LoginPageState extends State<LoginPage> {
                               input!.length < 6 ? "รหัสผ่านไม่ถูกต้อง" : null, */
                           obscureText: hidePassword,
                           decoration: new InputDecoration(
-                            hintText: "mju@วันเดือน",
+                            hintText: "mju@วันเดือนปีเกิด",
                             enabledBorder: UnderlineInputBorder(
                                 borderSide: BorderSide(
                                     color: Theme.of(context)

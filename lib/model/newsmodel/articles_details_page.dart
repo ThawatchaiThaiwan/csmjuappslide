@@ -1,7 +1,5 @@
 //Now let's create the article details page
 
-import 'dart:convert';
-
 import 'package:appcsmju/APImodel/apinew.dart';
 import 'package:appcsmju/footbar/News.dart';
 
@@ -22,7 +20,7 @@ class ArticlePage extends StatelessWidget {
           ' รายละเอียดข่าว',
           textAlign: TextAlign.center,
           style: TextStyle(
-            color: Colors.blueGrey[900],
+              color: Colors.blueGrey[900],
               fontWeight: FontWeight.bold,
               fontSize: 25,
               fontFamily: 'Sarabun'),
@@ -53,6 +51,11 @@ class ArticlePage extends StatelessWidget {
                 image: DecorationImage(
                     image: NetworkImage(article.newsPicture),
                     fit: BoxFit.cover),
+                borderRadius: BorderRadius.circular(5.0),
+                border: Border.all(
+                  color: Color(0xff24a878),
+                  width: 2.0,
+                ),
                 // borderRadius: BorderRadius.circular(1.0),
               ),
             ),
@@ -79,11 +82,31 @@ class ArticlePage extends StatelessWidget {
               ),
             ),
             Divider(
-              thickness: 5,
-              indent: 20,
-              endIndent: 20,
+              thickness: 3,
+              indent: 15,
+              endIndent: 15,
+              color: Color(0xff24a878),
             ),
             //////////////////////////////////////////////////////////>>>>>>>รายละเอียด
+            Container(
+              padding: EdgeInsets.all(6.0),
+              decoration: BoxDecoration(
+                // color: Colors.black,
+                borderRadius: BorderRadius.circular(20.0),
+              ),
+              child: Text(
+                "รายละเอียด",
+                textAlign: TextAlign.start,
+                style: TextStyle(
+                  letterSpacing: 1.2,
+                  color: Colors.blueGrey[900],
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Sarabun',
+                ),
+              ),
+            ),
+
             Container(
               padding: EdgeInsets.all(6.0),
               decoration: BoxDecoration(
@@ -105,6 +128,185 @@ class ArticlePage extends StatelessWidget {
             SizedBox(
               height: 8.0,
             ),
+            ///////////////////////////////////////////////////////////////>>>>ไฟล์แนบ
+            Container(
+              padding: EdgeInsets.all(6.0),
+              decoration: BoxDecoration(
+                // color: Colors.black,
+                borderRadius: BorderRadius.circular(20.0),
+              ),
+              child: Text(
+                "ไฟล์",
+                textAlign: TextAlign.start,
+                style: TextStyle(
+                  letterSpacing: 1.2,
+                  color: Colors.blueGrey[900],
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Sarabun',
+                ),
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.all(6.0),
+              decoration: BoxDecoration(
+                // color: Colors.black,
+                borderRadius: BorderRadius.circular(20.0),
+              ),
+              child: Text(
+                article.newsFile,
+                textAlign: TextAlign.justify,
+                style: TextStyle(
+                  letterSpacing: 0.98,
+                  color: Colors.blueGrey[900],
+                  fontSize: 18,
+                  //fontWeight: FontWeight.bold,
+                  fontFamily: 'Sarabun',
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 8.0,
+            ),
+            ///////////////////////////////////////////////////////////////ประเภทข่าว
+            Container(
+              padding: EdgeInsets.all(6.0),
+              decoration: BoxDecoration(
+                // color: Colors.black,
+                borderRadius: BorderRadius.circular(20.0),
+              ),
+              child: Text(
+                "ประเภทข่าว",
+                textAlign: TextAlign.start,
+                style: TextStyle(
+                  letterSpacing: 1.2,
+                  color: Colors.blueGrey[900],
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Sarabun',
+                ),
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.all(6.0),
+              decoration: BoxDecoration(
+                // color: Colors.black,
+                borderRadius: BorderRadius.circular(20.0),
+              ),
+              child: Text(
+                article.newsType,
+                textAlign: TextAlign.justify,
+                style: TextStyle(
+                  letterSpacing: 0.98,
+                  color: Colors.blueGrey[900],
+                  fontSize: 18,
+                  //fontWeight: FontWeight.bold,
+                  fontFamily: 'Sarabun',
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 8.0,
+            ),
+            /////////////////////////////////////////////////////////////>>>>>ลิงค์ข่าว
+            Container(
+              padding: EdgeInsets.all(6.0),
+              decoration: BoxDecoration(
+                // color: Colors.black,
+                borderRadius: BorderRadius.circular(20.0),
+              ),
+              child: Text(
+                "ลิงค์ข่าว",
+                textAlign: TextAlign.start,
+                style: TextStyle(
+                  letterSpacing: 1.2,
+                  color: Colors.blueGrey[900],
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Sarabun',
+                ),
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.all(6.0),
+              decoration: BoxDecoration(
+                // color: Colors.black,
+                borderRadius: BorderRadius.circular(20.0),
+              ),
+              child: Text(
+                article.newsLinks,
+                textAlign: TextAlign.justify,
+                style: TextStyle(
+                  letterSpacing: 0.98,
+                  color: Colors.blueGrey[900],
+                  fontSize: 18,
+                  //fontWeight: FontWeight.bold,
+                  fontFamily: 'Sarabun',
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 8.0,
+            ),
+            ///////////////////////////////////////////////////////////////วันที่ประกาศ
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  padding: EdgeInsets.all(6.0),
+                  decoration: BoxDecoration(
+                    // color: Colors.black,
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                  child: Row(
+                    children: [
+                      Text(
+                        "วันที่ : ",
+                        style: TextStyle(
+                          color: Colors.blueGrey[900],
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          //fontWeight: FontWeight.bold,
+                          fontFamily: 'Sarabun',
+                        ),
+                      ),
+                      Text(
+                       article.newsDate,
+                        style: TextStyle(
+                          color: Colors.blueGrey[900],
+                          fontSize: 18,
+                          //fontWeight: FontWeight.bold,
+                          fontFamily: 'Sarabun',
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Row(
+                  children: [
+                    Text(
+                      "เวลา ",
+                      style: TextStyle(
+                        color: Colors.blueGrey[900],
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Sarabun',
+                      ),
+                    ),
+                    Text(
+                      article.newsTime,
+                      style: TextStyle(
+                        color: Colors.blueGrey[900],
+                        fontSize: 18,
+                        //fontWeight: FontWeight.bold,
+                        fontFamily: 'Sarabun',
+                      ),
+                    ),
+                    
+                  ],
+                ),
+              ],
+            )
           ],
         ),
       ),

@@ -36,7 +36,7 @@ Widget customActivityBelow(Activity article, BuildContext context) {
               borderRadius: BorderRadius.circular(0.0),
             ),
             child: Text(
-              article.Activitypic_Title,
+              article.Activity_Title,
               style: TextStyle(
                 color: Colors.blueGrey[900],
                 fontSize: 20,
@@ -46,21 +46,45 @@ Widget customActivityBelow(Activity article, BuildContext context) {
             ),
           ),
           /////////////////////////////////////////////////////////////>>>>>>.วันที่
-          Container(
-            padding: EdgeInsets.all(6.0),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(0.0),
-            ),
-            child: Text(
-              article.Activity_Date,
-              style: TextStyle(
-                color: Colors.blueGrey[900],
-                fontSize: 15.0,
-                fontWeight: FontWeight.bold,
-                fontFamily: 'Sarabun',
+          Row(
+            
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                padding: EdgeInsets.all(6.0),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(0.0),
+                ),
+                child: Text("วันที่ "+
+                  article.Activity_Start,
+                  style: TextStyle(
+                    color: Colors.blueGrey[900],
+                    fontSize: 15.0,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Sarabun',
+                  ),
+                ),
               ),
-            ),
+              
+              Container(
+                padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(0.0),
+                ),
+                child: Text(
+                  "แตะเพื่อดูรายละเอียด >>" 
+                     ,
+                  style: TextStyle(
+                    color: Colors.blueGrey[900],
+                    fontSize: 15.0,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Sarabun',
+                  ),
+                ),
+              )
+            ],
           ),
           SizedBox(
             height: 1.0,

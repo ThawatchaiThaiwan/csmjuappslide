@@ -79,14 +79,14 @@ class _HomePageCarouselState extends State<HomePageCarousel> {
   ////////////////////////////////////////////////////////////////////////////////
   APi pro = APi.instance;
   final List<String> imgList = [];
-  late List<Apinews> news = [];
-  late Future<Apinews> futureAlbum;
+   List<Apinews> news = [];
+   Future<Apinews>? futureAlbum;
   /* late final Apinew article;
    _HomePageCarouselState({required this.article}); */
 
   void getiii() async {
     var a = await pro.GetNews(context);
-    int i = 0;
+    //int i = 0;
     // for(i=0;i<pro.li.length;++i){
     //   imgList[i]=pro.li[i].newsPicture;
     // }

@@ -6,7 +6,6 @@ import 'package:appcsmju/footbar/Foot.dart';
 import 'package:appcsmju/page/ReserveRoom/ListReserve.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 
-
 import 'package:http/http.dart' as http;
 import 'package:appcsmju/footbar/Another.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +24,6 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
   //ReserveRoomService service = ReserveRoomService();
   ////////////////////////////////////////////////////////////////////////////////// api dropdpw
 
-  
   /* List<String> adviser = [
     "อาจารย์ อรรถวิทชังคมานนท์",
     "ผู้ช่วยศาสตราจารย์ ก่องกาญจน์ดุลยไชย",
@@ -98,7 +96,7 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
   }
 
   /////////////////////////////////////////////////////////////////////>>>>>>>. post
-  //Residues? _user;
+  ReserveRoommodel? _user;
 
   ///////////////////////////////////////////////////////////////////>>>>>>>>>controller
 
@@ -110,8 +108,6 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
 
   /////////////////////////////////////////////////////////////////////////////>>>>.localstorage
   final formkey = GlobalKey<FormState>();
-
-  ReserveRoommodel? _user;
 
   var userData;
   var name;
@@ -205,7 +201,7 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      
+
                       Container(
                         padding: EdgeInsets.fromLTRB(5, 10, 5, 10),
                         width: double.infinity,
@@ -225,7 +221,7 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                           '$name $surname',
                           style: TextStyle(
                             color: Colors.blueGrey[900],
-                            fontSize: 18,
+                            fontSize: 19,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -259,12 +255,12 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                           '$email',
                           style: TextStyle(
                             color: Colors.blueGrey[900],
-                            fontSize: 18,
+                            fontSize: 19,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
-                      
+
                       /////////////////////////////////////////////////>>>>>>>> รายวิชา & กลุ่มเรียน
                       SizedBox(height: 10.0),
                       Text(
@@ -307,7 +303,7 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                                     hint: Text(
                                       "กรุณาเลือกรายวิชา",
                                       style: TextStyle(
-                                        fontSize: 18,
+                                        fontSize: 19,
                                         color: Colors.blueGrey[900],
                                       ),
                                     ),
@@ -394,7 +390,7 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                                   '$hoursfrist:$minutesfrist',
                                   style: TextStyle(
                                     color: Colors.blueGrey[900],
-                                    fontSize: 18,
+                                    fontSize: 19,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -431,7 +427,7 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                                   '$hoursend:$minutesend',
                                   style: TextStyle(
                                     color: Colors.blueGrey[900],
-                                    fontSize: 18,
+                                    fontSize: 19,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -464,9 +460,9 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                           border: OutlineInputBorder(),
                           contentPadding: const EdgeInsets.all(5),
                           hintText: 'เพิ่มรายละเอียด',
-                          hintStyle: TextStyle(fontSize: 18),
+                          hintStyle: TextStyle(fontSize: 19),
                           labelStyle: TextStyle(
-                            fontSize: 18,
+                            fontSize: 19,
                             color: Colors.blueGrey[900],
                           ),
                         ),
@@ -503,7 +499,7 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                           ],
 
                           hint: "กรุณาเลือกอาจารย์ผู้รับรอง",
-                          
+
                           popupItemDisabled: (String s) => s.startsWith('I'),
                           onChanged: (String? newVal) {
                             setState(() {
@@ -534,7 +530,7 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                       Container(
                         width: double.infinity,
                         height: 30,
-                       decoration: BoxDecoration(
+                        decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5),
                           color: Colors.green[700],
                           border: Border.all(

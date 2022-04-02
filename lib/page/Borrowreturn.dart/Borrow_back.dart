@@ -1,6 +1,8 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'dart:convert';
+import 'dart:math';
+import 'package:dropdown_search/dropdown_search.dart';
 import 'package:find_dropdown/find_dropdown.dart';
 import 'package:http/http.dart' as http;
 import 'package:appcsmju/APImodel/BorrowReturnPostmodel.dart';
@@ -11,6 +13,7 @@ import 'package:appcsmju/page/Borrowreturn.dart/Borrowstatus.dart';
 import 'package:appcsmju/post_api/BorrowReturnpost.dart';
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:search_choices/search_choices.dart';
 import 'package:searchable_dropdown/searchable_dropdown.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -78,9 +81,9 @@ class _BorrowreturnState extends State<Borrowreturn> {
     }
   } */
 
-  List? room_data;
+  List? equipmentdata;
   List<Borrowblackmodel> equipment_data = [];
-  String? roomid;
+  String? equipmentS;
   var selectedNumber;
   var url = Uri.encodeFull('https://wwwdev.csmju.com/api/equipmentapp');
   Future<String> equipmentapp() async {
@@ -90,9 +93,9 @@ class _BorrowreturnState extends State<Borrowreturn> {
       'Authorization': 'Bearer $authToken',
     }); //if you have any auth key place here...properly..
     var resBody = json.decode(res.body);
-    print(resBody);
+    //print(resBody);
     setState(() {
-      room_data = resBody;
+      equipmentdata = resBody;
     });
 
     return "Sucess";
@@ -168,10 +171,9 @@ class _BorrowreturnState extends State<Borrowreturn> {
                   SizedBox(
                     height: 10,
                   ),
-
-                  /* Container(
-                    height: 50,
+                  Container(
                     width: double.infinity,
+                    height: 70,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(5),
@@ -180,57 +182,67 @@ class _BorrowreturnState extends State<Borrowreturn> {
                         width: 1,
                       ),
                     ),
-                    child: FutureBuilder<List>(
-                      future: getServerData(),
-                      builder: (context, snapshot) {
-                        if (snapshot.hasData) {
-                          return getSearchableDropdown(
-                              snapshot.data, "อุปกรณ์");
-                        } else if (snapshot.hasError) {
-                          return Text("${snapshot.error}");
-                        }
-                        return CircularProgressIndicator();
-                      },
+                    child: DropdownButtonHideUnderline(
+                      child: Padding(
+                        padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
+                        child: SearchChoices.single(
+                          items:
+                              (equipmentdata != null && equipmentdata!.isNotEmpty)
+                                  ? equipmentdata?.map((item) {
+                                      return new DropdownMenuItem(
+                                        child: new Text(
+                                          item['Equipment_Name'],
+                                          style: TextStyle(
+                                            fontSize: 19.0,
+                                          ),
+                                        ),
+                                        value: item['Equipment_Name'].toString(),
+                                      );
+                                    }).toList()
+                                  : [],
+                          value: equipmentS,
+                          hint: "ค้นหาอุปกรณ์",
+                          style: TextStyle(
+                            color: Colors.blueGrey[800],
+                            fontSize: 19.0,
+                            fontFamily: 'Sarabun',
+                          ),
+                          searchHint: "ค้นหาอุปกรณ์",
+                          onChanged: (value) {
+                            setState(() {
+                              equipmentS = value;
+                              _EquipmenController.text = equipmentS.toString();
+                            });
+                          },
+                          isExpanded: true,
+                        ),
+                      ),
                     ),
-                  ), */
+                  ),
 
                   //////////////////////////////////////////////////////////////////
-                  Container(
-                    height: 48,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      color: Colors.blueGrey[100],
-                      borderRadius: BorderRadius.circular(5),
-                      border: Border.all(color: Colors.grey),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.white,
-                          blurRadius: 3,
-                          offset: Offset(0, 4),
-                        )
-                      ],
-                    ),
+                  /* SingleChildScrollView(
                     child: SearchableDropdown.single(
-                      items: (room_data != null && room_data!.isNotEmpty)
-                          ? room_data?.map((item) {
+                      items: (equipmentdata != null && equipmentdata!.isNotEmpty)
+                          ? equipmentdata?.map((item) {
                               return new DropdownMenuItem(
                                 child: new Text(
                                   item['Equipment_Name'],
                                   style: TextStyle(
-                                    fontSize: 18.0,
+                                    fontSize: 19.0,
                                   ),
                                 ),
                                 value: item['Equipment_Name'].toString(),
                               );
                             }).toList()
                           : [],
-                      value: roomid,
-                      hint: "Select one",
+                      value: equipmentS,
+                      hint: "เลือกอุปกรณ์",
                       searchHint: null,
                       onChanged: (value) {
                         setState(() {
-                          roomid = value;
-                          _EquipmenController.text = roomid.toString();
+                          equipmentS = value;
+                          _EquipmenController.text = equipmentS.toString();
                         });
                       },
                       dialogBox: false,
@@ -238,7 +250,7 @@ class _BorrowreturnState extends State<Borrowreturn> {
                       menuConstraints:
                           BoxConstraints.tight(Size.fromHeight(350)),
                     ),
-                  ),
+                  ), */
                   ////////////////////////////////////////////////////////////////////////
 
                   /* SearchableDropdown(
@@ -305,55 +317,66 @@ class _BorrowreturnState extends State<Borrowreturn> {
                     children: [
                       Expanded(
                         flex: 1,
-                        child: DateTimePicker(
-                          initialValue: '',
-                          dateMask: 'd MMM, yyyy',
-                          smartDashesType: SmartDashesType.disabled,
-                          firstDate: DateTime(2000),
-                          lastDate: DateTime(2100),
-                          dateLabelText: 'เลือกวันที่ยืม',
-                          onChanged: (val) {
-                            setState(() {
-                              var date = val.toString();
-                              _DatefristController.text = date;
-                            });
-                          },
-                          validator: (val) {
-                            return null;
-                          },
-                          onSaved: (val) => print(val),
-                          style: TextStyle(
-                              color: Colors.blueGrey[900],
-                              fontSize: 18,
-                              fontFamily: 'Sarabun',
-                              fontWeight: FontWeight.normal),
+                        child: Container(
+                          height: 48,
+                          width: double.infinity,
+                          child: DateTimePicker(
+                            initialValue: '',
+                            dateMask: 'd MMM, yyyy',
+                            smartDashesType: SmartDashesType.disabled,
+                            firstDate: DateTime(2000),
+                            lastDate: DateTime(2100),
+                            dateHintText: "เลือกวันที่ยืม",
+                        
+                            //dateLabelText: 'เลือกวันที่ยืม',
+                            onChanged: (val) {
+                              setState(() {
+                                var date = val.toString();
+                                _DatefristController.text = date;
+                              });
+                            },
+                            validator: (val) {
+                              return null;
+                            },
+                            onSaved: (val) => print(val),
+                            style: TextStyle(
+                                color: Colors.blueGrey[900],
+                                fontSize: 19,
+                                fontFamily: 'Sarabun',
+                                fontWeight: FontWeight.normal),
+                          ),
                         ),
                       ),
                       SizedBox(width: 10),
                       Expanded(
                         flex: 1,
-                        child: DateTimePicker(
-                          initialValue: '',
-                          dateMask: 'd MMM, yyyy',
-                          smartDashesType: SmartDashesType.disabled,
-                          firstDate: DateTime(2000),
-                          lastDate: DateTime(2100),
-                          dateLabelText: 'เลือกวันที่คืน',
-                          onChanged: (val) {
-                            setState(() {
-                              var date1 = val.toString();
-                              _DatereturnController.text = date1;
-                            });
-                          },
-                          validator: (val) {
-                            return null;
-                          },
-                          onSaved: (val) => print(val),
-                          style: TextStyle(
-                              color: Colors.blueGrey[900],
-                              fontSize: 18,
-                              fontFamily: 'Sarabun',
-                              fontWeight: FontWeight.normal),
+                        child: Container(
+                          height: 48,
+                          width: double.infinity,
+                          child: DateTimePicker(
+                            initialValue: '',
+                            dateMask: 'd MMM, yyyy',
+                            smartDashesType: SmartDashesType.disabled,
+                            firstDate: DateTime(2000),
+                            lastDate: DateTime(2100),
+                            dateHintText: "เลือกวันที่คืน",
+                            //dateLabelText: 'เลือกวันที่คืน',
+                            onChanged: (val) {
+                              setState(() {
+                                var date1 = val.toString();
+                                _DatereturnController.text = date1;
+                              });
+                            },
+                            validator: (val) {
+                              return null;
+                            },
+                            onSaved: (val) => print(val),
+                            style: TextStyle(
+                                color: Colors.blueGrey[900],
+                                fontSize: 19,
+                                fontFamily: 'Sarabun',
+                                fontWeight: FontWeight.normal),
+                          ),
                         ),
                       ),
                     ],
@@ -395,7 +418,7 @@ class _BorrowreturnState extends State<Borrowreturn> {
                         textAlign: TextAlign.start,
                         style: TextStyle(
                           color: Colors.blueGrey[900],
-                          fontSize: 18,
+                          fontSize: 19,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -438,7 +461,7 @@ class _BorrowreturnState extends State<Borrowreturn> {
                         textAlign: TextAlign.start,
                         style: TextStyle(
                           color: Colors.blueGrey[900],
-                          fontSize: 18,
+                          fontSize: 19,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -482,7 +505,7 @@ class _BorrowreturnState extends State<Borrowreturn> {
                         hintText: 'หมายเหตุ',
                         hintStyle: TextStyle(
                           color: Colors.blueGrey[900],
-                          fontSize: 18,
+                          fontSize: 19,
                           fontWeight: FontWeight.normal,
                         ),
                       ),

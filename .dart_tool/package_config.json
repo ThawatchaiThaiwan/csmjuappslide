@@ -404,8 +404,8 @@
       "languageVersion": "2.12"
     },
     {
-      "name": "search_page",
-      "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/search_page-2.0.0+1",
+      "name": "search_choices",
+      "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/search_choices-2.0.19",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -632,7 +632,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2022-03-27T06:25:16.343248Z",
+  "generated": "2022-03-28T05:24:07.334359Z",
   "generator": "pub",
   "generatorVersion": "2.16.1"
 }

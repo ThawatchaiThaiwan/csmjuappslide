@@ -1,5 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:appcsmju/APImodel/Activity.dart';
+import 'package:appcsmju/api/API_activity.dart';
+import 'package:appcsmju/model/carouselmodel/Activitycustombelow.dart';
 import 'package:appcsmju/page/Profile/Profile.dart';
 import 'package:appcsmju/page/notifications/notifications.dart';
 import 'package:get/route_manager.dart';
@@ -128,131 +131,168 @@ class _CalendarState extends State<Calendar> {
           )
         ],
       ),
-      body: Column(
-        children: [
-          TableCalendar(
-            focusedDay: selectedDay,
-            firstDay: DateTime(1990),
-            lastDay: DateTime(2050),
-            calendarFormat: format,
-            onFormatChanged: (CalendarFormat _format) {
-              setState(() {
-                format = _format;
-              });
-            },
-            startingDayOfWeek: StartingDayOfWeek.monday,
-
-            daysOfWeekVisible: true,
-            daysOfWeekStyle: DaysOfWeekStyle(
-                weekdayStyle:
-                    TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-                weekendStyle: TextStyle(
-                    color: Colors.redAccent,
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold)),
-
-            //Day Changed
-            onDaySelected: (DateTime selectDay, DateTime focusDay) {
-              setState(() {
-                selectedDay = selectDay;
-                focusedDay = focusDay;
-              });
-              print(focusedDay);
-            },
-            selectedDayPredicate: (DateTime date) {
-              return isSameDay(selectedDay, date);
-            },
-
-            eventLoader: _getEventsfromDay,
-
-            //To style the Calendar
-            calendarStyle: CalendarStyle(
-              /* rangeStartTextStyle: TextStyle(
-                color: Colors.black,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                fontFamily: 'Sarabun',
-              ), */
-              isTodayHighlighted: true,
-              outsideTextStyle: TextStyle(
-                color: Colors.grey,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                fontFamily: 'Sarabun',
-              ),
-              selectedDecoration: BoxDecoration(
-                color: Colors.orangeAccent,
-                shape: BoxShape.rectangle,
-                borderRadius: BorderRadius.circular(5.0),
-              ),
-              selectedTextStyle: TextStyle(
-                color: Colors.black,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                fontFamily: 'Sarabun',
-              ),
-              todayDecoration: BoxDecoration(
-                color: Colors.blueAccent,
-                shape: BoxShape.rectangle,
-                borderRadius: BorderRadius.circular(5.0),
-              ),
-              todayTextStyle: TextStyle(
-                color: Colors.black,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                fontFamily: 'Sarabun',
-              ),
-              defaultDecoration: BoxDecoration(
-                shape: BoxShape.rectangle,
-                borderRadius: BorderRadius.circular(5.0),
-              ),
-              defaultTextStyle: TextStyle(
-                color: Colors.black,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                fontFamily: 'Sarabun',
-              ),
-              weekendDecoration: BoxDecoration(
-                shape: BoxShape.rectangle,
-                borderRadius: BorderRadius.circular(5.0),
-              ),
-              weekendTextStyle: TextStyle(
-                color: Colors.redAccent,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                fontFamily: 'Sarabun',
-              ),
-            ),
-            headerStyle: HeaderStyle(
-              titleTextStyle: TextStyle(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            TableCalendar(
+              focusedDay: selectedDay,
+              firstDay: DateTime(1990),
+              lastDay: DateTime(2050),
+              calendarFormat: format,
+              onFormatChanged: (CalendarFormat _format) {
+                setState(() {
+                  format = _format;
+                });
+              },
+              startingDayOfWeek: StartingDayOfWeek.monday,
+      
+              daysOfWeekVisible: true,
+              daysOfWeekStyle: DaysOfWeekStyle(
+                  weekdayStyle:
+                      TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                  weekendStyle: TextStyle(
+                      color: Colors.redAccent,
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold)),
+      
+              //Day Changed
+              onDaySelected: (DateTime selectDay, DateTime focusDay) {
+                setState(() {
+                  selectedDay = selectDay;
+                  focusedDay = focusDay;
+                });
+                print(focusedDay);
+              },
+              selectedDayPredicate: (DateTime date) {
+                return isSameDay(selectedDay, date);
+              },
+      
+              eventLoader: _getEventsfromDay,
+      
+              //To style the Calendar
+              calendarStyle: CalendarStyle(
+                /* rangeStartTextStyle: TextStyle(
+                  color: Colors.black,
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  fontFamily: 'Sarabun'),
-              formatButtonVisible: true,
-              titleCentered: true,
-              formatButtonShowsNext: false,
-              formatButtonDecoration: BoxDecoration(
-                color: Colors.orangeAccent,
-                borderRadius: BorderRadius.circular(5.0),
+                  fontFamily: 'Sarabun',
+                ), */
+                isTodayHighlighted: true,
+                outsideTextStyle: TextStyle(
+                  color: Colors.grey,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Sarabun',
+                ),
+                selectedDecoration: BoxDecoration(
+                  color: Colors.orangeAccent,
+                  shape: BoxShape.rectangle,
+                  borderRadius: BorderRadius.circular(5.0),
+                ),
+                selectedTextStyle: TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Sarabun',
+                ),
+                todayDecoration: BoxDecoration(
+                  color: Colors.blueAccent,
+                  shape: BoxShape.rectangle,
+                  borderRadius: BorderRadius.circular(5.0),
+                ),
+                todayTextStyle: TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Sarabun',
+                ),
+                defaultDecoration: BoxDecoration(
+                  shape: BoxShape.rectangle,
+                  borderRadius: BorderRadius.circular(5.0),
+                ),
+                defaultTextStyle: TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Sarabun',
+                ),
+                weekendDecoration: BoxDecoration(
+                  shape: BoxShape.rectangle,
+                  borderRadius: BorderRadius.circular(5.0),
+                ),
+                weekendTextStyle: TextStyle(
+                  color: Colors.redAccent,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Sarabun',
+                ),
               ),
-              formatButtonTextStyle: TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                fontFamily: 'Sarabun',
+              headerStyle: HeaderStyle(
+                titleTextStyle: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Sarabun'),
+                formatButtonVisible: true,
+                titleCentered: true,
+                formatButtonShowsNext: false,
+                formatButtonDecoration: BoxDecoration(
+                  color: Colors.orangeAccent,
+                  borderRadius: BorderRadius.circular(5.0),
+                ),
+                formatButtonTextStyle: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Sarabun',
+                ),
               ),
             ),
-          ),
-          ..._getEventsfromDay(selectedDay).map(
-            (Event event) => ListTile(
-              title: Text(
-                event.title,
+            ..._getEventsfromDay(selectedDay).map(
+              (Event event) => ListTile(
+                title: Text(
+                  event.title,
+                ),
               ),
             ),
-          ),
-        ],
+            SingleChildScrollView(
+              padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
+                physics: ScrollPhysics(),
+                child: Container(
+                 
+                  height: MediaQuery.of(context).size.height,
+                  child: FutureBuilder(
+                    future: ActivityApiService.getsActivity(),
+                    builder: (BuildContext context,
+                        AsyncSnapshot<List<Activity>> snapshot) {
+                      if (snapshot.hasData) {
+                        List<Activity>? data = snapshot.data;
+                        return Align(
+                          alignment: Alignment.topCenter,
+                          child: ListView.builder(
+                            
+                            cacheExtent: 2000,
+                            reverse: true,
+                            shrinkWrap: true,
+                            scrollDirection: Axis.vertical,
+                            physics: NeverScrollableScrollPhysics(
+                              parent: BouncingScrollPhysics(),
+                            ),
+                            itemCount: data!.length < 5 ? data.length : 5,
+                            itemBuilder: (context, index) =>
+                                customActivityBelow(data[index], context),
+                          ),
+                        );
+                      }
+                      return Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    },
+                  ),
+                ))
+          ],
+        ),
       ),
-      floatingActionButton: FloatingActionButton.extended(
+      /* floatingActionButton: FloatingActionButton.extended(
         onPressed: () => showDialog(
           context: context,
           builder: (context) => AlertDialog(
@@ -313,7 +353,7 @@ class _CalendarState extends State<Calendar> {
         ),
         label: Text("เพิ่มกิจกรรม"),
         icon: Icon(Icons.add),
-      ),
+      ), */
     );
   }
 }

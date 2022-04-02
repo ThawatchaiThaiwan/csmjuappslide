@@ -78,7 +78,7 @@ class Borrowstatus extends StatelessWidget {
                     style: TextStyle(
                       letterSpacing: 1.2,
                       color: Colors.blueGrey[900],
-                      fontSize: 20.0,
+                      fontSize: 19.0,
                       fontWeight: FontWeight.normal,
                       fontFamily: 'Sarabun',
                     ),
@@ -99,7 +99,7 @@ class Borrowstatus extends StatelessWidget {
                           "เวลายืม : ",
                           style: TextStyle(
                             color: Colors.blueGrey[900],
-                            fontSize: 22,
+                            fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -114,7 +114,7 @@ class Borrowstatus extends StatelessWidget {
                           "เวลาคืน : ",
                           style: TextStyle(
                             color: Colors.blueGrey[900],
-                            fontSize: 22,
+                            fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -139,7 +139,7 @@ class Borrowstatus extends StatelessWidget {
                           style: TextStyle(
                             letterSpacing: 1.2,
                             color: Colors.blueGrey[900],
-                            fontSize: 20.0,
+                            fontSize: 19.0,
                             fontWeight: FontWeight.normal,
                             fontFamily: 'Sarabun',
                           ),
@@ -162,7 +162,7 @@ class Borrowstatus extends StatelessWidget {
                           style: TextStyle(
                             letterSpacing: 1.2,
                             color: Colors.blueGrey[900],
-                            fontSize: 20.0,
+                            fontSize: 19.0,
                             fontWeight: FontWeight.normal,
                             fontFamily: 'Sarabun',
                           ),
@@ -183,7 +183,7 @@ class Borrowstatus extends StatelessWidget {
                     "ชื่อ - นามสกุล : ",
                     style: TextStyle(
                       color: Colors.blueGrey[900],
-                      fontSize: 22,
+                      fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -203,7 +203,7 @@ class Borrowstatus extends StatelessWidget {
                     style: TextStyle(
                       letterSpacing: 1.2,
                       color: Colors.blueGrey[900],
-                      fontSize: 20.0,
+                      fontSize: 19.0,
                       fontWeight: FontWeight.normal,
                       fontFamily: 'Sarabun',
                     ),
@@ -232,7 +232,7 @@ class Borrowstatus extends StatelessWidget {
                     article.Email,
                     style: TextStyle(
                       color: Colors.blueGrey[900],
-                      fontSize: 20.0,
+                      fontSize: 19.0,
                       //fontWeight: FontWeight.bold,
                       fontFamily: 'Sarabun',
                     ),
@@ -261,7 +261,7 @@ class Borrowstatus extends StatelessWidget {
                     article.Borrow_Details,
                     style: TextStyle(
                       color: Colors.blueGrey[900],
-                      fontSize: 20.0,
+                      fontSize: 19.0,
                       //fontWeight: FontWeight.bold,
                       fontFamily: 'Sarabun',
                     ),
@@ -273,7 +273,7 @@ class Borrowstatus extends StatelessWidget {
                   padding: EdgeInsets.all(10),
                   child: Text('สถานะการจอง : ${article.Status}',
                       style: TextStyle(
-                          fontSize: 20.0,
+                          fontSize: 19,
                           fontWeight: FontWeight.bold,
                           fontFamily: 'Sarabun',
                           color: Colors.blueGrey[900])),

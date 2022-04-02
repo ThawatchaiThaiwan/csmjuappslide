@@ -111,7 +111,7 @@ Widget cutomStatusBorrow(BorrowReturnPostmodel article, BuildContext context) {
               article.Equipment_Name,
               style: TextStyle(
                 color: Colors.blueGrey[900],
-                fontSize: 22.0,
+                fontSize: 20.0,
                 fontWeight: FontWeight.bold,
                 fontFamily: 'Sarabun',
               ),
