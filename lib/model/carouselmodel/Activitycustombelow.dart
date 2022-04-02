@@ -13,6 +13,7 @@ Widget customActivityBelow(Activity article, BuildContext context) {
                   )));
     },
     child: Container(
+      
       margin: EdgeInsets.fromLTRB(1, 5, 1, 5),
       padding: EdgeInsets.fromLTRB(3, 3, 3, 3),
       decoration: BoxDecoration(
@@ -38,7 +39,7 @@ Widget customActivityBelow(Activity article, BuildContext context) {
             child: Text(
               article.Activity_Title,
               style: TextStyle(
-                color: Colors.blueGrey[900],
+                color: Color(0xff24a878),
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
                 fontFamily: 'Sarabun',

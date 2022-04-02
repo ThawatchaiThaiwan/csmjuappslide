@@ -249,7 +249,7 @@ class _AppealState extends State<Appeal> {
                         SizedBox(height: 30),
                         Container(
                           width: double.infinity,
-                          height: 30,
+                          height: 35,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
                             color: Colors.green[700],
@@ -335,7 +335,7 @@ class _AppealState extends State<Appeal> {
                         SizedBox(height: 20.0),
                         Container(
                           width: double.infinity,
-                          height: 30,
+                          height: 35,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
                             color: Colors.red[10],

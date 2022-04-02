@@ -1,7 +1,9 @@
 //Now let's create the article details page
 
 import 'package:appcsmju/APImodel/Activity.dart';
+import 'package:appcsmju/APImodel/ActivitypostModel.dart';
 import 'package:appcsmju/footbar/Another.dart';
+import 'package:appcsmju/post_api/postActivity.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -324,10 +326,101 @@ class _ActivityPageState extends State<ActivityPage> {
                             fontFamily: 'Sarabun',
                           ),
                         ),
+                        
                       ],
                     ),
                   ],
-                )
+                ),
+                SizedBox(
+                  height: 8.0,
+                ),
+                Container(
+                  width: double.infinity,
+                  height: 30,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    color: Colors.green[700],
+                    border: Border.all(
+                      color: Color(0xff24a878),
+                      width: 2,
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color(0x4f000000),
+                        blurRadius: 3,
+                        offset: Offset(0, 4),
+                      ),
+                    ],
+                  ),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: Color(0xff24a878),
+                    ),
+                    onPressed: () {
+                      setState(() async {
+                        if (_formkey.currentState!.validate()) {
+                          _formkey.currentState!.save();
+
+                          final String nameTh = name;
+                          final String surnameTh = surname;
+                          final String Email = email;
+                          final String studentCode = studentcode;
+                          final String Activity_Start =
+                              widget.activity.Activity_Start;
+                          final String Status = "เข้าร่วม";
+                          final String Activity_Title =
+                              widget.activity.Activity_Title;
+
+                          ///////////////////////////////////////////////////>>>>>>>>.post
+                          final ActivityPostmodel? _user = await postactivity(
+                            nameTh,
+                            surnameTh,
+                            Email,
+                            studentCode,
+                            Activity_Start,
+                            Status,
+                            Activity_Title,
+                          );
+
+                          ///////////////////////////////////////////////////>>>>>>>>.post
+                          if (email != null) {
+                            showDialog<String>(
+                                context: context,
+                                builder: (BuildContext context) => AlertDialog(
+                                      title: const Text('แจ้งเตือน'),
+                                      content: const Text('ลงชื่อเข้าร่วมกิจกรรมเรียบร้อยแล้ว'),
+                                      actions: <Widget>[
+                                        TextButton(
+                                          child: const Text(
+                                            'ตกลง',
+                                            textAlign: TextAlign.center,
+                                          ),
+                                          onPressed: () {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder:
+                                                      (BuildContext context) =>
+                                                          Another(),
+                                                ));
+                                          },
+                                        ),
+                                      ],
+                                    ));
+                          }
+                        }
+                      });
+                    },
+                    child: Text(
+                      'เข้าร่วม',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),

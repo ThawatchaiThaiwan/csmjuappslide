@@ -8,6 +8,7 @@ import 'package:appcsmju/footbar/Another.dart';
 import 'package:appcsmju/footbar/Foot.dart';
 import 'package:appcsmju/post_api/ResiduePost.dart';
 import 'package:flutter/material.dart';
+import 'package:search_choices/search_choices.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
@@ -352,52 +353,45 @@ result = string.substring(1, 4);  */
                               borderRadius: BorderRadius.circular(5.0)),
                           child: Container(
                             width: double.infinity,
-                            height: 48,
-                            padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                /* Text(
-                                  "เลือกรายวิชา:",
-                                  style: TextStyle(
-                                    fontSize: 20.0,
-                                    color: Colors.grey,
-                                  ),
-                                ), */
-
-                                Expanded(
-                                  child: DropdownButtonHideUnderline(
-                                    child: DropdownButton(
-                                      hint: Text(
-                                        "กรุณาเลือกรายวิชา",
-                                        style: TextStyle(
-                                          fontSize: 19,
-                                          color: Colors.blueGrey[900],
-                                        ),
-                                      ),
-                                      items: subject_data?.map((item) {
-                                        return new DropdownMenuItem(
+                            height: 70,
+                            //padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
+                            child: DropdownButtonHideUnderline(
+                              child: Padding(
+                                padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
+                                child: SearchChoices.single(
+                                  items: (subject_data != null &&
+                                          subject_data!.isNotEmpty)
+                                      ? subject_data?.map((item) {
+                                          return new DropdownMenuItem(
                                             child: new Text(
                                               item['Subject_NameTh'],
                                               style: TextStyle(
-                                                fontSize: 18,
+                                                fontSize: 19.0,
                                               ),
                                             ),
                                             value: item['Subject_NameTh']
-                                                .toString());
-                                      }).toList(),
-                                      onChanged: (String? newVal) {
-                                        setState(() {
-                                          subjectid = newVal;
-                                          CoursesController.text = subjectid!;
-                                          print(subjectid.toString());
-                                        });
-                                      },
-                                      value: subjectid,
-                                    ),
+                                                .toString(),
+                                          );
+                                        }).toList()
+                                      : [],
+                                  value: subjectid,
+                                  hint: "ค้นหารายวิชา",
+                                  style: TextStyle(
+                                    color: Colors.blueGrey[800],
+                                    fontSize: 19.0,
+                                    fontFamily: 'Sarabun',
                                   ),
-                                )
-                              ],
+                                  searchHint: "ค้นหารายวิชา",
+                                  onChanged: (value) {
+                                    setState(() {
+                                      subjectid = value;
+                                      CoursesController.text =
+                                          subjectid.toString();
+                                    });
+                                  },
+                                  isExpanded: true,
+                                ),
+                              ),
                             ),
                           )),
                       SizedBox(height: 10.0),
@@ -423,7 +417,7 @@ result = string.substring(1, 4);  */
                             style: new TextStyle(
                                 fontSize: 19.0, color: Colors.blueGrey[900]),
                           ),
-                          SizedBox(width: 15.0),
+                          SizedBox(width: 12.0),
                           Radio<String>(
                             value: "กลุ่มที่2",
                             groupValue: _radioValue,
@@ -436,7 +430,7 @@ result = string.substring(1, 4);  */
                               color: Colors.blueGrey[900],
                             ),
                           ),
-                          SizedBox(width: 15.0),
+                          SizedBox(width: 12.0),
                           Radio<String>(
                             value: "อื่นๆ",
                             groupValue: _radioValue,
@@ -523,7 +517,7 @@ result = string.substring(1, 4);  */
                       /////////////////////////////////////////////////////>>>>>ปุ่ม ส่งคำร้อง
                       Container(
                         width: double.infinity,
-                        height: 30,
+                        height: 35,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5),
                           color: Colors.green[700],
@@ -658,7 +652,7 @@ result = string.substring(1, 4);  */
                       SizedBox(height: 20.0),
                       Container(
                         width: double.infinity,
-                        height: 30,
+                        height: 35,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5),
                           color: Colors.red[10],
@@ -678,8 +672,15 @@ result = string.substring(1, 4);  */
                           style: ElevatedButton.styleFrom(
                             primary: Colors.red[400],
                           ),
-                          onPressed: () {
-                            setState(() {});
+                         onPressed: () {
+                            setState(() {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (BuildContext context) => Another(),
+                                  ));
+                            });
+                            
                           },
                           child: Text(
                             'ยกเลิก',

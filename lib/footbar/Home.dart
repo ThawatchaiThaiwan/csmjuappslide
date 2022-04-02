@@ -79,8 +79,8 @@ class _HomePageCarouselState extends State<HomePageCarousel> {
   ////////////////////////////////////////////////////////////////////////////////
   APi pro = APi.instance;
   final List<String> imgList = [];
-   List<Apinews> news = [];
-   Future<Apinews>? futureAlbum;
+  List<Apinews> news = [];
+  Future<Apinews>? futureAlbum;
   /* late final Apinew article;
    _HomePageCarouselState({required this.article}); */
 
@@ -115,7 +115,6 @@ class _HomePageCarouselState extends State<HomePageCarousel> {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
               return Profile();
             }));
-          
           },
           child: ClipRRect(
             child: Padding(
@@ -143,7 +142,6 @@ class _HomePageCarouselState extends State<HomePageCarousel> {
                 return Notifications();
               }));
             },
-            
             icon: Icon(
               Icons.notifications,
               color: Colors.blueGrey[800],
@@ -174,6 +172,7 @@ class _HomePageCarouselState extends State<HomePageCarousel> {
             /* padding: const EdgeInsets.fromLTRB(7, 10, 7, 10), */
             child: ClipRRect(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
+                
                 child: CarouselSlider(
                   options: CarouselOptions(
                       autoPlay: true,
@@ -183,9 +182,18 @@ class _HomePageCarouselState extends State<HomePageCarousel> {
                       .map((item) => Padding(
                             padding: const EdgeInsets.all(3.0),
                             child: SafeArea(
-                              child: Center(
-                                  child: Image.network(item,
-                                      fit: BoxFit.cover, width: 1000)),
+                              child:Container(
+                                width: MediaQuery.of(context).size.width,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  border: Border.all(
+                                      width: 3,
+                                      color: Color(0xff24a878)),
+                                ),
+                                child: Center(
+                                    child: Image.network(item,
+                                        fit: BoxFit.cover, width: 1000)),
+                              ),
                             ),
                           ))
                       .toList(),
@@ -211,7 +219,6 @@ class _HomePageCarouselState extends State<HomePageCarousel> {
           SingleChildScrollView(
               physics: ScrollPhysics(),
               child: Container(
-               
                 height: MediaQuery.of(context).size.height,
                 child: FutureBuilder(
                   future: ActivityApiService.getsActivity(),

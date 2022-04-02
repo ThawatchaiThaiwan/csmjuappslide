@@ -156,7 +156,7 @@ class _BorrowreturnState extends State<Borrowreturn> {
             child: Container(
               padding: EdgeInsets.fromLTRB(15, 10, 15, 10),
               width: double.infinity,
-              height: 710,
+              height: 730,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(5),
@@ -170,6 +170,17 @@ class _BorrowreturnState extends State<Borrowreturn> {
                 children: <Widget>[
                   SizedBox(
                     height: 10,
+                  ),
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "ค้นหาอุปกรณ์",
+                      style: TextStyle(
+                          color: Colors.blueGrey[900],
+                          fontSize: 20,
+                          fontFamily: 'Sarabun',
+                          fontWeight: FontWeight.bold),
+                    ),
                   ),
                   Container(
                     width: double.infinity,
@@ -221,67 +232,7 @@ class _BorrowreturnState extends State<Borrowreturn> {
                   ),
 
                   //////////////////////////////////////////////////////////////////
-                  /* SingleChildScrollView(
-                    child: SearchableDropdown.single(
-                      items: (equipmentdata != null && equipmentdata!.isNotEmpty)
-                          ? equipmentdata?.map((item) {
-                              return new DropdownMenuItem(
-                                child: new Text(
-                                  item['Equipment_Name'],
-                                  style: TextStyle(
-                                    fontSize: 19.0,
-                                  ),
-                                ),
-                                value: item['Equipment_Name'].toString(),
-                              );
-                            }).toList()
-                          : [],
-                      value: equipmentS,
-                      hint: "เลือกอุปกรณ์",
-                      searchHint: null,
-                      onChanged: (value) {
-                        setState(() {
-                          equipmentS = value;
-                          _EquipmenController.text = equipmentS.toString();
-                        });
-                      },
-                      dialogBox: false,
-                      isExpanded: true,
-                      menuConstraints:
-                          BoxConstraints.tight(Size.fromHeight(350)),
-                    ),
-                  ), */
-                  ////////////////////////////////////////////////////////////////////////
-
-                  /* SearchableDropdown(
-
-      items: items.map((item) {
-        List<DropdownMenuItem> items = [];
-    for (int i = 0; i < listData!.length; i++) {
-      items.add(new DropdownMenuItem(
-        child: new Text(
-          listData[i],
-        ),
-        value: listData[i],
-      ));
-    }
-      }).toList(),
-      value: selectedValueMap,
-      isCaseSensitiveSearch: false,
-      hint: new Text(
-        'เลือกอุปกรณ์',
-      ),
-      searchHint: new Text(
-        'ค้นหาอุปกรณ์',
-        style: new TextStyle(fontSize: 20),
-      ),
-      onChanged: (value) {
-        setState(() {
-          selectedValueMap = value;
-          _EquipmenController.text = selectedValueMap.toString();
-        });
-      },
-    ), */
+                  
                   SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -320,6 +271,14 @@ class _BorrowreturnState extends State<Borrowreturn> {
                         child: Container(
                           height: 48,
                           width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: Color(0xff24a878),
+                            borderRadius: BorderRadius.circular(5),
+                            border: Border.all(
+                              color:Color(0xff24a878),
+                              width: 1,
+                            ),
+                          ),
                           child: DateTimePicker(
                             initialValue: '',
                             dateMask: 'd MMM, yyyy',
@@ -353,6 +312,14 @@ class _BorrowreturnState extends State<Borrowreturn> {
                         child: Container(
                           height: 48,
                           width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: Color(0xff24a878),
+                            borderRadius: BorderRadius.circular(5),
+                            border: Border.all(
+                              color:Color(0xff24a878),
+                              width: 1,
+                            ),
+                          ),
                           child: DateTimePicker(
                             initialValue: '',
                             dateMask: 'd MMM, yyyy',
@@ -532,7 +499,7 @@ class _BorrowreturnState extends State<Borrowreturn> {
                   ),
                   Container(
                     width: double.infinity,
-                    height: 30,
+                    height: 35,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
                       color: Colors.green[700],
@@ -627,7 +594,7 @@ class _BorrowreturnState extends State<Borrowreturn> {
                   SizedBox(height: 20.0),
                   Container(
                     width: double.infinity,
-                    height: 30,
+                    height: 35,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
                       color: Colors.red[10],
@@ -647,9 +614,16 @@ class _BorrowreturnState extends State<Borrowreturn> {
                       style: ElevatedButton.styleFrom(
                         primary: Colors.red[400],
                       ),
-                      onPressed: () {
-                        setState(() {});
-                      },
+                     onPressed: () {
+                            setState(() {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (BuildContext context) => Another(),
+                                  ));
+                            });
+                            
+                          },
                       child: Text(
                         'ยกเลิก',
                         style: TextStyle(

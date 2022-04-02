@@ -447,7 +447,7 @@ class _EditProfileState extends State<EditProfile> {
                           SizedBox(height: 40),
                           Container(
                             width: 290,
-                            height: 30,
+                            height: 35,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5),
                               color: Colors.white60,

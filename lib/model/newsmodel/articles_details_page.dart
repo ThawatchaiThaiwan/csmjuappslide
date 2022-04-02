@@ -216,7 +216,7 @@ class ArticlePage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20.0),
               ),
               child: Text(
-                "ลิงค์ข่าว",
+                "ลิงค์เกี่ยวข้อง",
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   letterSpacing: 1.2,

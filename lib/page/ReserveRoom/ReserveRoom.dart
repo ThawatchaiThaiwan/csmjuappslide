@@ -511,6 +511,7 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                           //value: roomid,
                         ),
                       ),
+                      SizedBox(height: 10.0),
                       ///////////////////////////////////////////////////>>>>>>หมายเหตุ
                       Container(
                         padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
@@ -529,7 +530,7 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                       /////////////////////////////////////////////////////>>>>>ปุ่ม ส่งคำร้อง
                       Container(
                         width: double.infinity,
-                        height: 30,
+                        height: 35,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5),
                           color: Colors.green[700],
@@ -633,7 +634,7 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                       SizedBox(height: 20.0),
                       Container(
                         width: double.infinity,
-                        height: 30,
+                        height: 35,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5),
                           color: Colors.red[10],
@@ -654,7 +655,14 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                             primary: Colors.red[400],
                           ),
                           onPressed: () {
-                            setState(() {});
+                            setState(() {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (BuildContext context) => Another(),
+                                  ));
+                            });
+                            
                           },
                           child: Text(
                             'ยกเลิก',
@@ -690,7 +698,7 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
   }
 
   TimeOfDay _timeend = TimeOfDay.now();
-  var _timeend1;
+  //var _timeend1;
   var newTimeend;
   _selectTimeend(BuildContext context) async {
     final TimeOfDay? timeOfDay = await showTimePicker(
