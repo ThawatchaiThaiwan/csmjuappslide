@@ -612,7 +612,7 @@ result = string.substring(1, 4);  */
                                                   textAlign: TextAlign.center,
                                                 ),
                                                 onPressed: () {
-                                                  Navigator.push(
+                                                  Navigator.pop(
                                                       context,
                                                       MaterialPageRoute(
                                                         builder: (BuildContext
@@ -674,7 +674,7 @@ result = string.substring(1, 4);  */
                           ),
                          onPressed: () {
                             setState(() {
-                              Navigator.push(
+                              Navigator.pop(
                                   context,
                                   MaterialPageRoute(
                                     builder: (BuildContext context) => Another(),

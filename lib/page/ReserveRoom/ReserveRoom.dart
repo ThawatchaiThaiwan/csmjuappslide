@@ -1,6 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'dart:convert';
+import 'dart:ui';
 import 'package:appcsmju/APImodel/ReserveRoommodel.dart';
 import 'package:appcsmju/footbar/Foot.dart';
 import 'package:appcsmju/page/ReserveRoom/ListReserve.dart';
@@ -283,57 +284,41 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                             width: double.infinity,
                             height: 48,
                             padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                /* Text(
-                                  "เลือกรายวิชา:",
-                                  style: TextStyle(
-                                    fontSize: 20.0,
-                                    color: Colors.grey,
-                                  ),
-                                ), */
-
-                                Expanded(
-                                  child: DropdownButton(
-                                    underline: Padding(
-                                      padding: EdgeInsets.fromLTRB(2, 5, 2, 5),
+                            child: DropdownButton(
+                              underline: Padding(
+                                padding: EdgeInsets.fromLTRB(2, 5, 2, 5),
+                              ),
+                              isExpanded: true,
+                              hint: Text(
+                                "กรุณาเลือกรายวิชา",
+                                style: TextStyle(
+                                  fontSize: 19,
+                                  color: Colors.blueGrey[900],
+                                ),
+                              ),
+                              items: room_data?.map((item) {
+                                return new DropdownMenuItem(
+                                  child: new Text(
+                                    item['Classroom_Name'],
+                                    style: TextStyle(
+                                      fontSize: 18.0,
                                     ),
-                                    isExpanded: true,
-                                    hint: Text(
-                                      "กรุณาเลือกรายวิชา",
-                                      style: TextStyle(
-                                        fontSize: 19,
-                                        color: Colors.blueGrey[900],
-                                      ),
-                                    ),
-                                    items: room_data?.map((item) {
-                                      return new DropdownMenuItem(
-                                        child: new Text(
-                                          item['Classroom_Name'],
-                                          style: TextStyle(
-                                            fontSize: 18.0,
-                                          ),
-                                        ),
-                                        value:
-                                            item['Classroom_Name'].toString(),
-                                      );
-                                    }).toList(),
-                                    onChanged: (String? newVal) {
-                                      setState(() {
-                                        roomid = newVal;
-                                        _roomController.text = roomid!;
-                                        print(roomid.toString());
-                                      });
-                                    },
-                                    value: roomid,
                                   ),
-                                )
-                              ],
+                                  value: item['Classroom_Name'].toString(),
+                                );
+                              }).toList(),
+                              onChanged: (String? newVal) {
+                                setState(() {
+                                  roomid = newVal;
+                                  _roomController.text = roomid!;
+                                  print(roomid.toString());
+                                });
+                              },
+                              value: roomid,
                             ),
                           )),
                       SizedBox(height: 10.0),
-                      //////////////////////////////////////////////////////>>>>>.วันเริ่มต้น
+                      /////////////////////////////////////////////////////////////////////////////>>>>>.วันเริ่มต้น
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
@@ -348,6 +333,7 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                             ),
                           ),
                           SizedBox(width: 7.0),
+                          /////////////////////////////////////////////////////////////////////////////>>>>>.วันสิ้นสุด
                           Expanded(
                             child: Text(
                               " เวลาสิ้นสุดการจอง",
@@ -364,12 +350,21 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
+                          /////////////////////////////////////////////////////////////////////////////>>>>>.วันเริ่มต้น
                           Expanded(
                             flex: 1,
                             child: Container(
                               // padding: EdgeInsets.fromLTRB(5, 10, 5, 10),
-                              height: 40,
-                              width: 40,
+                              height: 48,
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                color: Color(0xff24a878),
+                                borderRadius: BorderRadius.circular(5),
+                                border: Border.all(
+                                  color: Color(0xff24a878),
+                                  width: 1,
+                                ),
+                              ),
                               child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                   primary: Color(0xff24a878),
@@ -399,13 +394,21 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                           ),
 
                           SizedBox(width: 10.0),
-                          //////////////////////////////////////////////////////>>>>>.วันสิ้นสุด
+                          ///////////////////////////////////////////////////////////////////////////////>>>>>.วันสิ้นสุด
                           Expanded(
                             flex: 1,
                             child: Container(
                               //padding: EdgeInsets.fromLTRB(5, 10, 5, 10),
-                              width: 40,
-                              height: 40,
+                              height: 48,
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                color: Color(0xff24a878),
+                                borderRadius: BorderRadius.circular(5),
+                                border: Border.all(
+                                  color: Color(0xff24a878),
+                                  width: 1,
+                                ),
+                              ),
                               child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                   primary: Color(0xff24a878),
@@ -436,7 +439,7 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                           ),
                         ],
                       ),
-                      /////////////////////////////////////////////////////////>>>>รายละเอียด
+                      //////////////////////////////////////////////////////////////////////////////>>>>รายละเอียด
                       SizedBox(height: 10.0),
                       Text(
                         "รายละเอียด",
@@ -470,7 +473,7 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                         //maxLength: 10,
                       ),
                       SizedBox(height: 10.0),
-                      /////////////////////////////////////////////////////////>>>>>อาจารย์ผู้รับรอง
+                      /////////////////////////////////////////////////////////////////////////////>>>>>อาจารย์ผู้รับรอง
                       Text(
                         "ชื่ออาจารย์ผู้รับรอง",
                         style: TextStyle(
@@ -480,39 +483,45 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                         ),
                       ),
                       SingleChildScrollView(
-                        child: DropdownSearch<String>(
-                          mode: Mode.DIALOG,
-                          showSelectedItems: true,
-                          items: [
-                            "อาจารย์ อรรถวิท ชังคมานนท์",
-                            "ผู้ช่วยศาสตราจารย์ ก่องกาญจน์ ดุลยไชย",
-                            "อาจารย์ ดร.กิตติกร หาญตระกูล",
-                            "ผู้ช่วยศาสตราจารย์ ดร.สนิท สิทธิ",
-                            "อาจารย์ อลงกต กองมณี",
-                            "ผู้ช่วยศาสตราจารย์ ภานุวัฒน์ เมฆะ",
-                            "ผู้ช่วยศาสตราจารย์ ดร.พาสน์ ปราโมกข์ชน",
-                            "ผู้ช่วยศาสตราจารย์ ดร.ปวีณ เขื่อนแก้ว",
-                            "อาจารย์ ดร.พยุงศักดิ์ เกษมสำราญ",
-                            "อาจารย์ ดร.สมนึก สินธุปวน",
-                            "อาจารย์ ดร.นษิ ตันติธารานุกุล",
-                            "อาจารย์ ดร.กิติศักดิ์ โอสถานันต์กุล"
-                          ],
-
-                          hint: "กรุณาเลือกอาจารย์ผู้รับรอง",
-
-                          popupItemDisabled: (String s) => s.startsWith('I'),
-                          onChanged: (String? newVal) {
-                            setState(() {
-                              adviser_id = newVal;
-                              _AdviserController.text = adviser_id!;
-                              print(adviser_id.toString());
-                            });
-                          },
-                          //value: roomid,
+                        child: Container(
+                          height: 48,
+                          width: double.infinity,
+                          
+                          child: DropdownSearch<String>(
+                            mode: Mode.DIALOG,
+                            showSelectedItems: true,
+                            items: [
+                              "อาจารย์ อรรถวิท ชังคมานนท์",
+                              "ผู้ช่วยศาสตราจารย์ ก่องกาญจน์ ดุลยไชย",
+                              "อาจารย์ ดร.กิตติกร หาญตระกูล",
+                              "ผู้ช่วยศาสตราจารย์ ดร.สนิท สิทธิ",
+                              "อาจารย์ อลงกต กองมณี",
+                              "ผู้ช่วยศาสตราจารย์ ภานุวัฒน์ เมฆะ",
+                              "ผู้ช่วยศาสตราจารย์ ดร.พาสน์ ปราโมกข์ชน",
+                              "ผู้ช่วยศาสตราจารย์ ดร.ปวีณ เขื่อนแก้ว",
+                              "อาจารย์ ดร.พยุงศักดิ์ เกษมสำราญ",
+                              "อาจารย์ ดร.สมนึก สินธุปวน",
+                              "อาจารย์ ดร.นษิ ตันติธารานุกุล",
+                              "อาจารย์ ดร.กิติศักดิ์ โอสถานันต์กุล"
+                            ],
+                            
+                        
+                            hint: "กรุณาเลือกอาจารย์ผู้รับรอง",
+                        
+                            popupItemDisabled: (String s) => s.startsWith('I'),
+                            onChanged: (String? newVal) {
+                              setState(() {
+                                adviser_id = newVal;
+                                _AdviserController.text = adviser_id!;
+                                print(adviser_id.toString());
+                              });
+                            },
+                            //value: roomid,
+                          ),
                         ),
                       ),
                       SizedBox(height: 10.0),
-                      ///////////////////////////////////////////////////>>>>>>หมายเหตุ
+                      //////////////////////////////////////////////////////////////////////////////>>>>>>หมายเหตุ
                       Container(
                         padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
                         child: Text(
@@ -527,7 +536,7 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                       ),
 
                       SizedBox(height: 30.0),
-                      /////////////////////////////////////////////////////>>>>>ปุ่ม ส่งคำร้อง
+                      ////////////////////////////////////////////////////////////////////////////>>>>>ปุ่ม ส่งคำร้อง
                       Container(
                         width: double.infinity,
                         height: 35,
@@ -573,7 +582,7 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                                     DateFormat('dd-MM-yyyy')
                                         .format(DateTime.now());
 
-                                ///////////////////////////////////////////////////>>>>>>>>.post
+                                ///////////////////////////////////////////////////////////////////>>>>>>>>.post
                                 final ReserveRoommodel? _user =
                                     await postReserveRoom(
                                         Classroom_Name,
@@ -588,7 +597,7 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                                         Book_Status,
                                         Book_Date);
 
-                                ///////////////////////////////////////////////////>>>>>>>>.post
+                                //////////////////////////////////////////////////////////////////////>>>>>>>>.post
 
                                 if (_DeteilController.text.isNotEmpty) {
                                   showDialog<String>(
@@ -605,7 +614,7 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                                                   textAlign: TextAlign.center,
                                                 ),
                                                 onPressed: () {
-                                                  Navigator.push(
+                                                  Navigator.pop(
                                                       context,
                                                       MaterialPageRoute(
                                                         builder: (BuildContext
@@ -630,7 +639,7 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                           ),
                         ),
                       ),
-                      ///////////////////////////////////////////////////>>>>>>>ปุ่มยกเลิก
+                      ///////////////////////////////////////////////////////////////////////>>>>>>>ปุ่มยกเลิก
                       SizedBox(height: 20.0),
                       Container(
                         width: double.infinity,
@@ -656,14 +665,14 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                           ),
                           onPressed: () {
                             setState(() {
-                              Navigator.push(
+                              Navigator.pop(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (BuildContext context) => Another(),
+                                    builder: (BuildContext context) =>
+                                        Another(),
                                   ));
                             });
-                            
-                          },
+                          }, 
                           child: Text(
                             'ยกเลิก',
                             style: TextStyle(

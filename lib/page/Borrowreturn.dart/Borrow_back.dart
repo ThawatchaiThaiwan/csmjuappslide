@@ -171,6 +171,7 @@ class _BorrowreturnState extends State<Borrowreturn> {
                   SizedBox(
                     height: 10,
                   ),
+                  /////////////////////////////////////////////////////////////////>>>>>>ค้นหาอุปกรณ์
                   Container(
                     alignment: Alignment.centerLeft,
                     child: Text(
@@ -197,20 +198,20 @@ class _BorrowreturnState extends State<Borrowreturn> {
                       child: Padding(
                         padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
                         child: SearchChoices.single(
-                          items:
-                              (equipmentdata != null && equipmentdata!.isNotEmpty)
-                                  ? equipmentdata?.map((item) {
-                                      return new DropdownMenuItem(
-                                        child: new Text(
-                                          item['Equipment_Name'],
-                                          style: TextStyle(
-                                            fontSize: 19.0,
-                                          ),
-                                        ),
-                                        value: item['Equipment_Name'].toString(),
-                                      );
-                                    }).toList()
-                                  : [],
+                          items: (equipmentdata != null &&
+                                  equipmentdata!.isNotEmpty)
+                              ? equipmentdata?.map((item) {
+                                  return new DropdownMenuItem(
+                                    child: new Text(
+                                      item['Equipment_Name'],
+                                      style: TextStyle(
+                                        fontSize: 19.0,
+                                      ),
+                                    ),
+                                    value: item['Equipment_Name'].toString(),
+                                  );
+                                }).toList()
+                              : [],
                           value: equipmentS,
                           hint: "ค้นหาอุปกรณ์",
                           style: TextStyle(
@@ -230,9 +231,7 @@ class _BorrowreturnState extends State<Borrowreturn> {
                       ),
                     ),
                   ),
-
-                  //////////////////////////////////////////////////////////////////
-                  
+                  /////////////////////////////////////////////////////////////////>>>>>วันที่ยืม
                   SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -250,7 +249,8 @@ class _BorrowreturnState extends State<Borrowreturn> {
                       ),
                       SizedBox(
                         width: 10,
-                      ),
+                      ), 
+                      /////////////////////////////////////////////////////////////>>>>>>วันที่คืน
                       Expanded(
                         flex: 1,
                         child: Text(
@@ -264,6 +264,7 @@ class _BorrowreturnState extends State<Borrowreturn> {
                       ),
                     ],
                   ),
+                  //////////////////////////////////////////////////////////////>>>>>ปุ่มวันที่ยืม    
                   Row(
                     children: [
                       Expanded(
@@ -275,7 +276,7 @@ class _BorrowreturnState extends State<Borrowreturn> {
                             color: Color(0xff24a878),
                             borderRadius: BorderRadius.circular(5),
                             border: Border.all(
-                              color:Color(0xff24a878),
+                              color: Color(0xff24a878),
                               width: 1,
                             ),
                           ),
@@ -286,7 +287,7 @@ class _BorrowreturnState extends State<Borrowreturn> {
                             firstDate: DateTime(2000),
                             lastDate: DateTime(2100),
                             dateHintText: "เลือกวันที่ยืม",
-                        
+
                             //dateLabelText: 'เลือกวันที่ยืม',
                             onChanged: (val) {
                               setState(() {
@@ -306,6 +307,7 @@ class _BorrowreturnState extends State<Borrowreturn> {
                           ),
                         ),
                       ),
+                      ///////////////////////////////////////////////////////////////////>>>>>>ปุ่มวันที่คืน
                       SizedBox(width: 10),
                       Expanded(
                         flex: 1,
@@ -316,7 +318,7 @@ class _BorrowreturnState extends State<Borrowreturn> {
                             color: Color(0xff24a878),
                             borderRadius: BorderRadius.circular(5),
                             border: Border.all(
-                              color:Color(0xff24a878),
+                              color: Color(0xff24a878),
                               width: 1,
                             ),
                           ),
@@ -351,6 +353,7 @@ class _BorrowreturnState extends State<Borrowreturn> {
                   SizedBox(
                     height: 10,
                   ),
+                  ////////////////////////////////////////////////////////////////////>>>>>ชื่อนามสกุล
                   Container(
                     alignment: Alignment.centerLeft,
                     child: Text(
@@ -394,6 +397,7 @@ class _BorrowreturnState extends State<Borrowreturn> {
                   SizedBox(
                     height: 10,
                   ),
+                  //////////////////////////////////////////////////////////////////>>>>อีเมล
                   Container(
                     alignment: Alignment.centerLeft,
                     child: Text(
@@ -437,6 +441,7 @@ class _BorrowreturnState extends State<Borrowreturn> {
                   SizedBox(
                     height: 10,
                   ),
+                  ///////////////////////////////////////////////////////////////////>>>>>หมายเหตุ
                   Container(
                     alignment: Alignment.centerLeft,
                     child: Text(
@@ -449,6 +454,7 @@ class _BorrowreturnState extends State<Borrowreturn> {
                     ),
                   ),
                   Container(
+                    //padding: EdgeInsets.fromLTRB(0, 2, 0, 2),
                     //margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
                     height: 48,
                     width: double.infinity,
@@ -466,10 +472,11 @@ class _BorrowreturnState extends State<Borrowreturn> {
                       ], */
                     ),
                     child: TextFormField(
+                      
                       controller: _NoteController,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
-                        hintText: 'หมายเหตุ',
+                        hintText: 'โปรดระบุ',
                         hintStyle: TextStyle(
                           color: Colors.blueGrey[900],
                           fontSize: 19,
@@ -479,9 +486,11 @@ class _BorrowreturnState extends State<Borrowreturn> {
                     ),
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 10,
                   ),
+                  ////////////////////////////////////////////////////////////////////>>>>> อธิบายหมายเหตุ
                   Container(
+                    padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
                     child: Text(
                         "*ผู้ยืมมีหน้าที่ต้องชดใช้ความเสียหายในกรณีที่ทรัพย์สินชํารุด หรือสูญหาย ตามมูลค่าทรัพย์สิน หากความเสียหายนั้นเกิดจากความประมาทของผู้ยืม",
                         style: TextStyle(
@@ -497,6 +506,7 @@ class _BorrowreturnState extends State<Borrowreturn> {
                   SizedBox(
                     height: 25,
                   ),
+                  /////////////////////////////////////////////////////////////////////>>>>>>ปุ่มยืนยัน
                   Container(
                     width: double.infinity,
                     height: 35,
@@ -565,7 +575,7 @@ class _BorrowreturnState extends State<Borrowreturn> {
                                               textAlign: TextAlign.center,
                                             ),
                                             onPressed: () {
-                                              Navigator.push(
+                                              Navigator.pop(
                                                   context,
                                                   MaterialPageRoute(
                                                     builder: (BuildContext
@@ -590,7 +600,7 @@ class _BorrowreturnState extends State<Borrowreturn> {
                       ),
                     ),
                   ),
-                  ///////////////////////////////////////////////////>>>>>>>ปุ่มยกเลิก
+                  ///////////////////////////////////////////////////////////////////////////>>>>>>>ปุ่มยกเลิก
                   SizedBox(height: 20.0),
                   Container(
                     width: double.infinity,
@@ -614,16 +624,15 @@ class _BorrowreturnState extends State<Borrowreturn> {
                       style: ElevatedButton.styleFrom(
                         primary: Colors.red[400],
                       ),
-                     onPressed: () {
-                            setState(() {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (BuildContext context) => Another(),
-                                  ));
-                            });
-                            
-                          },
+                      onPressed: () {
+                        setState(() {
+                          Navigator.pop(
+                              context,
+                              MaterialPageRoute(
+                                builder: (BuildContext context) => Another(),
+                              ));
+                        });
+                      },
                       child: Text(
                         'ยกเลิก',
                         style: TextStyle(
@@ -643,40 +652,7 @@ class _BorrowreturnState extends State<Borrowreturn> {
     );
   }
 
-  /* Widget getSearchableDropdown(List<dynamic>? listData, mapKey) {
-    List<DropdownMenuItem> items = [];
-    for (int i = 0; i < listData!.length; i++) {
-      items.add(new DropdownMenuItem(
-        child: new Text(
-          listData[i],
-        ),
-        value: listData[i],
-      ));
-    }
-    return ButtonTheme(
-      alignedDropdown: true,
-      child: DropdownButtonHideUnderline(
-        child: new SearchableDropdown(
-          items: items,
-          value: selectedValueMap[mapKey],
-          isCaseSensitiveSearch: false,
-          hint: new Text(
-            'เลือกอุปกรณ์',
-          ),
-          searchHint: new Text(
-            'ค้นหาอุปกรณ์',
-            style: new TextStyle(fontSize: 20),
-          ),
-          onChanged: (value) {
-            setState(() {
-              selectedValueMap[mapKey] = value;
-              _EquipmenController.text = selectedValueMap[mapKey].toString();
-            });
-          },
-        ),
-      ),
-    );
-  } */
+  
 
   /* Future<List<Borrowbackmodel>> getData(filter) async {
     var authToken = '1257|7D3I1qDi4m28ZWRMJTvSmVJ3kOYwSsBvyzJdQm16';
@@ -698,25 +674,3 @@ class _BorrowreturnState extends State<Borrowreturn> {
     return models;
   } */
 }
-/* FindDropdown<Borrowbackmodel>(
-                            label: "Nome",
-                            onFind: (String filter) async {
-                              var authToken = '1257|7D3I1qDi4m28ZWRMJTvSmVJ3kOYwSsBvyzJdQm16';
-                              var response = await Dio().get(
-                                "https://wwwdev.csmju.com/api/equipment",
-                                queryParameters: {"filter": filter},
-                              );
-                              print(response.data);
-                              options : Options(
-                                headers: {
-                                  'Authorization': 'Bearer $authToken',
-                                },
-                              );
-                              var models =
-                                  Borrowbackmodel.fromJsonList(response.data);
-                              return models;
-                            },
-                            onChanged: (Borrowbackmodel? data) {
-                              
-                            },
-                          ), */

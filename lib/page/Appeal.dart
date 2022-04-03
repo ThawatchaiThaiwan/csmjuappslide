@@ -2,6 +2,7 @@
 
 import 'dart:async';
 import 'dart:io';
+import 'package:appcsmju/footbar/Foot.dart';
 import 'package:appcsmju/post_api/AppealPost.dart';
 
 import 'package:image_picker/image_picker.dart';
@@ -357,7 +358,7 @@ class _AppealState extends State<Appeal> {
                             ),
                             onPressed: () {
                               setState(() {
-                                Navigator.push(
+                                Navigator.pop(
                                     context,
                                     MaterialPageRoute(
                                       builder: (BuildContext context) =>
