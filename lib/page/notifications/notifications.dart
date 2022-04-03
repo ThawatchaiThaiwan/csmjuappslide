@@ -54,7 +54,7 @@ class _NotificationsState extends State<Notifications> {
                   size: 100, color: Color.fromARGB(255, 104, 179, 151)),
               ListTile(
                 title: Text(
-                  "ไม่มีการแจ้งเตือน \n การแจ้งเตือนทั้งหมดจะแสดงตรงนี้ \n กรุณากลับมาตรวจสอบอีกครั้งในภานหลัง",
+                  "ไม่มีการแจ้งเตือน \n การแจ้งเตือนทั้งหมดจะแสดงตรงนี้ \n กรุณากลับมาตรวจสอบอีกครั้งในภายหลัง",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 20,
