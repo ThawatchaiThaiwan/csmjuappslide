@@ -483,11 +483,17 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                       ),
                       SingleChildScrollView(
                         child: Container(
+                          
                           height: 48,
                           width: double.infinity,
                           child: DropdownSearch<String>(
                             mode: Mode.DIALOG,
                             showSelectedItems: true,
+                            dropdownSearchBaseStyle:
+                                TextStyle(fontSize: 19,
+                                fontFamily: 'sarabun',),
+                                
+                            
                             items: [
                               "อาจารย์ อรรถวิท ชังคมานนท์",
                               "ผู้ช่วยศาสตราจารย์ ก่องกาญจน์ ดุลยไชย",
