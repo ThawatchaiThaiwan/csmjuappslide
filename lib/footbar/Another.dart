@@ -128,7 +128,7 @@ class _AnotherState extends State<Another> {
               ),
               child: InkWell(
                 onTap: () {
-                  Navigator.push(context,
+                  Navigator.pop(context,
                       MaterialPageRoute(builder: (context) => Profile()));
                 },
                 child: Padding(

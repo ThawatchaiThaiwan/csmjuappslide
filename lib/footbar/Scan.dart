@@ -1,4 +1,4 @@
-import 'package:appcsmju/footbar/Home.dart';
+/* import 'package:appcsmju/footbar/Home.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:barcode_scan/barcode_scan.dart';
@@ -24,3 +24,4 @@ class _ScanState extends State<Scan> {
     );
   }
 }
+ */

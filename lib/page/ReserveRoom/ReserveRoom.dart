@@ -415,13 +415,12 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                                 ),
                                 onPressed: () {
                                   _selectTimeend(context);
-
                                   setState(() {
-                                    //newTimeend = _timeend;
+                                    newTimeend = hoursend.toString() +
+                                        ":" +
+                                        minutesend.toString();
                                     _TimeendController.text =
-                                        hoursend.toString() +
-                                            ":" +
-                                            minutesend.toString();
+                                        newTimeend.toString();
 
                                     print(_TimeendController.text);
                                   });
@@ -486,7 +485,6 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                         child: Container(
                           height: 48,
                           width: double.infinity,
-                          
                           child: DropdownSearch<String>(
                             mode: Mode.DIALOG,
                             showSelectedItems: true,
@@ -504,10 +502,9 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                               "อาจารย์ ดร.นษิ ตันติธารานุกุล",
                               "อาจารย์ ดร.กิติศักดิ์ โอสถานันต์กุล"
                             ],
-                            
-                        
+
                             hint: "กรุณาเลือกอาจารย์ผู้รับรอง",
-                        
+
                             popupItemDisabled: (String s) => s.startsWith('I'),
                             onChanged: (String? newVal) {
                               setState(() {
@@ -614,7 +611,7 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                                                   textAlign: TextAlign.center,
                                                 ),
                                                 onPressed: () {
-                                                  Navigator.pop(
+                                                  Navigator.push(
                                                       context,
                                                       MaterialPageRoute(
                                                         builder: (BuildContext
@@ -672,7 +669,7 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                                         Another(),
                                   ));
                             });
-                          }, 
+                          },
                           child: Text(
                             'ยกเลิก',
                             style: TextStyle(
@@ -698,10 +695,12 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
       context: context,
       initialTime: _timefrist,
       //initialEntryMode: TimePickerEntryMode.dial,
+      
     );
     if (timeOfDay != null) {
       setState(() {
         _timefrist = timeOfDay;
+        
       });
     }
   }

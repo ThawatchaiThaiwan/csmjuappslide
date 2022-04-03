@@ -138,7 +138,7 @@ class _HomePageCarouselState extends State<HomePageCarousel> {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
+              Navigator.pop(context, MaterialPageRoute(builder: (context) {
                 return Notifications();
               }));
             },

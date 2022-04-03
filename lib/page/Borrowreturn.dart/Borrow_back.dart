@@ -268,8 +268,10 @@ class _BorrowreturnState extends State<Borrowreturn> {
                   Row(
                     children: [
                       Expanded(
+                        
                         flex: 1,
                         child: Container(
+                          padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
                           height: 48,
                           width: double.infinity,
                           decoration: BoxDecoration(
@@ -312,6 +314,7 @@ class _BorrowreturnState extends State<Borrowreturn> {
                       Expanded(
                         flex: 1,
                         child: Container(
+                          padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
                           height: 48,
                           width: double.infinity,
                           decoration: BoxDecoration(
@@ -458,6 +461,7 @@ class _BorrowreturnState extends State<Borrowreturn> {
                     //margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
                     height: 48,
                     width: double.infinity,
+                    //margin: EdgeInsets.all(10),
                     //color: Colors.blueGrey[100],
                     decoration: BoxDecoration(
                       //color: Colors.blueGrey[200],

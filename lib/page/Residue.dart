@@ -611,15 +611,10 @@ result = string.substring(1, 4);  */
                                                   'ตกลง',
                                                   textAlign: TextAlign.center,
                                                 ),
-                                                onPressed: () {
-                                                  Navigator.pop(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (BuildContext
-                                                                context) =>
-                                                            Foot(),
-                                                      ));
-                                                },
+                                                onPressed: () => Navigator.pop(
+                                                context,
+                                                'ตกลง',
+                                              ),
                                               ),
                                             ],
                                           ));

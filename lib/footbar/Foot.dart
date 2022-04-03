@@ -1,10 +1,7 @@
 import 'package:appcsmju/footbar/Home.dart';
-
 import 'package:appcsmju/footbar/Another.dart';
 import 'package:appcsmju/footbar/News.dart';
 import 'package:appcsmju/footbar/Calendar.dart';
-import 'package:appcsmju/footbar/Scan.dart';
-
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:barcode_scan/barcode_scan.dart';
@@ -15,7 +12,6 @@ class Foot extends StatefulWidget {
   @override
   _FootState createState() => _FootState();
 }
-
 
 var data;
 bool hasdata = false;
@@ -28,10 +24,12 @@ class _FootState extends State<Foot> {
   final List<Widget> screens = [
     HomePageCarousel(),
     News(),
-    Scan(),
     Calendar(),
     Another(),
   ];
+  String qrData = "No data found!";
+  var data;
+  bool hasdata = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +38,7 @@ class _FootState extends State<Foot> {
         bucket: bucket,
       ),
 
-      // Fab Button///////////////////////////////////////////////////>>>>>.qr แสกน
+      // Fab Button////////////////////////////////////////////////////////////////>>>>>.qr แสกน
       floatingActionButton: FloatingActionButton(
         child: Icon(
           Icons.qr_code_scanner_sharp,
@@ -53,46 +51,15 @@ class _FootState extends State<Foot> {
             autoEnableFlash: true,
           );
           var data = await BarcodeScanner.scan(options: options);
+
           setState(() {
             qrData = data.rawContent.toString();
             hasdata = true;
           });
-
-          showDialog<String>(
-              context: context,
-              builder: (BuildContext context) => AlertDialog(
-                    title: Text(
-                      "พบแหล่งข้อมูล:  ${(qrData)}",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20),
-                    ),
-                    actions: <Widget>[
-                      TextButton(
-                        child: const Text('ไปยังลิงค์',
-                            textAlign: TextAlign.center),
-                        onPressed: hasdata
-                            ? () async {
-                                if (!await canLaunch(qrData)) {
-                                  print(qrData);
-                                  await launch(qrData);
-                                } else {
-                                  throw 'Could not launch ';
-                                }
-                              }
-                            : null,
-                      ),
-                      TextButton(
-                        onPressed: () => Navigator.pop(
-                          context,
-                          'ยกเลิก',
-                        ),
-                        child: const Text(
-                          'ยกเลิก',
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    ],
-                  ));
+          if (qrData.contains("http")) {
+          launch(qrData);
+          }
+          
         },
       ),
       ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -128,8 +95,10 @@ class _FootState extends State<Foot> {
                         Text(
                           'หน้าหลัก',
                           style: TextStyle(
-                            color: currentTab == 0 ? Colors.blue : Colors.grey,fontSize: 20,fontWeight: FontWeight.bold
-                          ),
+                              color:
+                                  currentTab == 0 ? Colors.blue : Colors.grey,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
                         )
                       ],
                       ////////////////////////////////////////////////////////////////////////////////ข่าวสาร
@@ -153,8 +122,10 @@ class _FootState extends State<Foot> {
                         Text(
                           '   ข่าวสาร   ',
                           style: TextStyle(
-                            color: currentTab == 1 ? Colors.blue : Colors.grey,fontSize: 20,fontWeight: FontWeight.bold
-                          ),
+                              color:
+                                  currentTab == 1 ? Colors.blue : Colors.grey,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
                         )
                       ],
                     ),
@@ -182,8 +153,10 @@ class _FootState extends State<Foot> {
                         Text(
                           ' ปฏิทิน ',
                           style: TextStyle(
-                            color: currentTab == 2 ? Colors.blue : Colors.grey,fontSize: 20,fontWeight: FontWeight.bold
-                          ),
+                              color:
+                                  currentTab == 2 ? Colors.blue : Colors.grey,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
                         )
                       ],
                     ),
@@ -207,8 +180,10 @@ class _FootState extends State<Foot> {
                         Text(
                           'บริการอื่น ๆ',
                           style: TextStyle(
-                            color: currentTab == 3 ? Colors.blue : Colors.grey,fontSize: 20,fontWeight: FontWeight.bold
-                          ),
+                              color:
+                                  currentTab == 3 ? Colors.blue : Colors.grey,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
                         )
                       ],
                     ),

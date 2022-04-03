@@ -5,7 +5,6 @@ import 'package:appcsmju/api/API_activity.dart';
 import 'package:appcsmju/model/carouselmodel/Activitycustombelow.dart';
 import 'package:appcsmju/page/Profile/Profile.dart';
 import 'package:appcsmju/page/notifications/notifications.dart';
-import 'package:get/route_manager.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:appcsmju/model/calendarmodel/evencalendar.dart';
@@ -33,6 +32,7 @@ class _CalendarState extends State<Calendar> {
   @override
   void initState() {
     selectedEvents = {};
+    findUser();
     super.initState();
   }
 
@@ -43,7 +43,6 @@ class _CalendarState extends State<Calendar> {
   @override
   void dispose() {
     _eventController.dispose();
-    findUser();
     super.dispose();
   }
 
@@ -86,7 +85,6 @@ class _CalendarState extends State<Calendar> {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
               return Profile();
             }));
-            
           },
           child: ClipRRect(
             child: Padding(
@@ -119,11 +117,10 @@ class _CalendarState extends State<Calendar> {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
+              Navigator.pop(context, MaterialPageRoute(builder: (context) {
                 return Notifications();
               }));
             },
-            
             icon: Icon(
               Icons.notifications,
               color: Colors.blueGrey[800],
@@ -145,7 +142,7 @@ class _CalendarState extends State<Calendar> {
                 });
               },
               startingDayOfWeek: StartingDayOfWeek.monday,
-      
+
               daysOfWeekVisible: true,
               daysOfWeekStyle: DaysOfWeekStyle(
                   weekdayStyle:
@@ -154,7 +151,7 @@ class _CalendarState extends State<Calendar> {
                       color: Colors.redAccent,
                       fontSize: 15,
                       fontWeight: FontWeight.bold)),
-      
+
               //Day Changed
               onDaySelected: (DateTime selectDay, DateTime focusDay) {
                 setState(() {
@@ -166,9 +163,9 @@ class _CalendarState extends State<Calendar> {
               selectedDayPredicate: (DateTime date) {
                 return isSameDay(selectedDay, date);
               },
-      
+
               eventLoader: _getEventsfromDay,
-      
+
               //To style the Calendar
               calendarStyle: CalendarStyle(
                 /* rangeStartTextStyle: TextStyle(
@@ -255,10 +252,9 @@ class _CalendarState extends State<Calendar> {
               ),
             ),
             SingleChildScrollView(
-              padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
+                padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
                 physics: ScrollPhysics(),
                 child: Container(
-                 
                   height: MediaQuery.of(context).size.height,
                   child: FutureBuilder(
                     future: ActivityApiService.getsActivity(),
@@ -269,7 +265,6 @@ class _CalendarState extends State<Calendar> {
                         return Align(
                           alignment: Alignment.topCenter,
                           child: ListView.builder(
-                            
                             cacheExtent: 2000,
                             reverse: true,
                             shrinkWrap: true,
