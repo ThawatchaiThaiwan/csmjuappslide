@@ -164,7 +164,7 @@ result = string.substring(1, 4);  */
             child: Container(
                 padding: EdgeInsets.fromLTRB(15, 10, 15, 10),
                 width: double.infinity,
-                height: 830,
+                height: 850,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(5),
