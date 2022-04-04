@@ -1,9 +1,8 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'dart:convert';
-import 'dart:math';
-import 'package:dropdown_search/dropdown_search.dart';
-import 'package:find_dropdown/find_dropdown.dart';
+
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:http/http.dart' as http;
 import 'package:appcsmju/APImodel/BorrowReturnPostmodel.dart';
 import 'package:appcsmju/APImodel/Borrowmodel.dart';
@@ -14,7 +13,7 @@ import 'package:appcsmju/post_api/BorrowReturnpost.dart';
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:search_choices/search_choices.dart';
-import 'package:searchable_dropdown/searchable_dropdown.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Borrowreturn extends StatefulWidget {
@@ -109,7 +108,7 @@ class _BorrowreturnState extends State<Borrowreturn> {
 
   ///
   final formkey = GlobalKey<FormState>();
-  var nameKey = GlobalKey<FindDropdownState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -249,7 +248,7 @@ class _BorrowreturnState extends State<Borrowreturn> {
                       ),
                       SizedBox(
                         width: 10,
-                      ), 
+                      ),
                       /////////////////////////////////////////////////////////////>>>>>>วันที่คืน
                       Expanded(
                         flex: 1,
@@ -264,11 +263,10 @@ class _BorrowreturnState extends State<Borrowreturn> {
                       ),
                     ],
                   ),
-                  //////////////////////////////////////////////////////////////>>>>>ปุ่มวันที่ยืม    
+                  //////////////////////////////////////////////////////////////>>>>>ปุ่มวันที่ยืม
                   Row(
                     children: [
                       Expanded(
-                        
                         flex: 1,
                         child: Container(
                           padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
@@ -476,7 +474,6 @@ class _BorrowreturnState extends State<Borrowreturn> {
                       ], */
                     ),
                     child: TextFormField(
-                      
                       controller: _NoteController,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
@@ -565,32 +562,40 @@ class _BorrowreturnState extends State<Borrowreturn> {
 
                             ///////////////////////////////////////////////////>>>>>>>>.post
 
-                            if (_NoteController.text.isNotEmpty) {
-                              showDialog<String>(
-                                  context: context,
-                                  builder: (BuildContext context) =>
-                                      AlertDialog(
-                                        title: const Text('แจ้งเตือน'),
-                                        content: const Text('ยืมสำเร็จ'),
-                                        actions: <Widget>[
-                                          TextButton(
-                                            child: const Text(
-                                              'ตกลง',
-                                              textAlign: TextAlign.center,
-                                            ),
-                                            onPressed: () {
-                                              Navigator.pop(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                    builder: (BuildContext
-                                                            context) =>
-                                                        Foot(),
-                                                  ));
-                                            },
-                                          ),
-                                        ],
-                                      ));
-                            }
+                            AwesomeDialog(
+                              context: context,
+                              animType: AnimType.LEFTSLIDE,
+                              headerAnimationLoop: false,
+                              dialogType: DialogType.SUCCES,
+                              showCloseIcon: true,
+                              title: 'สำเร็จ',
+                              btnOkText: 'ตกลง',
+                              titleTextStyle: TextStyle(
+                                color: Colors.blueGrey[900],
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              desc:
+                                  'ยืมสำเร็จ กรุณารอการยืนยันจากเจ้าหน้าที่',
+                              descTextStyle: TextStyle(
+                                color: Colors.blueGrey[700],
+                                fontSize: 18,
+                              ),
+                              btnOkColor: Color(0xff24a878),
+                              btnOkOnPress: () {
+                                Navigator.pop(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          Another(),
+                                    ));
+                              },
+                              btnOkIcon: Icons.check_circle,
+                              onDissmissCallback: (type) {
+                                debugPrint(
+                                    'Dialog Dissmiss from callback $type');
+                              },
+                            ).show();
                           }
                         });
                       },
@@ -655,8 +660,6 @@ class _BorrowreturnState extends State<Borrowreturn> {
       ),
     );
   }
-
-  
 
   /* Future<List<Borrowbackmodel>> getData(filter) async {
     var authToken = '1257|7D3I1qDi4m28ZWRMJTvSmVJ3kOYwSsBvyzJdQm16';

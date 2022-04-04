@@ -3,7 +3,9 @@
 import 'package:appcsmju/APImodel/Activity.dart';
 import 'package:appcsmju/APImodel/ActivitypostModel.dart';
 import 'package:appcsmju/footbar/Another.dart';
+import 'package:appcsmju/model/activitymodel/listjoin.dart';
 import 'package:appcsmju/post_api/postActivity.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -17,7 +19,7 @@ class ActivityPage extends StatefulWidget {
 }
 
 class _ActivityPageState extends State<ActivityPage> {
-   @override
+  @override
   void initState() {
     _getUserInfo();
 
@@ -44,6 +46,7 @@ class _ActivityPageState extends State<ActivityPage> {
     studentcode = localStorage.getString('Studentcode');
     //userData = user;
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -109,7 +112,7 @@ class _ActivityPageState extends State<ActivityPage> {
                     widget.activity.Activity_Title,
                     textAlign: TextAlign.start,
                     style: TextStyle(
-                      letterSpacing: 1.2,
+                      letterSpacing: 1,
                       color: Colors.blueGrey[900],
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -326,7 +329,6 @@ class _ActivityPageState extends State<ActivityPage> {
                             fontFamily: 'Sarabun',
                           ),
                         ),
-                        
                       ],
                     ),
                   ],
@@ -336,7 +338,7 @@ class _ActivityPageState extends State<ActivityPage> {
                 ),
                 Container(
                   width: double.infinity,
-                  height: 30,
+                  height: 35,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
                     color: Colors.green[700],
@@ -384,29 +386,38 @@ class _ActivityPageState extends State<ActivityPage> {
 
                           ///////////////////////////////////////////////////>>>>>>>>.post
                           if (email != null) {
-                            showDialog<String>(
-                                context: context,
-                                builder: (BuildContext context) => AlertDialog(
-                                      title: const Text('แจ้งเตือน'),
-                                      content: const Text('ลงชื่อเข้าร่วมกิจกรรมเรียบร้อยแล้ว'),
-                                      actions: <Widget>[
-                                        TextButton(
-                                          child: const Text(
-                                            'ตกลง',
-                                            textAlign: TextAlign.center,
-                                          ),
-                                          onPressed: () {
-                                            Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                  builder:
-                                                      (BuildContext context) =>
-                                                          Another(),
-                                                ));
-                                          },
-                                        ),
-                                      ],
+                            AwesomeDialog(
+                              context: context,
+                              animType: AnimType.LEFTSLIDE,
+                              headerAnimationLoop: false,
+                              dialogType: DialogType.SUCCES,
+                              showCloseIcon: true,
+                              title: 'สำเร็จ',
+                              btnOkText: 'ตกลง',
+                              titleTextStyle: TextStyle(
+                                color: Colors.blueGrey[900],
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              desc: 'ลงชื่อเข้าร่วมกิจกรรมสำเร็จ',
+                              descTextStyle: TextStyle(
+                                color: Colors.blueGrey[700],
+                                fontSize: 18,
+                              ),
+                              btnOkColor: Color(0xff24a878),
+                              btnOkOnPress: () {
+                                Navigator.pop(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (BuildContext context) => Another(),
                                     ));
+                              },
+                              btnOkIcon: Icons.check_circle,
+                              onDissmissCallback: (type) {
+                                debugPrint(
+                                    'Dialog Dissmiss from callback $type');
+                              },
+                            ).show();
                           }
                         }
                       });
@@ -428,5 +439,4 @@ class _ActivityPageState extends State<ActivityPage> {
       ),
     );
   }
-    
 }

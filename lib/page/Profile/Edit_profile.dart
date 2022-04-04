@@ -1,6 +1,8 @@
 // ignore_for_file: non_constant_identifier_names
 import 'dart:convert';
 import 'dart:io';
+import 'package:appcsmju/page/Profile/Profile.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:http/http.dart' as http;
 import 'package:appcsmju/post_api/ProfilePostandUpdate.dart';
 import 'package:appcsmju/footbar/Another.dart';
@@ -15,7 +17,6 @@ class EditProfile extends StatefulWidget {
 
 class _EditProfileState extends State<EditProfile> {
   ProfileService service = ProfileService();
-  
 
   final formKeyP = GlobalKey<FormState>();
 
@@ -85,7 +86,6 @@ class _EditProfileState extends State<EditProfile> {
           image = dataStudent["PictureProfile"];
           studentcode = dataStudent["studentCode"];
         });
-        
       }
     }
   }
@@ -488,32 +488,42 @@ class _EditProfileState extends State<EditProfile> {
                                     //'PictureProfile': base64Image,
                                   };
 
-                                  
-                                    service.postImage(body, imageprofile!.path);
-                                  Navigator.pop(context);
-                                  
+                                  service.postImage(body, imageprofile!.path);
 
-                                
-                                  showDialog<String>(
-                                      context: context,
-                                      builder: (BuildContext context) =>
-                                          AlertDialog(
-                                            title: const Text('แจ้งเตือน'),
-                                            content: const Text(
-                                                'ติดต่อหลักสูตรสำเร็จ'),
-                                            actions: <Widget>[
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                  context,
-                                                  'ตกลง',
-                                                ),
-                                                child: const Text(
-                                                  'ตกลง',
-                                                  textAlign: TextAlign.center,
-                                                ),
-                                              ),
-                                            ],
+                                  AwesomeDialog(
+                                    context: context,
+                                    animType: AnimType.LEFTSLIDE,
+                                    headerAnimationLoop: false,
+                                    dialogType: DialogType.SUCCES,
+                                    showCloseIcon: true,
+                                    title: 'สำเร็จ',
+                                    btnOkText: 'ตกลง',
+                                    titleTextStyle: TextStyle(
+                                      color: Colors.blueGrey[900],
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                    desc:
+                                        'แก้ไขโปรไฟล์สำเร็จ',
+                                    descTextStyle: TextStyle(
+                                      color: Colors.blueGrey[700],
+                                      fontSize: 18,
+                                    ),
+                                    btnOkColor: Color(0xff24a878),
+                                    btnOkOnPress: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (BuildContext context) =>
+                                                Profile(),
                                           ));
+                                    },
+                                    btnOkIcon: Icons.check_circle,
+                                    onDissmissCallback: (type) {
+                                      debugPrint(
+                                          'Dialog Dissmiss from callback $type');
+                                    },
+                                  ).show();
                                 }
                               },
                               child: Text(

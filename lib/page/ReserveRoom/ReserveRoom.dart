@@ -5,6 +5,7 @@ import 'dart:ui';
 import 'package:appcsmju/APImodel/ReserveRoommodel.dart';
 import 'package:appcsmju/footbar/Foot.dart';
 import 'package:appcsmju/page/ReserveRoom/ListReserve.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 
 import 'package:http/http.dart' as http;
@@ -483,17 +484,16 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                       ),
                       SingleChildScrollView(
                         child: Container(
-                          
                           height: 48,
                           width: double.infinity,
                           child: DropdownSearch<String>(
                             mode: Mode.DIALOG,
                             showSelectedItems: true,
-                            dropdownSearchBaseStyle:
-                                TextStyle(fontSize: 19,
-                                fontFamily: 'sarabun',),
-                                
-                            
+                            dropdownSearchBaseStyle: TextStyle(
+                              fontSize: 19,
+                              fontFamily: 'sarabun',
+                            ),
+
                             items: [
                               "อาจารย์ อรรถวิท ชังคมานนท์",
                               "ผู้ช่วยศาสตราจารย์ ก่องกาญจน์ ดุลยไชย",
@@ -602,33 +602,40 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
 
                                 //////////////////////////////////////////////////////////////////////>>>>>>>>.post
 
-                                if (_DeteilController.text.isNotEmpty) {
-                                  showDialog<String>(
-                                      context: context,
+                                AwesomeDialog(
+                                  context: context,
+                                  animType: AnimType.LEFTSLIDE,
+                                  headerAnimationLoop: false,
+                                  dialogType: DialogType.SUCCES,
+                                  showCloseIcon: true,
+                                  title: 'สำเร็จ',
+                                  btnOkText: 'ตกลง',
+                                  titleTextStyle: TextStyle(
+                                    color: Colors.blueGrey[900],
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  desc:
+                                      'จองห้องเรียนสำเร็จ กรุณารอการอนุมัติจากเจ้าหน้าที่',
+                                  descTextStyle: TextStyle(
+                                    color: Colors.blueGrey[700],
+                                    fontSize: 18,
+                                  ),
+                                  btnOkColor: Color(0xff24a878),
+                                  btnOkOnPress: () {
+                                    Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
                                       builder: (BuildContext context) =>
-                                          AlertDialog(
-                                            title: const Text('แจ้งเตือน'),
-                                            content:
-                                                const Text('จองห้องสำเร็จ'),
-                                            actions: <Widget>[
-                                              TextButton(
-                                                child: const Text(
-                                                  'ตกลง',
-                                                  textAlign: TextAlign.center,
-                                                ),
-                                                onPressed: () {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (BuildContext
-                                                                context) =>
-                                                            Foot(),
-                                                      ));
-                                                },
-                                              ),
-                                            ],
-                                          ));
-                                }
+                                          Another(),
+                                    ));
+                                  },
+                                  btnOkIcon: Icons.check_circle,
+                                  onDissmissCallback: (type) {
+                                    debugPrint(
+                                        'Dialog Dissmiss from callback $type');
+                                  },
+                                ).show();
                               }
                             });
                           },
@@ -701,12 +708,10 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
       context: context,
       initialTime: _timefrist,
       //initialEntryMode: TimePickerEntryMode.dial,
-      
     );
     if (timeOfDay != null) {
       setState(() {
         _timefrist = timeOfDay;
-        
       });
     }
   }

@@ -8,6 +8,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.8.2"
+  awesome_dialog:
+    dependency: "direct main"
+    description:
+      name: awesome_dialog
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.2.0"
   barcode_scan:
     dependency: "direct main"
     description:
@@ -141,13 +148,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "6.1.2"
-  find_dropdown:
-    dependency: "direct main"
-    description:
-      name: find_dropdown
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.0"
   fixnum:
     dependency: transitive
     description:
@@ -155,6 +155,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.10.11"
+  flare_flutter:
+    dependency: transitive
+    description:
+      name: flare_flutter
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.2"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -174,6 +181,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.3.0"
+  flutter_lints:
+    dependency: transitive
+    description:
+      name: flutter_lints
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.4"
   flutter_plugin_android_lifecycle:
     dependency: transitive
     description:
@@ -275,6 +289,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.0"
+  lints:
+    dependency: transitive
+    description:
+      name: lints
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.1"
   localstorage:
     dependency: "direct main"
     description:
@@ -471,20 +492,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.19"
-  searchable_dropdown:
-    dependency: "direct main"
-    description:
-      name: searchable_dropdown
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.1.3"
-  select_dialog:
-    dependency: transitive
-    description:
-      name: select_dialog
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.0"
   shared_preferences:
     dependency: "direct main"
     description:
@@ -548,6 +555,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.0"
+  simple_animations:
+    dependency: transitive
+    description:
+      name: simple_animations
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.0.1"
   simple_gesture_detector:
     dependency: transitive
     description:

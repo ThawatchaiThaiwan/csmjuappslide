@@ -1,143 +1,381 @@
-/* import 'package:flutter/material.dart';
-import 'package:searchable_dropdown/searchable_dropdown.dart';
-import 'dart:async';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
+import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:flutter/material.dart';
 
 
-void main() => runApp(SearchableDropdownApp());
 
-class SearchableDropdownApp extends StatefulWidget {
-  @override
-  _AppState createState() => _AppState();
-}
+void main() => runApp(const myapp());
 
-List<String> localData = ['One' ,'Two' ,'Three' ,'Four' ,'Five' ,'Six' ,'Seven' ,'Eight' ,'Nine' ,'Ten' ,];
-
-class _AppState extends State<SearchableDropdownApp> {
-  Map<String, String> selectedValueMap = Map();
-
-  @override
-  void initState() {
-    
-    selectedValueMap["server"] = "";
-    super.initState();
-  }
+class myapp extends StatelessWidget {
+  const myapp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          title: const Text('Searchable Dropdown Example App'),
-        ),
-        body: new SingleChildScrollView(
-          child: Container(
-            height: 571,
-            width: double.infinity,
-            color: Colors.white.withOpacity(0.4),
-            child: Container(
-              padding: EdgeInsets.only(left: 10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  new Container(
-                    child: new Text(
-                      'Dropdown with local data : ',
-                      style: new TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const HomePage(title: 'Flutter Demo Home Page'),
+    );
+  }
+}
+
+class HomePage extends StatefulWidget {
+  const HomePage({
+    Key? key, String? title,
+  }) : super(key: key);
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Awesome Dialog Example'),
+      ),
+      body: Center(
+        child: Container(
+          padding: const EdgeInsets.all(16),
+          child: SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                AnimatedButton(
+                  text: 'Info Dialog fixed width and sqare buttons',
+                  pressEvent: () {
+                    AwesomeDialog(
+                      context: context,
+                      dialogType: DialogType.INFO_REVERSED,
+                      borderSide: const BorderSide(
+                        color: Colors.green,
+                        width: 2,
                       ),
-                    )
-                  ),
-                  // use local data for providing options and store selected value to the key "local"
-                  getSearchableDropdown(localData, "local"),
-                  new Container(
-                    child: new Text(
-                      'server data : ',
-                      style: new TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold
+                      width: 280,
+                      buttonsBorderRadius: const BorderRadius.all(
+                        Radius.circular(2),
                       ),
-                    )
-                  ),
-                  FutureBuilder<List>(
-                    // get data from server and return a list of mapped 'name' fields
-                    future: getServerData(), //sets getServerData method as the expected Future
-                    builder: (context, snapshot) {
-                      if (snapshot.hasData) { //checks if response returned valid data
-                        // use mapped 'name' fields for providing options and store selected value to the key "server"
-                        return getSearchableDropdown( snapshot.data , "server");
-                      }
-                      else if (snapshot.hasError) { //checks if the response threw error
-                        return Text("${snapshot.error}");
-                      }
-                      return CircularProgressIndicator();
-                    },
-                  ),
-                ],
-              ),
+                      headerAnimationLoop: false,
+                      animType: AnimType.BOTTOMSLIDE,
+                      title: 'INFO',
+                      desc: 'Dialog description here...',
+                      showCloseIcon: true,
+                      btnCancelOnPress: () {},
+                      btnOkOnPress: () {},
+                    ).show();
+                  },
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+                AnimatedButton(
+                  text: 'Question Dialog With Custom BTN Style',
+                  pressEvent: () {
+                    AwesomeDialog(
+                      context: context,
+                      dialogType: DialogType.QUESTION,
+
+                        
+                      headerAnimationLoop: false,
+                      animType: AnimType.BOTTOMSLIDE,
+                      title: 'Question',
+                      desc: 'Dialog description here...',
+                      buttonsTextStyle: const TextStyle(color: Colors.black),
+                      
+                      showCloseIcon: true,
+                      btnCancelText: 'ยกเลิก',
+                      btnOkText: 'ตกลง',
+                      btnCancelOnPress: () {},
+                      btnOkOnPress: () {},
+                    ).show();
+                  },
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+                AnimatedButton(
+                  text: 'Info Dialog Without buttons',
+                  pressEvent: () {
+                    AwesomeDialog(
+                      context: context,
+                      headerAnimationLoop: true,
+                      animType: AnimType.BOTTOMSLIDE,
+                      title: 'INFO',
+                      desc:
+                          'Lorem ipsum dolor sit amet consectetur adipiscing elit eget ornare tempus, vestibulum sagittis rhoncus felis hendrerit lectus ultricies duis vel, id morbi cum ultrices tellus metus dis ut donec. Ut sagittis viverra venenatis eget euismod faucibus odio ligula phasellus,',
+                    ).show();
+                  },
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+                AnimatedButton(
+                  text: 'Warning Dialog',
+                  color: Colors.orange,
+                  pressEvent: () {
+                    AwesomeDialog(
+                      context: context,
+                      dialogType: DialogType.WARNING,
+                      headerAnimationLoop: false,
+                      animType: AnimType.TOPSLIDE,
+                      showCloseIcon: true,
+                      closeIcon: const Icon(Icons.close_fullscreen_outlined),
+                      title: 'Warning',
+                      desc:
+                          'Dialog description here..................................................',
+                      btnCancelOnPress: () {},
+                      onDissmissCallback: (type) {
+                        debugPrint('Dialog Dissmiss from callback $type');
+                      },
+                      btnOkOnPress: () {},
+                    ).show();
+                  },
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+                AnimatedButton(
+                  text: 'Error Dialog',
+                  color: Colors.red,
+                  pressEvent: () {
+                    AwesomeDialog(
+                      context: context,
+                      dialogType: DialogType.ERROR,
+                      animType: AnimType.RIGHSLIDE,
+                      headerAnimationLoop: true,
+                      title: 'Error',
+                      desc:
+                          'Dialog description here..................................................',
+                      btnOkOnPress: () {},
+                      btnOkIcon: Icons.cancel,
+                      btnOkColor: Colors.red,
+                    ).show();
+                  },
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+                AnimatedButton(
+                  text: 'Succes Dialog',
+                  color: Colors.green,
+                  pressEvent: () {
+                    AwesomeDialog(
+                      context: context,
+                      animType: AnimType.LEFTSLIDE,
+                      headerAnimationLoop: false,
+                      dialogType: DialogType.SUCCES,
+                      showCloseIcon: true,
+                      title: 'Succes',
+                      desc:
+                          'Dialog description here..................................................',
+                      btnOkOnPress: () {
+                        debugPrint('OnClcik');
+                      },
+                      btnOkIcon: Icons.check_circle,
+                      onDissmissCallback: (type) {
+                        debugPrint('Dialog Dissmiss from callback $type');
+                      },
+                    ).show();
+                  },
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+                AnimatedButton(
+                  text: 'No Header Dialog',
+                  color: Colors.cyan,
+                  pressEvent: () {
+                    AwesomeDialog(
+                      context: context,
+                      headerAnimationLoop: false,
+                      dialogType: DialogType.NO_HEADER,
+                      title: 'No Header',
+                      desc:
+                          'Dialog description here..................................................',
+                      btnOkOnPress: () {
+                        debugPrint('OnClcik');
+                      },
+                      btnOkIcon: Icons.check_circle,
+                    ).show();
+                  },
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+                AnimatedButton(
+                  text: 'Custom Body Dialog',
+                  color: Colors.blueGrey,
+                  pressEvent: () {
+                    AwesomeDialog(
+                      context: context,
+                      animType: AnimType.SCALE,
+                      dialogType: DialogType.INFO,
+                      body: const Center(
+                        child: Text(
+                          'If the body is specified, then title and description will be ignored, this allows to further customize the dialogue.',
+                          style: TextStyle(fontStyle: FontStyle.italic),
+                        ),
+                      ),
+                      title: 'This is Ignored',
+                      desc: 'This is also Ignored',
+                    ).show();
+                  },
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+                AnimatedButton(
+                  text: 'Auto Hide Dialog',
+                  color: Colors.purple,
+                  pressEvent: () {
+                    AwesomeDialog(
+                      context: context,
+                      dialogType: DialogType.INFO,
+                      animType: AnimType.SCALE,
+                      title: 'Auto Hide Dialog',
+                      desc: 'AutoHide after 2 seconds',
+                      autoHide: const Duration(seconds: 2),
+                    ).show();
+                  },
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+                AnimatedButton(
+                  text: 'Testing Dialog',
+                  color: Colors.orange,
+                  pressEvent: () {
+                    AwesomeDialog(
+                      context: context,
+                      keyboardAware: true,
+                      dismissOnBackKeyPress: false,
+                      dialogType: DialogType.WARNING,
+                      animType: AnimType.BOTTOMSLIDE,
+                      btnCancelText: "Cancel Order",
+                      btnOkText: "Yes, I will pay",
+                      title: 'Continue to pay?',
+                      // padding: const EdgeInsets.all(5.0),
+                      desc:
+                          'Please confirm that you will pay 3000 INR within 30 mins. Creating orders without paying will create penalty charges, and your account may be disabled.',
+                      btnCancelOnPress: () {},
+                      btnOkOnPress: () {},
+                    ).show();
+                  },
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+                AnimatedButton(
+                  text: 'Body with Input',
+                  color: Colors.blueGrey,
+                  pressEvent: () {
+                    late AwesomeDialog dialog;
+                    dialog = AwesomeDialog(
+                      context: context,
+                      animType: AnimType.SCALE,
+                      dialogType: DialogType.INFO,
+                      keyboardAware: true,
+                      body: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          children: <Widget>[
+                            Text(
+                              'Form Data',
+                              style: Theme.of(context).textTheme.headline6,
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Material(
+                              elevation: 0,
+                              color: Colors.blueGrey.withAlpha(40),
+                              child: TextFormField(
+                                autofocus: true,
+                                minLines: 1,
+                                decoration: const InputDecoration(
+                                  border: InputBorder.none,
+                                  labelText: 'Title',
+                                  prefixIcon: Icon(Icons.text_fields),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Material(
+                              elevation: 0,
+                              color: Colors.blueGrey.withAlpha(40),
+                              child: TextFormField(
+                                autofocus: true,
+                                keyboardType: TextInputType.multiline,
+                                minLines: 2,
+                                maxLines: null,
+                                decoration: const InputDecoration(
+                                  border: InputBorder.none,
+                                  labelText: 'Description',
+                                  prefixIcon: Icon(Icons.text_fields),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            AnimatedButton(
+                              isFixedHeight: false,
+                              text: 'Close',
+                              pressEvent: () {
+                                dialog.dismiss();
+                              },
+                            )
+                          ],
+                        ),
+                      ),
+                    )..show();
+                  },
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+                AnimatedButton(
+                  text: 'Passing Data Back from Dialog',
+                  pressEvent: () async {
+                    final dismissMode = await AwesomeDialog(
+                      context: context,
+                      dialogType: DialogType.NO_HEADER,
+                      buttonsBorderRadius: const BorderRadius.all(
+                        Radius.circular(2),
+                      ),
+                      animType: AnimType.RIGHSLIDE,
+                      title: 'Passing Data Back',
+                      titleTextStyle: const TextStyle(
+                        fontSize: 32,
+                        fontStyle: FontStyle.italic,
+                        fontWeight: FontWeight.w600,
+                      ),
+                      desc: 'Dialog description here...',
+                      showCloseIcon: true,
+                      btnCancelOnPress: () {},
+                      btnOkOnPress: () {},
+                      autoDismiss: false,
+                      onDissmissCallback: (type) {
+                        Navigator.of(context).pop(type);
+                      },
+                      barrierColor: Colors.purple[900]?.withOpacity(0.54),
+                    ).show();
+
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('Dismissed by $dismissMode'),
+                      ),
+                    );
+                  },
+                ),
+              ],
             ),
           ),
         ),
       ),
     );
   }
-
-  Widget getSearchableDropdown(List<dynamic>? listData, mapKey) {
-    List<DropdownMenuItem> items = [];
-    for(int i=0; i < listData!.length; i++) {
-      items.add(new DropdownMenuItem(
-          child: new Text(
-            listData[i],
-          ),
-          value: listData[i],
-        )
-      );
-    }
-    return new SearchableDropdown(
-      items: items,
-      value: selectedValueMap[mapKey],
-      isCaseSensitiveSearch: false,
-      hint: new Text(
-        'Select One'
-      ),
-      searchHint: new Text(
-        'Select One',
-        style: new TextStyle(
-            fontSize: 20
-        ),
-      ),
-      onChanged: (value) {
-        setState(() {
-          selectedValueMap[mapKey] = value;
-        });
-      },
-    );
-  }
-
-  Future<List> getServerData() async {
-    String url = 'https://wwwdev.csmju.com/api/equipmentapp';
-//    String url = 'http://192.168.43.34:3000/numbers';
-    var authToken = '1257|7D3I1qDi4m28ZWRMJTvSmVJ3kOYwSsBvyzJdQm16';
-    final response = await http.get(Uri.parse(url), headers: {"Accept": "application/json",
-      "Authorization": "Bearer $authToken"});
-
-    if (response.statusCode == 200) {
-      print(response.body);
-      List<dynamic> responseBody = json.decode(response.body);
-      // ignore: deprecated_member_use
-      List<String> countries = new List.from(responseBody.map((item) => item['Equipment_Name']));
-      for(int i=0; i < responseBody.length; i++) {
-        countries.add(responseBody[i]['Equipment_Name']);
-      }
-      return countries;
-    }
-    else {
-      print("error from server : $response");
-      throw Exception('Failed to load post');
-    }
-  }
-} */
+}

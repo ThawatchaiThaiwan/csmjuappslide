@@ -128,7 +128,7 @@ Widget cutomStatusBorrow(BorrowReturnPostmodel article, BuildContext context) {
             child: Text(
               article.Status,
               style: TextStyle(
-                color: Colors.blueGrey[900],
+                color: Color(0xff24a878),
                 fontSize: 15.0,
                 fontWeight: FontWeight.bold,
                 fontFamily: 'Sarabun',

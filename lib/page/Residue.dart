@@ -7,6 +7,7 @@ import 'package:appcsmju/APImodel/Residuemodel.dart';
 import 'package:appcsmju/footbar/Another.dart';
 import 'package:appcsmju/footbar/Foot.dart';
 import 'package:appcsmju/post_api/ResiduePost.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:search_choices/search_choices.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -598,26 +599,40 @@ result = string.substring(1, 4);  */
                                         : _validate8 = false;
                                   });
 
-                                  showDialog<String>(
-                                      context: context,
-                                      builder: (BuildContext context) =>
-                                          AlertDialog(
-                                            title: const Text('แจ้งเตือน'),
-                                            content:
-                                                const Text('แจ้งตกค้างสำเร็จ'),
-                                            actions: <Widget>[
-                                              TextButton(
-                                                child: const Text(
-                                                  'ตกลง',
-                                                  textAlign: TextAlign.center,
-                                                ),
-                                                onPressed: () => Navigator.pop(
-                                                context,
-                                                'ตกลง',
-                                              ),
-                                              ),
-                                            ],
+                                  AwesomeDialog(
+                                    context: context,
+                                    animType: AnimType.LEFTSLIDE,
+                                    headerAnimationLoop: false,
+                                    dialogType: DialogType.SUCCES,
+                                    showCloseIcon: true,
+                                    title: 'สำเร็จ',
+                                    btnOkText: 'ตกลง',
+                                    titleTextStyle: TextStyle(
+                                      color: Colors.blueGrey[900],
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                    desc:
+                                        'เราได้แจ้งตกค้างให้คุณแล้ว กรุณารอการตอบรับจากเจ้าหน้าที่',
+                                    descTextStyle: TextStyle(
+                                      color: Colors.blueGrey[700],
+                                      fontSize: 18,
+                                    ),
+                                    btnOkColor: Color(0xff24a878),
+                                    btnOkOnPress: () {
+                                      Navigator.pop(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (BuildContext context) =>
+                                                Another(),
                                           ));
+                                    },
+                                    btnOkIcon: Icons.check_circle,
+                                    onDissmissCallback: (type) {
+                                      debugPrint(
+                                          'Dialog Dissmiss from callback $type');
+                                    },
+                                  ).show();
                                 }
 
                                 /* name = '';
@@ -667,15 +682,15 @@ result = string.substring(1, 4);  */
                           style: ElevatedButton.styleFrom(
                             primary: Colors.red[400],
                           ),
-                         onPressed: () {
+                          onPressed: () {
                             setState(() {
                               Navigator.pop(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (BuildContext context) => Another(),
+                                    builder: (BuildContext context) =>
+                                        Another(),
                                   ));
                             });
-                            
                           },
                           child: Text(
                             'ยกเลิก',

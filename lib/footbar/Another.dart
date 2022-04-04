@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:appcsmju/page/Borrowreturn.dart/Borrow_back.dart';
 import 'package:appcsmju/page/ReserveRoom/ReserveRoom.dart';
 import 'package:appcsmju/page/notifications/notifications.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:appcsmju/api/apinew_foot.dart';
@@ -128,7 +129,7 @@ class _AnotherState extends State<Another> {
               ),
               child: InkWell(
                 onTap: () {
-                  Navigator.pop(context,
+                  Navigator.push(context,
                       MaterialPageRoute(builder: (context) => Profile()));
                 },
                 child: Padding(
@@ -398,65 +399,31 @@ class _AnotherState extends State<Another> {
               ),
               child: InkWell(
                 onTap: () {
-                  showDialog<String>(
-                      context: context,
-                      builder: (BuildContext context) => AlertDialog(
-                            title: const Text(
-                              'แจ้งเตือน',
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'Sarabun'),
-                            ),
-                            content: const Text(
-                              'ต้องการออกจากระบบหรือไม่',
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'Sarabun'),
-                            ),
-                            actions: <Widget>[
-                              TextButton(
-                                /* onPressed: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => LoginPage()));
-                                  }, */
-                                onPressed: () {
-                                  /* Navigator.pushAndRemoveUntil(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (BuildContext context) =>
-                                                LoginPage()),
-                                        ModalRoute.withName('/')); */
-                                  logout();
-                                },
-                                child: const Text(
-                                  'ตกลง',
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: 'Sarabun'),
-                                  textAlign: TextAlign.center,
-                                ),
-                              ),
-                              TextButton(
-                                onPressed: () => Navigator.pop(
-                                  context,
-                                  'ยกเลิก',
-                                ),
-                                child: const Text(
-                                  'ยกเลิก',
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: 'Sarabun'),
-                                  textAlign: TextAlign.center,
-                                ),
-                              ),
-                            ],
+                  AwesomeDialog(
+                    context: context,
+                    dialogType: DialogType.QUESTION,
+                    headerAnimationLoop: false,
+                    animType: AnimType.BOTTOMSLIDE,
+                    title: 'ต้องการออกจากระบบหรือไม่?',
+                    //desc: 'Dialog description here...',
+                    buttonsTextStyle: const TextStyle(color: Colors.black),
+                    showCloseIcon: true,
+                    btnCancelColor: Color(0xd3e74949),
+                    btnOkColor: Color(0xff24a878),
+                    btnCancelText: 'ยกเลิก',
+                    btnOkText: 'ตกลง',
+                    btnCancelOnPress: () {
+                      debugPrint('OnClcik');
+                    },
+                    btnOkOnPress: () {
+                      logout();
+                      Navigator.pop(
+                          context,
+                          MaterialPageRoute(
+                            builder: (BuildContext context) => LoginPage(),
                           ));
+                    },
+                  ).show();
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),

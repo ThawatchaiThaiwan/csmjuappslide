@@ -6,7 +6,9 @@ import 'package:appcsmju/APImodel/Activity.dart';
 import 'package:appcsmju/APImodel/ActivitypostModel.dart';
 import 'package:appcsmju/footbar/Foot.dart';
 import 'package:appcsmju/footbar/Home.dart';
+import 'package:appcsmju/model/activitymodel/listjoin.dart';
 import 'package:appcsmju/post_api/postActivity.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -71,6 +73,18 @@ class _ActivitybelowState extends State<Activitybelow> {
                 onPressed: () => Navigator.of(context).pop(),
               )
             : HomePageCarousel(),
+        actions: [
+          IconButton(
+            icon: Icon(
+              Icons.add_task_rounded,
+              color: Colors.blueGrey[900],
+            ),
+            onPressed: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Listjoin()));
+            },
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(10.0),
@@ -337,7 +351,7 @@ class _ActivitybelowState extends State<Activitybelow> {
                 ),
                 Container(
                   width: double.infinity,
-                  height: 30,
+                  height: 35,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
                     color: Colors.green[700],
@@ -368,7 +382,7 @@ class _ActivitybelowState extends State<Activitybelow> {
                           final String studentCode = studentcode;
                           final String Activity_Start =
                               widget.article.Activity_Start;
-                          final String Status = "เข้าร่วม";
+                          final String Status = "เข้าร่วมกิจกรรม";
                           final String Activity_Title =
                               widget.article.Activity_Title;
 
@@ -385,35 +399,44 @@ class _ActivitybelowState extends State<Activitybelow> {
 
                           ///////////////////////////////////////////////////>>>>>>>>.post
                           if (email != null) {
-                            showDialog<String>(
-                                context: context,
-                                builder: (BuildContext context) => AlertDialog(
-                                      title: const Text('แจ้งเตือน'),
-                                      content: const Text('ลงชื่อเข้าร่วมกิจกรรมเรียบร้อยแล้ว'),
-                                      actions: <Widget>[
-                                        TextButton(
-                                          child: const Text(
-                                            'ตกลง',
-                                            textAlign: TextAlign.center,
-                                          ),
-                                          onPressed: () {
-                                            Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                  builder:
-                                                      (BuildContext context) =>
-                                                          Foot(),
-                                                ));
-                                          },
-                                        ),
-                                      ],
+                            AwesomeDialog(
+                              context: context,
+                              animType: AnimType.LEFTSLIDE,
+                              headerAnimationLoop: false,
+                              dialogType: DialogType.SUCCES,
+                              showCloseIcon: true,
+                              title: 'สำเร็จ',
+                              btnOkText: 'ตกลง',
+                              titleTextStyle: TextStyle(
+                                color: Colors.blueGrey[900],
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              desc: 'ลงชื่อเข้าร่วมกิจกรรมสำเร็จ',
+                              descTextStyle: TextStyle(
+                                color: Colors.blueGrey[700],
+                                fontSize: 18,
+                              ),
+                              btnOkColor: Color(0xff24a878),
+                              btnOkOnPress: () {
+                                Navigator.pop(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (BuildContext context) => Foot(),
                                     ));
+                              },
+                              btnOkIcon: Icons.check_circle,
+                              onDissmissCallback: (type) {
+                                debugPrint(
+                                    'Dialog Dissmiss from callback $type');
+                              },
+                            ).show();
                           }
                         }
                       });
                     },
                     child: Text(
-                      'เข้าร่วม',
+                      'ลงชื่อแเข้าร่วม',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 20,

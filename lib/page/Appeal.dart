@@ -4,6 +4,7 @@ import 'dart:async';
 import 'dart:io';
 import 'package:appcsmju/footbar/Foot.dart';
 import 'package:appcsmju/post_api/AppealPost.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
 
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
@@ -268,52 +269,70 @@ class _AppealState extends State<Appeal> {
                       style: ElevatedButton.styleFrom(
                         primary: Color(0xff24a878),
                       ),
-                      onPressed: () async {
-                        if (formkey.currentState!.validate()) {
-                          formkey.currentState!.save();
-                          Map<String, String> body = {
-                            'Complain_Title': TitelController1.text,
-                            'Complain_Detail': DetailController3.text,
-                            'Complain_Date':
-                                DateFormat('dd-MM-yyyy').format(DateTime.now()),
-                          };
-                          setState(() {
-                            TitelController1.text.isEmpty
-                                ? _validate = true
-                                : _validate = false;
-                            DetailController3.text.isEmpty
-                                ? _validate3 = true
-                                : _validate3 = false;
-                          });
+                      onPressed: ()  {
+                        setState(()async {
+                          if (formkey.currentState!.validate()) {
+                            formkey.currentState!.save();
+                            Map<String, String> body = {
+                              'Complain_Title': TitelController1.text,
+                              'Complain_Detail': DetailController3.text,
+                              'Complain_Date': DateFormat('dd-MM-yyyy')
+                                  .format(DateTime.now()),
+                            };
+                            setState(() {
+                              TitelController1.text.isEmpty
+                                  ? _validate = true
+                                  : _validate = false;
+                              DetailController3.text.isEmpty
+                                  ? _validate3 = true
+                                  : _validate3 = false;
+                            });
 
-                          service.addImage(body, _image!.path);
-                          Navigator.pop(context);
+                            service.addImage(body, _image!.path);
+                            
 
-                          showDialog<String>(
+                            AwesomeDialog(
                               context: context,
-                              builder: (BuildContext context) => AlertDialog(
-                                    title: const Text('แจ้งเตือน'),
-                                    content: const Text('ติดต่อหลักสูตรสำเร็จ'),
-                                    actions: <Widget>[
-                                      TextButton(
-                                        onPressed: () => Navigator.pop(
-                                          context,
-                                          'ตกลง',
-                                        ),
-                                        child: const Text(
-                                          'ตกลง',
-                                          textAlign: TextAlign.center,
-                                        ),
-                                      ),
-                                    ],
-                                  ));
-                        }
+                              animType: AnimType.LEFTSLIDE,
+                              headerAnimationLoop: false,
+                              dialogType: DialogType.SUCCES,
+                              showCloseIcon: true,
+                              title: 'สำเร็จ',
+                              btnOkText: 'ตกลง',
+                              titleTextStyle: TextStyle(
+                                color: Colors.blueGrey[900],
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              desc:
+                                  'เราได้แจ้งไปที่หลักสูตรแล้ว ขอบคุณสำหรับการติดต่อ',
+                              descTextStyle: TextStyle(
+                                color: Colors.blueGrey[700],
+                                fontSize: 18,
+                              ),
+                              btnOkColor: Color(0xff24a878),
+                              btnOkOnPress: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          Another(),
+                                    ));
+                              },
+                              btnOkIcon: Icons.check_circle,
+                              onDissmissCallback: (type) {
+                                debugPrint(
+                                    'Dialog Dissmiss from callback $type');
+                              },
+                            ).show();
+                          }
 
-                        TitelController1.text = "";
-                        //DateController2.text = "";
-                        DetailController3.text = "";
-                        setState(() {
-                          _image = null;
+                          TitelController1.text = "";
+                          //DateController2.text = "";
+                          DetailController3.text = "";
+                          setState(() {
+                            _image = null;
+                          });
                         });
                       },
                       child: Text(

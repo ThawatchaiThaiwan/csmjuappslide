@@ -6,7 +6,6 @@ INJECTED from C:\csmjuappslide-main\android\app\src\main\AndroidManifest.xml:1:1
 INJECTED from C:\csmjuappslide-main\android\app\src\main\AndroidManifest.xml:1:1-46:12
 MERGED from C:\csmjuappslide-main\android\app\src\main\AndroidManifest.xml:1:1-46:12
 MERGED from [:shared_preferences_android] C:\csmjuappslide-main\build\shared_preferences_android\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
-MERGED from [:searchable_dropdown] C:\csmjuappslide-main\build\searchable_dropdown\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:image_picker] C:\csmjuappslide-main\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-19:12
 MERGED from [:flutter_plugin_android_lifecycle] C:\csmjuappslide-main\build\flutter_plugin_android_lifecycle\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:barcode_scan] C:\csmjuappslide-main\build\barcode_scan\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-13:12
@@ -161,8 +160,6 @@ INJECTED from C:\csmjuappslide-main\android\app\src\main\AndroidManifest.xml
 INJECTED from C:\csmjuappslide-main\android\app\src\main\AndroidManifest.xml
 MERGED from [:shared_preferences_android] C:\csmjuappslide-main\build\shared_preferences_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:shared_preferences_android] C:\csmjuappslide-main\build\shared_preferences_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:searchable_dropdown] C:\csmjuappslide-main\build\searchable_dropdown\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:searchable_dropdown] C:\csmjuappslide-main\build\searchable_dropdown\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:image_picker] C:\csmjuappslide-main\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:image_picker] C:\csmjuappslide-main\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:flutter_plugin_android_lifecycle] C:\csmjuappslide-main\build\flutter_plugin_android_lifecycle\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
