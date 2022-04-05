@@ -185,14 +185,15 @@ class _HomePageCarouselState extends State<HomePageCarousel> {
                               child:Container(
                                 width: MediaQuery.of(context).size.width,
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8),
+                                  borderRadius: BorderRadius.circular(5),
                                   border: Border.all(
                                       width: 3,
                                       color: Color(0xff24a878)),
                                 ),
                                 child: Center(
                                     child: Image.network(item,
-                                        fit: BoxFit.cover, width: 1000)),
+                                        fit: BoxFit.cover, width: 1000,
+                                        )),
                               ),
                             ),
                           ))
