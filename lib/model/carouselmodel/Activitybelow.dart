@@ -436,7 +436,7 @@ class _ActivitybelowState extends State<Activitybelow> {
                       });
                     },
                     child: Text(
-                      'ลงชื่อแเข้าร่วม',
+                      'ลงชื่อเข้าร่วมกิจกรรม',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 20,

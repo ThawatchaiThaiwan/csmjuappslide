@@ -423,7 +423,7 @@ class _ActivityPageState extends State<ActivityPage> {
                       });
                     },
                     child: Text(
-                      'เข้าร่วม',
+                      'ลงชื่อเข้าร่วมกิจกรรม',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 20,

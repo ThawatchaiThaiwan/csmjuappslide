@@ -271,7 +271,7 @@ class Borrowstatus extends StatelessWidget {
                 //////////////////////////////////////////////////////////////>>>>>>.สถานะการจอง
                 Container(
                   padding: EdgeInsets.all(10),
-                  child: Text('สถานะการจอง : ${article.Status}',
+                  child: Text('สถานะการยืม : ${article.Status}',
                       style: TextStyle(
                           fontSize: 19,
                           fontWeight: FontWeight.bold,

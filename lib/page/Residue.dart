@@ -561,7 +561,7 @@ result = string.substring(1, 4);  */
 
                                   ///////////////////////////////////////////////////>>>>>>>>.post
                                   final Residues? _user = await POSTResidue(
-                                      Subject_Internal,
+                                      Subject_Internal, 
                                       Subject_External,
                                       Residaual_Detail,
                                       nameThp,
@@ -569,7 +569,7 @@ result = string.substring(1, 4);  */
                                       EmailStudent,
                                       mobile,
                                       studentCode,
-                                      Sec_Internal,
+                                      Sec_Internal, 
                                       Sec_Another);
 
                                   setState(() {

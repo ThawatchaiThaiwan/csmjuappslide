@@ -117,7 +117,7 @@ class _CalendarState extends State<Calendar> {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.pop(context, MaterialPageRoute(builder: (context) {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
                 return Notifications();
               }));
             },

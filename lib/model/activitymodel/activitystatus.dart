@@ -181,7 +181,7 @@ class ActivityStatus extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.all(10),
                   child: Text(
-                    "อีเมล์ผู้สมัคร : ",
+                    "อีเมลผู้เข้าร่วม : ",
                     style: TextStyle(
                       color: Colors.blueGrey[900],
                       fontSize: 20,

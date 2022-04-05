@@ -99,7 +99,7 @@ class _NewsState extends State<News> {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.pop(context, MaterialPageRoute(builder: (context) {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
                 return Notifications();
               }));
             },
