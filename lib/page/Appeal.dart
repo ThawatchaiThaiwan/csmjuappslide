@@ -357,7 +357,7 @@ class _AppealState extends State<Appeal> {
                                     context,
                                     MaterialPageRoute(
                                       builder: (BuildContext context) =>
-                                          Another(),
+                                          Foot(),
                                     ));
                               },
                               btnOkIcon: Icons.check_circle,

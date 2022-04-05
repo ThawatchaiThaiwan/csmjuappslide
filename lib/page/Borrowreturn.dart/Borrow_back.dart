@@ -586,7 +586,7 @@ class _BorrowreturnState extends State<Borrowreturn> {
                                     context,
                                     MaterialPageRoute(
                                       builder: (BuildContext context) =>
-                                          Another(),
+                                          Foot(),
                                     ));
                               },
                               btnOkIcon: Icons.check_circle,

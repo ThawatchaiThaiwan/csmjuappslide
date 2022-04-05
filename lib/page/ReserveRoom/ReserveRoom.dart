@@ -627,7 +627,7 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                                         context,
                                         MaterialPageRoute(
                                           builder: (BuildContext context) =>
-                                              Another(),
+                                              Foot(),
                                         ));
                                   },
                                   btnOkIcon: Icons.check_circle,
