@@ -76,8 +76,8 @@ class _NewsState extends State<News> {
                   height: 100.0,
                   decoration: new BoxDecoration(
                       border: Border.all(
-                          width: 3,
-                          color: Theme.of(context).scaffoldBackgroundColor),
+                          width: 2.5,
+                          color: Color(0xff24a878)),
                       shape: BoxShape.circle,
                       image: new DecorationImage(
                           fit: BoxFit.scaleDown,

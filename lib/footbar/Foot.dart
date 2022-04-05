@@ -45,7 +45,7 @@ class _FootState extends State<Foot> {
           size: 40,
           color: Colors.black87,
         ),
-        backgroundColor: Colors.blue,
+        backgroundColor: Color(0xff24a878),
         onPressed: () async {
           var options = ScanOptions(
             autoEnableFlash: true,
@@ -57,9 +57,8 @@ class _FootState extends State<Foot> {
             hasdata = true;
           });
           if (qrData.contains("http")) {
-          launch(qrData);
+            launch(qrData);
           }
-          
         },
       ),
       ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -90,13 +89,15 @@ class _FootState extends State<Foot> {
                       children: <Widget>[
                         Icon(
                           Icons.home,
-                          color: currentTab == 0 ? Colors.blue : Colors.grey,
+                          color:
+                              currentTab == 0 ? Color(0xff24a878) : Colors.grey,
                         ),
                         Text(
                           'หน้าหลัก',
                           style: TextStyle(
-                              color:
-                                  currentTab == 0 ? Colors.blue : Colors.grey,
+                              color: currentTab == 0
+                                  ? Color(0xff24a878)
+                                  : Colors.grey,
                               fontSize: 20,
                               fontWeight: FontWeight.bold),
                         )
@@ -117,13 +118,15 @@ class _FootState extends State<Foot> {
                       children: <Widget>[
                         Icon(
                           Icons.chrome_reader_mode,
-                          color: currentTab == 1 ? Colors.blue : Colors.grey,
+                          color:
+                              currentTab == 1 ? Color(0xff24a878) : Colors.grey,
                         ),
                         Text(
                           '   ข่าวสาร   ',
                           style: TextStyle(
-                              color:
-                                  currentTab == 1 ? Colors.blue : Colors.grey,
+                              color: currentTab == 1
+                                  ? Color(0xff24a878)
+                                  : Colors.grey,
                               fontSize: 20,
                               fontWeight: FontWeight.bold),
                         )
@@ -148,13 +151,15 @@ class _FootState extends State<Foot> {
                       children: <Widget>[
                         Icon(
                           Icons.calendar_today,
-                          color: currentTab == 2 ? Colors.blue : Colors.grey,
+                          color:
+                              currentTab == 2 ? Color(0xff24a878) : Colors.grey,
                         ),
                         Text(
                           ' ปฏิทิน ',
                           style: TextStyle(
-                              color:
-                                  currentTab == 2 ? Colors.blue : Colors.grey,
+                              color: currentTab == 2
+                                  ? Color(0xff24a878)
+                                  : Colors.grey,
                               fontSize: 20,
                               fontWeight: FontWeight.bold),
                         )
@@ -175,13 +180,15 @@ class _FootState extends State<Foot> {
                       children: <Widget>[
                         Icon(
                           Icons.widgets_sharp,
-                          color: currentTab == 3 ? Colors.blue : Colors.grey,
+                          color:
+                              currentTab == 3 ? Color(0xff24a878) : Colors.grey,
                         ),
                         Text(
                           'บริการอื่น ๆ',
                           style: TextStyle(
-                              color:
-                                  currentTab == 3 ? Colors.blue : Colors.grey,
+                              color: currentTab == 3
+                                  ? Color(0xff24a878)
+                                  : Colors.grey,
                               fontSize: 20,
                               fontWeight: FontWeight.bold),
                         )
