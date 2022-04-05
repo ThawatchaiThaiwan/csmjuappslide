@@ -374,12 +374,6 @@
       "languageVersion": "2.14"
     },
     {
-      "name": "progress_dialog",
-      "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/progress_dialog-1.2.4",
-      "packageUri": "lib/",
-      "languageVersion": "2.7"
-    },
-    {
       "name": "protobuf",
       "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/protobuf-1.1.4",
       "packageUri": "lib/",
@@ -644,7 +638,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2022-04-04T06:29:46.185069Z",
+  "generated": "2022-04-05T08:27:39.820647Z",
   "generator": "pub",
   "generatorVersion": "2.16.2"
 }

@@ -18,6 +18,8 @@ class Appeal extends StatefulWidget {
 
 AppealService service = AppealService();
 File? _image;
+File? Camela;
+File? gallery;
 bool _validate = false;
 //bool _validate2 = false;
 bool _validate3 = false;
@@ -42,6 +44,19 @@ class _AppealState extends State<Appeal> {
     setState(() {
       if (pickFile != null) {
         _image = File(pickFile.path);
+      } else {
+        print('No image selected.');
+      }
+    });
+  }
+
+  final ImagePicker _pickercamela = ImagePicker();
+  Future getImageCamela() async {
+    final pickFileC = await _pickercamela.getImage(source: ImageSource.camera);
+
+    setState(() {
+      if (pickFileC != null) {
+        _image = File(pickFileC.path);
       } else {
         print('No image selected.');
       }
@@ -191,29 +206,56 @@ class _AppealState extends State<Appeal> {
                   //////////////////////////////////////////////////////////>>>>>>.รูปภาพ
                   SizedBox(height: 10.0),
                   Text(
-                    "เลือกรูปภาพ",
+                    "อัพโหลดรูปภาพ",
                     style: TextStyle(
                       color: Colors.blueGrey[900],
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.white12,
+                  Row(
+                    children: [
+                      Expanded(
+                        flex: 1,
+                        child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: Color(0xff24a878),
+                            ),
+                            onPressed: () {
+                              getImage();
+                            },
+                            child: Icon(Icons.image,
+                              color: Colors.blueGrey[700],
+                            ),
+                              
+                            ),
                       ),
-                      onPressed: () {
-                        getImage();
-                        print(_image);
-                      },
-                      child: Text(
-                        "อัพโหลดรูปภาพ",
-                        style: TextStyle(
-                            color: Colors.blueGrey[900],
-                            fontSize: 17,
-                            fontFamily: 'Sarabun',
-                            fontWeight: FontWeight.bold),
-                      )),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: Color(0xff24a878),
+                            ),
+                            onPressed: () {
+                              getImageCamela();
+                            },
+                            child: Icon(Icons.camera_alt,
+                                  color: Colors.blueGrey[700],
+                                  ),
+                              /* "เลือกรูปจากกล้อง",
+                              style: TextStyle(
+                                  color: Colors.blueGrey[900],
+                                  fontSize: 17,
+                                  fontFamily: 'Sarabun',
+                                  fontWeight: FontWeight.bold), */
+                            ),
+                      ),
+                    ],
+                  ),
+
                   SizedBox(height: 10.0),
                   ///////////////////////////////////////////////////////>>>>>โชว์รูปภาพ
                   Container(
@@ -252,9 +294,9 @@ class _AppealState extends State<Appeal> {
                     height: 35,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
-                      color: Colors.green[700],
+                      color: Color(0xff24a878),
                       border: Border.all(
-                        color: Color(0xff24a878),
+                        color: Colors.green,
                         width: 2,
                       ),
                       boxShadow: [
@@ -269,8 +311,8 @@ class _AppealState extends State<Appeal> {
                       style: ElevatedButton.styleFrom(
                         primary: Color(0xff24a878),
                       ),
-                      onPressed: ()  {
-                        setState(()async {
+                      onPressed: () {
+                        setState(() async {
                           if (formkey.currentState!.validate()) {
                             formkey.currentState!.save();
                             Map<String, String> body = {
@@ -289,7 +331,6 @@ class _AppealState extends State<Appeal> {
                             });
 
                             service.addImage(body, _image!.path);
-                            
 
                             AwesomeDialog(
                               context: context,

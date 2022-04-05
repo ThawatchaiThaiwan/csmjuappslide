@@ -513,9 +513,9 @@ class _BorrowreturnState extends State<Borrowreturn> {
                     height: 35,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
-                      color: Colors.green[700],
+                      color: Color(0xff24a878),
                       border: Border.all(
-                        color: Color(0xff24a878),
+                        color: Colors.green,
                         width: 2,
                       ),
                       boxShadow: [
@@ -575,8 +575,7 @@ class _BorrowreturnState extends State<Borrowreturn> {
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
                               ),
-                              desc:
-                                  'ยืมสำเร็จ กรุณารอการยืนยันจากเจ้าหน้าที่',
+                              desc: 'ยืมสำเร็จ กรุณารอการยืนยันจากเจ้าหน้าที่',
                               descTextStyle: TextStyle(
                                 color: Colors.blueGrey[700],
                                 fontSize: 18,

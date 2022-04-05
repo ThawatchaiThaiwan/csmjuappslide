@@ -521,9 +521,9 @@ result = string.substring(1, 4);  */
                         height: 35,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5),
-                          color: Colors.green[700],
+                          color: Color(0xff24a878),
                           border: Border.all(
-                            color: Color(0xff24a878),
+                            color: Colors.green,
                             width: 2,
                           ),
                           boxShadow: [
@@ -561,7 +561,7 @@ result = string.substring(1, 4);  */
 
                                   ///////////////////////////////////////////////////>>>>>>>>.post
                                   final Residues? _user = await POSTResidue(
-                                      Subject_Internal, 
+                                      Subject_Internal,
                                       Subject_External,
                                       Residaual_Detail,
                                       nameThp,
@@ -569,7 +569,7 @@ result = string.substring(1, 4);  */
                                       EmailStudent,
                                       mobile,
                                       studentCode,
-                                      Sec_Internal, 
+                                      Sec_Internal,
                                       Sec_Another);
 
                                   setState(() {

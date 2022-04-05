@@ -58,10 +58,18 @@ class _ActivityAnoterState extends State<ActivityAnoter> {
             (BuildContext context, AsyncSnapshot<List<Activity>> snapshot) {
           if (snapshot.hasData) {
             List<Activity>? data = snapshot.data;
-            return ListView.builder(
-              itemCount: data!.length,
-              itemBuilder: (context, index) =>
-                  customListactivity(data[index], context),
+            return SingleChildScrollView(
+              child: ListView.builder(
+                scrollDirection: Axis.vertical,
+                physics: NeverScrollableScrollPhysics(
+                  parent: BouncingScrollPhysics(),
+                ),
+                shrinkWrap: true,
+                reverse: true,
+                itemCount: data!.length,
+                itemBuilder: (context, index) =>
+                    customListactivity(data[index], context),
+              ),
             );
           }
           return Center(

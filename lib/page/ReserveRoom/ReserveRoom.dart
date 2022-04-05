@@ -545,9 +545,9 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                         height: 35,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5),
-                          color: Colors.green[700],
+                          color: Color(0xff24a878),
                           border: Border.all(
-                            color: Color(0xff24a878),
+                            color: Colors.green,
                             width: 2,
                           ),
                           boxShadow: [
@@ -624,11 +624,11 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                                   btnOkColor: Color(0xff24a878),
                                   btnOkOnPress: () {
                                     Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (BuildContext context) =>
-                                          Another(),
-                                    ));
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (BuildContext context) =>
+                                              Another(),
+                                        ));
                                   },
                                   btnOkIcon: Icons.check_circle,
                                   onDissmissCallback: (type) {

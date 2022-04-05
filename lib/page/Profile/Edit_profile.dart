@@ -450,9 +450,9 @@ class _EditProfileState extends State<EditProfile> {
                             height: 35,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5),
-                              color: Colors.white60,
+                              color: Color(0xff24a878),
                               border: Border.all(
-                                color: Colors.white60,
+                                color: Colors.green,
                                 width: 2,
                               ),
                               boxShadow: [
@@ -503,8 +503,7 @@ class _EditProfileState extends State<EditProfile> {
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold,
                                     ),
-                                    desc:
-                                        'แก้ไขโปรไฟล์สำเร็จ',
+                                    desc: 'แก้ไขโปรไฟล์สำเร็จ',
                                     descTextStyle: TextStyle(
                                       color: Colors.blueGrey[700],
                                       fontSize: 18,

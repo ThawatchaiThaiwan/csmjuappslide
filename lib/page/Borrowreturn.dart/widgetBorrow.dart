@@ -91,12 +91,12 @@ class Borrowstatus extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    ///////////////////////////////////////////////////////>>>>>>.เวลาเริ่มต้น
+                    ///////////////////////////////////////////////////////>>>>>>.วันที่ยืม
                     Expanded(
                       child: Container(
                         padding: EdgeInsets.all(10),
                         child: Text(
-                          "เวลายืม : ",
+                          "วันที่ยืม : ",
                           style: TextStyle(
                             color: Colors.blueGrey[900],
                             fontSize: 20,
@@ -106,12 +106,12 @@ class Borrowstatus extends StatelessWidget {
                       ),
                     ),
                     SizedBox(width: 7.0),
-                    //////////////////////////////////////////////////////////>>>>>.เวลาสิ้นสุด
+                    //////////////////////////////////////////////////////////>>>>>.วันที่คืน
                     Expanded(
                       child: Container(
                         padding: EdgeInsets.all(10),
                         child: Text(
-                          "เวลาคืน : ",
+                          "วันที่คืน : ",
                           style: TextStyle(
                             color: Colors.blueGrey[900],
                             fontSize: 20,

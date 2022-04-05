@@ -57,7 +57,7 @@ dependencies:
   awesome_dialog: ^2.2.0
   date_time_picker: ^2.1.0
   localstorage: ^4.0.0+1               
-  progress_dialog: ^1.2.4
+  
   
   dropdown_search: ^2.0.1
   

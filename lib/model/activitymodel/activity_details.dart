@@ -341,9 +341,9 @@ class _ActivityPageState extends State<ActivityPage> {
                   height: 35,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
-                    color: Colors.green[700],
-                    border: Border.all(
-                      color: Color(0xff24a878),
+                    color: Color(0xff24a878),
+                      border: Border.all(
+                        color: Colors.green,
                       width: 2,
                     ),
                     boxShadow: [
