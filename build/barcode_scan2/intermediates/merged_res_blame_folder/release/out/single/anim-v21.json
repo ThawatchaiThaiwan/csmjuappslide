@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "C:\\csmjuappslide-main\\build\\barcode_scan2\\intermediates\\res\\merged\\release\\anim-v21\\mtrl_bottom_sheet_slide_in.xml",
+        "source": "C:\\Users\\zadke\\.gradle\\caches\\transforms-2\\files-2.1\\768764d0b2642819f29f0e2bc8ae6894\\material-1.1.0\\res\\anim-v21\\mtrl_bottom_sheet_slide_in.xml"
+    },
+    {
+        "merged": "C:\\csmjuappslide-main\\build\\barcode_scan2\\intermediates\\res\\merged\\release\\anim-v21\\mtrl_bottom_sheet_slide_out.xml",
+        "source": "C:\\Users\\zadke\\.gradle\\caches\\transforms-2\\files-2.1\\768764d0b2642819f29f0e2bc8ae6894\\material-1.1.0\\res\\anim-v21\\mtrl_bottom_sheet_slide_out.xml"
+    },
+    {
+        "merged": "C:\\csmjuappslide-main\\build\\barcode_scan2\\intermediates\\res\\merged\\release\\anim-v21\\design_bottom_sheet_slide_out.xml",
+        "source": "C:\\Users\\zadke\\.gradle\\caches\\transforms-2\\files-2.1\\768764d0b2642819f29f0e2bc8ae6894\\material-1.1.0\\res\\anim-v21\\design_bottom_sheet_slide_out.xml"
+    },
+    {
+        "merged": "C:\\csmjuappslide-main\\build\\barcode_scan2\\intermediates\\res\\merged\\release\\anim-v21\\design_bottom_sheet_slide_in.xml",
+        "source": "C:\\Users\\zadke\\.gradle\\caches\\transforms-2\\files-2.1\\768764d0b2642819f29f0e2bc8ae6894\\material-1.1.0\\res\\anim-v21\\design_bottom_sheet_slide_in.xml"
+    }
+]

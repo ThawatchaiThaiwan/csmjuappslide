@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Sarabun',
 
       ),
-      home :Foot() ,
+      home :LoginPage() ,
     );
   }
 }

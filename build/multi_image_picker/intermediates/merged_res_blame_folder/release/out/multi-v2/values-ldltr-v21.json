@@ -1,0 +1,34 @@
+{
+    "logs": [
+        {
+            "outputFile": "C:\\csmjuappslide-main\\build\\multi_image_picker\\intermediates\\res\\merged\\release\\values-ldltr-v21\\values-ldltr-v21.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\zadke\\.gradle\\caches\\transforms-2\\files-2.1\\29314b7370b9222213ca7cd9a6fa98a1\\appcompat-1.0.0\\res\\values-ldltr-v21\\values-ldltr-v21.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "112",
+                        "endOffsets": "163"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "C:\\csmjuappslide-main\\build\\multi_image_picker\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values-ldltr-v21\\values-ldltr-v21.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\zadke\\.gradle\\caches\\transforms-2\\files-2.1\\29314b7370b9222213ca7cd9a6fa98a1\\appcompat-1.0.0\\res\\values-ldltr-v21\\values-ldltr-v21.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "112",
+                        "endOffsets": "163"
+                    }
+                }
+            ]
+        }
+    ]
+}

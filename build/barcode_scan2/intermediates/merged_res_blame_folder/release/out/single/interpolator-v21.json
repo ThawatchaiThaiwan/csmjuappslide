@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "C:\\csmjuappslide-main\\build\\barcode_scan2\\intermediates\\res\\merged\\release\\interpolator-v21\\mtrl_fast_out_slow_in.xml",
+        "source": "C:\\Users\\zadke\\.gradle\\caches\\transforms-2\\files-2.1\\768764d0b2642819f29f0e2bc8ae6894\\material-1.1.0\\res\\interpolator-v21\\mtrl_fast_out_slow_in.xml"
+    },
+    {
+        "merged": "C:\\csmjuappslide-main\\build\\barcode_scan2\\intermediates\\res\\merged\\release\\interpolator-v21\\mtrl_linear_out_slow_in.xml",
+        "source": "C:\\Users\\zadke\\.gradle\\caches\\transforms-2\\files-2.1\\768764d0b2642819f29f0e2bc8ae6894\\material-1.1.0\\res\\interpolator-v21\\mtrl_linear_out_slow_in.xml"
+    },
+    {
+        "merged": "C:\\csmjuappslide-main\\build\\barcode_scan2\\intermediates\\res\\merged\\release\\interpolator-v21\\mtrl_fast_out_linear_in.xml",
+        "source": "C:\\Users\\zadke\\.gradle\\caches\\transforms-2\\files-2.1\\768764d0b2642819f29f0e2bc8ae6894\\material-1.1.0\\res\\interpolator-v21\\mtrl_fast_out_linear_in.xml"
+    }
+]

@@ -1,0 +1,66 @@
+[
+    {
+        "merged": "C:\\csmjuappslide-main\\build\\multi_image_picker\\intermediates\\res\\merged\\release\\anim\\abc_slide_out_top.xml",
+        "source": "C:\\Users\\zadke\\.gradle\\caches\\transforms-2\\files-2.1\\29314b7370b9222213ca7cd9a6fa98a1\\appcompat-1.0.0\\res\\anim\\abc_slide_out_top.xml"
+    },
+    {
+        "merged": "C:\\csmjuappslide-main\\build\\multi_image_picker\\intermediates\\res\\merged\\release\\anim\\design_snackbar_in.xml",
+        "source": "C:\\Users\\zadke\\.gradle\\caches\\transforms-2\\files-2.1\\991f2a8988ccffb6a03402048ab0112c\\material-1.0.0\\res\\anim\\design_snackbar_in.xml"
+    },
+    {
+        "merged": "C:\\csmjuappslide-main\\build\\multi_image_picker\\intermediates\\res\\merged\\release\\anim\\abc_shrink_fade_out_from_bottom.xml",
+        "source": "C:\\Users\\zadke\\.gradle\\caches\\transforms-2\\files-2.1\\29314b7370b9222213ca7cd9a6fa98a1\\appcompat-1.0.0\\res\\anim\\abc_shrink_fade_out_from_bottom.xml"
+    },
+    {
+        "merged": "C:\\csmjuappslide-main\\build\\multi_image_picker\\intermediates\\res\\merged\\release\\anim\\design_bottom_sheet_slide_out.xml",
+        "source": "C:\\Users\\zadke\\.gradle\\caches\\transforms-2\\files-2.1\\991f2a8988ccffb6a03402048ab0112c\\material-1.0.0\\res\\anim\\design_bottom_sheet_slide_out.xml"
+    },
+    {
+        "merged": "C:\\csmjuappslide-main\\build\\multi_image_picker\\intermediates\\res\\merged\\release\\anim\\abc_popup_exit.xml",
+        "source": "C:\\Users\\zadke\\.gradle\\caches\\transforms-2\\files-2.1\\29314b7370b9222213ca7cd9a6fa98a1\\appcompat-1.0.0\\res\\anim\\abc_popup_exit.xml"
+    },
+    {
+        "merged": "C:\\csmjuappslide-main\\build\\multi_image_picker\\intermediates\\res\\merged\\release\\anim\\abc_slide_in_bottom.xml",
+        "source": "C:\\Users\\zadke\\.gradle\\caches\\transforms-2\\files-2.1\\29314b7370b9222213ca7cd9a6fa98a1\\appcompat-1.0.0\\res\\anim\\abc_slide_in_bottom.xml"
+    },
+    {
+        "merged": "C:\\csmjuappslide-main\\build\\multi_image_picker\\intermediates\\res\\merged\\release\\anim\\abc_slide_out_bottom.xml",
+        "source": "C:\\Users\\zadke\\.gradle\\caches\\transforms-2\\files-2.1\\29314b7370b9222213ca7cd9a6fa98a1\\appcompat-1.0.0\\res\\anim\\abc_slide_out_bottom.xml"
+    },
+    {
+        "merged": "C:\\csmjuappslide-main\\build\\multi_image_picker\\intermediates\\res\\merged\\release\\anim\\abc_grow_fade_in_from_bottom.xml",
+        "source": "C:\\Users\\zadke\\.gradle\\caches\\transforms-2\\files-2.1\\29314b7370b9222213ca7cd9a6fa98a1\\appcompat-1.0.0\\res\\anim\\abc_grow_fade_in_from_bottom.xml"
+    },
+    {
+        "merged": "C:\\csmjuappslide-main\\build\\multi_image_picker\\intermediates\\res\\merged\\release\\anim\\abc_popup_enter.xml",
+        "source": "C:\\Users\\zadke\\.gradle\\caches\\transforms-2\\files-2.1\\29314b7370b9222213ca7cd9a6fa98a1\\appcompat-1.0.0\\res\\anim\\abc_popup_enter.xml"
+    },
+    {
+        "merged": "C:\\csmjuappslide-main\\build\\multi_image_picker\\intermediates\\res\\merged\\release\\anim\\design_bottom_sheet_slide_in.xml",
+        "source": "C:\\Users\\zadke\\.gradle\\caches\\transforms-2\\files-2.1\\991f2a8988ccffb6a03402048ab0112c\\material-1.0.0\\res\\anim\\design_bottom_sheet_slide_in.xml"
+    },
+    {
+        "merged": "C:\\csmjuappslide-main\\build\\multi_image_picker\\intermediates\\res\\merged\\release\\anim\\abc_fade_in.xml",
+        "source": "C:\\Users\\zadke\\.gradle\\caches\\transforms-2\\files-2.1\\29314b7370b9222213ca7cd9a6fa98a1\\appcompat-1.0.0\\res\\anim\\abc_fade_in.xml"
+    },
+    {
+        "merged": "C:\\csmjuappslide-main\\build\\multi_image_picker\\intermediates\\res\\merged\\release\\anim\\abc_tooltip_enter.xml",
+        "source": "C:\\Users\\zadke\\.gradle\\caches\\transforms-2\\files-2.1\\29314b7370b9222213ca7cd9a6fa98a1\\appcompat-1.0.0\\res\\anim\\abc_tooltip_enter.xml"
+    },
+    {
+        "merged": "C:\\csmjuappslide-main\\build\\multi_image_picker\\intermediates\\res\\merged\\release\\anim\\design_snackbar_out.xml",
+        "source": "C:\\Users\\zadke\\.gradle\\caches\\transforms-2\\files-2.1\\991f2a8988ccffb6a03402048ab0112c\\material-1.0.0\\res\\anim\\design_snackbar_out.xml"
+    },
+    {
+        "merged": "C:\\csmjuappslide-main\\build\\multi_image_picker\\intermediates\\res\\merged\\release\\anim\\abc_slide_in_top.xml",
+        "source": "C:\\Users\\zadke\\.gradle\\caches\\transforms-2\\files-2.1\\29314b7370b9222213ca7cd9a6fa98a1\\appcompat-1.0.0\\res\\anim\\abc_slide_in_top.xml"
+    },
+    {
+        "merged": "C:\\csmjuappslide-main\\build\\multi_image_picker\\intermediates\\res\\merged\\release\\anim\\abc_tooltip_exit.xml",
+        "source": "C:\\Users\\zadke\\.gradle\\caches\\transforms-2\\files-2.1\\29314b7370b9222213ca7cd9a6fa98a1\\appcompat-1.0.0\\res\\anim\\abc_tooltip_exit.xml"
+    },
+    {
+        "merged": "C:\\csmjuappslide-main\\build\\multi_image_picker\\intermediates\\res\\merged\\release\\anim\\abc_fade_out.xml",
+        "source": "C:\\Users\\zadke\\.gradle\\caches\\transforms-2\\files-2.1\\29314b7370b9222213ca7cd9a6fa98a1\\appcompat-1.0.0\\res\\anim\\abc_fade_out.xml"
+    }
+]

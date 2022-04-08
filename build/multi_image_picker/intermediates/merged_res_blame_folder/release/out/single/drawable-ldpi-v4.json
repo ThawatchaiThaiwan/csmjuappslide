@@ -1,0 +1,30 @@
+[
+    {
+        "merged": "C:\\csmjuappslide-main\\build\\multi_image_picker\\intermediates\\res\\merged\\release\\drawable-ldpi-v4\\ic_add_a_photo_gray_100dp.png",
+        "source": "C:\\Users\\zadke\\.gradle\\caches\\transforms-2\\files-2.1\\8c79e93102b4a1ffcd3810f36d9330a1\\jetified-FishBun-0.11.2\\res\\drawable-ldpi-v4\\ic_add_a_photo_gray_100dp.png"
+    },
+    {
+        "merged": "C:\\csmjuappslide-main\\build\\multi_image_picker\\intermediates\\res\\merged\\release\\drawable-ldpi-v4\\ic_photo_white_24dp.png",
+        "source": "C:\\Users\\zadke\\.gradle\\caches\\transforms-2\\files-2.1\\8c79e93102b4a1ffcd3810f36d9330a1\\jetified-FishBun-0.11.2\\res\\drawable-ldpi-v4\\ic_photo_white_24dp.png"
+    },
+    {
+        "merged": "C:\\csmjuappslide-main\\build\\multi_image_picker\\intermediates\\res\\merged\\release\\drawable-ldpi-v4\\ic_arrow_back_white_24dp.png",
+        "source": "C:\\Users\\zadke\\.gradle\\caches\\transforms-2\\files-2.1\\8c79e93102b4a1ffcd3810f36d9330a1\\jetified-FishBun-0.11.2\\res\\drawable-ldpi-v4\\ic_arrow_back_white_24dp.png"
+    },
+    {
+        "merged": "C:\\csmjuappslide-main\\build\\multi_image_picker\\intermediates\\res\\merged\\release\\drawable-ldpi-v4\\ic_done_white_24dp.png",
+        "source": "C:\\Users\\zadke\\.gradle\\caches\\transforms-2\\files-2.1\\8c79e93102b4a1ffcd3810f36d9330a1\\jetified-FishBun-0.11.2\\res\\drawable-ldpi-v4\\ic_done_white_24dp.png"
+    },
+    {
+        "merged": "C:\\csmjuappslide-main\\build\\multi_image_picker\\intermediates\\res\\merged\\release\\drawable-ldpi-v4\\ic_add_a_photo_white_24dp.png",
+        "source": "C:\\Users\\zadke\\.gradle\\caches\\transforms-2\\files-2.1\\8c79e93102b4a1ffcd3810f36d9330a1\\jetified-FishBun-0.11.2\\res\\drawable-ldpi-v4\\ic_add_a_photo_white_24dp.png"
+    },
+    {
+        "merged": "C:\\csmjuappslide-main\\build\\multi_image_picker\\intermediates\\res\\merged\\release\\drawable-ldpi-v4\\ic_done_all_white_24dp.png",
+        "source": "C:\\Users\\zadke\\.gradle\\caches\\transforms-2\\files-2.1\\8c79e93102b4a1ffcd3810f36d9330a1\\jetified-FishBun-0.11.2\\res\\drawable-ldpi-v4\\ic_done_all_white_24dp.png"
+    },
+    {
+        "merged": "C:\\csmjuappslide-main\\build\\multi_image_picker\\intermediates\\res\\merged\\release\\drawable-ldpi-v4\\ic_photo_library_gray_100dp.png",
+        "source": "C:\\Users\\zadke\\.gradle\\caches\\transforms-2\\files-2.1\\8c79e93102b4a1ffcd3810f36d9330a1\\jetified-FishBun-0.11.2\\res\\drawable-ldpi-v4\\ic_photo_library_gray_100dp.png"
+    }
+]

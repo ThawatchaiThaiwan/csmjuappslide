@@ -3,7 +3,6 @@
 import 'package:appcsmju/APImodel/Activity.dart';
 import 'package:appcsmju/APImodel/ActivitypostModel.dart';
 import 'package:appcsmju/footbar/Another.dart';
-import 'package:appcsmju/model/activitymodel/listjoin.dart';
 import 'package:appcsmju/post_api/postActivity.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';

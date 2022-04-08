@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "C:\\csmjuappslide-main\\build\\multi_image_picker\\intermediates\\res\\merged\\release\\interpolator\\mtrl_fast_out_slow_in.xml",
+        "source": "C:\\Users\\zadke\\.gradle\\caches\\transforms-2\\files-2.1\\991f2a8988ccffb6a03402048ab0112c\\material-1.0.0\\res\\interpolator\\mtrl_fast_out_slow_in.xml"
+    },
+    {
+        "merged": "C:\\csmjuappslide-main\\build\\multi_image_picker\\intermediates\\res\\merged\\release\\interpolator\\mtrl_linear_out_slow_in.xml",
+        "source": "C:\\Users\\zadke\\.gradle\\caches\\transforms-2\\files-2.1\\991f2a8988ccffb6a03402048ab0112c\\material-1.0.0\\res\\interpolator\\mtrl_linear_out_slow_in.xml"
+    },
+    {
+        "merged": "C:\\csmjuappslide-main\\build\\multi_image_picker\\intermediates\\res\\merged\\release\\interpolator\\mtrl_fast_out_linear_in.xml",
+        "source": "C:\\Users\\zadke\\.gradle\\caches\\transforms-2\\files-2.1\\991f2a8988ccffb6a03402048ab0112c\\material-1.0.0\\res\\interpolator\\mtrl_fast_out_linear_in.xml"
+    },
+    {
+        "merged": "C:\\csmjuappslide-main\\build\\multi_image_picker\\intermediates\\res\\merged\\release\\interpolator\\mtrl_linear.xml",
+        "source": "C:\\Users\\zadke\\.gradle\\caches\\transforms-2\\files-2.1\\991f2a8988ccffb6a03402048ab0112c\\material-1.0.0\\res\\interpolator\\mtrl_linear.xml"
+    }
+]

@@ -2,9 +2,10 @@ import 'package:appcsmju/footbar/Home.dart';
 import 'package:appcsmju/footbar/Another.dart';
 import 'package:appcsmju/footbar/News.dart';
 import 'package:appcsmju/footbar/Calendar.dart';
+import 'package:barcode_scan2/barcode_scan2.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:barcode_scan/barcode_scan.dart';
+
 
 class Foot extends StatefulWidget {
   const Foot({Key? key}) : super(key: key);
@@ -48,7 +49,7 @@ class _FootState extends State<Foot> {
         backgroundColor: Color(0xff24a878),
         onPressed: () async {
           var options = ScanOptions(
-            autoEnableFlash: true,
+            autoEnableFlash: false,
           );
           var data = await BarcodeScanner.scan(options: options);
 

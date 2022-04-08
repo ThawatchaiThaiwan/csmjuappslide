@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "C:\\csmjuappslide-main\\build\\barcode_scan2\\intermediates\\res\\merged\\release\\xml\\standalone_badge_gravity_bottom_end.xml",
+        "source": "C:\\Users\\zadke\\.gradle\\caches\\transforms-2\\files-2.1\\768764d0b2642819f29f0e2bc8ae6894\\material-1.1.0\\res\\xml\\standalone_badge_gravity_bottom_end.xml"
+    },
+    {
+        "merged": "C:\\csmjuappslide-main\\build\\barcode_scan2\\intermediates\\res\\merged\\release\\xml\\standalone_badge_gravity_top_start.xml",
+        "source": "C:\\Users\\zadke\\.gradle\\caches\\transforms-2\\files-2.1\\768764d0b2642819f29f0e2bc8ae6894\\material-1.1.0\\res\\xml\\standalone_badge_gravity_top_start.xml"
+    },
+    {
+        "merged": "C:\\csmjuappslide-main\\build\\barcode_scan2\\intermediates\\res\\merged\\release\\xml\\standalone_badge.xml",
+        "source": "C:\\Users\\zadke\\.gradle\\caches\\transforms-2\\files-2.1\\768764d0b2642819f29f0e2bc8ae6894\\material-1.1.0\\res\\xml\\standalone_badge.xml"
+    },
+    {
+        "merged": "C:\\csmjuappslide-main\\build\\barcode_scan2\\intermediates\\res\\merged\\release\\xml\\standalone_badge_gravity_bottom_start.xml",
+        "source": "C:\\Users\\zadke\\.gradle\\caches\\transforms-2\\files-2.1\\768764d0b2642819f29f0e2bc8ae6894\\material-1.1.0\\res\\xml\\standalone_badge_gravity_bottom_start.xml"
+    }
+]

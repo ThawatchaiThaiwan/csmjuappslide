@@ -13,7 +13,6 @@ Widget customActivityBelow(Activity article, BuildContext context) {
                   )));
     },
     child: Container(
-      
       margin: EdgeInsets.fromLTRB(1, 5, 1, 5),
       padding: EdgeInsets.fromLTRB(3, 3, 3, 3),
       decoration: BoxDecoration(
@@ -48,7 +47,6 @@ Widget customActivityBelow(Activity article, BuildContext context) {
           ),
           /////////////////////////////////////////////////////////////>>>>>>.วันที่
           Row(
-            
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
@@ -57,8 +55,8 @@ Widget customActivityBelow(Activity article, BuildContext context) {
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(0.0),
                 ),
-                child: Text("วันที่ "+
-                  article.Activity_Start,
+                child: Text(
+                  "วันที่ " + article.Activity_Start,
                   style: TextStyle(
                     color: Colors.blueGrey[900],
                     fontSize: 15.0,
@@ -67,7 +65,6 @@ Widget customActivityBelow(Activity article, BuildContext context) {
                   ),
                 ),
               ),
-              
               Container(
                 padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
                 decoration: BoxDecoration(
@@ -75,8 +72,7 @@ Widget customActivityBelow(Activity article, BuildContext context) {
                   borderRadius: BorderRadius.circular(0.0),
                 ),
                 child: Text(
-                  "แตะเพื่อดูรายละเอียด >>" 
-                     ,
+                  "แตะเพื่อดูรายละเอียด >>",
                   style: TextStyle(
                     color: Colors.blueGrey[900],
                     fontSize: 15.0,

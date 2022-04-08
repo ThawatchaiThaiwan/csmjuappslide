@@ -32,15 +32,8 @@ class _HomePageCarouselState extends State<HomePageCarousel> {
     findUser();
   }
 
-  /* void _getUserInfop() async {
-    SharedPreferences localStorage = await SharedPreferences.getInstance();
-    /* var userJson = localStorage.getString('user');
-    var user = json.decode(userJson!); */
-    setState(() {
-      studentcode = localStorage.getString('Studentcode');
-      //userData = user;
-    });
-  } */
+  
+  
   var ID;
   var image;
   var studentcode;
