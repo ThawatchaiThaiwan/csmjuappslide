@@ -74,7 +74,7 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
 
 /////////////////////////////////////////////////////////////////////>>>>>> validate
 
-  bool _validate1 = false;
+  /* bool _validate1 = false;
   bool _validate2 = false;
   bool _validate3 = false;
   bool _validate4 = false;
@@ -82,7 +82,7 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
   bool _validate6 = false;
   bool _validate7 = false;
   bool _validate8 = false;
-  bool _validate9 = false;
+  bool _validate9 = false; */
 
 ////////////////////////////////////////////////////////////////////////////////////
 
@@ -219,7 +219,7 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                               )
                             ]),
                         child: Text(
-                          '$name $surname',
+                          ' $name $surname',
                           style: TextStyle(
                             color: Colors.blueGrey[900],
                             fontSize: 19,
@@ -253,7 +253,7 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                               )
                             ]),
                         child: Text(
-                          '$email',
+                          ' $email',
                           style: TextStyle(
                             color: Colors.blueGrey[900],
                             fontSize: 19,
@@ -290,7 +290,7 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                               ),
                               isExpanded: true,
                               hint: Text(
-                                "กรุณาเลือกรายวิชา",
+                                " กรุณาเลือกรายวิชา",
                                 style: TextStyle(
                                   fontSize: 19,
                                   color: Colors.blueGrey[900],
@@ -372,14 +372,7 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                                 onPressed: () {
                                   _selectTimefrist(context);
 
-                                  setState(() {
-                                    newTimefirst = hoursfrist.toString() +
-                                        ":" +
-                                        minutesfrist.toString();
-                                    _TimefristController.text =
-                                        newTimefirst.toString();
-                                    print(_TimefristController.text);
-                                  });
+                                  
                                 },
                                 child: Text(
                                   '$hoursfrist:$minutesfrist',
@@ -415,15 +408,7 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                                 ),
                                 onPressed: () {
                                   _selectTimeend(context);
-                                  setState(() {
-                                    newTimeend = hoursend.toString() +
-                                        ":" +
-                                        minutesend.toString();
-                                    _TimeendController.text =
-                                        newTimeend.toString();
-
-                                    print(_TimeendController.text);
-                                  });
+                                
                                 },
                                 child: Text(
                                   '$hoursend:$minutesend',
@@ -461,7 +446,7 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                                 _validate ? 'กรุณากรอกข้อมูลให้ครบ' : null, */
                           border: OutlineInputBorder(),
                           contentPadding: const EdgeInsets.all(5),
-                          hintText: 'เพิ่มรายละเอียด',
+                          hintText: ' เพิ่มรายละเอียด',
                           hintStyle: TextStyle(fontSize: 19),
                           labelStyle: TextStyle(
                             fontSize: 19,
@@ -568,10 +553,10 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
 
                                 final String Classroom_Name =
                                     _roomController.text;
-                                final String Book_TimeStart =
-                                    _TimefristController.text;
-                                final String Book_TimeEnd =
-                                    _TimeendController.text;
+                                final String Book_TimeStart = hoursfrist.toString() + ":" + minutesfrist.toString();
+                                    
+                                final String Book_TimeEnd = hoursend.toString() + ':' + minutesend.toString();
+                                    
                                 final String Book_Detail =
                                     _DeteilController.text;
                                 final String FirstName = name;

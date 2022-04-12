@@ -56,6 +56,7 @@ class _LoginPageState extends State<LoginPage> {
       'username': usernameController.text,
       'password': passwordController.text
     };
+
     return Scaffold(
       resizeToAvoidBottomInset: true,
       key: scaffoldKey,
@@ -182,10 +183,16 @@ class _LoginPageState extends State<LoginPage> {
                                 setState(() {
                                   isApiCallProcess = false;
                                 });
-
-                                if (value.token.isNotEmpty) {
+                                var subuser = json.encode(data['username']);
+                                  print(subuser);
+                                  var daiuser = subuser.substring(7, 11);
+                                  print(daiuser);
+                                  var datasub = '4101';
+                                  print(datasub);
+                                if (value.token.isNotEmpty && daiuser == datasub) {
                                   var res =
                                       await APIService().postData(data, '');
+                                  
                                   var body = json.decode(res.body);
                                   SharedPreferences localStorage =
                                       await SharedPreferences.getInstance();

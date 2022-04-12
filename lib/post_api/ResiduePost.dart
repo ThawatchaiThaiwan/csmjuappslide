@@ -20,6 +20,7 @@ import 'package:http/http.dart' as http;
     String studentCode,
     String Sec_Internal, 
     String Sec_Another,
+    String Subject60,
     
 
   ) async {
@@ -40,6 +41,7 @@ import 'package:http/http.dart' as http;
       'studentCode': studentCode,
       'Sec_Internal': Sec_Internal,
       'Sec_Another': Sec_Another,
+      'Subject60': Subject60,
       
     }),
   );

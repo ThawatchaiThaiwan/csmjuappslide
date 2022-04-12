@@ -73,6 +73,7 @@ class _ResidueState extends State<Residue> {
   bool _validate7 = false;
   bool _validate8 = false;
   bool _validate9 = false;
+  bool _validate10 = false;
 
 ////////////////////////////////////////////////////////////////////////////////////
 
@@ -98,6 +99,7 @@ class _ResidueState extends State<Residue> {
   TextEditingController DateController = TextEditingController();
   TextEditingController DetailController = TextEditingController();
   TextEditingController AnotherGroupController = TextEditingController();
+  TextEditingController Courses60Controller = TextEditingController();
 
   /////////////////////////////////////////////////////////////////////////////>>>>.localstorage
   final _formkey = GlobalKey<FormState>();
@@ -164,7 +166,7 @@ result = string.substring(1, 4);  */
             child: Container(
                 padding: EdgeInsets.fromLTRB(15, 10, 15, 10),
                 width: double.infinity,
-                height: 850,
+                height: 950,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(5),
@@ -204,7 +206,7 @@ result = string.substring(1, 4);  */
                               )
                             ]),
                         child: Text(
-                          '$name $surname',
+                          ' $name $surname',
                           style: TextStyle(
                             color: Colors.blueGrey[900],
                             fontSize: 19,
@@ -238,7 +240,7 @@ result = string.substring(1, 4);  */
                               )
                             ]),
                         child: Text(
-                          '$email',
+                          ' $email',
                           style: TextStyle(
                             color: Colors.blueGrey[900],
                             fontSize: 19,
@@ -296,7 +298,7 @@ result = string.substring(1, 4);  */
                                     )
                                   ]),
                               child: Text(
-                                '$studentcode',
+                                ' $studentcode',
                                 style: TextStyle(
                                   color: Colors.blueGrey[900],
                                   fontSize: 19,
@@ -321,7 +323,7 @@ result = string.substring(1, 4);  */
                                 _validate ? 'กรุณากรอกข้อมูลให้ครบ' : null, */
                                 border: OutlineInputBorder(),
                                 contentPadding: const EdgeInsets.all(5),
-                                hintText: 'เบอร์โทร',
+                                hintText: ' เบอร์โทร',
                                 hintStyle: TextStyle(fontSize: 19),
                                 labelStyle: TextStyle(
                                   fontSize: 19,
@@ -448,7 +450,7 @@ result = string.substring(1, 4);  */
                                 _validate ? 'กรุณากรอกข้อมูลให้ครบ' : null,  */
                                 border: OutlineInputBorder(),
                                 contentPadding: const EdgeInsets.all(5),
-                                hintText: 'อื่นๆโปรดระบุ',
+                                hintText: ' อื่นๆโปรดระบุ',
                                 hintStyle: TextStyle(fontSize: 19),
                                 labelStyle: TextStyle(
                                   fontSize: 19,
@@ -460,6 +462,33 @@ result = string.substring(1, 4);  */
                           ),
                           SizedBox(width: 10.0),
                         ],
+                      ),
+                      ///////////////////////////////////////////////////////>>>>>รายวิชาภายในสาขา หลักสูตร60
+                      SizedBox(height: 10.0),
+
+                      Text(
+                        "รายวิชาภายในสาขาหลักสูตร 60",
+                        style: TextStyle(
+                          color: Colors.blueGrey[900],
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+
+                      TextField(
+                        controller: Courses60Controller,
+                        decoration: InputDecoration(
+                          /*  errorText:
+                          _validate ? 'กรุณากรอกข้อมูลให้ครบ' : null,  */
+                          border: OutlineInputBorder(),
+                          contentPadding: const EdgeInsets.all(5),
+                          hintText: ' ถ้าไม่มีให้ใส่ ( - )',
+                          hintStyle: TextStyle(fontSize: 19),
+                          labelStyle: TextStyle(
+                            fontSize: 19,
+                            color: Colors.blueGrey[900],
+                          ),
+                        ),
                       ),
                       ///////////////////////////////////////////////////////>>>>>รายวิชานอก & กลุ่มเรียนนอกสาขา
                       SizedBox(height: 10.0),
@@ -480,7 +509,7 @@ result = string.substring(1, 4);  */
                           _validate ? 'กรุณากรอกข้อมูลให้ครบ' : null,  */
                           border: OutlineInputBorder(),
                           contentPadding: const EdgeInsets.all(5),
-                          hintText: 'รายวิชานอกสาขา ( ถ้าไม่มีให้ใส่ - )',
+                          hintText: ' ถ้าไม่มีให้ใส่ ( - )',
                           hintStyle: TextStyle(fontSize: 19),
                           labelStyle: TextStyle(
                             fontSize: 19,
@@ -507,7 +536,7 @@ result = string.substring(1, 4);  */
                                   _validate3 ? 'กรุณากรอกข้อมูลให้ครบ' : null, */
                             border: OutlineInputBorder(),
                             contentPadding: const EdgeInsets.all(5),
-                            hintText: 'เพิ่มรายละเอียด',
+                            hintText: ' เพิ่มรายละเอียด',
                             hintStyle: TextStyle(fontSize: 19),
                             labelStyle: TextStyle(
                               fontSize: 19,
@@ -558,6 +587,8 @@ result = string.substring(1, 4);  */
                                       GroupController.text;
                                   final String Sec_Another =
                                       AnotherGroupController.text;
+                                      final String Subject60 =
+                                      Courses60Controller.text;
 
                                   ///////////////////////////////////////////////////>>>>>>>>.post
                                   final Residues? _user = await POSTResidue(
@@ -570,7 +601,8 @@ result = string.substring(1, 4);  */
                                       mobile,
                                       studentCode,
                                       Sec_Internal,
-                                      Sec_Another);
+                                      Sec_Another,
+                                      Subject60);
 
                                   setState(() {
                                     StudentController.text.isEmpty
@@ -595,8 +627,11 @@ result = string.substring(1, 4);  */
                                         ? _validate8 = true
                                         : _validate8 = false;
                                     AnotherGroupController.text.isEmpty
-                                        ? _validate8 = true
-                                        : _validate8 = false;
+                                        ? _validate9 = true
+                                        : _validate9 = false;
+                                    Courses60Controller.text.isEmpty
+                                        ? _validate10 = true
+                                        : _validate10 = false;
                                   });
 
                                   AwesomeDialog(

@@ -18418,8 +18418,8 @@ kotlin.coroutines.ContinuationInterceptor$DefaultImpls:
 kotlin.jvm.Transient
 com.google.common.reflect.Types$NativeTypeVariableEquals
 kotlinx.coroutines.debug.internal.ConcurrentWeakMap$Core
-android.support.v4.media.session.MediaSessionCompat$MediaSessionImplBase
 androidx.media.MediaBrowserServiceCompatApi26$MediaBrowserServiceAdaptor
+android.support.v4.media.session.MediaSessionCompat$MediaSessionImplBase
 kotlin.reflect.ParameterizedTypeImpl$getTypeName$1$1
 androidx.core.location.LocationManagerCompat$CancellableLocationListener$1
 androidx.viewpager2.widget.CompositeOnPageChangeCallback
@@ -25615,6 +25615,6 @@ com.google.android.material.resources.TextAppearance:
     public final boolean textAllCaps
 androidx.appcompat.view.StandaloneActionMode:
     private boolean mFocusable
-io.flutter.plugin.common.BinaryMessenger$-CC
 androidx.lifecycle.DefaultLifecycleObserver$-CC
+io.flutter.plugin.common.BinaryMessenger$-CC
 io.flutter.plugin.platform.PlatformView$-CC

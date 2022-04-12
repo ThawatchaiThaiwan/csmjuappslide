@@ -20,6 +20,7 @@ class Residues {
         required this.studentCode,
         required this.Sec_Internal,
         required this.Sec_External,
+        required this.Subject60
     });
 
     
@@ -33,6 +34,7 @@ class Residues {
     String studentCode;
     String Sec_Internal;
     String Sec_External;
+    String Subject60;
 
     factory Residues.fromJson(Map<String, dynamic> json) {
       return Residues(
@@ -46,6 +48,7 @@ class Residues {
         studentCode: json["studentCode"],
         Sec_Internal: json["Sec_Internal"],
         Sec_External: json["Sec_External"],
+        Subject60: json["Subject60"],
       );
     }
     

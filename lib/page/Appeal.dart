@@ -128,7 +128,7 @@ class _AppealState extends State<Appeal> {
                         errorText: _validate ? 'กรุณากรอกข้อมูลให้ครบ' : null,
                         border: OutlineInputBorder(),
                         contentPadding: const EdgeInsets.all(5),
-                        hintText: 'เพิ่มหัวเรื่อง',
+                        hintText: ' เพิ่มหัวเรื่อง',
                         hintStyle: TextStyle(fontSize: 19),
                         labelStyle: TextStyle(
                           fontSize: 2018,
@@ -196,7 +196,7 @@ class _AppealState extends State<Appeal> {
                         errorText: _validate3 ? 'กรุณากรอกข้อมูลให้ครบ' : null,
                         border: OutlineInputBorder(),
                         contentPadding: const EdgeInsets.all(5),
-                        hintText: 'เพิ่มรายละเอียด',
+                        hintText: ' เพิ่มรายละเอียด',
                         hintStyle: TextStyle(fontSize: 19),
                         labelStyle: TextStyle(
                           fontSize: 22,
