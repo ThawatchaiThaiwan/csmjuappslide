@@ -290,7 +290,7 @@ class _ReserveRoom1State extends State<ReserveRoom1> {
                               ),
                               isExpanded: true,
                               hint: Text(
-                                " กรุณาเลือกรายวิชา",
+                                " กรุณาเลือกห้องเรียน",
                                 style: TextStyle(
                                   fontSize: 19,
                                   color: Colors.blueGrey[900],
